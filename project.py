@@ -39,19 +39,59 @@ def print_menu(menu_level):
                 print(menu_title("Customer"))
                 print(menu_options[menu_level])
 
+def am_cust_f():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "8":
+            menu_level = "1"
+            break
+
+def am_prod_f():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "8":
+            menu_level = "1"
+            break
+
+def am_ord_f():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "7":
+            menu_level = "1"
+            break
+
+def am_tick_f():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "10":
+            menu_level = "1"
+            break
+
 def admin_menu_f():
     global menu_level
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
-            print("Customers")
+            menu_level = "1.1"
+            am_cust_f()
         elif cmd == "2":
-            print("Products")
+            menu_level = "1.2"
+            am_prod_f()
         elif cmd == "3":
-            print("Orders")
+            menu_level = "1.3"
+            am_ord_f()
         elif cmd == "4":
-            print("Tickets")
+            menu_level = "1.4"
+            am_tick_f()
         elif cmd == "5":
             menu_level = "0"
             break
