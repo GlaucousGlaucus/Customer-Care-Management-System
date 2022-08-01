@@ -228,8 +228,8 @@ maT_Sort =  \
 3) Sort by Order ID
 4) Sort by Product Name
 5) Sort by Product Category
-6) Sort by Customer’s FirstName
-7) Sort by Customer’s Phone
+6) Sort by Customer's FirstName
+7) Sort by Customer's Phone
 8) Sort by Status
 9) Sort by IssueCategory
 10) Sort by Issue
@@ -335,3 +335,81 @@ menu_options = {
     "2": menu_cust,
         "2.1": menu_cust_login
 }
+
+# TODO: Replace this with better title
+menu_title = lambda x=None: f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
+
+def print_menu(menu_level):
+        match menu_level:
+            case "0":
+                print(menu_title())
+
+            # Administrator
+            case "1":
+                print(menu_title("Administrator"))
+            # Customers
+            case "1.1":
+                print(menu_title("Administrator: Customers"))
+            case "1.1.1":
+                print(menu_title("Search"))
+            case "1.1.2":
+                print(menu_title("Sort"))
+            case "1.1.3":
+                print(menu_title("Data Analysis"))
+            case "1.1.3.1":
+                print(menu_title("Pie Chart"))
+            case "1.1.3.2":
+                print(menu_title("Bar Graph"))
+            
+            # Products
+            case "1.2":
+                print(menu_title("Administrator: Products"))
+            case "1.2.1":
+                print(menu_title("Search"))
+            case "1.2.1.1":
+                print(menu_title("Search by Returnable"))
+            case "1.2.2":
+                print(menu_title("Sort"))
+            case "1.2.3":
+                print(menu_title("Data Analysis"))
+            case "1.2.3.1":
+                print(menu_title("Pie Chart"))
+            # Orders
+            case "1.3":
+                print(menu_title("Administrator: Orders"))
+            case "1.3.1":
+                print(menu_title("Search"))
+            case "1.3.2":
+                print(menu_title("Sort"))
+            # Tickets
+            case "1.4":
+                print(menu_title("Administrator: Tickets"))
+            case "1.4.1":
+                print(menu_title("Search"))
+            case "1.4.2":
+                print(menu_title("Sort"))
+            case "1.4.3":
+                print(menu_title("Data Analysis"))
+            case "1.4.3.1":
+                print(menu_title("Pie Chart"))
+            case "1.4.3.2":
+                print(menu_title("Bar Graph"))
+            case "1.4.3.3":
+                print(menu_title("Other Graph"))
+            case "1.4.4":
+                print(menu_title("Report Generation"))
+            case "1.4.4.1":
+                print(menu_title("Summarize"))
+            case "1.4.5":
+                print(menu_title("Message Generation"))
+            case "1.4.5.1":
+                print(menu_title("Generate from template"))
+            case "1.4.5.2":
+                print(menu_title("Custom Message"))
+            
+            # Customer
+            case "2":
+                print(menu_title("Customer"))
+            case "2.1":
+                print(menu_title("Customer"))
+        print(menu_options[menu_level])
