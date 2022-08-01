@@ -1,5 +1,6 @@
 from calendar import c
 from re import T
+from menu_options_module import menu_options
 import pandas as pd
 import numpy as np
 import time
@@ -18,51 +19,25 @@ print(f"[{datetime.now()}] Files Loaded")
 
 # Creating the Menu
 menu_level = "0"
-menu_title = """----------------------------------MENU----------------------------------"""
-menu_main = \
-"""
-1) Login as Administrator
-2) Login as Customer
-3) Exit the program
-"""
-menu_admin = \
-"""
-1) Customers
-2) Products
-3) Orders
-4) Tickets
-5) Back
-"""
-menu_cust = \
-"""
-1) Login
-2) Register
-3) Back
-"""
-menu_cust_login = \
-"""
-1) Open a ticket
-2) View ticket(s)
-3) Close a ticket
-4) Back
-"""
 
-# Methods related to Menus
+# TODO: Replace this with better title
+menu_title = lambda x=None: f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
+
 
 def print_menu(menu_level):
         match menu_level:
             case "0":
-                print(menu_title)
-                print(menu_main)
+                print(menu_title())
+                print(menu_options[menu_level])
             case "1":
-                print(menu_title)
-                print(menu_admin)
+                print(menu_title("Administrator"))
+                print(menu_options[menu_level])
             case "2":
-                print(menu_title)
-                print(menu_cust)
+                print(menu_title("Customer"))
+                print(menu_options[menu_level])
             case "2.1":
-                print(menu_title)
-                print(menu_cust_login)
+                print(menu_title("Customer"))
+                print(menu_options[menu_level])
 
 def admin_menu_f():
     global menu_level
@@ -135,4 +110,4 @@ while True:
 
 print("Thank you for using this software.")
 print(f"[{datetime.now()}] Quitting...")
-time.sleep(2)
+time.sleep(1)
