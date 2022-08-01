@@ -1,0 +1,35 @@
+main = 0
+admin = 1
+
+    1.1 Customers
+        1.1.1 Search
+        1.1.2 Sort
+        1.1.3 Data Analysis
+            1.1.3.1 Pie Chart
+            1.1.3.2 Bar Graph
+    1.2 Products
+        1.2.1 Search
+            1.2.1.1 Search By Returnable
+        1.2.2 Sort
+        1.2.3 Data Analysis
+            1.2.3.1 Pie Chart
+    1.3 Orders
+        1.3.1 Search
+        1.3.2 Sort
+    1.4 Tickets
+        1.4.1 Search
+        1.4.2 Sort
+        1.4.3 Data Analysis
+            1.4.3.1 Pie Chart
+            1.4.3.2 Bar Graph
+            1.4.3.3 Other Graph
+        1.4.4 Report Generation
+            1.4.4.1 Summarize
+        1.4.5 Message Generation
+            1.4.5.1 Generate from template
+            1.4.5.2 Custom
+
+customer = 2
+
+    2.1 Log-in
+    2.2 Register
