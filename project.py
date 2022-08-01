@@ -1,6 +1,6 @@
 from calendar import c
 from re import T
-from menu_options_module import menu_options
+from menu_options_module import menu_options, print_menu
 import pandas as pd
 import numpy as np
 import time
@@ -19,25 +19,6 @@ print(f"[{datetime.now()}] Files Loaded")
 
 # Creating the Menu
 menu_level = "0"
-
-# TODO: Replace this with better title
-menu_title = lambda x=None: f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
-
-
-def print_menu(menu_level):
-        match menu_level:
-            case "0":
-                print(menu_title())
-                print(menu_options[menu_level])
-            case "1":
-                print(menu_title("Administrator"))
-                print(menu_options[menu_level])
-            case "2":
-                print(menu_title("Customer"))
-                print(menu_options[menu_level])
-            case "2.1":
-                print(menu_title("Customer"))
-                print(menu_options[menu_level])
 
 def am_cust_f():
     global menu_level
