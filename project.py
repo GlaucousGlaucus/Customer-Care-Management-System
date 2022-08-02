@@ -144,7 +144,7 @@ def date_decoder(date):
         date = date.split(" ")
         if str(date[1]).isdigit(): return None
         M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        d, m, y = date[0][:2], M.index(date[1][:3]) + 1, date[2]
+        d, m, y = date[0][:2], M.index(str((date[1][:3]).lower()).capitalize()) + 1, date[2]
     elif "/" in date:
         date = date.split("/")
         d, m, y = date
@@ -194,6 +194,10 @@ def am_cust_f():
             """)
             dob_check = input("Enter Dob: ")
             dob = date_decoder(dob_check)
+            while dob is None:
+                print("Invlaid Dob")
+                dob_check = input("Enter Dob: ")
+                dob = date_decoder(dob_check)
             # Gender
             gender_check = input("Enter Gender (No Abbrev): ")
             gender = gender_check if gender_check in ["Male", "Female"] else None
