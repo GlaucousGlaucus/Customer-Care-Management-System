@@ -271,7 +271,7 @@ maT_DA_OtherGraph =  \
 """
 maT_ReportGeneration =  \
 """
-1) Summarize
+1) Summarise
 2) Back
 """
 maT_RG_Summarize =  \

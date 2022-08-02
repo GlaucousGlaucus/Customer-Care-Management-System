@@ -1,13 +1,11 @@
-from calendar import c
-from re import I, T
-from tkinter import E
-
-from matplotlib import cm
-from menu_options_module import menu_options, print_menu
-import pandas as pd
-import numpy as np
 import time
 from datetime import datetime
+
+import numpy as np
+import pandas as pd
+from matplotlib import cm
+
+from menu_options_module import print_menu
 
 print(f"[{datetime.now()}] Initializing...")
 print(f"[{datetime.now()}] Loading Files...")
@@ -22,6 +20,88 @@ print(f"[{datetime.now()}] Files Loaded")
 
 # Creating the Menu
 menu_level = "0"
+
+def amc_Search():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd_n = input("Command: ")
+        if cmd_n == "1":
+            pass
+        elif cmd_n == "2":
+            pass
+        elif cmd_n == "3":
+            pass
+        elif cmd_n == "4":
+            pass
+        elif cmd_n == "5":
+            pass
+        elif cmd_n == "6":
+            pass
+        elif cmd_n == "7":
+            pass
+        elif cmd_n == "8":
+            pass
+        elif cmd_n == "9":
+            pass
+        elif cmd_n == "10":
+            pass
+        elif cmd_n == "11":
+            pass
+        elif cmd_n == "12":
+            pass
+        elif cmd_n == "13":
+            menu_level = "1.1"
+            break
+
+def amc_Sort():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd_n = input("Command: ")
+        if cmd_n == "1":
+            pass
+        elif cmd_n == "2":
+            pass
+        elif cmd_n == "3":
+            pass
+        elif cmd_n == "4":
+            pass
+        elif cmd_n == "5":
+            pass
+        elif cmd_n == "6":
+            pass
+        elif cmd_n == "7":
+            pass
+        elif cmd_n == "8":
+            pass
+        elif cmd_n == "9":
+            pass
+        elif cmd_n == "10":
+            pass
+        elif cmd_n == "11":
+            pass
+        elif cmd_n == "12":
+            pass
+        elif cmd_n == "13":
+            menu_level = "1.1"
+            break
+
+def amc_DA():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd_n = input("Command: ")
+        if cmd_n == "1":
+            menu_level = "1.1.3.1"
+            amcDAPieChart()
+        elif cmd_n == "2":
+            menu_level = "1.1.3.2"
+            amcDABarGraph()
+        elif cmd_n == "3":
+            menu_level = "1.1"
+            break
+
 
 def amcDAPieChart():
     global menu_level
@@ -62,37 +142,7 @@ def am_cust_f():
             print("Show all Customers")
         elif cmd == "2":
             menu_level = "1.1.1"
-            print_menu(menu_level)
-            while True:
-                print_menu(menu_level)
-                cmd_n = input("Command: ")
-                if cmd_n == "1":
-                    pass
-                elif cmd_n == "2":
-                    pass
-                elif cmd_n == "3":
-                    pass
-                elif cmd_n == "4":
-                    pass
-                elif cmd_n == "5":
-                    pass
-                elif cmd_n == "6":
-                    pass
-                elif cmd_n == "7":
-                    pass
-                elif cmd_n == "8":
-                    pass
-                elif cmd_n == "9":
-                    pass
-                elif cmd_n == "10":
-                    pass
-                elif cmd_n == "11":
-                    pass
-                elif cmd_n == "12":
-                    pass
-                elif cmd_n == "13":
-                    menu_level = "1.1"
-                    break
+            amc_Search()
         elif cmd == "3":
             print("Add A Customer")
         elif cmd == "4":
@@ -101,53 +151,86 @@ def am_cust_f():
             print("Delete A Customer")
         elif cmd == "6":
             menu_level = "1.1.2"
-            print_menu(menu_level)
-            while True:
-                print_menu(menu_level)
-                cmd_n = input("Command: ")
-                if cmd_n == "1":
-                    pass
-                elif cmd_n == "2":
-                    pass
-                elif cmd_n == "3":
-                    pass
-                elif cmd_n == "4":
-                    pass
-                elif cmd_n == "5":
-                    pass
-                elif cmd_n == "6":
-                    pass
-                elif cmd_n == "7":
-                    pass
-                elif cmd_n == "8":
-                    pass
-                elif cmd_n == "9":
-                    pass
-                elif cmd_n == "10":
-                    pass
-                elif cmd_n == "11":
-                    pass
-                elif cmd_n == "12":
-                    pass
-                elif cmd_n == "13":
-                    menu_level = "1.1"
-                    break
+            amc_Sort()
         elif cmd == "7":
             menu_level = "1.1.3"
-            while True:
-                print_menu(menu_level)
-                cmd_n = input("Command: ")
-                if cmd_n == "1":
-                    menu_level = "1.1.3.1"
-                    amcDAPieChart()
-                elif cmd_n == "2":
-                    menu_level = "1.1.3.2"
-                    amcDABarGraph()
-                elif cmd_n == "3":
-                    menu_level = "1.1"
-                    break
+            amc_DA()
         elif cmd == "8":
             menu_level = "1"
+            break
+
+def amp_Search():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            pass
+        elif cmd == "6":
+            pass
+        elif cmd == "7":
+            # Search By Returnable
+            menu_level = "1.2.1.1"
+            while True:
+                print_menu(menu_level)
+                cmdn = input("Command: ")
+                if cmdn == "1":
+                    pass
+                elif cmdn == "2":
+                    pass
+                elif cmdn == "3":
+                    pass
+                elif cmdn == "4":
+                    menu_level = "1.2.1"
+                    break
+        elif cmd == "8":
+            pass
+        elif cmd == "9":
+            menu_level = "1.2"
+            break
+
+def amp_Sort():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            pass
+        elif cmd == "6":
+            pass
+        elif cmd == "7":
+            pass
+        elif cmd == "8":
+            pass
+        elif cmd == "9":
+            menu_level = "1.2"
+            break
+
+def amp_DA():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            menu_level = "1.2"
             break
 
 def am_prod_f():
@@ -158,7 +241,8 @@ def am_prod_f():
         if cmd == "1":
             print("Show all Products")
         elif cmd == "2":
-            print("Search")
+            menu_level = "1.2.1"
+            amp_Search()
         elif cmd == "3":
             print("Add a Product")
         elif cmd == "4":
@@ -166,11 +250,75 @@ def am_prod_f():
         elif cmd == "5":
             print("Delete a Product")
         elif cmd == "6":
-            print("Sort")
+            menu_level = "1.2.2"
+            amp_Sort()
         elif cmd == "7":
-            print("Data Analysis")
+            menu_level = "1.2.3"
+            amp_DA()
         elif cmd == "8":
             menu_level = "1"
+            break
+
+def amo_Search():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd_n = input("Command: ")
+        if cmd_n == "1":
+            pass
+        elif cmd_n == "2":
+            pass
+        elif cmd_n == "3":
+            pass
+        elif cmd_n == "4":
+            pass
+        elif cmd_n == "5":
+            pass
+        elif cmd_n == "6":
+            pass
+        elif cmd_n == "7":
+            pass
+        elif cmd_n == "8":
+            pass
+        elif cmd_n == "9":
+            pass
+        elif cmd_n == "10":
+            pass
+        elif cmd_n == "11":
+            pass
+        elif cmd_n == "12":
+            menu_level = "1.3"
+            break
+
+def amo_Sort():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd_n = input("Command: ")
+        if cmd_n == "1":
+            pass
+        elif cmd_n == "2":
+            pass
+        elif cmd_n == "3":
+            pass
+        elif cmd_n == "4":
+            pass
+        elif cmd_n == "5":
+            pass
+        elif cmd_n == "6":
+            pass
+        elif cmd_n == "7":
+            pass
+        elif cmd_n == "8":
+            pass
+        elif cmd_n == "9":
+            pass
+        elif cmd_n == "10":
+            pass
+        elif cmd_n == "11":
+            pass
+        elif cmd_n == "12":
+            menu_level = "1.3"
             break
 
 def am_ord_f():
@@ -182,35 +330,7 @@ def am_ord_f():
             print("Show all Orders")
         elif cmd == "2":
             menu_level = "1.3.1"
-            print_menu(menu_level)
-            while True:
-                print_menu(menu_level)
-                cmd_n = input("Command: ")
-                if cmd_n == "1":
-                    pass
-                elif cmd_n == "2":
-                    pass
-                elif cmd_n == "3":
-                    pass
-                elif cmd_n == "4":
-                    pass
-                elif cmd_n == "5":
-                    pass
-                elif cmd_n == "6":
-                    pass
-                elif cmd_n == "7":
-                    pass
-                elif cmd_n == "8":
-                    pass
-                elif cmd_n == "9":
-                    pass
-                elif cmd_n == "10":
-                    pass
-                elif cmd_n == "11":
-                    pass
-                elif cmd_n == "12":
-                    menu_level = "1.3"
-                    break
+            amo_Search()
         elif cmd == "3":
             print("Add an order")
         elif cmd == "4":
@@ -219,37 +339,226 @@ def am_ord_f():
             print("Delete an order")
         elif cmd == "6":
             menu_level = "1.3.2"
-            print_menu(menu_level)
-            while True:
-                print_menu(menu_level)
-                cmd_n = input("Command: ")
-                if cmd_n == "1":
-                    pass
-                elif cmd_n == "2":
-                    pass
-                elif cmd_n == "3":
-                    pass
-                elif cmd_n == "4":
-                    pass
-                elif cmd_n == "5":
-                    pass
-                elif cmd_n == "6":
-                    pass
-                elif cmd_n == "7":
-                    pass
-                elif cmd_n == "8":
-                    pass
-                elif cmd_n == "9":
-                    pass
-                elif cmd_n == "10":
-                    pass
-                elif cmd_n == "11":
-                    pass
-                elif cmd_n == "12":
-                    menu_level = "1.3"
-                    break
+            amo_Sort()
         elif cmd == "7":
             menu_level = "1"
+            break
+
+def amt_Search():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            pass
+        elif cmd == "6":
+            pass
+        elif cmd == "7":
+            pass
+        elif cmd == "8":
+            pass
+        elif cmd == "9":
+            pass
+        elif cmd == "10":
+            pass
+        elif cmd == "11":
+            pass
+        elif cmd == "12":
+            pass
+        elif cmd == "13":
+            pass
+        elif cmd == "14":
+            pass
+        elif cmd == "15":
+            pass
+        elif cmd == "16":
+            pass
+        elif cmd == "17":
+            menu_level = "1.4"
+            break
+
+def amt_Sort():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            pass
+        elif cmd == "6":
+            pass
+        elif cmd == "7":
+            pass
+        elif cmd == "8":
+            pass
+        elif cmd == "9":
+            pass
+        elif cmd == "10":
+            pass
+        elif cmd == "11":
+            pass
+        elif cmd == "12":
+            pass
+        elif cmd == "13":
+            pass
+        elif cmd == "14":
+            pass
+        elif cmd == "15":
+            pass
+        elif cmd == "16":
+            pass
+        elif cmd == "17":
+            menu_level = "1.4"
+            break
+
+def amt_DA_PieChart():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            menu_level = "1.4.3"
+            break
+
+def amt_DA_BarGraph():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            menu_level = "1.4.3"
+            break
+
+def amt_DA_OtherGraph():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            menu_level = "1.4.3"
+            break
+
+def amt_DA():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            menu_level = "1.4.3.1"
+            amt_DA_PieChart()
+        elif cmd == "2":
+            menu_level = "1.4.3.2"
+            amt_DA_BarGraph()
+        elif cmd == "3":
+            menu_level = "1.4.3.3"
+            amt_DA_OtherGraph()
+        elif cmd == "4":
+            menu_level = "1.4"
+            break
+
+def amt_RG_Summerzie():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            pass
+        elif cmd == "6":
+            menu_level = "1.4.4"
+            break
+
+def amt_MG_GenFromTemplate():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            menu_level = "1.4.5"
+            break
+
+def amt_MG_Custom():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            menu_level = "1.4.5"
+            break
+
+def amt_RG():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            menu_level = "1.4.4.1"
+            amt_RG_Summerzie()
+        elif cmd == "2":
+            menu_level = "1.4"
+            break
+
+def amt_MG():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            menu_level = "1.4.5.1"
+            amt_MG_GenFromTemplate()
+        elif cmd == "2":
+            menu_level = "1.4.5.2"
+            amt_MG_Custom()
+        elif cmd == "3":
+            menu_level = "1.4"
             break
 
 def am_tick_f():
@@ -257,7 +566,30 @@ def am_tick_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "10":
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            menu_level = "1.4.1"
+            amt_Search()
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            pass
+        elif cmd == "6":
+            menu_level = "1.4.2"
+            amt_Sort()
+        elif cmd == "7":
+            menu_level = "1.4.3"
+            amt_DA()
+        elif cmd == "8":
+            menu_level = "1.4.4"
+            amt_RG()
+        elif cmd == "9":
+            menu_level = "1.4.5"
+            amt_MG()
+        elif cmd == "10":
             menu_level = "1"
             break
 
