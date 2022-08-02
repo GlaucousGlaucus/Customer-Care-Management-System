@@ -1,5 +1,8 @@
 from calendar import c
-from re import T
+from re import I, T
+from tkinter import E
+
+from matplotlib import cm
 from menu_options_module import menu_options, print_menu
 import pandas as pd
 import numpy as np
@@ -20,12 +23,130 @@ print(f"[{datetime.now()}] Files Loaded")
 # Creating the Menu
 menu_level = "0"
 
+def amcDAPieChart():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            pass
+        elif cmd == "3":
+            pass
+        elif cmd == "4":
+            pass
+        elif cmd == "5":
+            menu_level = "1.1.3"
+            break
+
+
+def amcDABarGraph():
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "1":
+            pass
+        elif cmd == "2":
+            menu_level = "1.1.3"
+            break
+
+
 def am_cust_f():
     global menu_level
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "8":
+        if cmd == "1":
+            print("Show all Customers")
+        elif cmd == "2":
+            menu_level = "1.1.1"
+            print_menu(menu_level)
+            while True:
+                print_menu(menu_level)
+                cmd_n = input("Command: ")
+                if cmd_n == "1":
+                    pass
+                elif cmd_n == "2":
+                    pass
+                elif cmd_n == "3":
+                    pass
+                elif cmd_n == "4":
+                    pass
+                elif cmd_n == "5":
+                    pass
+                elif cmd_n == "6":
+                    pass
+                elif cmd_n == "7":
+                    pass
+                elif cmd_n == "8":
+                    pass
+                elif cmd_n == "9":
+                    pass
+                elif cmd_n == "10":
+                    pass
+                elif cmd_n == "11":
+                    pass
+                elif cmd_n == "12":
+                    pass
+                elif cmd_n == "13":
+                    menu_level = "1.1"
+                    break
+        elif cmd == "3":
+            print("Add A Customer")
+        elif cmd == "4":
+            print("Update A Customer")
+        elif cmd == "5":
+            print("Delete A Customer")
+        elif cmd == "6":
+            menu_level = "1.1.2"
+            print_menu(menu_level)
+            while True:
+                print_menu(menu_level)
+                cmd_n = input("Command: ")
+                if cmd_n == "1":
+                    pass
+                elif cmd_n == "2":
+                    pass
+                elif cmd_n == "3":
+                    pass
+                elif cmd_n == "4":
+                    pass
+                elif cmd_n == "5":
+                    pass
+                elif cmd_n == "6":
+                    pass
+                elif cmd_n == "7":
+                    pass
+                elif cmd_n == "8":
+                    pass
+                elif cmd_n == "9":
+                    pass
+                elif cmd_n == "10":
+                    pass
+                elif cmd_n == "11":
+                    pass
+                elif cmd_n == "12":
+                    pass
+                elif cmd_n == "13":
+                    menu_level = "1.1"
+                    break
+        elif cmd == "7":
+            menu_level = "1.1.3"
+            while True:
+                print_menu(menu_level)
+                cmd_n = input("Command: ")
+                if cmd_n == "1":
+                    menu_level = "1.1.3.1"
+                    amcDAPieChart()
+                elif cmd_n == "2":
+                    menu_level = "1.1.3.2"
+                    amcDABarGraph()
+                elif cmd_n == "3":
+                    menu_level = "1.1"
+                    break
+        elif cmd == "8":
             menu_level = "1"
             break
 
@@ -34,7 +155,21 @@ def am_prod_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "8":
+        if cmd == "1":
+            print("Show all Products")
+        elif cmd == "2":
+            print("Search")
+        elif cmd == "3":
+            print("Add a Product")
+        elif cmd == "4":
+            print("Update a Product")
+        elif cmd == "5":
+            print("Delete a Product")
+        elif cmd == "6":
+            print("Sort")
+        elif cmd == "7":
+            print("Data Analysis")
+        elif cmd == "8":
             menu_level = "1"
             break
 
@@ -43,7 +178,77 @@ def am_ord_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "7":
+        if cmd == "1":
+            print("Show all Orders")
+        elif cmd == "2":
+            menu_level = "1.3.1"
+            print_menu(menu_level)
+            while True:
+                print_menu(menu_level)
+                cmd_n = input("Command: ")
+                if cmd_n == "1":
+                    pass
+                elif cmd_n == "2":
+                    pass
+                elif cmd_n == "3":
+                    pass
+                elif cmd_n == "4":
+                    pass
+                elif cmd_n == "5":
+                    pass
+                elif cmd_n == "6":
+                    pass
+                elif cmd_n == "7":
+                    pass
+                elif cmd_n == "8":
+                    pass
+                elif cmd_n == "9":
+                    pass
+                elif cmd_n == "10":
+                    pass
+                elif cmd_n == "11":
+                    pass
+                elif cmd_n == "12":
+                    menu_level = "1.3"
+                    break
+        elif cmd == "3":
+            print("Add an order")
+        elif cmd == "4":
+            print("Update an order")
+        elif cmd == "5":
+            print("Delete an order")
+        elif cmd == "6":
+            menu_level = "1.3.2"
+            print_menu(menu_level)
+            while True:
+                print_menu(menu_level)
+                cmd_n = input("Command: ")
+                if cmd_n == "1":
+                    pass
+                elif cmd_n == "2":
+                    pass
+                elif cmd_n == "3":
+                    pass
+                elif cmd_n == "4":
+                    pass
+                elif cmd_n == "5":
+                    pass
+                elif cmd_n == "6":
+                    pass
+                elif cmd_n == "7":
+                    pass
+                elif cmd_n == "8":
+                    pass
+                elif cmd_n == "9":
+                    pass
+                elif cmd_n == "10":
+                    pass
+                elif cmd_n == "11":
+                    pass
+                elif cmd_n == "12":
+                    menu_level = "1.3"
+                    break
+        elif cmd == "7":
             menu_level = "1"
             break
 
