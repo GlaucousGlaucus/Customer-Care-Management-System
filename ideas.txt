@@ -1,2 +1,11 @@
 1. When modifying a data, have the ability
     to use lists for multiple columns
+2. Allow custoemr to purchase prime membership
+3. When adding a new customer
+    3.1 Give an option to generate a uuid
+    3.2 Add data validation
+    3.3 Give an option so that the admin can input date like
+    16th Jan 2021 and the program should convert it into
+    D/N/YYYY format.
+    3.4 Give an option to enter multiple customers in
+    one go.
