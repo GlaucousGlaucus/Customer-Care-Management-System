@@ -1,5 +1,5 @@
 menu_main = \
-"""
+    """
 1) Login as Administrator
 2) Login as Customer
 3) Exit the program
@@ -7,13 +7,13 @@ menu_main = \
 
 # Customer Related
 menu_cust = \
-"""
+    """
 1) Login
 2) Register
 3) Back
 """
 menu_cust_login = \
-"""
+    """
 1) Open a ticket
 2) View ticket(s)
 3) Close a ticket
@@ -22,7 +22,7 @@ menu_cust_login = \
 
 # Admin Related
 menu_admin = \
-"""
+    """
 1) Customers
 2) Products
 3) Orders
@@ -31,7 +31,7 @@ menu_admin = \
 """
 
 maC = \
-"""
+    """
 1) Show all Customers
 2) Search
 3) Add a customer
@@ -42,7 +42,7 @@ maC = \
 8) Back
 """
 maC_Search = \
-"""
+    """
 1) Search by ID
 2) Search by Name
 3) Search by DOB
@@ -58,7 +58,7 @@ maC_Search = \
 13) Back
 """
 maC_Sort =  \
-"""
+    """
 1) Sort by ID
 2) Sort by Name
 3) Sort by DOB
@@ -74,13 +74,13 @@ maC_Sort =  \
 13) Back
 """
 maC_DataAnalysis =  \
-"""
+    """
 1) Pie Chart
 2) Bar Graph
 3) Back
 """
 maC_da_PieChart =  \
-"""
+    """
 1) Gender
 2) Country
 3) State
@@ -88,13 +88,13 @@ maC_da_PieChart =  \
 5) Back
 """
 maC_da_BarGraph =  \
-"""
+    """
 1) Age of Customers
 2) Back
 """
 
 maP =  \
-"""
+    """
 1) Show all Products
 2) Search
 3) Add a product
@@ -105,7 +105,7 @@ maP =  \
 8) Back
 """
 maP_Search =  \
-"""
+    """
 1) Search by ID
 2) Search by Name
 3) Search by Manufacturer
@@ -117,14 +117,14 @@ maP_Search =  \
 9) Back
 """
 maP_Search_SearchByReturnable =  \
-"""
+    """
 1) Returnable
 2) Exchange Only
 3) Non Returnable
 4) Back
 """
 maP_Sort =  \
-"""
+    """
 1) Sort by ID
 2) Sort by Name
 3) Sort by Manufacturer
@@ -136,19 +136,19 @@ maP_Sort =  \
 9) Back
 """
 maP_DataAnalysis =  \
-"""
+    """
 1) Pie Chart
 2) Back
 """
 maP_da_PieChart =  \
-"""
+    """
 1) Categories (In-Stock)
 2) Returnable
 3) Back
 """
 
 maO =  \
-"""
+    """
 1) Show all orders
 2) Search
 3) Add an order
@@ -158,7 +158,7 @@ maO =  \
 7) Back
 """
 maO_Search =  \
-"""
+    """
 1) Search By Order ID
 2) Search by Customer ID
 3) Search by Customer FirstName
@@ -173,7 +173,7 @@ maO_Search =  \
 12) Back
 """
 maO_Sort =  \
-"""
+    """
 1) Sort By Order ID
 2) Sort by Customer ID
 3) Sort by Customer FirstName
@@ -189,7 +189,7 @@ maO_Sort =  \
 """
 
 maT =  \
-"""
+    """
 1) Show all Tickets
 2) Search
 3) Add a ticket
@@ -202,7 +202,7 @@ maT =  \
 10) Back
 """
 maT_Search =  \
-"""
+    """
 1) Search by Ticket ID
 2) Search by Customer ID
 3) Search by Order ID
@@ -222,7 +222,7 @@ maT_Search =  \
 17) Back
 """
 maT_Sort =  \
-"""
+    """
 1) Sort by Ticket ID
 2) Sort by Customer ID
 3) Sort by Order ID
@@ -242,27 +242,27 @@ maT_Sort =  \
 17) Back
 """
 maT_DataAnalysis =  \
-"""
+    """
 1) Pie Chart
 2) Bar Graph
 3) Other Graph
 4) Back
 """
 maT_DA_PieChart =  \
-"""
+    """
 1) Status
 2) Product Category
 3) Back
 """
 maT_DA_BarGraph =  \
-"""
+    """
 1) Tickets Opened in a year (each Month)
 2) Tickets Closed in a year (each Month)
 3) Both 1 And 2
 4) Back
 """
 maT_DA_OtherGraph =  \
-"""
+    """
 1) Avg. Time Taken each month
 2) Avg. Response Time
 3) Avg. replies
@@ -270,12 +270,12 @@ maT_DA_OtherGraph =  \
 5) Back
 """
 maT_ReportGeneration =  \
-"""
+    """
 1) Summarise
 2) Back
 """
 maT_RG_Summarize =  \
-"""
+    """
 1) Today
 2) This week
 3) This month
@@ -284,20 +284,20 @@ maT_RG_Summarize =  \
 6) Back
 """
 maT_MessageGeneration =  \
-"""
+    """
 1) Generate from Template
 2) Custom
 3) Back
 """
 maT_MG_Generatefromtemplate =  \
-"""
+    """
 1) First Response
 2) Request Denied
 3) Request acknowledged
 4) Back
 """
 maT_MG_Custom =  \
-"""
+    """
 1) Quanta
 2) Back
 """
@@ -305,111 +305,116 @@ maT_MG_Custom =  \
 menu_options = {
     "0": menu_main,
     "1": menu_admin,
-        "1.1": maC,
-            "1.1.1": maC_Search,
-            "1.1.2": maC_Sort,
-            "1.1.3": maC_DataAnalysis,
-                "1.1.3.1": maC_da_PieChart,
-                "1.1.3.2": maC_da_BarGraph,
-        "1.2": maP,
-            "1.2.1": maP_Search,
-                "1.2.1.1": maP_Search_SearchByReturnable,
-            "1.2.2": maP_Sort,
-            "1.2.3": maP_DataAnalysis,
-                "1.2.3.1": maP_da_PieChart,
-        "1.3": maO,
-            "1.3.1": maO_Search,
-            "1.3.2": maO_Sort,
-        "1.4": maT,
-            "1.4.1": maT_Search,
-            "1.4.2": maT_Sort,
-            "1.4.3": maT_DataAnalysis,
-                "1.4.3.1": maT_DA_PieChart,
-                "1.4.3.2": maT_DA_BarGraph,
-                "1.4.3.3": maT_DA_OtherGraph,
-            "1.4.4": maT_ReportGeneration,
-                "1.4.4.1": maT_RG_Summarize,
-            "1.4.5": maT_MessageGeneration,
-                "1.4.5.1": maT_MG_Generatefromtemplate,
-                "1.4.5.2": maT_MG_Custom,
+    "1.1": maC,
+    "1.1.1": maC_Search,
+    "1.1.2": maC_Sort,
+    "1.1.3": maC_DataAnalysis,
+    "1.1.3.1": maC_da_PieChart,
+    "1.1.3.2": maC_da_BarGraph,
+    "1.2": maP,
+    "1.2.1": maP_Search,
+    "1.2.1.1": maP_Search_SearchByReturnable,
+    "1.2.2": maP_Sort,
+    "1.2.3": maP_DataAnalysis,
+    "1.2.3.1": maP_da_PieChart,
+    "1.3": maO,
+    "1.3.1": maO_Search,
+    "1.3.2": maO_Sort,
+    "1.4": maT,
+    "1.4.1": maT_Search,
+    "1.4.2": maT_Sort,
+    "1.4.3": maT_DataAnalysis,
+    "1.4.3.1": maT_DA_PieChart,
+    "1.4.3.2": maT_DA_BarGraph,
+    "1.4.3.3": maT_DA_OtherGraph,
+    "1.4.4": maT_ReportGeneration,
+    "1.4.4.1": maT_RG_Summarize,
+    "1.4.5": maT_MessageGeneration,
+    "1.4.5.1": maT_MG_Generatefromtemplate,
+    "1.4.5.2": maT_MG_Custom,
     "2": menu_cust,
-        "2.1": menu_cust_login
+    "2.1": menu_cust_login
 }
 
 # TODO: Replace this with better title
-menu_title = lambda x=None: f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
+
+
+def menu_title(
+    x=None): return f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
+
 
 def print_menu(menu_level):
-        match menu_level:
-            case "0":
-                print(menu_title())
+    print("\n"*30)
+    match menu_level:
+        case "0":
+            print(menu_title())
 
-            # Administrator
-            case "1":
-                print(menu_title("Administrator"))
-            # Customers
-            case "1.1":
-                print(menu_title("Administrator: Customers"))
-            case "1.1.1":
-                print(menu_title("Search"))
-            case "1.1.2":
-                print(menu_title("Sort"))
-            case "1.1.3":
-                print(menu_title("Data Analysis"))
-            case "1.1.3.1":
-                print(menu_title("Pie Chart"))
-            case "1.1.3.2":
-                print(menu_title("Bar Graph"))
-            
-            # Products
-            case "1.2":
-                print(menu_title("Administrator: Products"))
-            case "1.2.1":
-                print(menu_title("Search"))
-            case "1.2.1.1":
-                print(menu_title("Search by Returnable"))
-            case "1.2.2":
-                print(menu_title("Sort"))
-            case "1.2.3":
-                print(menu_title("Data Analysis"))
-            case "1.2.3.1":
-                print(menu_title("Pie Chart"))
-            # Orders
-            case "1.3":
-                print(menu_title("Administrator: Orders"))
-            case "1.3.1":
-                print(menu_title("Search"))
-            case "1.3.2":
-                print(menu_title("Sort"))
-            # Tickets
-            case "1.4":
-                print(menu_title("Administrator: Tickets"))
-            case "1.4.1":
-                print(menu_title("Search"))
-            case "1.4.2":
-                print(menu_title("Sort"))
-            case "1.4.3":
-                print(menu_title("Data Analysis"))
-            case "1.4.3.1":
-                print(menu_title("Pie Chart"))
-            case "1.4.3.2":
-                print(menu_title("Bar Graph"))
-            case "1.4.3.3":
-                print(menu_title("Other Graph"))
-            case "1.4.4":
-                print(menu_title("Report Generation"))
-            case "1.4.4.1":
-                print(menu_title("Summarize"))
-            case "1.4.5":
-                print(menu_title("Message Generation"))
-            case "1.4.5.1":
-                print(menu_title("Generate from template"))
-            case "1.4.5.2":
-                print(menu_title("Custom Message"))
-            
-            # Customer
-            case "2":
-                print(menu_title("Customer"))
-            case "2.1":
-                print(menu_title("Customer"))
-        print(menu_options[menu_level])
+        # Administrator
+        case "1":
+            print(menu_title("Administrator"))
+        # Customers
+        case "1.1":
+            print(menu_title("Administrator: Customers"))
+        case "1.1.1":
+            print(menu_title("Search"))
+        case "1.1.2":
+            print(menu_title("Sort"))
+        case "1.1.3":
+            print(menu_title("Data Analysis"))
+        case "1.1.3.1":
+            print(menu_title("Pie Chart"))
+        case "1.1.3.2":
+            print(menu_title("Bar Graph"))
+
+        # Products
+        case "1.2":
+            print(menu_title("Administrator: Products"))
+        case "1.2.1":
+            print(menu_title("Search"))
+        case "1.2.1.1":
+            print(menu_title("Search by Returnable"))
+        case "1.2.2":
+            print(menu_title("Sort"))
+        case "1.2.3":
+            print(menu_title("Data Analysis"))
+        case "1.2.3.1":
+            print(menu_title("Pie Chart"))
+        # Orders
+        case "1.3":
+            print(menu_title("Administrator: Orders"))
+        case "1.3.1":
+            print(menu_title("Search"))
+        case "1.3.2":
+            print(menu_title("Sort"))
+        # Tickets
+        case "1.4":
+            print(menu_title("Administrator: Tickets"))
+        case "1.4.1":
+            print(menu_title("Search"))
+        case "1.4.2":
+            print(menu_title("Sort"))
+        case "1.4.3":
+            print(menu_title("Data Analysis"))
+        case "1.4.3.1":
+            print(menu_title("Pie Chart"))
+        case "1.4.3.2":
+            print(menu_title("Bar Graph"))
+        case "1.4.3.3":
+            print(menu_title("Other Graph"))
+        case "1.4.4":
+            print(menu_title("Report Generation"))
+        case "1.4.4.1":
+            print(menu_title("Summarize"))
+        case "1.4.5":
+            print(menu_title("Message Generation"))
+        case "1.4.5.1":
+            print(menu_title("Generate from template"))
+        case "1.4.5.2":
+            print(menu_title("Custom Message"))
+
+        # Customer
+        case "2":
+            print(menu_title("Customer"))
+        case "2.1":
+            print(menu_title("Customer"))
+    print(menu_options[menu_level])
