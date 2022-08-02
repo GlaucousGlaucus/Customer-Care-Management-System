@@ -24,7 +24,7 @@ admin = 1
             1.4.3.2 Bar Graph
             1.4.3.3 Other Graph
         1.4.4 Report Generation
-            1.4.4.1 Summarize
+            1.4.4.1 Summarise
         1.4.5 Message Generation
             1.4.5.1 Generate from template
             1.4.5.2 Custom
