@@ -8,7 +8,7 @@
             "name": "Python: project.py",
             "type": "python",
             "request": "launch",
-            "program": "${E:/IP_PROJECT/project.py}",
+            "program": "project.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }
