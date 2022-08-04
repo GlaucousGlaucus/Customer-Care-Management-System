@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+import pandas as pd
 import time
 import re
 
@@ -49,7 +50,7 @@ def data_validator_customer(data, d_type):
     elif d_type == "pincode": return data if data.isdigit() else None
     elif d_type == "phone":  return phone_validator(data)
     elif d_type == "email":  data if not validate_email(data) else None
-    elif d_type == "prime":  data
+    elif d_type == "prime":  "PRIME" if data in [True, "Yes", "PRIME", "P"] else "-"
 
 def add_a_Customer(customers):
     print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+")
@@ -169,7 +170,7 @@ update_customer_menu = {
 "12":"email" ,
 "13":"prime"}
 
-def update_customer(customers):
+def update_customer(customers:pd.DataFrame):
     cls()
     id = input("Customer ID To Update: ")
     if id in customers.index:
@@ -178,6 +179,7 @@ def update_customer(customers):
         pause()
         cls()
         while True:
+            cls()
             print(f"""What would you like to Modify ?  Selected ID: {id}
     1) id        
     2) first_name
@@ -201,15 +203,22 @@ def update_customer(customers):
                 new_val = input("Enter your new value: ")
                 if new_val not in customers.index:
                     customers.rename(index={sel_rec.name:new_val}, inplace=True)
+                    break
                 else:
                     print("ERROR: DUPLICATE ID")
-            elif cmd in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]:
+            elif cmd == "14":
+                break
+            else:
                 d_type = update_customer_menu[cmd]
                 print(f"Updating Value of {d_type}")
                 print(f"Old value of {d_type}: {sel_rec.loc[d_type]}")
                 new_val = input("Enter your new value: ")
-                print(data_validator_customer(new_val, d_type))
-            elif cmd == "14":
-                break
+                new_data = data_validator_customer(new_val, d_type)
+                if new_data: customers.loc[id][str(d_type)] = new_data
+                else: print(f"""Error while updating Value of {d_type}
+Make sure that you have avoided any of the following errors:
+1. Invalid value for {d_type} i.e. worng format or data type.
+2. Empty value for {d_type}
+                """)
     else:
         print("ID DOES NOT EXIST:", id)
