@@ -4,3 +4,4 @@
 3. When adding a new customer
     3.4 Give an option to enter multiple customers in
     one go.
+4. Make a custom error method
