@@ -56,7 +56,7 @@ def date_decoder(date):
             return None
         M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        d, m, y = date[0].replace("th", ""), M.index(
+        d, m, y = date[0].replace("th", "").replace("st", "").replace("rd", "").replace("nd", ""), M.index(
             str((date[1][:3]).lower()).capitalize()) + 1, date[2]
     elif "/" in date:
         date = date.split("/")
