@@ -2,7 +2,6 @@ import re
 import time
 import uuid
 from datetime import datetime
-from operator import ne
 
 import pandas as pd
 
@@ -245,7 +244,7 @@ Make sure that you have avoided any of the following errors:
 3. New Value is less than 3 characters.
                 """)
                 pause()
-            elif cmd == "14":
+            elif cmd == "14" or cmd == "":
                 break
             else:
                 d_type = update_customer_menu[cmd]
