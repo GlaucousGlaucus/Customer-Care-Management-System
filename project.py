@@ -1,13 +1,11 @@
 import time
 from datetime import datetime
 from uuid import uuid4
-import uuid
-import re
 import actions
 
 import numpy as np
 import pandas as pd
-from matplotlib import cm
+import matplotlib.pyplot as plt
 
 from menu_options_module import print_menu
 
