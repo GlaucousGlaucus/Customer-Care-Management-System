@@ -149,14 +149,18 @@ def am_cust_f():
             amc_Search()
         # Adding a Customer
         elif cmd == "3":
-            actions.add_a_Customer(customers)
+            if input("Do you want to add a customer ? (Y/N) ") == "Y":
+                actions.add_a_Customer(customers)
             pause()
         # Updating a customer
         elif cmd == "4":
-            actions.update_customer(customers)
+            if input("Do you want to update a customer ? (Y/N) ") == "Y":
+                actions.update_customer(customers)
             pause()
         elif cmd == "5":
-            print("Delete A Customer")
+            if input("Do you want to update a customer ? (Y/N) ") == "Y":
+                print("Delete A Customer")
+            pause()
         elif cmd == "6":
             menu_level = "1.1.2"
             amc_Sort()

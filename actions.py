@@ -2,6 +2,7 @@ import re
 import time
 import uuid
 from datetime import datetime
+from numpy import mat
 
 import pandas as pd
 
@@ -12,32 +13,46 @@ def pause(): return input('\n'*2 + "Press Any key To Contine...")
 def cls(): return print("\n" * 30)
 
 
-def phone_validator(s):
+def throw_error(type, title, message):
+    cls()
+    if type == 'error':
+        print(f"\u26A0 ERROR: {title} \u26A0")
+        print(message)
+    elif type == 'warning':
+        print(f"! WARNING: {title} !")
+        print(message)
+    elif type == 'info':
+        print(f"======================{title}======================")
+        print(message)
+    else:
+        print(message)
+
+
+def phone_validator(s: str):
     org = s
     org = org.split(" ")
     if org[0][0] == "+":
         org[0] = org[0][1:]
     PatternA = re.compile("(0-91)?")
     PatternB = re.compile("[7-9][0-9]{9}")
-    if PatternA.match(org[0]) and PatternB.match("".join(org[1:])):
-        return s
+    lhs = "".join(org[1:])
+    if PatternA.match(org[0]) and PatternB.match(lhs):
+        return f"+{org[0]} {lhs[:3]} {lhs[3:6]} {lhs[6:10]}"
     else:
         None
 
 
 def validate_email(email):
-    print("Validating email", email)
     rem = re.fullmatch(
         r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', email)
-    print(email if email else None)
-    return rem
+    return rem if len(email) >= 3 else None
 
 
 def date_decoder(date):
     d, m, y = None, None, None
     if " " in date:
         date = date.split(" ")
-        if str(date[1]).isdigit():
+        if str(date[1]).isdigit() or len(date) != 3:
             return None
         M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -78,23 +93,26 @@ def data_validator_customer(data, d_type):
 
 
 def add_a_Customer(customers):
-    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+")
+    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n")
     id = input("Enter ID (Leave blank for random uuid): ")
     while id in customers.index:
         print("ERROR DUPLICATE ID")
         id = input("Enter ID (Leave blank for random uuid): ")
     if id == "":
         id = uuid.uuid4()
+    cls()
     # first_name
     first_name = input("Enter First Name: ")
     while not first_name.isalpha():
-        print("First Name should only have alpha characters")
+        throw_error('error', 'Invalid first_name', "\n  First Name should only have alphabets.")
         first_name = input("Enter First Name: ")
+    cls()
     # last_name
     last_name = input("Enter Last Name: ")
     while not last_name.isalpha():
-        print("Last Name should only have alpha characters")
+        throw_error('error', 'Invalid last_name', "\n  Last Name should only have alphabets.")
         last_name = input("Enter Last Name: ")
+    cls()
     # DOB
     print("""
                     Accepted Formats: 
@@ -103,44 +121,87 @@ def add_a_Customer(customers):
     dob_check = input("Enter Dob: ")
     dob = date_decoder(dob_check)
     while dob is None:
-        print("Invlaid Dob")
+        throw_error('error', 'Invalid DOB', """
+Please make sure you have a entered a valid date.
+
+Accepted Formats:
+"16th Jan 2021"     OR      "16/01/2021"        OR  '16/01/2021"
+        """)
         dob_check = input("Enter Dob: ")
         dob = date_decoder(dob_check)
+    cls()
     # Gender
     gender_check = input("Enter Gender (No Abbrev): ")
     gender = gender_check if gender_check in ["Male", "Female"] else None
+    while gender is None:
+        throw_error('error', 'Invlaid gender', "Make sure you have entered a valid gender \nand have not used abbrevaitions")
+        gender_check = input("Enter Gender (No Abbrev): ")
+        gender = gender_check if gender_check in ["Male", "Female"] else None
+    cls()
     # Address
     address = input("Enter Address: ")
+    cls()
     # Country
     country = input("Enter Country: ")
     while not country.isalpha():
-        print("Country should only have alpha characters")
+        throw_error('error', 'Invalid Country', "\n  Country should only have alphabets.")
         country = input("Enter Country: ")
+    cls()
     # City
     city = input("Enter City: ")
     while not city.isalpha():
-        print("City should only have alpha characters")
+        throw_error('error', 'Invalid City', "\n  City should only have alphabets.")
         city = input("Enter City: ")
+    cls()
     # State
     state = input("Enter State: ")
     while not state.isalpha():
-        print("State should only have alpha characters")
+        throw_error('error', 'Invalid State', "\n  State should only have alphabets.")
         state = input("Enter State: ")
+    cls()
     # Postal code
     pincode = input("Enter Pincode: ")
     while not pincode.isdigit():
-        print("Pincode must be a number.")
+        throw_error('error', 'Invalid Pincode', "\n  Pincdoe should only have digits.")
         pincode = input("Enter Pincode: ")
+    cls()
     # Phone
     phone = input("Enter Phone: ")
-    while not phone.isdigit():
-        print("Phone must be a valid Phone.")
+    while not phone_validator(phone):
+        cls()
+        throw_error('error', "Invalid phone number: %s" % phone, """Phone must be a valid Phone.
+
+1) It should not be blank.
+2) The first two digits of the phone must be between 0 and 91 (inclusive).
+3) The third digit of the phone must be between 7 and 9 (inclusive).
+4) The other digits of the phone must be between 0 and 9 (inclusive).
+
+Input Format: +XX XXX XXX XXXX OR +XX XXXXXXXXXX
+
+Avoid the above errors and try again.
+        """)
+        pause()
+        cls()
         phone = input("Enter Phone: ")
     # Email
     email = input("Enter Email: ")
     while not validate_email(email):
-        print("Invalid Email")
-        email = input("Enter Email: ")
+            throw_error('error', f"Invalid email address: {email}", """
+The email address should be:
+r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+1) At least three characters long
+2) Should have a valid Username: 
+    a) Can have A-Z and a-z characters
+    b) Can have digits and special characters (_%+-)
+3) Should have the '@' character
+4) Should have valid Mail server name:
+    a) Can have A-Z and a-z characters
+    b) Can have digits and hypen (-) no special characters
+5) Should have valid top level domain name:
+
+Avoid the above errors and try again.
+        """)
+            email = input("Enter Email: ")
     # Prime
     prime = "PRIME" if input("Enter Prime: ") in [
         "Prime", "PRIME", "Yes", "1", "Y", "P", "p"] else "-"
@@ -179,7 +240,7 @@ def add_a_Customer(customers):
             print("Record Insertion Cancelled :(")
             time.sleep(1)
     else:
-        print(f"Error: Invalid Data: {NewData}")
+        throw_error('error', f"Invalid Data", 'The data is invalid, please try again.')
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -237,7 +298,7 @@ def update_customer(customers: pd.DataFrame):
                         index={sel_rec.name: new_val}, inplace=True)
                     break
                 else:
-                    print(f"""Error while updating Value of id
+                    throw_error('error', 'Invalid customer ID', f"""Error while updating Value of id
 Make sure that you have avoided any of the following errors:
 1. Invalid value for id i.e. worng format or data type.
 2. Empty value for id
@@ -256,9 +317,11 @@ Make sure that you have avoided any of the following errors:
                 if new_data:
                     customers.at[id, d_type] = new_data
                 else:
-                    print(f"""Error while updating Value of {d_type} with value {new_data}
+                    throw_error('error', 'Error while updating customer data', f"""Error while updating Value of {d_type} with value {new_data}
 Make sure that you have avoided any of the following errors:
-1. Invalid value for {d_type} i.e. worng format or data type.
+1. Empty value for {d_type}
+
+2. Invalid value for {d_type} i.e. worng format or data type.
     a. For (first_name, last_name, country, city, state),
         Data should have only alphabetical characters
     b. For Geneder, either Male/Female, Abbreviations NOT Allowed
@@ -271,8 +334,6 @@ Make sure that you have avoided any of the following errors:
         ii. The @ symbol
         iii. Domain name and Top-level domain eg. abc@yahoo.com
     f. For Prime, either yes, PRIME or P will be valid
-
-2. Empty value for {d_type}
                 """)
                 pause()
     else:
