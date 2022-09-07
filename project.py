@@ -142,6 +142,7 @@ def am_cust_f():
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
+            cls()
             print(customers)
             pause()
         elif cmd == "2":
@@ -149,7 +150,7 @@ def am_cust_f():
             amc_Search()
         # Adding a Customer
         elif cmd == "3":
-            if input("Do you want to add a customer ? (Y/N) ") == "Y":
+            if input("Do you want to add a customer ? (Y/N) ").lower() in ["y","1","yes","oui"]:
                 n = input("How many customers would you like to add? ")
                 try:
                     for _ in range(int(n)):
