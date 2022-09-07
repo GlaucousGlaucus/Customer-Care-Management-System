@@ -1,7 +1,3 @@
-1. When modifying a data, have the ability
-    to use lists for multiple columns
-2. Allow custoemr to purchase prime membership
-3. When adding a new customer
-    3.4 Give an option to enter multiple customers in
-    one go.
-4. Make a custom error method
+Allow custoemr to purchase prime membership
+Gender lower
+Make the data format appear when the admin is adding the customer
