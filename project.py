@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from menu_options_module import print_menu
+from menu_options_module import print_menu, splashscreen
 
 print(f"[{datetime.now()}] Initializing...")
 print(f"[{datetime.now()}] Loading Files...")
@@ -150,16 +150,25 @@ def am_cust_f():
         # Adding a Customer
         elif cmd == "3":
             if input("Do you want to add a customer ? (Y/N) ") == "Y":
-                actions.add_a_Customer(customers)
+                n = input("How many customers would you like to add? ")
+                try:
+                    for _ in range(int(n)):
+                        cls()
+                        actions.add_a_Customer(customers)
+                except Exception as e:
+                    actions.throw_error('error', f"{e}", e.with_traceback)
+            else: print("Command Cancelled: Add a customer.")
             pause()
         # Updating a customer
         elif cmd == "4":
             if input("Do you want to update a customer ? (Y/N) ") == "Y":
                 actions.update_customer(customers)
+            else: print("Command Cancelled: Update a customer.")
             pause()
         elif cmd == "5":
-            if input("Do you want to update a customer ? (Y/N) ") == "Y":
+            if input("Do you want to delete a customer ? (Y/N) ") == "Y":
                 print("Delete A Customer")
+            else: print("Command Cancelled: Delete a customer.")
             pause()
         elif cmd == "6":
             menu_level = "1.1.2"

@@ -1,6 +1,10 @@
+from ast import For
+import imp
+from multiprocessing.spawn import import_main_path
 import re
 import time
 import uuid
+from colorama import Fore, Style
 from datetime import datetime
 from numpy import mat
 
@@ -16,15 +20,15 @@ def cls(): return print("\n" * 30)
 def throw_error(type, title, message):
     cls()
     if type == 'error':
-        print(f"\u26A0 ERROR: {title} \u26A0")
-        print(message)
+        print(f"{Fore.RED} \u26A0 ERROR: {title} \u26A0")
+        print(message, Fore.RESET)
     elif type == 'warning':
         print(f"! WARNING: {title} !")
         print(message)
     elif type == 'info':
-        print(f"======================{title}======================")
-        print(message)
+        print(f"{tf.BOLD} INFO: {title}{message}")
     else:
+        print(f"======================{title}======================")
         print(message)
 
 
@@ -34,7 +38,7 @@ def phone_validator(s: str):
     if org[0][0] == "+":
         org[0] = org[0][1:]
     PatternA = re.compile("(0-91)?")
-    PatternB = re.compile("[7-9][0-9]{9}")
+    PatternB = re.compile("[0-9]{10}")
     lhs = "".join(org[1:])
     if PatternA.match(org[0]) and PatternB.match(lhs):
         return f"+{org[0]} {lhs[:3]} {lhs[3:6]} {lhs[6:10]}"
@@ -67,9 +71,10 @@ def date_decoder(date):
         datetime(year=int(y), month=int(m), day=int(d))
         if len(y) == 2:
             y = "20" + y
+        if y > str(datetime.today().year): raise ValueError("Invalid DOB \n year of birth cannot be greater then this year!")
         return f"{int(d)}/{int(m)}/{int(y)}"
     except ValueError as e:
-        print("Invalid date: ", d, m, y)
+        #throw_error('error', 'INVALID DATE', f'{d, m, y} \n {e}')
         return None
 
 
@@ -104,39 +109,51 @@ def add_a_Customer(customers):
     # first_name
     first_name = input("Enter First Name: ")
     while not first_name.isalpha():
-        throw_error('error', 'Invalid first_name', "\n  First Name should only have alphabets.")
+        throw_error('error', 'Invalid Firstname', "\n> First Name should only have alphabets and must not be blank!\n\n")
         first_name = input("Enter First Name: ")
     cls()
     # last_name
     last_name = input("Enter Last Name: ")
     while not last_name.isalpha():
-        throw_error('error', 'Invalid last_name', "\n  Last Name should only have alphabets.")
+        throw_error('error', 'Invalid Lastname', "\n> Last Name should only have alphabetsand must not be blank!\n\n")
         last_name = input("Enter Last Name: ")
     cls()
     # DOB
-    print("""
-                    Accepted Formats: 
-"16th Jan 2021"     OR      "16/01/2021"        OR  '16 January 2021'
-    """)
-    dob_check = input("Enter Dob: ")
+    print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+    dob_check = input(Fore.LIGHTMAGENTA_EX + "Enter Dob: " + Fore.RESET)
     dob = date_decoder(dob_check)
     while dob is None:
-        throw_error('error', 'Invalid DOB', """
+        throw_error('error', 'Invalid DOB', f"""
 Please make sure you have a entered a valid date.
 
-Accepted Formats:
-"16th Jan 2021"     OR      "16/01/2021"        OR  '16/01/2021"
-        """)
+{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
         dob_check = input("Enter Dob: ")
         dob = date_decoder(dob_check)
     cls()
     # Gender
-    gender_check = input("Enter Gender (No Abbrev): ")
-    gender = gender_check if gender_check in ["Male", "Female"] else None
+    genders = ["male", "female", "m", "f"]
+    gender_check = input("Enter Gender: ")
+    gender = gender_check if gender_check.strip().lower() in genders else None
     while gender is None:
-        throw_error('error', 'Invlaid gender', "Make sure you have entered a valid gender \nand have not used abbrevaitions")
-        gender_check = input("Enter Gender (No Abbrev): ")
-        gender = gender_check if gender_check in ["Male", "Female"] else None
+        throw_error('error', 'Invlaid gender', "Make sure you have entered a valid gender.")
+        gender_check = input("Enter Gender: ")
+        gender = gender_check if gender_check in genders else None
     cls()
     # Address
     address = input("Enter Address: ")
@@ -236,11 +253,14 @@ Avoid the above errors and try again.
         if reck.lower() == "y":
             customers.loc[id] = NewData
             print("Record inserted successfully!")
+            pause()
         else:
             print("Record Insertion Cancelled :(")
+            pause()
             time.sleep(1)
     else:
         throw_error('error', f"Invalid Data", 'The data is invalid, please try again.')
+        pause()
 
 # ----------------------------------------------------------------------------------------------------
 

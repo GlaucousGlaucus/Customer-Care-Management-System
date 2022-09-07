@@ -1,3 +1,41 @@
+import actions
+import time
+
+cls = actions.cls
+
+f1 = """
+ ██████                       ███████ 
+██                            ██      
+██                            ███████ 
+██                                 ██ 
+ ██████                       ███████ 
+"""
+
+f2 = """
+ ██████ ███    ███
+██      ████  ████
+██      ██ ████ ██
+██      ██  ██  ██
+ ██████ ██      ██
+"""
+f3 = """
+ ██████ ███    ███  ███    ███
+██      ████  ████  ████  ████
+██      ██ ████ ██  ██ ████ ██
+██      ██  ██  ██  ██  ██  ██
+ ██████ ██      ██  ██      ██
+"""
+
+f4 = """
+ ██████ ███    ███ ███    ███ ███████ 
+██      ████  ████ ████  ████ ██      
+██      ██ ████ ██ ██ ████ ██ ███████ 
+██      ██  ██  ██ ██  ██  ██      ██ 
+ ██████ ██      ██ ██      ██ ███████ 
+"""
+
+logo_letters = [f1, f4]
+
 menu_main = \
     """
 1) Login as Administrator
@@ -338,6 +376,18 @@ menu_options = {
 
 # TODO: Replace this with better title
 
+def splashscreen():
+    # logo_split = logo.split("\n")
+    # logo_split = logo_split[1:len(logo_split)-1]
+    for i, x in enumerate(logo_letters):
+        cls()
+        time.sleep(0.5)
+        # if i > 0:
+        #     for y in range(i):
+        #         print(logo_letters[y])
+        print(x)
+        time.sleep(0.5)
+    actions.pause()
 
 def menu_title(
     x=None): return f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
