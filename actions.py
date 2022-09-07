@@ -3,6 +3,7 @@ import imp
 from multiprocessing.spawn import import_main_path
 import re
 import time
+from turtle import st
 import uuid
 from colorama import Fore, Style
 from datetime import datetime
@@ -30,6 +31,7 @@ def throw_error(type, title, message):
     else:
         print(f"======================{title}======================")
         print(message)
+    pause()
 
 
 def phone_validator(s: str):
@@ -97,28 +99,31 @@ def data_validator_customer(data, d_type):
         return "PRIME" if data in ["Yes", "PRIME", "P"] else "-"
 
 
-def add_a_Customer(customers):
-    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n")
-    id = input("Enter ID (Leave blank for random uuid): ")
+def add_a_Customer(customers: pd.DataFrame):
+    # TODO: Formatting
+    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n") # GUI
+    id = input(Fore.LIGHTMAGENTA_EX + "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    # Verify that the customer id is not a duplicate
     while id in customers.index:
-        print("ERROR DUPLICATE ID")
-        id = input("Enter ID (Leave blank for random uuid): ")
-    if id == "":
+        throw_error('error', f'Duplicate ID: {id}', "\n> ID should be a unique ID.")
+        id = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    if id == "": # Gen uuid if input is empty
         id = uuid.uuid4()
     cls()
     # first_name
-    first_name = input("Enter First Name: ")
+    first_name = input(Fore.LIGHTMAGENTA_EX + "Enter First Name: " + Fore.RESET).capitalize()
     while not first_name.isalpha():
-        throw_error('error', 'Invalid Firstname', "\n> First Name should only have alphabets and must not be blank!\n\n")
-        first_name = input("Enter First Name: ")
+        throw_error('error', f'Invalid Firstname: {first_name}', "\n> First Name should only have alphabets and must not be blank!\n\n")
+        first_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter First Name: " + Fore.RESET)
     cls()
     # last_name
-    last_name = input("Enter Last Name: ")
+    last_name = input(Fore.LIGHTMAGENTA_EX + "Enter Last Name: " + Fore.RESET).capitalize()
     while not last_name.isalpha():
-        throw_error('error', 'Invalid Lastname', "\n> Last Name should only have alphabetsand must not be blank!\n\n")
-        last_name = input("Enter Last Name: ")
+        throw_error('error', f'Invalid Lastname: {last_name}', "\n> Last Name should only have alphabetsand must not be blank!\n\n")
+        last_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Last Name: " + Fore.RESET)
     cls()
     # DOB
+    # Print DOB GUI
     print(f"""{Fore.LIGHTRED_EX}
 +============================= FORMAT =============================+
 |   > The date must not be blank                                   |
@@ -130,8 +135,8 @@ def add_a_Customer(customers):
 +==================================================================+{Fore.RESET}\n\n\n""")
     dob_check = input(Fore.LIGHTMAGENTA_EX + "Enter Dob: " + Fore.RESET)
     dob = date_decoder(dob_check)
-    while dob is None:
-        throw_error('error', 'Invalid DOB', f"""
+    while dob is None: # Retake inputs for DOB till its valid
+        throw_error('error', f'Invalid DOB: {dob_check}', f"""
 Please make sure you have a entered a valid date.
 
 {Fore.LIGHTRED_EX}
@@ -143,66 +148,66 @@ Please make sure you have a entered a valid date.
 |        "16th January 2021"     OR      "16 January 2021"         |
 |        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
 +==================================================================+{Fore.RESET}\n\n\n""")
-        dob_check = input("Enter Dob: ")
+        dob_check = input(Fore.LIGHTMAGENTA_EX + "Enter Dob: " + Fore.RESET)
         dob = date_decoder(dob_check)
     cls()
     # Gender
     genders = ["male", "female", "m", "f"]
-    gender_check = input("Enter Gender: ")
-    gender = gender_check if gender_check.strip().lower() in genders else None
+    gender_check = input(Fore.LIGHTMAGENTA_EX + "Enter Gender: " + Fore.RESET).strip().lower()
+    gender = "Male" if gender_check in ["male", "m"] else "Female" if gender_check in genders else None
+    # Verify Gender
     while gender is None:
-        throw_error('error', 'Invlaid gender', "Make sure you have entered a valid gender.")
-        gender_check = input("Enter Gender: ")
+        throw_error('error', f'Invlaid gender: {gender_check}', "Make sure you have entered a valid gender.")
+        gender_check = input(Fore.LIGHTMAGENTA_EX + "Enter Gender: " + Fore.RESET)
         gender = gender_check if gender_check in genders else None
     cls()
     # Address
-    address = input("Enter Address: ")
+    address = input(Fore.LIGHTMAGENTA_EX + "Enter Address: " + Fore.RESET) #TODO Address format
     cls()
     # Country
-    country = input("Enter Country: ")
-    while not country.isalpha():
-        throw_error('error', 'Invalid Country', "\n  Country should only have alphabets.")
-        country = input("Enter Country: ")
+    country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET).capitalize()
+    while not all(c.isalpha() for c in country.split(" ")): # Verify country
+        throw_error('error', f'Invalid Country: {country}', "\n  Country should only have alphabets.")
+        country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET)
     cls()
     # City
-    city = input("Enter City: ")
-    while not city.isalpha():
-        throw_error('error', 'Invalid City', "\n  City should only have alphabets.")
-        city = input("Enter City: ")
+    city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET).capitalize()
+    while not all(c.isalpha() for c in city.split(" ")): # Verify City
+        throw_error('error', f'Invalid City: {city}', "\n  City should only have alphabets.")
+        city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET)
     cls()
     # State
-    state = input("Enter State: ")
-    while not state.isalpha():
-        throw_error('error', 'Invalid State', "\n  State should only have alphabets.")
-        state = input("Enter State: ")
+    state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET).capitalize()
+    while not all(c.isalpha() for c in state.split(" ")): # Verify state
+        throw_error('error', f'Invalid State: {state}', "\n  State should only have alphabets.")
+        state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET)
     cls()
     # Postal code
-    pincode = input("Enter Pincode: ")
-    while not pincode.isdigit():
-        throw_error('error', 'Invalid Pincode', "\n  Pincdoe should only have digits.")
-        pincode = input("Enter Pincode: ")
+    pincode = input(Fore.LIGHTMAGENTA_EX + "Enter Pincode: " + Fore.RESET)
+    while not pincode.isdigit(): # Verify pincode
+        throw_error('error', f'Invalid Pincode: {pincode}', "\n  Pincdoe should only have digits.")
+        pincode = input(Fore.LIGHTMAGENTA_EX + "Enter Pincode: " + Fore.RESET)
     cls()
     # Phone
-    phone = input("Enter Phone: ")
-    while not phone_validator(phone):
+    phone = input(Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
+    while not phone_validator(phone): # Verify phone
         cls()
-        throw_error('error', "Invalid phone number: %s" % phone, """Phone must be a valid Phone.
+        throw_error('error', f"Invalid phone number: {phone}", """Phone must be a valid Phone.
 
 1) It should not be blank.
 2) The first two digits of the phone must be between 0 and 91 (inclusive).
-3) The third digit of the phone must be between 7 and 9 (inclusive).
-4) The other digits of the phone must be between 0 and 9 (inclusive).
+3) The other digits of the phone must be between 0 and 9 (inclusive).
 
 Input Format: +XX XXX XXX XXXX OR +XX XXXXXXXXXX
 
 Avoid the above errors and try again.
         """)
-        pause()
-        cls()
-        phone = input("Enter Phone: ")
+        phone = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
+    cls()
+
     # Email
-    email = input("Enter Email: ")
-    while not validate_email(email):
+    email = input(Fore.LIGHTMAGENTA_EX + "Enter Email: " + Fore.RESET)
+    while not validate_email(email): # Verify email
             throw_error('error', f"Invalid email address: {email}", """
 The email address should be:
 r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
@@ -218,11 +223,12 @@ r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
 Avoid the above errors and try again.
         """)
-            email = input("Enter Email: ")
+            email = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Email: " + Fore.RESET)
+    cls()
     # Prime
-    prime = "PRIME" if input("Enter Prime: ") in [
+    prime = "PRIME" if input(Fore.LIGHTMAGENTA_EX + "Enter Prime: " + Fore.RESET) in [
         "Prime", "PRIME", "Yes", "1", "Y", "P", "p"] else "-"
-    # Whole data validation
+    # Data Summmarization
     NewData = [first_name, last_name, dob,
                gender, address, country, city, state, pincode,
                phone, email, prime]
@@ -253,14 +259,11 @@ Avoid the above errors and try again.
         if reck.lower() == "y":
             customers.loc[id] = NewData
             print("Record inserted successfully!")
-            pause()
         else:
             print("Record Insertion Cancelled :(")
-            pause()
-            time.sleep(1)
+        time.sleep(1)
     else:
         throw_error('error', f"Invalid Data", 'The data is invalid, please try again.')
-        pause()
 
 # ----------------------------------------------------------------------------------------------------
 
