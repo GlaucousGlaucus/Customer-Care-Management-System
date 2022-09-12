@@ -162,12 +162,12 @@ def am_cust_f():
             pause()
         # Updating a customer
         elif cmd == "4":
-            if input("Do you want to update a customer ? (Y/N) ") == "Y":
+            if input("Do you want to update a customer ? (Y/N) ").lower() in ["y","1","yes","oui"]:
                 actions.update_customer(customers)
             else: print("Command Cancelled: Update a customer.")
             pause()
         elif cmd == "5":
-            if input("Do you want to delete a customer ? (Y/N) ") == "Y":
+            if input("Do you want to delete a customer ? (Y/N) ").lower() in ["y","1","yes","oui"]:
                 print("Delete A Customer")
             else: print("Command Cancelled: Delete a customer.")
             pause()

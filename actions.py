@@ -18,7 +18,7 @@ def pause(): return input('\n'*2 + "Press Any key To Contine...")
 def cls(): return print("\n" * 30)
 
 
-def throw_error(type, title, message):
+def throw_error(type:str, title:str, message:str):
     cls()
     if type == 'error':
         print(f"{Fore.RED} \u26A0 ERROR: {title} \u26A0")
@@ -137,9 +137,9 @@ def add_a_Customer(customers: pd.DataFrame):
     dob = date_decoder(dob_check)
     while dob is None: # Retake inputs for DOB till its valid
         throw_error('error', f'Invalid DOB: {dob_check}', f"""
-Please make sure you have a entered a valid date.
-
-{Fore.LIGHTRED_EX}
+Please make sure you have a entered a valid date.""")
+        cls()
+        print(f"""{Fore.LIGHTRED_EX}
 +============================= FORMAT =============================+
 |   > The date must not be blank                                   |
 |   > The date must be on the calander                             |
@@ -158,8 +158,8 @@ Please make sure you have a entered a valid date.
     # Verify Gender
     while gender is None:
         throw_error('error', f'Invlaid gender: {gender_check}', "Make sure you have entered a valid gender.")
-        gender_check = input(Fore.LIGHTMAGENTA_EX + "Enter Gender: " + Fore.RESET)
-        gender = gender_check if gender_check in genders else None
+        gender_check = input(Fore.LIGHTMAGENTA_EX + "Enter Gender: " + Fore.RESET).strip().lower()
+        gender = "Male" if gender_check in ["male", "m"] else "Female" if gender_check in genders else None
     cls()
     # Address
     address = input(Fore.LIGHTMAGENTA_EX + "Enter Address: " + Fore.RESET) #TODO Address format
@@ -168,29 +168,31 @@ Please make sure you have a entered a valid date.
     country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET).capitalize()
     while not all(c.isalpha() for c in country.split(" ")): # Verify country
         throw_error('error', f'Invalid Country: {country}', "\n  Country should only have alphabets.")
-        country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET)
+        country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET).capitalize()
     cls()
     # City
     city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET).capitalize()
     while not all(c.isalpha() for c in city.split(" ")): # Verify City
         throw_error('error', f'Invalid City: {city}', "\n  City should only have alphabets.")
-        city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET)
+        city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET).capitalize()
     cls()
     # State
     state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET).capitalize()
     while not all(c.isalpha() for c in state.split(" ")): # Verify state
         throw_error('error', f'Invalid State: {state}', "\n  State should only have alphabets.")
-        state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET)
+        state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET).capitalize()
     cls()
     # Postal code
     pincode = input(Fore.LIGHTMAGENTA_EX + "Enter Pincode: " + Fore.RESET)
     while not pincode.isdigit(): # Verify pincode
         throw_error('error', f'Invalid Pincode: {pincode}', "\n  Pincdoe should only have digits.")
         pincode = input(Fore.LIGHTMAGENTA_EX + "Enter Pincode: " + Fore.RESET)
+    pincode = int(pincode)
     cls()
     # Phone
     phone = input(Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
-    while not phone_validator(phone): # Verify phone
+    phone_check = phone_validator(phone)
+    while not phone_check: # Verify phone
         cls()
         throw_error('error', f"Invalid phone number: {phone}", """Phone must be a valid Phone.
 
@@ -203,6 +205,8 @@ Input Format: +XX XXX XXX XXXX OR +XX XXXXXXXXXX
 Avoid the above errors and try again.
         """)
         phone = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
+        phone_check = phone_validator(phone)
+    phone = phone_check
     cls()
 
     # Email
@@ -234,7 +238,7 @@ Avoid the above errors and try again.
                phone, email, prime]
     print("+" + "-"*50 + "+")
     if all(NewData):
-        ll = max([len(x) for x in NewData])
+        ll = max([len(str(x)) for x in NewData])
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
         print(f"""
@@ -284,17 +288,20 @@ update_customer_menu = {
     "13": "prime"}
 
 
+#TODO: Fix update_customer() not updating customer record
 def update_customer(customers: pd.DataFrame):
     cls()
-    id = input("Customer ID To Update: ")
-    if id in customers.index:
+    id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET)
+    if id not in customers.index:
+        throw_error('error', "ID not found: " + id, "Customer ID was not found in the database.\nPlease make sure you have entered a valid Customer ID.")
+    else:
         sel_rec = customers.loc[id]
-        print("This is the selected Record: \n", sel_rec, sep="")
+        print(Fore.CYAN + "This is the selected Record: \n" + Fore.RESET, sel_rec, sep="")
         pause()
         cls()
         while True:
             cls()
-            print(f"""What would you like to Modify ?  Selected ID: {id}
+            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
     1) id        
     2) first_name
     3) last_name 
@@ -310,34 +317,34 @@ def update_customer(customers: pd.DataFrame):
     13) prime
     14) Back     
             """)
-            cmd = input("Command: ")
+            cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
-                print(f"Updating Value of {update_customer_menu[cmd]}")
-                print(
-                    f"Old value of {update_customer_menu[cmd]}: {sel_rec.name}")
-                new_val = input("Enter your new value: ")
+                print(Fore.CYAN + f"Updating Value of {Fore.RED}{update_customer_menu[cmd]}" + Fore.RESET)
+                print(Fore.CYAN +
+                    f"Old value of {update_customer_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = input(Fore.CYAN + "Enter your new value: " + Fore.RESET)
                 if new_val not in customers.index and new_val != "" and len(new_val) >= 3:
                     customers.rename(
                         index={sel_rec.name: new_val}, inplace=True)
-                    break
                 else:
-                    throw_error('error', 'Invalid customer ID', f"""Error while updating Value of id
+                    throw_error('error', f'Invalid customer ID: {new_val}', f"""Error while updating Value of id
 Make sure that you have avoided any of the following errors:
-1. Invalid value for id i.e. worng format or data type.
-2. Empty value for id
-3. New Value is less than 3 characters.
+
+    1. Invalid value for id i.e. worng format or data type.
+    2. Empty value for id
+    3. New Value is less than 3 characters.
+    4. Not a duplicate value
                 """)
-                pause()
             elif cmd == "14" or cmd == "":
                 break
             else:
                 d_type = update_customer_menu[cmd]
-                print(f"Updating Value of {d_type}")
-                print(f"Old value of {d_type}: {sel_rec.loc[d_type]}")
+                print(Fore.CYAN + f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
+                print(f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
                 new_val = input("Enter your new value: ")
-                print(new_val)
+                print(f"Your new value for {d_type}: "  + Fore.RED, new_val, Fore.RESET)
                 new_data = data_validator_customer(new_val, d_type)
-                if new_data:
+                if new_data and input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
                     customers.at[id, d_type] = new_data
                 else:
                     throw_error('error', 'Error while updating customer data', f"""Error while updating Value of {d_type} with value {new_data}
@@ -358,6 +365,3 @@ Make sure that you have avoided any of the following errors:
         iii. Domain name and Top-level domain eg. abc@yahoo.com
     f. For Prime, either yes, PRIME or P will be valid
                 """)
-                pause()
-    else:
-        print("ID DOES NOT EXIST:", id)

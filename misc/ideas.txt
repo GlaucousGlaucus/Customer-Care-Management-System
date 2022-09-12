@@ -1,3 +1,4 @@
-Allow custoemr to purchase prime membership
-Gender lower
-Make the data format appear when the admin is adding the customer
+1. Allow custoemr to purchase prime membership
+2. When deleting a customer make the user type in the customer full name to confirm deletion
+3. Customer login page
+4. Admin Login page
