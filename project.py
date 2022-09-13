@@ -25,6 +25,7 @@ menu_level = "0"
 pause = actions.pause
 cls = actions.cls
 
+
 def amc_Search():
     global menu_level
     while True:
@@ -58,6 +59,7 @@ def amc_Search():
             menu_level = "1.1"
             break
 
+
 def amc_Sort():
     global menu_level
     while True:
@@ -90,6 +92,7 @@ def amc_Sort():
         elif cmd_n == "13":
             menu_level = "1.1"
             break
+
 
 def amc_DA():
     global menu_level
@@ -136,6 +139,7 @@ def amcDABarGraph():
             menu_level = "1.1.3"
             break
 
+
 def am_cust_f():
     global menu_level
     while True:
@@ -150,7 +154,7 @@ def am_cust_f():
             amc_Search()
         # Adding a Customer
         elif cmd == "3":
-            if input("Do you want to add a customer ? (Y/N) ").lower() in ["y","1","yes","oui"]:
+            if input("Do you want to add a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 n = input("How many customers would you like to add? ")
                 try:
                     for _ in range(int(n)):
@@ -158,18 +162,21 @@ def am_cust_f():
                         actions.add_a_Customer(customers)
                 except Exception as e:
                     actions.throw_error('error', f"{e}", e.with_traceback)
-            else: print("Command Cancelled: Add a customer.")
-            pause()
+            else:
+                print("Command Cancelled: Add a customer.")
+                pause()
         # Updating a customer
         elif cmd == "4":
-            if input("Do you want to update a customer ? (Y/N) ").lower() in ["y","1","yes","oui"]:
+            if input("Do you want to update a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 actions.update_customer(customers)
-            else: print("Command Cancelled: Update a customer.")
-            pause()
+            else:
+                print("Command Cancelled: Update a customer.")
+                pause()
         elif cmd == "5":
-            if input("Do you want to delete a customer ? (Y/N) ").lower() in ["y","1","yes","oui"]:
+            if input("Do you want to delete a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 print("Delete A Customer")
-            else: print("Command Cancelled: Delete a customer.")
+            else:
+                print("Command Cancelled: Delete a customer.")
             pause()
         elif cmd == "6":
             menu_level = "1.1.2"
@@ -180,6 +187,7 @@ def am_cust_f():
         elif cmd == "8":
             menu_level = "1"
             break
+
 
 def amp_Search():
     global menu_level
@@ -219,6 +227,7 @@ def amp_Search():
             menu_level = "1.2"
             break
 
+
 def amp_Sort():
     global menu_level
     while True:
@@ -244,6 +253,7 @@ def amp_Sort():
             menu_level = "1.2"
             break
 
+
 def amp_DA():
     global menu_level
     while True:
@@ -254,6 +264,7 @@ def amp_DA():
         elif cmd == "2":
             menu_level = "1.2"
             break
+
 
 def am_prod_f():
     global menu_level
@@ -280,6 +291,7 @@ def am_prod_f():
         elif cmd == "8":
             menu_level = "1"
             break
+
 
 def amo_Search():
     global menu_level
@@ -312,6 +324,7 @@ def amo_Search():
             menu_level = "1.3"
             break
 
+
 def amo_Sort():
     global menu_level
     while True:
@@ -343,6 +356,7 @@ def amo_Sort():
             menu_level = "1.3"
             break
 
+
 def am_ord_f():
     global menu_level
     while True:
@@ -365,6 +379,7 @@ def am_ord_f():
         elif cmd == "7":
             menu_level = "1"
             break
+
 
 def amt_Search():
     global menu_level
@@ -407,6 +422,7 @@ def amt_Search():
             menu_level = "1.4"
             break
 
+
 def amt_Sort():
     global menu_level
     while True:
@@ -448,6 +464,7 @@ def amt_Sort():
             menu_level = "1.4"
             break
 
+
 def amt_DA_PieChart():
     global menu_level
     while True:
@@ -460,6 +477,7 @@ def amt_DA_PieChart():
         elif cmd == "3":
             menu_level = "1.4.3"
             break
+
 
 def amt_DA_BarGraph():
     global menu_level
@@ -475,6 +493,7 @@ def amt_DA_BarGraph():
         elif cmd == "4":
             menu_level = "1.4.3"
             break
+
 
 def amt_DA_OtherGraph():
     global menu_level
@@ -493,6 +512,7 @@ def amt_DA_OtherGraph():
             menu_level = "1.4.3"
             break
 
+
 def amt_DA():
     global menu_level
     while True:
@@ -510,6 +530,7 @@ def amt_DA():
         elif cmd == "4":
             menu_level = "1.4"
             break
+
 
 def amt_RG_Summerzie():
     global menu_level
@@ -530,6 +551,7 @@ def amt_RG_Summerzie():
             menu_level = "1.4.4"
             break
 
+
 def amt_MG_GenFromTemplate():
     global menu_level
     while True:
@@ -545,6 +567,7 @@ def amt_MG_GenFromTemplate():
             menu_level = "1.4.5"
             break
 
+
 def amt_MG_Custom():
     global menu_level
     while True:
@@ -555,6 +578,7 @@ def amt_MG_Custom():
         elif cmd == "2":
             menu_level = "1.4.5"
             break
+
 
 def amt_RG():
     global menu_level
@@ -567,6 +591,7 @@ def amt_RG():
         elif cmd == "2":
             menu_level = "1.4"
             break
+
 
 def amt_MG():
     global menu_level
@@ -582,6 +607,7 @@ def amt_MG():
         elif cmd == "3":
             menu_level = "1.4"
             break
+
 
 def am_tick_f():
     global menu_level
@@ -615,6 +641,7 @@ def am_tick_f():
             menu_level = "1"
             break
 
+
 def admin_menu_f():
     global menu_level
     while True:
@@ -637,6 +664,7 @@ def admin_menu_f():
             break
         else:
             print("Unknown command, please try again.")
+
 
 def cust_menu_f():
     global menu_level
@@ -669,19 +697,19 @@ def cust_menu_f():
 while True:
     print_menu(menu_level)
     cmd = input('Command: ')
-    
+
     # Handle Administrator login
     if cmd in ["Administrator", "1"]:
         print("Login as Administrator")
         menu_level = "1"
         admin_menu_f()
-    
+
     # Handle Customer login
     elif cmd in ["Customer", "2"]:
         print("Login as Customer")
         menu_level = "2"
         cust_menu_f()
-    
+
     # Handle Quit Command
     elif cmd in ['quit', 'Quit', '3', 'Exit', 'exit']:
         break

@@ -18,7 +18,7 @@ def pause(): return input('\n'*2 + "Press Any key To Contine...")
 def cls(): return print("\n" * 30)
 
 
-def throw_error(type:str, title:str, message:str):
+def throw_error(type: str, title: str, message: str):
     cls()
     if type == 'error':
         print(f"{Fore.RED} \u26A0 ERROR: {title} \u26A0")
@@ -73,7 +73,9 @@ def date_decoder(date):
         datetime(year=int(y), month=int(m), day=int(d))
         if len(y) == 2:
             y = "20" + y
-        if y > str(datetime.today().year): raise ValueError("Invalid DOB \n year of birth cannot be greater then this year!")
+        if y > str(datetime.today().year):
+            raise ValueError(
+                "Invalid DOB \n year of birth cannot be greater then this year!")
         return f"{int(d)}/{int(m)}/{int(y)}"
     except ValueError as e:
         #throw_error('error', 'INVALID DATE', f'{d, m, y} \n {e}')
@@ -82,11 +84,12 @@ def date_decoder(date):
 
 def data_validator_customer(data, d_type):
     if d_type in ["first_name", "last_name", "country", "city", "state"]:
-        return data if data.isalpha() else None
+        return data if all(c.isalpha() for c in data.split(" ")) else None
     elif d_type == "dob":
         return date_decoder(data)
     elif d_type == "gender":
-        return data if data in ["Male", "Female"] else None
+        gc = data.strip().lower()
+        return "Male" if gc in ["male", "m"] else "Female" if gc in ["male", "female", "m", "f"] else None
     elif d_type == "address":
         return data
     elif d_type == "pincode":
@@ -96,31 +99,80 @@ def data_validator_customer(data, d_type):
     elif d_type == "email":
         return data if validate_email(data) else None
     elif d_type == "prime":
-        return "PRIME" if data in ["Yes", "PRIME", "P"] else "-"
+        return "PRIME" if data.strip().lower() in ["prime", "yes", "1", "y", "p"] else "-"
+
+
+data_error_msgs = {
+    "id": lambda id: (f'Duplicate ID: {id}', "\n> ID should be a unique ID."),
+    "first_name": lambda first_name: (f'Invalid Firstname: {first_name}',
+                    "\n> First Name should only have alphabets and must not be blank!\n\n"),
+    "last_name": lambda last_name: (f'Invalid Lastname: {last_name}',
+                    "\n> Last Name should only have alphabets and must not be blank!\n\n"),
+    "dob": lambda dob_check: (f'Invalid DOB: {dob_check}', f"""Please make sure you have a entered a valid date."""),
+    "gender": lambda gender_check: (f'Invlaid gender: {gender_check}',
+                    "Make sure you have entered a valid gender."),
+    "address": 0,
+    "country": lambda country: (f'Invalid Country: {country}', "\n  Country should only have alphabets."),
+    "city": lambda city: (f'Invalid City: {city}', "\n  City should only have alphabets."),
+    "state": lambda state: (f'Invalid State: {state}', "\n  State should only have alphabets."),
+    "pincode": lambda pincode: (f'Invalid Pincode: {pincode}', "\n  Pincdoe should only have digits."),
+    "phone": lambda phone: (f"Invalid phone number: {phone}", """Phone must be a valid Phone.
+
+1) It should not be blank.
+2) The first two digits of the phone must be between 0 and 91 (inclusive).
+3) The other digits of the phone must be between 0 and 9 (inclusive).
+
+Input Format: +XX XXX XXX XXXX OR +XX XXXXXXXXXX
+
+Avoid the above errors and try again.
+        """),
+    "email": lambda email: (f"Invalid email address: {email}", """
+The email address should be:
+r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+1) At least three characters long
+2) Should have a valid Username: 
+    a) Can have A-Z and a-z characters
+    b) Can have digits and special characters (_%+-)
+3) Should have the '@' character
+4) Should have valid Mail server name:
+    a) Can have A-Z and a-z characters
+    b) Can have digits and hypen (-) no special characters
+5) Should have valid top level domain name:
+
+Avoid the above errors and try again.
+        """),
+    "prime": 0
+}
 
 
 def add_a_Customer(customers: pd.DataFrame):
     # TODO: Formatting
-    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n") # GUI
-    id = input(Fore.LIGHTMAGENTA_EX + "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n")  # GUI
+    id = input(Fore.LIGHTMAGENTA_EX +
+               "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     # Verify that the customer id is not a duplicate
     while id in customers.index:
-        throw_error('error', f'Duplicate ID: {id}', "\n> ID should be a unique ID.")
-        id = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    if id == "": # Gen uuid if input is empty
+        throw_error('error', *data_error_msgs["id"](id))
+        id = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                   "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    if id == "":  # Gen uuid if input is empty
         id = uuid.uuid4()
     cls()
     # first_name
-    first_name = input(Fore.LIGHTMAGENTA_EX + "Enter First Name: " + Fore.RESET).capitalize()
+    first_name = input(Fore.LIGHTMAGENTA_EX +
+                       "Enter First Name: " + Fore.RESET).capitalize()
     while not first_name.isalpha():
-        throw_error('error', f'Invalid Firstname: {first_name}', "\n> First Name should only have alphabets and must not be blank!\n\n")
-        first_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter First Name: " + Fore.RESET)
+        throw_error('error', *data_error_msgs["first_name"](first_name))
+        first_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                           "Enter First Name: " + Fore.RESET)
     cls()
     # last_name
-    last_name = input(Fore.LIGHTMAGENTA_EX + "Enter Last Name: " + Fore.RESET).capitalize()
+    last_name = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter Last Name: " + Fore.RESET).capitalize()
     while not last_name.isalpha():
-        throw_error('error', f'Invalid Lastname: {last_name}', "\n> Last Name should only have alphabetsand must not be blank!\n\n")
-        last_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Last Name: " + Fore.RESET)
+        throw_error('error', *data_error_msgs["last_name"](last_name))
+        last_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                          "Enter Last Name: " + Fore.RESET)
     cls()
     # DOB
     # Print DOB GUI
@@ -135,9 +187,8 @@ def add_a_Customer(customers: pd.DataFrame):
 +==================================================================+{Fore.RESET}\n\n\n""")
     dob_check = input(Fore.LIGHTMAGENTA_EX + "Enter Dob: " + Fore.RESET)
     dob = date_decoder(dob_check)
-    while dob is None: # Retake inputs for DOB till its valid
-        throw_error('error', f'Invalid DOB: {dob_check}', f"""
-Please make sure you have a entered a valid date.""")
+    while dob is None:  # Retake inputs for DOB till its valid
+        throw_error('error', *data_error_msgs["dob"](dob_check))
         cls()
         print(f"""{Fore.LIGHTRED_EX}
 +============================= FORMAT =============================+
@@ -153,81 +204,72 @@ Please make sure you have a entered a valid date.""")
     cls()
     # Gender
     genders = ["male", "female", "m", "f"]
-    gender_check = input(Fore.LIGHTMAGENTA_EX + "Enter Gender: " + Fore.RESET).strip().lower()
-    gender = "Male" if gender_check in ["male", "m"] else "Female" if gender_check in genders else None
+    gender_check = input(Fore.LIGHTMAGENTA_EX +
+                         "Enter Gender: " + Fore.RESET).strip().lower()
+    gender = "Male" if gender_check in [
+        "male", "m"] else "Female" if gender_check in genders else None
     # Verify Gender
     while gender is None:
-        throw_error('error', f'Invlaid gender: {gender_check}', "Make sure you have entered a valid gender.")
-        gender_check = input(Fore.LIGHTMAGENTA_EX + "Enter Gender: " + Fore.RESET).strip().lower()
-        gender = "Male" if gender_check in ["male", "m"] else "Female" if gender_check in genders else None
+        throw_error('error', *data_error_msgs["gender"](gender_check))
+        gender_check = input(Fore.LIGHTMAGENTA_EX +
+                             "Enter Gender: " + Fore.RESET).strip().lower()
+        gender = "Male" if gender_check in [
+            "male", "m"] else "Female" if gender_check in genders else None
     cls()
     # Address
-    address = input(Fore.LIGHTMAGENTA_EX + "Enter Address: " + Fore.RESET) #TODO Address format
+    address = input(Fore.LIGHTMAGENTA_EX + "Enter Address: " +
+                    Fore.RESET)  # TODO Address format
     cls()
     # Country
-    country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET).capitalize()
-    while not all(c.isalpha() for c in country.split(" ")): # Verify country
-        throw_error('error', f'Invalid Country: {country}', "\n  Country should only have alphabets.")
-        country = input(Fore.LIGHTMAGENTA_EX + "Enter Country: " + Fore.RESET).capitalize()
+    country = input(Fore.LIGHTMAGENTA_EX +
+                    "Enter Country: " + Fore.RESET).capitalize()
+    while not all(c.isalpha() for c in country.split(" ")):  # Verify country
+        throw_error('error', *data_error_msgs["country"](country))
+        country = input(Fore.LIGHTMAGENTA_EX +
+                        "Enter Country: " + Fore.RESET).capitalize()
     cls()
     # City
-    city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET).capitalize()
-    while not all(c.isalpha() for c in city.split(" ")): # Verify City
-        throw_error('error', f'Invalid City: {city}', "\n  City should only have alphabets.")
-        city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " + Fore.RESET).capitalize()
+    city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " +
+                 Fore.RESET).capitalize()
+    while not all(c.isalpha() for c in city.split(" ")):  # Verify City
+        throw_error('error', *data_error_msgs["city"](city))
+        city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " +
+                     Fore.RESET).capitalize()
     cls()
     # State
-    state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET).capitalize()
-    while not all(c.isalpha() for c in state.split(" ")): # Verify state
-        throw_error('error', f'Invalid State: {state}', "\n  State should only have alphabets.")
-        state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " + Fore.RESET).capitalize()
+    state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " +
+                  Fore.RESET).capitalize()
+    while not all(c.isalpha() for c in state.split(" ")):  # Verify state
+        throw_error('error', *data_error_msgs["state"](state))
+        state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " +
+                      Fore.RESET).capitalize()
     cls()
     # Postal code
     pincode = input(Fore.LIGHTMAGENTA_EX + "Enter Pincode: " + Fore.RESET)
-    while not pincode.isdigit(): # Verify pincode
-        throw_error('error', f'Invalid Pincode: {pincode}', "\n  Pincdoe should only have digits.")
+    while not pincode.isdigit():  # Verify pincode
+        throw_error(
+            'error', *data_error_msgs["pincode"](pincode))
         pincode = input(Fore.LIGHTMAGENTA_EX + "Enter Pincode: " + Fore.RESET)
     pincode = int(pincode)
     cls()
     # Phone
     phone = input(Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
     phone_check = phone_validator(phone)
-    while not phone_check: # Verify phone
+    while not phone_check:  # Verify phone
         cls()
-        throw_error('error', f"Invalid phone number: {phone}", """Phone must be a valid Phone.
-
-1) It should not be blank.
-2) The first two digits of the phone must be between 0 and 91 (inclusive).
-3) The other digits of the phone must be between 0 and 9 (inclusive).
-
-Input Format: +XX XXX XXX XXXX OR +XX XXXXXXXXXX
-
-Avoid the above errors and try again.
-        """)
-        phone = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
+        throw_error('error', *data_error_msgs["phone"](phone))
+        phone = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                      "Enter Phone: " + Fore.RESET)
         phone_check = phone_validator(phone)
     phone = phone_check
     cls()
 
     # Email
     email = input(Fore.LIGHTMAGENTA_EX + "Enter Email: " + Fore.RESET)
-    while not validate_email(email): # Verify email
-            throw_error('error', f"Invalid email address: {email}", """
-The email address should be:
-r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-1) At least three characters long
-2) Should have a valid Username: 
-    a) Can have A-Z and a-z characters
-    b) Can have digits and special characters (_%+-)
-3) Should have the '@' character
-4) Should have valid Mail server name:
-    a) Can have A-Z and a-z characters
-    b) Can have digits and hypen (-) no special characters
-5) Should have valid top level domain name:
-
-Avoid the above errors and try again.
-        """)
-            email = input("\n"*5 + Fore.LIGHTMAGENTA_EX + "Enter Email: " + Fore.RESET)
+    while not validate_email(email):  # Verify email
+        throw_error('error', *data_error_msgs["email"](email))
+        email = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                      "Enter Email: " + Fore.RESET)
     cls()
     # Prime
     prime = "PRIME" if input(Fore.LIGHTMAGENTA_EX + "Enter Prime: " + Fore.RESET) in [
@@ -266,8 +308,10 @@ Avoid the above errors and try again.
         else:
             print("Record Insertion Cancelled :(")
         time.sleep(1)
+        pause()
     else:
-        throw_error('error', f"Invalid Data", 'The data is invalid, please try again.')
+        throw_error('error', f"Invalid Data",
+                    'The data is invalid, please try again.')
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -288,15 +332,17 @@ update_customer_menu = {
     "13": "prime"}
 
 
-#TODO: Fix update_customer() not updating customer record
+# TODO: Fix update_customer() not updating customer record
 def update_customer(customers: pd.DataFrame):
     cls()
     id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET)
     if id not in customers.index:
-        throw_error('error', "ID not found: " + id, "Customer ID was not found in the database.\nPlease make sure you have entered a valid Customer ID.")
+        throw_error('error', "ID not found: " + id,
+                    "Customer ID was not found in the database.\nPlease make sure you have entered a valid Customer ID.")
     else:
         sel_rec = customers.loc[id]
-        print(Fore.CYAN + "This is the selected Record: \n" + Fore.RESET, sel_rec, sep="")
+        print(Fore.CYAN + "This is the selected Record: \n" +
+              Fore.RESET, sel_rec, sep="")
         pause()
         cls()
         while True:
@@ -319,13 +365,18 @@ def update_customer(customers: pd.DataFrame):
             """)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
-                print(Fore.CYAN + f"Updating Value of {Fore.RED}{update_customer_menu[cmd]}" + Fore.RESET)
+                print(
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_customer_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
-                    f"Old value of {update_customer_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
-                new_val = input(Fore.CYAN + "Enter your new value: " + Fore.RESET)
+                      f"Old value of {update_customer_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = input(
+                    Fore.CYAN + "Enter your new value: " + Fore.RESET)
                 if new_val not in customers.index and new_val != "" and len(new_val) >= 3:
                     customers.rename(
                         index={sel_rec.name: new_val}, inplace=True)
+                    print("ID changed successfully")
+                    id = new_val
+                    sel_rec = customers.loc[id]
                 else:
                     throw_error('error', f'Invalid customer ID: {new_val}', f"""Error while updating Value of id
 Make sure that you have avoided any of the following errors:
@@ -339,10 +390,13 @@ Make sure that you have avoided any of the following errors:
                 break
             else:
                 d_type = update_customer_menu[cmd]
-                print(Fore.CYAN + f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
-                print(f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
-                new_val = input("Enter your new value: ")
-                print(f"Your new value for {d_type}: "  + Fore.RED, new_val, Fore.RESET)
+                print(Fore.CYAN +
+                      f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
+                print(
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
+                new_val = input(f"Enter your new value: {Fore.RED}")
+                print(f"{Fore.CYAN}Your new value for {d_type}: " +
+                      Fore.RED, new_val, Fore.RESET)
                 new_data = data_validator_customer(new_val, d_type)
                 if new_data and input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
                     customers.at[id, d_type] = new_data
@@ -365,3 +419,4 @@ Make sure that you have avoided any of the following errors:
         iii. Domain name and Top-level domain eg. abc@yahoo.com
     f. For Prime, either yes, PRIME or P will be valid
                 """)
+                sel_rec = customers.loc[id]

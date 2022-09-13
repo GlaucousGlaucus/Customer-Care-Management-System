@@ -376,6 +376,7 @@ menu_options = {
 
 # TODO: Replace this with better title
 
+
 def splashscreen():
     # logo_split = logo.split("\n")
     # logo_split = logo_split[1:len(logo_split)-1]
@@ -388,6 +389,7 @@ def splashscreen():
         print(x)
         time.sleep(0.5)
     actions.pause()
+
 
 def menu_title(
     x=None): return f"""----------------------------------{x.upper() + " " if x is not None else ""}MENU----------------------------------"""
