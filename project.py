@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 from uuid import uuid4
+from colorama import Fore
 import actions
 
 import numpy as np
@@ -32,7 +33,13 @@ def amc_Search():
         print_menu(menu_level)
         cmd_n = input("Command: ")
         if cmd_n == "1":
-            pass
+            qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
+            print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
+            if qry not in customers.index:
+                print(f"No Elements were Found")
+            else:
+                print(customers.loc[qry])
+            pause()
         elif cmd_n == "2":
             pass
         elif cmd_n == "3":
@@ -149,6 +156,7 @@ def am_cust_f():
             cls()
             print(customers)
             pause()
+        # Search
         elif cmd == "2":
             menu_level = "1.1.1"
             amc_Search()
@@ -172,15 +180,18 @@ def am_cust_f():
             else:
                 print("Command Cancelled: Update a customer.")
                 pause()
+        # Delete a customer
         elif cmd == "5":
             if input("Do you want to delete a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 actions.delete_customer(customers)
             else:
                 print("Command Cancelled: Delete a customer.")
                 pause()
+        # Sort
         elif cmd == "6":
             menu_level = "1.1.2"
             amc_Sort()
+        # Data Analysis
         elif cmd == "7":
             menu_level = "1.1.3"
             amc_DA()
