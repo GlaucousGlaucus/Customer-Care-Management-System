@@ -433,9 +433,11 @@ def delete_customer(customers:pd.DataFrame):
     if id not in customers.index:
         throw_error("error", "Customer ID is not in the Database", "Please make sure if the ID you have entered is correct")
     else:
-        print(f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{customers.loc[id]}")
-        confirm = input(f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible! (Y/N): {Fore.RESET}")
-        if not confirm: print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        sel_rec = customers.loc[id]
+        print(f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        confirm_check = "ADMIN#" + sel_rec["first_name"]+"_"+ sel_rec["last_name"]
+        confirm = input(f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check: print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
         else:
             customers.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
