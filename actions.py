@@ -398,8 +398,12 @@ Make sure that you have avoided any of the following errors:
                 print(f"{Fore.CYAN}Your new value for {d_type}: " +
                       Fore.RED, new_val, Fore.RESET)
                 new_data = data_validator_customer(new_val, d_type)
-                if new_data and input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
-                    customers.at[id, d_type] = new_data
+                if new_data:
+                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
+                        customers.at[id, d_type] = new_data
+                    else:
+                        print("\nUpdating value cancelled.")
+                        pause()
                 else:
                     throw_error('error', 'Error while updating customer data', f"""Error while updating Value of {d_type} with value {new_data}
 Make sure that you have avoided any of the following errors:
@@ -420,3 +424,19 @@ Make sure that you have avoided any of the following errors:
     f. For Prime, either yes, PRIME or P will be valid
                 """)
                 sel_rec = customers.loc[id]
+
+
+def delete_customer(customers:pd.DataFrame):
+    cls()
+    id = input(f"{Fore.CYAN}Enter the customer ID to delete: {Fore.RESET}")
+    # Check if id is in the df
+    if id not in customers.index:
+        throw_error("error", "Customer ID is not in the Database", "Please make sure if the ID you have entered is correct")
+    else:
+        print(f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{customers.loc[id]}")
+        confirm = input(f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible! (Y/N): {Fore.RESET}")
+        if not confirm: print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        else:
+            customers.drop(id, inplace=True)
+            print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        pause()

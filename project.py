@@ -174,10 +174,10 @@ def am_cust_f():
                 pause()
         elif cmd == "5":
             if input("Do you want to delete a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                print("Delete A Customer")
+                actions.delete_customer(customers)
             else:
                 print("Command Cancelled: Delete a customer.")
-            pause()
+                pause()
         elif cmd == "6":
             menu_level = "1.1.2"
             amc_Sort()
