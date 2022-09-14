@@ -2,3 +2,5 @@
 2. When deleting a customer make the user type in the customer full name to confirm deletion
 3. Customer login page
 4. Admin Login page
+5. Multiple column search
+6. Settings Page on login (Like want to display colors or not or display df on serach queries etc)

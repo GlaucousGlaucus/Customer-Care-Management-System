@@ -76,7 +76,7 @@ def date_decoder(date):
         if y > str(datetime.today().year):
             raise ValueError(
                 "Invalid DOB \n year of birth cannot be greater then this year!")
-        return f"{int(d)}/{int(m)}/{int(y)}"
+        return pd.to_datetime(f"{int(y)}-{int(m)}-{int(d)}")
     except ValueError as e:
         #throw_error('error', 'INVALID DATE', f'{d, m, y} \n {e}')
         return None
