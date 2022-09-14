@@ -93,7 +93,8 @@ maC_Search = \
 10) Search by Phone
 11) Search by email
 12) Seach by Prime
-13) Back
+13) Reset Dataframe
+14) Back
 """
 maC_Sort =  \
     """

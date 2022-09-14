@@ -3,6 +3,7 @@ from datetime import datetime
 from uuid import uuid4
 from colorama import Fore
 import actions
+import re
 
 import numpy as np
 import pandas as pd
@@ -14,7 +15,7 @@ print(f"[{datetime.now()}] Initializing...")
 print(f"[{datetime.now()}] Loading Files...")
 
 # Read the Files
-customers = pd.read_csv('Data\customers.csv', index_col='id')
+customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=['dob'], infer_datetime_format=True)
 orders = pd.read_csv('Data\orders.csv')
 products = pd.read_csv('Data\products.csv')
 tickets = pd.read_csv(r'Data\tickets.csv')
@@ -29,23 +30,39 @@ cls = actions.cls
 
 def amc_Search():
     global menu_level
+    df = customers.copy()
     while True:
         print_menu(menu_level)
         cmd_n = input("Command: ")
         if cmd_n == "1":
             qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
-            print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
-            if qry not in customers.index:
-                print(f"No Elements were Found")
-            else:
-                print(customers.loc[qry])
-            pause()
+            qry_result = df.loc[qry] if qry in df.index else pd.DataFrame()
+        # Search by name
         elif cmd_n == "2":
-            pass
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
+            qry_df = df["first_name"] + " " + df["last_name"]
+            qry_result = df.loc[qry_df.str.contains(qry)]
+        # Search by DOB
         elif cmd_n == "3":
-            pass
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry_start = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
+            qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
+            qry_start, qry_end = pd.to_datetime(qry_start, format=r"%Y-%m-%d"), pd.to_datetime(qry_end, format=r"%Y-%m-%d")
+            if type(qry_end) != pd.NaT:
+                qry_df = (qry_end > df["dob"]) & (df["dob"] > qry_start)
+                qry_result = df[qry_df]
+            else:
+                print(df["dob"])
+                qry_df = df["dob"] > qry_start
+                qry_result = df[qry_df]
+        # Search by Gender
         elif cmd_n == "4":
-            pass
+            qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}").strip().lower()
+            qry = "Male" if qry in ["male", "m"] else "Female" if qry in ["female", "f", "fe"] else "Unknown"
+            qry_result = df.loc[df["gender"]==qry]
         elif cmd_n == "5":
             pass
         elif cmd_n == "6":
@@ -63,8 +80,25 @@ def amc_Search():
         elif cmd_n == "12":
             pass
         elif cmd_n == "13":
+            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?{Fore.RESET}").strip().lower() in "y1":
+                df = customers.copy()
+                print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
+        elif cmd_n == "14":
             menu_level = "1.1"
             break
+        # Check if the user wants to use the generated df for further queries
+        if cmd_n in ["1","2","3","4","5","6","7","8","9","10","11","12"]:
+            print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
+            if not qry_result.empty:
+                print(qry_result)
+                if cmd_n != "1":
+                    udf = input(
+                        f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
+                    if udf.strip().lower() in "y1":
+                        df = qry_result.copy()
+            else:
+                print(f"\nEmpty dataframe\n")
+        pause()
 
 
 def amc_Sort():
