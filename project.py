@@ -390,10 +390,18 @@ def am_prod_f():
                 pause()
         # Update products
         elif cmd == "4":
-            print("Update a Product")
+            if input("Do you want to update a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                actions.update_product(products)
+            else:
+                print("Command Cancelled: Update a customer.")
+                pause()
         # Delete products
         elif cmd == "5":
-            print("Delete a Product")
+            if input("Do you want to delete a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                actions.delete_product(products)
+            else:
+                print("Command Cancelled: Delete a product.")
+                pause()
         # Sort products
         elif cmd == "6":
             menu_level = "1.2.2"
