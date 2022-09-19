@@ -1,5 +1,7 @@
 import time
 from datetime import datetime
+from tokenize import group
+from turtle import title
 from uuid import uuid4
 from colorama import Fore
 import actions
@@ -150,21 +152,36 @@ def amcDAPieChart():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        # Gender
-        if cmd == "1":
-            pass
-        # Country
-        elif cmd == "2":
-            pass
-        # State
-        elif cmd == "3":
-            pass
-        # Prime
-        elif cmd == "4":
-            pass
-        elif cmd == "5":
+        if cmd == "5":
             menu_level = "1.1.3"
             break
+        # Gender
+        elif cmd == "1":
+            print(f"{Fore.CYAN}Displaying Gender Graph...{Fore.RESET}")
+            customers.groupby(["gender"]).size().plot(kind='pie', autopct="%.2f", colors=["pink", "aqua"], title="Gender", legend=False)
+            plt.ylabel("Gender")
+            plt.show()
+        # Country
+        elif cmd == "2":
+            print(f"{Fore.CYAN}Displaying Country Graph...{Fore.RESET}")
+            customers.groupby(["country"]).size().plot(kind='pie', autopct="%.2f", title="Country", legend=False)
+            plt.ylabel("Country")
+            plt.show()
+        # State
+        elif cmd == "3":
+            print(f"{Fore.CYAN}Displaying State Graph...{Fore.RESET}")
+            customers.groupby(["state"]).size().plot(kind='pie', autopct="%.2f", title="State", legend=False)
+            plt.ylabel("State")
+            plt.show()
+        # Prime
+        elif cmd == "4":
+            print(f"{Fore.CYAN}Displaying Prime Graph...{Fore.RESET}")
+            customers.groupby(["prime"]).size().plot(kind='pie', autopct="%.2f", title="Prime", legend=False)
+            plt.ylabel("Prime")
+            plt.show()
+        pause()
+        cls()
+            
 
 
 def amcDABarGraph():
@@ -172,11 +189,13 @@ def amcDABarGraph():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "1":
-            pass
-        elif cmd == "2":
+        if cmd == "2":
             menu_level = "1.1.3"
             break
+        elif cmd == "1":
+            print(f"{Fore.CYAN}Displaying Age of Customers Graph...{Fore.RESET}")
+        pause()
+        cls()
 
 
 def am_cust_f():
