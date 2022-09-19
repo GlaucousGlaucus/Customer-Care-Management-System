@@ -1,3 +1,4 @@
+from math import prod
 import time
 from datetime import datetime
 from tokenize import group
@@ -20,7 +21,7 @@ print(f"[{datetime.now()}] Loading Files...")
 customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=[
                         'dob'], infer_datetime_format=True)
 orders = pd.read_csv('Data\orders.csv')
-products = pd.read_csv('Data\products.csv')
+products = pd.read_csv('Data\products.csv', index_col='id')
 tickets = pd.read_csv(r'Data\tickets.csv')
 
 print(f"[{datetime.now()}] Files Loaded")
@@ -203,6 +204,7 @@ def amcDABarGraph():
 
 def am_cust_f():
     global menu_level
+    global customers
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
@@ -256,67 +258,91 @@ def am_cust_f():
 
 def amp_Search():
     global menu_level
+    df = products.copy()
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
-            pass
-        elif cmd == "2":
-            pass
-        elif cmd == "3":
-            pass
-        elif cmd == "4":
-            pass
-        elif cmd == "5":
-            pass
-        elif cmd == "6":
-            pass
+            qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
+            qry_result = df.loc[qry] if qry in df.index else pd.DataFrame()
+        elif cmd in ["2", "3", "4"]:
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
+            column = products.columns[int(cmd)-2]
+            qry_df = df[column]
+            qry_result = df.loc[qry_df.str.contains(qry)]
+        elif cmd in ["5", "6", "8"]:
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            column = products.columns[int(cmd)-2]
+            qry_df = df[column].replace("-", "0").astype(int)
+            min, max = input(f"{Fore.LIGHTMAGENTA_EX}Enter Min: {Fore.RESET}"), input(f"{Fore.LIGHTMAGENTA_EX}Enter Max: {Fore.RESET}")
+            if min == "": min = "0"
+            if max == "": max = str(qry_df.max())
+            try:
+                min, max = float(min), float(max)
+                qry_result = df.loc[(qry_df >= min) & (qry_df <= max)]
+            except Exception as e:
+                print(f"{Fore.RED}\nPlease enter a valid range!\n{Fore.RESET}")
+                qry_result = pd.DataFrame()
         elif cmd == "7":
             # Search By Returnable
             menu_level = "1.2.1.1"
-            while True:
-                print_menu(menu_level)
-                cmdn = input("Command: ")
-                if cmdn == "1":
-                    pass
-                elif cmdn == "2":
-                    pass
-                elif cmdn == "3":
-                    pass
-                elif cmdn == "4":
-                    menu_level = "1.2.1"
-                    break
-        elif cmd == "8":
-            pass
+            print_menu(menu_level)
+            cmdn = input("Command: ")
+            qry_df = df["Returnable"]
+            if cmdn == "1":
+                qry_result = df.loc[qry_df == "Returnable"]
+            elif cmdn == "2":
+                qry_result = df.loc[qry_df == "Exchange-Only"]
+            elif cmdn == "3":
+                qry_result = df.loc[qry_df == "Not Returnable"]
+            menu_level = "1.2.1"
         elif cmd == "9":
             menu_level = "1.2"
             break
+        elif cmd == "10":
+            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+                df = products.copy()
+                print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
+        # Check if the user wants to use the generated df for further queries
+        if cmd in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+            print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
+            if not qry_result.empty:
+                print(qry_result)
+                if cmd != "1":
+                    udf = input(
+                        f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
+                    if udf.strip().lower() in "y1":
+                        df = qry_result.copy()
+            else:
+                print(f"\nEmpty dataframe\n")
+        pause()
 
 
 def amp_Sort():
     global menu_level
+    df = products
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "1":
-            pass
-        elif cmd == "2":
-            pass
-        elif cmd == "3":
-            pass
-        elif cmd == "4":
-            pass
-        elif cmd == "5":
-            pass
-        elif cmd == "6":
-            pass
-        elif cmd == "7":
-            pass
-        elif cmd == "8":
-            pass
-        elif cmd == "9":
+        if cmd == "9":
             menu_level = "1.2"
             break
+        reversee = input(
+            f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
+        sort_df = None
+        in_place = input(
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"            
+        if cmd == "1":
+            sort_df = df.sort_index(ascending=reversee, inplace=in_place)
+        elif cmd in ["2", "3", "4", "5", "6", "7", "8"]:
+            col = df.columns[int(cmd)-2]
+            sort_df = df.sort_values(by=col, ascending=reversee, inplace=in_place)
+        print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
+        pause()
+        cls()
+    return df
 
 
 def amp_DA():
@@ -336,26 +362,46 @@ def am_prod_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "1":
-            print("Show all Products")
+        # Show all products
+        # Exit
+        if cmd == "8":
+            menu_level = "1"
+            break
+        elif cmd == "1":
+            cls()
+            print(products)
+            pause()
+        # Search
         elif cmd == "2":
             menu_level = "1.2.1"
             amp_Search()
+        # Add products
         elif cmd == "3":
-            print("Add a Product")
+            if input("Do you want to add a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                n = input("How many products would you like to add? ")
+                try:
+                    for _ in range(int(n)):
+                        cls()
+                        actions.add_a_Product(products)
+                except Exception as e:
+                    actions.throw_error('error', f"{e}", e.with_traceback)
+            else:
+                print("Command Cancelled: Add a product.")
+                pause()
+        # Update products
         elif cmd == "4":
             print("Update a Product")
+        # Delete products
         elif cmd == "5":
             print("Delete a Product")
+        # Sort products
         elif cmd == "6":
             menu_level = "1.2.2"
             amp_Sort()
+        # Data Analysis
         elif cmd == "7":
             menu_level = "1.2.3"
             amp_DA()
-        elif cmd == "8":
-            menu_level = "1"
-            break
 
 
 def amo_Search():
