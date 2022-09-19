@@ -18,7 +18,7 @@ def pause(): return input('\n'*2 + "Press Any key To Contine...")
 def cls(): return print("\n" * 30)
 
 
-def throw_error(type: str, title: str, message: str):
+def throw_error(type: str, title: str, message=""):
     cls()
     if type == 'error':
         print(f"{Fore.RED} \u26A0 ERROR: {title} \u26A0")
@@ -141,7 +141,7 @@ r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
 Avoid the above errors and try again.
         """),
-    "prime": 0
+    "prime": 0,
 }
 
 
@@ -156,7 +156,7 @@ def add_a_Customer(customers: pd.DataFrame):
         id = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                    "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     if id == "":  # Gen uuid if input is empty
-        id = uuid.uuid4()
+        id = str(uuid.uuid4())
     cls()
     # first_name
     first_name = input(Fore.LIGHTMAGENTA_EX +
@@ -335,7 +335,8 @@ update_customer_menu = {
 # TODO: Fix update_customer() not updating customer record
 def update_customer(customers: pd.DataFrame):
     cls()
-    id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET)
+    print(customers.index)
+    id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET).strip()
     if id not in customers.index:
         throw_error('error', "ID not found: " + id,
                     "Customer ID was not found in the database.\nPlease make sure you have entered a valid Customer ID.")
@@ -442,3 +443,122 @@ def delete_customer(customers:pd.DataFrame):
             customers.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
         pause()
+
+
+# -----------------------------------------------------------------------------------------------------
+def add_a_Product(products: pd.DataFrame):
+    print("+" + "-"*25 + "ADD A PRODUCT" + "-"*25 + "+" + "\n\n")  # GUI
+    id = input(Fore.LIGHTMAGENTA_EX +
+               "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    # Verify that the product id is not a duplicate
+    while id in products.index:
+        throw_error('error', "Duplicate ID")
+        id = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                   "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    if id == "":  # Gen uuid if input is empty
+        id = str(uuid.uuid4())
+    cls()
+    # name
+    name = input(Fore.LIGHTMAGENTA_EX +
+                       "Enter Product Name: " + Fore.RESET).capitalize()
+    while not name.isalpha():
+        throw_error('error', "Invalid Name")
+        name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                           "Enter Product Name: " + Fore.RESET)
+    cls()
+    # manufacurer
+    manufacurer = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter Manufacurer: " + Fore.RESET).capitalize()
+    while not manufacurer.isalpha():
+        throw_error('error', "Invalid Manufacurer name")
+        manufacurer = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                          "Enter Manufacurer: " + Fore.RESET)
+    cls()
+    # category
+    category = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter Category: " + Fore.RESET).capitalize()
+    while not category.isalpha():
+        throw_error('error', "Invalid Category")
+        category = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                          "Enter Category: " + Fore.RESET)
+    cls()
+    # Returnable
+    Returnables = ["Returnable", "Not Returnable", "Exchange-Only"]
+    Returnables_check = input(Fore.LIGHTMAGENTA_EX +
+                         "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
+    Returnable = None
+    # Verify Returnable
+    while Returnable is None:
+        try:
+            Returnable = Returnables[int(Returnables_check)-1]
+            break
+        except Exception as e:
+            throw_error('error', "Invalid Returnable: %s" % Returnable)
+            Returnables_check = input(Fore.LIGHTMAGENTA_EX +
+                         "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
+    cls()
+    # In-Stock
+    stock = input(Fore.LIGHTMAGENTA_EX + "Enter In-Stock: " + Fore.RESET)
+    while not stock.isdigit():
+        throw_error(
+            'error', "Invalid stock number: %s" % stock)
+        stock = input(Fore.LIGHTMAGENTA_EX + "Enter In-Stock: " + Fore.RESET)
+    cls()
+    # Avg Rating
+    avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter Avg Rating: " + Fore.RESET)
+    while type(avg_rating) != float:
+        try:
+            avg_rating = float(avg_rating)
+        except Exception as e:
+            throw_error(
+            'error', "Invalid Average Rating: %s" % avg_rating)
+            avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter Avg Rating: " + Fore.RESET)
+    cls()
+    # Days to Return
+    if Returnable != "Not Returnable":
+        dtr = input(Fore.LIGHTMAGENTA_EX + "Enter Days to Return: " + Fore.RESET)
+        while type(dtr) != int:
+            try:
+                dtr = int(dtr)
+                break
+            except Exception as e:
+                throw_error(
+                'error', "Invalid Days to Return: %s" % dtr)
+                print("Return", Returnable)
+                dtr = input(Fore.LIGHTMAGENTA_EX + "Enter Days to Return: " + Fore.RESET)
+    else:
+        dtr = "-"
+    # Data Summmarization
+    NewData = [name, manufacurer, category,
+               Returnable, stock, avg_rating, dtr]
+    print("+" + "-"*50 + "+")
+    if all(NewData):
+        ll = max([len(str(x)) for x in NewData])
+        fac = 62 if ll <= 62 else ll
+        eq = ll - 62 if ll > 62 else 0
+        print(f"""
+    +{"=" * (eq//2)}============================Please Confirm the Data Input======================={"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
+    | id           :    {id          }{" " * (fac - len(str(id          )))}|
+    | name         :    {name        }{" " * (fac - len(str(name        )))}|
+    | manufacurer  :    {manufacurer }{" " * (fac - len(str(manufacurer )))}|
+    | category     :    {category    }{" " * (fac - len(str(category    )))}|
+    | Returnable   :    {Returnable  }{" " * (fac - len(str(Returnable  )))}|
+    | stock        :    {stock       }{" " * (fac - len(str(stock       )))}|
+    | avg_rating   :    {avg_rating  }{" " * (fac - len(str(avg_rating  )))}|
+    | dtr          :    {dtr         }{" " * (fac - len(str(dtr         )))}|
+    +================================================================================{"=" * eq}+
+    """)
+        reck = input(
+            "Would you like to insert this data to Products.csv ? (Y/N): ")
+        if reck.lower() == "y":
+            products.loc[id] = NewData
+            print("Record inserted successfully!")
+        else:
+            print("Record Insertion Cancelled :(")
+        time.sleep(1)
+        pause()
+    else:
+        throw_error('error', f"Invalid Data",
+                    'The data is invalid, please try again.')
+
+# ----------------------------------------------------------------------------------------------------

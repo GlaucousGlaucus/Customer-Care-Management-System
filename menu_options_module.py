@@ -155,6 +155,7 @@ maP_Search =  \
 7) Search by Returnable
 8) Search by Days to Return
 9) Back
+10) Reset Dataframe
 """
 maP_Search_SearchByReturnable =  \
     """
