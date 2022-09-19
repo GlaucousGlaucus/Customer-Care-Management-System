@@ -1,18 +1,12 @@
-from math import prod
 import time
 from datetime import datetime
-from tokenize import group
-from turtle import title
-from uuid import uuid4
 from colorama import Fore
 import actions
-import re
 
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from menu_options_module import print_menu, splashscreen
+from menu_options_module import print_menu
 
 print(f"[{datetime.now()}] Initializing...")
 print(f"[{datetime.now()}] Loading Files...")
@@ -120,12 +114,13 @@ def amc_Sort():
             f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
         sort_df = None
         in_place = input(
-            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"            
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"
         if cmd_n == "1":
             sort_df = df.sort_index(ascending=reversee, inplace=in_place)
         elif cmd_n in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]:
             col = df.columns[int(cmd_n)-2]
-            sort_df = df.sort_values(by=col, ascending=reversee, inplace=in_place)
+            sort_df = df.sort_values(
+                by=col, ascending=reversee, inplace=in_place)
         print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
         pause()
         cls()
@@ -159,25 +154,29 @@ def amcDAPieChart():
         # Gender
         elif cmd == "1":
             print(f"{Fore.CYAN}Displaying Gender Graph...{Fore.RESET}")
-            customers.groupby(["gender"]).size().plot(kind='pie', autopct="%.2f", colors=["pink", "aqua"], title="Gender", legend=False)
+            customers.groupby(["gender"]).size().plot(kind='pie', autopct="%.2f", colors=[
+                "pink", "aqua"], title="Gender", legend=False)
             plt.ylabel("Gender")
             plt.show()
         # Country
         elif cmd == "2":
             print(f"{Fore.CYAN}Displaying Country Graph...{Fore.RESET}")
-            customers.groupby(["country"]).size().plot(kind='pie', autopct="%.2f", title="Country", legend=False)
+            customers.groupby(["country"]).size().plot(
+                kind='pie', autopct="%.2f", title="Country", legend=False)
             plt.ylabel("Country")
             plt.show()
         # State
         elif cmd == "3":
             print(f"{Fore.CYAN}Displaying State Graph...{Fore.RESET}")
-            customers.groupby(["state"]).size().plot(kind='pie', autopct="%.2f", title="State", legend=False)
+            customers.groupby(["state"]).size().plot(
+                kind='pie', autopct="%.2f", title="State", legend=False)
             plt.ylabel("State")
             plt.show()
         # Prime
         elif cmd == "4":
             print(f"{Fore.CYAN}Displaying Prime Graph...{Fore.RESET}")
-            customers.groupby(["prime"]).size().plot(kind='pie', autopct="%.2f", title="Prime", legend=False)
+            customers.groupby(["prime"]).size().plot(
+                kind='pie', autopct="%.2f", title="Prime", legend=False)
             plt.ylabel("Prime")
             plt.show()
         pause()
@@ -195,7 +194,8 @@ def amcDABarGraph():
         # Age of Customers
         elif cmd == "1":
             print(f"{Fore.CYAN}Displaying Age of Customers Graph...{Fore.RESET}")
-            (pd.Timestamp("now") - customers['dob']).astype("<m8[Y]").plot(kind='hist')
+            (pd.Timestamp("now") - customers['dob']
+             ).astype("<m8[Y]").plot(kind='hist')
             plt.ylabel("Age")
             plt.show()
         pause()
@@ -276,9 +276,12 @@ def amp_Search():
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             column = products.columns[int(cmd)-2]
             qry_df = df[column].replace("-", "0").astype(int)
-            min, max = input(f"{Fore.LIGHTMAGENTA_EX}Enter Min: {Fore.RESET}"), input(f"{Fore.LIGHTMAGENTA_EX}Enter Max: {Fore.RESET}")
-            if min == "": min = "0"
-            if max == "": max = str(qry_df.max())
+            min, max = input(f"{Fore.LIGHTMAGENTA_EX}Enter Min: {Fore.RESET}"), input(
+                f"{Fore.LIGHTMAGENTA_EX}Enter Max: {Fore.RESET}")
+            if min == "":
+                min = "0"
+            if max == "":
+                max = str(qry_df.max())
             try:
                 min, max = float(min), float(max)
                 qry_result = df.loc[(qry_df >= min) & (qry_df <= max)]
@@ -333,12 +336,13 @@ def amp_Sort():
             f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
         sort_df = None
         in_place = input(
-            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"            
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"
         if cmd == "1":
             sort_df = df.sort_index(ascending=reversee, inplace=in_place)
         elif cmd in ["2", "3", "4", "5", "6", "7", "8"]:
             col = df.columns[int(cmd)-2]
-            sort_df = df.sort_values(by=col, ascending=reversee, inplace=in_place)
+            sort_df = df.sort_values(
+                by=col, ascending=reversee, inplace=in_place)
         print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
         pause()
         cls()
@@ -359,7 +363,8 @@ def amp_DA():
             plt.show()
         elif cmd == "2":
             print(f"{Fore.CYAN}Displaying Returnable Graph...{Fore.RESET}")
-            products.groupby(['Returnable']).size().plot(kind='pie', autopct="%.2f")
+            products.groupby(['Returnable']).size().plot(
+                kind='pie', autopct="%.2f")
             plt.ylabel("Returnable")
             plt.show()
         elif cmd == "3":
