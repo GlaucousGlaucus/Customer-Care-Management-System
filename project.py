@@ -351,8 +351,25 @@ def amp_DA():
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
-            pass
+            print(f"{Fore.CYAN}Displaying Categories (In-Stock) Graph...{Fore.RESET}")
+            g = products.groupby(['category'])["In-Stock"].sum()
+            g.plot(kind='bar')
+            plt.ylabel("In-Stock")
+            plt.xlabel("Category")
+            plt.show()
         elif cmd == "2":
+            print(f"{Fore.CYAN}Displaying Returnable Graph...{Fore.RESET}")
+            products.groupby(['Returnable']).size().plot(kind='pie', autopct="%.2f")
+            plt.ylabel("Returnable")
+            plt.show()
+        elif cmd == "3":
+            print(f"{Fore.CYAN}Displaying AvgRating Graph...{Fore.RESET}")
+            g = products.groupby(['category'])["AvgRating"].mean()
+            g.plot(kind='bar')
+            plt.ylabel("AvgRating")
+            plt.xlabel("Category")
+            plt.show()
+        elif cmd == "99":
             menu_level = "1.2"
             break
 
