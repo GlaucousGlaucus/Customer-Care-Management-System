@@ -178,13 +178,13 @@ maP_Sort =  \
 """
 maP_DataAnalysis =  \
     """
-1) Pie Chart
-2) Back
+1) Categories (In-Stock)
+2) Returnable
+3) Average Rating
+99) Back
 """
 maP_da_PieChart =  \
     """
-1) Categories (In-Stock)
-2) Returnable
 3) Back
 """
 
