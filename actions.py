@@ -335,7 +335,6 @@ update_customer_menu = {
 # TODO: Fix update_customer() not updating customer record
 def update_customer(customers: pd.DataFrame):
     cls()
-    print(customers.index)
     id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET).strip()
     if id not in customers.index:
         throw_error('error', "ID not found: " + id,
@@ -446,6 +445,16 @@ def delete_customer(customers:pd.DataFrame):
 
 
 # -----------------------------------------------------------------------------------------------------
+def data_validator_product_bool(products, id, data, d_type):
+    product = products.loc[id]
+    if d_type == "id": return not (data in products.index)
+    elif d_type in ["name", "manufacturer", "category"]: return data.isalpha()
+    elif d_type == "Returnable": return data in ["Returnable", "Not Returnable", "Exchange-Only"]
+    elif d_type == "In-Stock": return data.isdigit()
+    elif d_type == "AvgRating": return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
+    elif d_type == "DaysToReturn": return (data == "-" and product["Returnable"] == "Not Returnable") or (type(data) == int and product["Returnable"] != "Not Returnable")
+
+
 def add_a_Product(products: pd.DataFrame):
     print("+" + "-"*25 + "ADD A PRODUCT" + "-"*25 + "+" + "\n\n")  # GUI
     id = input(Fore.LIGHTMAGENTA_EX +
@@ -466,13 +475,13 @@ def add_a_Product(products: pd.DataFrame):
         name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                            "Enter Product Name: " + Fore.RESET)
     cls()
-    # manufacurer
-    manufacurer = input(Fore.LIGHTMAGENTA_EX +
-                      "Enter Manufacurer: " + Fore.RESET).capitalize()
-    while not manufacurer.isalpha():
-        throw_error('error', "Invalid Manufacurer name")
-        manufacurer = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                          "Enter Manufacurer: " + Fore.RESET)
+    # manufacturer
+    manufacturer = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter manufacturer: " + Fore.RESET).capitalize()
+    while not manufacturer.isalpha():
+        throw_error('error', "Invalid manufacturer name")
+        manufacturer = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                          "Enter manufacturer: " + Fore.RESET)
     cls()
     # category
     category = input(Fore.LIGHTMAGENTA_EX +
@@ -504,15 +513,15 @@ def add_a_Product(products: pd.DataFrame):
             'error', "Invalid stock number: %s" % stock)
         stock = input(Fore.LIGHTMAGENTA_EX + "Enter In-Stock: " + Fore.RESET)
     cls()
-    # Avg Rating
-    avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter Avg Rating: " + Fore.RESET)
+    # AvgRating
+    avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter AvgRating: " + Fore.RESET)
     while type(avg_rating) != float:
         try:
             avg_rating = float(avg_rating)
         except Exception as e:
             throw_error(
             'error', "Invalid Average Rating: %s" % avg_rating)
-            avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter Avg Rating: " + Fore.RESET)
+            avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter AvgRating: " + Fore.RESET)
     cls()
     # Days to Return
     if Returnable != "Not Returnable":
@@ -529,7 +538,7 @@ def add_a_Product(products: pd.DataFrame):
     else:
         dtr = "-"
     # Data Summmarization
-    NewData = [name, manufacurer, category,
+    NewData = [name, manufacturer, category,
                Returnable, stock, avg_rating, dtr]
     print("+" + "-"*50 + "+")
     if all(NewData):
@@ -540,7 +549,7 @@ def add_a_Product(products: pd.DataFrame):
     +{"=" * (eq//2)}============================Please Confirm the Data Input======================={"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
     | id           :    {id          }{" " * (fac - len(str(id          )))}|
     | name         :    {name        }{" " * (fac - len(str(name        )))}|
-    | manufacurer  :    {manufacurer }{" " * (fac - len(str(manufacurer )))}|
+    | manufacturer  :    {manufacturer }{" " * (fac - len(str(manufacturer )))}|
     | category     :    {category    }{" " * (fac - len(str(category    )))}|
     | Returnable   :    {Returnable  }{" " * (fac - len(str(Returnable  )))}|
     | stock        :    {stock       }{" " * (fac - len(str(stock       )))}|
@@ -562,3 +571,105 @@ def add_a_Product(products: pd.DataFrame):
                     'The data is invalid, please try again.')
 
 # ----------------------------------------------------------------------------------------------------
+
+def delete_product(products:pd.DataFrame):
+    cls()
+    id = input(f"{Fore.CYAN}Enter the product ID to delete: {Fore.RESET}")
+    # Check if id is in the df
+    if id not in products.index:
+        throw_error("error", "Product ID is not in the Database", "Please make sure if the ID you have entered is correct")
+    else:
+        sel_rec = products.loc[id]
+        print(f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        confirm_check = "ADMIN#" + id[len(id)-3:]
+        confirm = input(f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check: print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        else:
+            products.drop(id, inplace=True)
+            print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        pause()
+
+update_product_menu = {
+"1": "id",
+"2": "name",
+"3": "manufacturer",
+"4": "category",
+"5": "In-Stock",
+"6": "AvgRating",
+"7": "Returnable",
+"8": "DaysToReturn",
+"9": "Back"
+}
+
+def update_product(products: pd.DataFrame):
+    cls()
+    id = input(Fore.CYAN + "Product ID To Update: " + Fore.RESET).strip()
+    if id not in products.index:
+        throw_error('error', "ID not found: " + id,
+                    "Product ID was not found in the database.\nPlease make sure you have entered a valid Product ID.")
+        print(products.index)
+    else:
+        sel_rec = products.loc[id]
+        print(Fore.CYAN + "This is the selected Record: \n" +
+              Fore.RESET, sel_rec, sep="")
+        pause()
+        cls()
+        while True:
+            cls()
+            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
+    1) id        
+    2) name
+    3) manufacturer 
+    4) category       
+    5) In-Stock    
+    6) AvgRating   
+    7) Returnable   
+    8) Days to Return      
+    9) Back     
+            """)
+            cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
+            if cmd == "1":
+                print(
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_product_menu[cmd]}" + Fore.RESET)
+                print(Fore.CYAN +
+                      f"Old value of {update_product_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = input(
+                    Fore.CYAN + "Enter your new value: " + Fore.RESET)
+                if new_val not in products.index and new_val != "" and len(new_val) >= 3:
+                    products.rename(
+                        index={sel_rec.name: new_val}, inplace=True)
+                    print("ID changed successfully")
+                    id = new_val
+                    sel_rec = products.loc[id]
+                else:
+                    throw_error('error', f'Invalid product ID: {new_val}')
+            elif cmd == "9" or cmd == "":
+                break
+            else:
+                d_type = update_product_menu[cmd]
+                print(Fore.CYAN +
+                      f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
+                print(
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
+                if d_type == "Returnable": 
+                    print(Fore.CYAN + "Use the index to fill the entries:\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3" + Fore.RESET)
+                new_val = input(f"Enter your new value: {Fore.RED}")
+                if d_type == "Returnable":
+                    try:
+                        new_val = ["Returnable", "Not Returnable", "Exchange-Only"][int(new_val)-1]
+                    except ValueError:
+                        throw_error('error', 'Error while updating product data', "Please make sure you have entered the correct details.")
+                        continue
+                print(f"{Fore.CYAN}Your new value for {d_type}: " +
+                      Fore.RED, new_val, Fore.RESET)
+                if data_validator_product_bool(products, id, new_val, d_type):
+                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
+                        products.at[id, d_type] = new_val
+                        if d_type == "Returnable" and new_val == "Not Returnable":
+                            products.at[id, "DaysToReturn"] = "-"
+                    else:
+                        print("\nUpdating value cancelled.")
+                        pause()
+                else:
+                    throw_error('error', 'Error while updating product data', "Please make sure you have entered the correct details.")
+                sel_rec = products.loc[id]
