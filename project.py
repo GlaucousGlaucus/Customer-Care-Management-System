@@ -181,7 +181,6 @@ def amcDAPieChart():
             plt.show()
         pause()
         cls()
-            
 
 
 def amcDABarGraph():
@@ -192,8 +191,12 @@ def amcDABarGraph():
         if cmd == "2":
             menu_level = "1.1.3"
             break
+        # Age of Customers
         elif cmd == "1":
             print(f"{Fore.CYAN}Displaying Age of Customers Graph...{Fore.RESET}")
+            (pd.Timestamp("now") - customers['dob']).astype("<m8[Y]").plot(kind='hist')
+            plt.ylabel("Age")
+            plt.show()
         pause()
         cls()
 
