@@ -15,7 +15,8 @@ print(f"[{datetime.now()}] Initializing...")
 print(f"[{datetime.now()}] Loading Files...")
 
 # Read the Files
-customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=['dob'], infer_datetime_format=True)
+customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=[
+                        'dob'], infer_datetime_format=True)
 orders = pd.read_csv('Data\orders.csv')
 products = pd.read_csv('Data\products.csv')
 tickets = pd.read_csv(r'Data\tickets.csv')
@@ -50,44 +51,46 @@ def amc_Search():
             qry_start = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
             qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
-            qry_start, qry_end = pd.to_datetime(qry_start, format=r"%Y-%m-%d"), pd.to_datetime(qry_end, format=r"%Y-%m-%d")
-            if type(qry_end) != pd.NaT:
+            qry_start, qry_end = pd.to_datetime(actions.date_decoder(
+                qry_start), format=r"%Y-%m-%d"), pd.to_datetime(actions.date_decoder(qry_end), format=r"%Y-%m-%d")
+            if qry_end is not None:
                 qry_df = (qry_end > df["dob"]) & (df["dob"] > qry_start)
                 qry_result = df[qry_df]
             else:
-                print(df["dob"])
                 qry_df = df["dob"] > qry_start
                 qry_result = df[qry_df]
         # Search by Gender
         elif cmd_n == "4":
-            qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}").strip().lower()
-            qry = "Male" if qry in ["male", "m"] else "Female" if qry in ["female", "f", "fe"] else "Unknown"
-            qry_result = df.loc[df["gender"]==qry]
-        elif cmd_n == "5":
-            pass
-        elif cmd_n == "6":
-            pass
-        elif cmd_n == "7":
-            pass
-        elif cmd_n == "8":
-            pass
-        elif cmd_n == "9":
-            pass
-        elif cmd_n == "10":
-            pass
-        elif cmd_n == "11":
-            pass
+            qry = input(
+                f"{Fore.CYAN}Enter Query: {Fore.RESET}").strip().lower()
+            qry = "Male" if qry in ["male", "m"] else "Female" if qry in [
+                "female", "f", "fe"] else "Unknown"
+            qry_result = df.loc[df["gender"] == qry]
+        # General String Search
+        elif cmd_n in ["5", "6", "7", "8", "9", "10", "11"]:
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
+            column = customers.columns[int(cmd_n)-1]
+            qry_df = df[column].astype(str)
+            qry_result = df.loc[qry_df.str.contains(qry)]
+        # Search by Prime
         elif cmd_n == "12":
-            pass
+            qry = input(
+                f"{Fore.CYAN}Enter Query: {Fore.RESET}").strip().lower()
+            qry = "PRIME" if qry in ["Prime", "PRIME",
+                                     "Yes", "1", "Y", "P", "p"] else "-"
+            qry_result = df.loc[df["prime"] == qry]
+        # Reset the operating df
         elif cmd_n == "13":
-            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?{Fore.RESET}").strip().lower() in "y1":
+            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = customers.copy()
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
         elif cmd_n == "14":
             menu_level = "1.1"
             break
         # Check if the user wants to use the generated df for further queries
-        if cmd_n in ["1","2","3","4","5","6","7","8","9","10","11","12"]:
+        if cmd_n in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]:
             print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
             if not qry_result.empty:
                 print(qry_result)
@@ -103,36 +106,27 @@ def amc_Search():
 
 def amc_Sort():
     global menu_level
+    df = customers
     while True:
         print_menu(menu_level)
         cmd_n = input("Command: ")
-        if cmd_n == "1":
-            pass
-        elif cmd_n == "2":
-            pass
-        elif cmd_n == "3":
-            pass
-        elif cmd_n == "4":
-            pass
-        elif cmd_n == "5":
-            pass
-        elif cmd_n == "6":
-            pass
-        elif cmd_n == "7":
-            pass
-        elif cmd_n == "8":
-            pass
-        elif cmd_n == "9":
-            pass
-        elif cmd_n == "10":
-            pass
-        elif cmd_n == "11":
-            pass
-        elif cmd_n == "12":
-            pass
-        elif cmd_n == "13":
+        if cmd_n == "14":
             menu_level = "1.1"
             break
+        reversee = input(
+            f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
+        sort_df = None
+        in_place = input(
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"            
+        if cmd_n == "1":
+            sort_df = df.sort_index(ascending=reversee, inplace=in_place)
+        elif cmd_n in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]:
+            col = df.columns[int(cmd_n)-2]
+            sort_df = df.sort_values(by=col, ascending=reversee, inplace=in_place)
+        print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
+        pause()
+        cls()
+    return df
 
 
 def amc_DA():
@@ -156,12 +150,16 @@ def amcDAPieChart():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
+        # Gender
         if cmd == "1":
             pass
+        # Country
         elif cmd == "2":
             pass
+        # State
         elif cmd == "3":
             pass
+        # Prime
         elif cmd == "4":
             pass
         elif cmd == "5":
@@ -224,7 +222,7 @@ def am_cust_f():
         # Sort
         elif cmd == "6":
             menu_level = "1.1.2"
-            amc_Sort()
+            customers = amc_Sort()
         # Data Analysis
         elif cmd == "7":
             menu_level = "1.1.3"
