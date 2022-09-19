@@ -1,13 +1,8 @@
-from ast import For
-import imp
-from multiprocessing.spawn import import_main_path
 import re
 import time
-from turtle import st
 import uuid
-from colorama import Fore, Style
+from colorama import Fore
 from datetime import datetime
-from numpy import mat
 
 import pandas as pd
 
@@ -105,12 +100,12 @@ def data_validator_customer(data, d_type):
 data_error_msgs = {
     "id": lambda id: (f'Duplicate ID: {id}', "\n> ID should be a unique ID."),
     "first_name": lambda first_name: (f'Invalid Firstname: {first_name}',
-                    "\n> First Name should only have alphabets and must not be blank!\n\n"),
+                                      "\n> First Name should only have alphabets and must not be blank!\n\n"),
     "last_name": lambda last_name: (f'Invalid Lastname: {last_name}',
-                    "\n> Last Name should only have alphabets and must not be blank!\n\n"),
+                                    "\n> Last Name should only have alphabets and must not be blank!\n\n"),
     "dob": lambda dob_check: (f'Invalid DOB: {dob_check}', f"""Please make sure you have a entered a valid date."""),
     "gender": lambda gender_check: (f'Invlaid gender: {gender_check}',
-                    "Make sure you have entered a valid gender."),
+                                    "Make sure you have entered a valid gender."),
     "address": 0,
     "country": lambda country: (f'Invalid Country: {country}', "\n  Country should only have alphabets."),
     "city": lambda city: (f'Invalid City: {city}', "\n  City should only have alphabets."),
@@ -426,18 +421,23 @@ Make sure that you have avoided any of the following errors:
                 sel_rec = customers.loc[id]
 
 
-def delete_customer(customers:pd.DataFrame):
+def delete_customer(customers: pd.DataFrame):
     cls()
     id = input(f"{Fore.CYAN}Enter the customer ID to delete: {Fore.RESET}")
     # Check if id is in the df
     if id not in customers.index:
-        throw_error("error", "Customer ID is not in the Database", "Please make sure if the ID you have entered is correct")
+        throw_error("error", "Customer ID is not in the Database",
+                    "Please make sure if the ID you have entered is correct")
     else:
         sel_rec = customers.loc[id]
-        print(f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
-        confirm_check = "ADMIN#" + sel_rec["first_name"]+"_"+ sel_rec["last_name"]
-        confirm = input(f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
-        if confirm != confirm_check: print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        print(
+            f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        confirm_check = "ADMIN#" + \
+            sel_rec["first_name"]+"_" + sel_rec["last_name"]
+        confirm = input(
+            f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check:
+            print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
         else:
             customers.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
@@ -447,12 +447,18 @@ def delete_customer(customers:pd.DataFrame):
 # -----------------------------------------------------------------------------------------------------
 def data_validator_product_bool(products, id, data, d_type):
     product = products.loc[id]
-    if d_type == "id": return not (data in products.index)
-    elif d_type in ["name", "manufacturer", "category"]: return data.isalpha()
-    elif d_type == "Returnable": return data in ["Returnable", "Not Returnable", "Exchange-Only"]
-    elif d_type == "In-Stock": return data.isdigit()
-    elif d_type == "AvgRating": return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
-    elif d_type == "DaysToReturn": return (data == "-" and product["Returnable"] == "Not Returnable") or (type(data) == int and product["Returnable"] != "Not Returnable")
+    if d_type == "id":
+        return not (data in products.index)
+    elif d_type in ["name", "manufacturer", "category"]:
+        return data.isalpha()
+    elif d_type == "Returnable":
+        return data in ["Returnable", "Not Returnable", "Exchange-Only"]
+    elif d_type == "In-Stock":
+        return data.isdigit()
+    elif d_type == "AvgRating":
+        return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
+    elif d_type == "DaysToReturn":
+        return (data == "-" and product["Returnable"] == "Not Returnable") or (type(data) == int and product["Returnable"] != "Not Returnable")
 
 
 def add_a_Product(products: pd.DataFrame):
@@ -469,32 +475,32 @@ def add_a_Product(products: pd.DataFrame):
     cls()
     # name
     name = input(Fore.LIGHTMAGENTA_EX +
-                       "Enter Product Name: " + Fore.RESET).capitalize()
+                 "Enter Product Name: " + Fore.RESET).capitalize()
     while not name.isalpha():
         throw_error('error', "Invalid Name")
         name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                           "Enter Product Name: " + Fore.RESET)
+                     "Enter Product Name: " + Fore.RESET)
     cls()
     # manufacturer
     manufacturer = input(Fore.LIGHTMAGENTA_EX +
-                      "Enter manufacturer: " + Fore.RESET).capitalize()
+                         "Enter manufacturer: " + Fore.RESET).capitalize()
     while not manufacturer.isalpha():
         throw_error('error', "Invalid manufacturer name")
         manufacturer = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                          "Enter manufacturer: " + Fore.RESET)
+                             "Enter manufacturer: " + Fore.RESET)
     cls()
     # category
     category = input(Fore.LIGHTMAGENTA_EX +
-                      "Enter Category: " + Fore.RESET).capitalize()
+                     "Enter Category: " + Fore.RESET).capitalize()
     while not category.isalpha():
         throw_error('error', "Invalid Category")
         category = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                          "Enter Category: " + Fore.RESET)
+                         "Enter Category: " + Fore.RESET)
     cls()
     # Returnable
     Returnables = ["Returnable", "Not Returnable", "Exchange-Only"]
     Returnables_check = input(Fore.LIGHTMAGENTA_EX +
-                         "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
+                              "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
     Returnable = None
     # Verify Returnable
     while Returnable is None:
@@ -504,7 +510,7 @@ def add_a_Product(products: pd.DataFrame):
         except Exception as e:
             throw_error('error', "Invalid Returnable: %s" % Returnable)
             Returnables_check = input(Fore.LIGHTMAGENTA_EX +
-                         "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
+                                      "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
     cls()
     # In-Stock
     stock = input(Fore.LIGHTMAGENTA_EX + "Enter In-Stock: " + Fore.RESET)
@@ -520,21 +526,24 @@ def add_a_Product(products: pd.DataFrame):
             avg_rating = float(avg_rating)
         except Exception as e:
             throw_error(
-            'error', "Invalid Average Rating: %s" % avg_rating)
-            avg_rating = input(Fore.LIGHTMAGENTA_EX + "Enter AvgRating: " + Fore.RESET)
+                'error', "Invalid Average Rating: %s" % avg_rating)
+            avg_rating = input(Fore.LIGHTMAGENTA_EX +
+                               "Enter AvgRating: " + Fore.RESET)
     cls()
     # Days to Return
     if Returnable != "Not Returnable":
-        dtr = input(Fore.LIGHTMAGENTA_EX + "Enter Days to Return: " + Fore.RESET)
+        dtr = input(Fore.LIGHTMAGENTA_EX +
+                    "Enter Days to Return: " + Fore.RESET)
         while type(dtr) != int:
             try:
                 dtr = int(dtr)
                 break
             except Exception as e:
                 throw_error(
-                'error', "Invalid Days to Return: %s" % dtr)
+                    'error', "Invalid Days to Return: %s" % dtr)
                 print("Return", Returnable)
-                dtr = input(Fore.LIGHTMAGENTA_EX + "Enter Days to Return: " + Fore.RESET)
+                dtr = input(Fore.LIGHTMAGENTA_EX +
+                            "Enter Days to Return: " + Fore.RESET)
     else:
         dtr = "-"
     # Data Summmarization
@@ -572,34 +581,41 @@ def add_a_Product(products: pd.DataFrame):
 
 # ----------------------------------------------------------------------------------------------------
 
-def delete_product(products:pd.DataFrame):
+
+def delete_product(products: pd.DataFrame):
     cls()
     id = input(f"{Fore.CYAN}Enter the product ID to delete: {Fore.RESET}")
     # Check if id is in the df
     if id not in products.index:
-        throw_error("error", "Product ID is not in the Database", "Please make sure if the ID you have entered is correct")
+        throw_error("error", "Product ID is not in the Database",
+                    "Please make sure if the ID you have entered is correct")
     else:
         sel_rec = products.loc[id]
-        print(f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        print(
+            f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
         confirm_check = "ADMIN#" + id[len(id)-3:]
-        confirm = input(f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
-        if confirm != confirm_check: print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        confirm = input(
+            f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check:
+            print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
         else:
             products.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
         pause()
 
+
 update_product_menu = {
-"1": "id",
-"2": "name",
-"3": "manufacturer",
-"4": "category",
-"5": "In-Stock",
-"6": "AvgRating",
-"7": "Returnable",
-"8": "DaysToReturn",
-"9": "Back"
+    "1": "id",
+    "2": "name",
+    "3": "manufacturer",
+    "4": "category",
+    "5": "In-Stock",
+    "6": "AvgRating",
+    "7": "Returnable",
+    "8": "DaysToReturn",
+    "9": "Back"
 }
+
 
 def update_product(products: pd.DataFrame):
     cls()
@@ -651,14 +667,17 @@ def update_product(products: pd.DataFrame):
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
                     f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
-                if d_type == "Returnable": 
-                    print(Fore.CYAN + "Use the index to fill the entries:\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3" + Fore.RESET)
+                if d_type == "Returnable":
+                    print(
+                        Fore.CYAN + "Use the index to fill the entries:\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3" + Fore.RESET)
                 new_val = input(f"Enter your new value: {Fore.RED}")
                 if d_type == "Returnable":
                     try:
-                        new_val = ["Returnable", "Not Returnable", "Exchange-Only"][int(new_val)-1]
+                        new_val = ["Returnable", "Not Returnable",
+                                   "Exchange-Only"][int(new_val)-1]
                     except ValueError:
-                        throw_error('error', 'Error while updating product data', "Please make sure you have entered the correct details.")
+                        throw_error('error', 'Error while updating product data',
+                                    "Please make sure you have entered the correct details.")
                         continue
                 print(f"{Fore.CYAN}Your new value for {d_type}: " +
                       Fore.RED, new_val, Fore.RESET)
@@ -671,5 +690,6 @@ def update_product(products: pd.DataFrame):
                         print("\nUpdating value cancelled.")
                         pause()
                 else:
-                    throw_error('error', 'Error while updating product data', "Please make sure you have entered the correct details.")
+                    throw_error('error', 'Error while updating product data',
+                                "Please make sure you have entered the correct details.")
                 sel_rec = products.loc[id]
