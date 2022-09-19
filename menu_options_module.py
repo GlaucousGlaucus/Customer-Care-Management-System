@@ -99,18 +99,19 @@ maC_Search = \
 maC_Sort =  \
     """
 1) Sort by ID
-2) Sort by Name
-3) Sort by DOB
-4) Sort by Gender
-5) Sort by Address
-6) Sort by Country
-7) Sort by City
-8) Sort by State
-9) Sort by Pincode
-10) Sort by Phone
-11) Sort by email
-12) Sort by Prime
-13) Back
+2) Sort by First Name
+3) Sort by Last Name
+4) Sort by DOB
+5) Sort by Gender
+6) Sort by Address
+7) Sort by Country
+8) Sort by City
+9) Sort by State
+10) Sort by Pincode
+11) Sort by Phone
+12) Sort by email
+13) Sort by Prime
+14) Back
 """
 maC_DataAnalysis =  \
     """
