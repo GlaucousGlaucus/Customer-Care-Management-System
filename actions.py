@@ -1,3 +1,4 @@
+from logging.handlers import DatagramHandler
 import re
 from telnetlib import STATUS
 import time
@@ -605,7 +606,7 @@ def delete_product(products: pd.DataFrame):
         pause()
 
 
-update_product_menu = {
+update_order_menu = {
     "1": "id",
     "2": "name",
     "3": "manufacturer",
@@ -647,9 +648,9 @@ def update_product(products: pd.DataFrame):
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
-                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_product_menu[cmd]}" + Fore.RESET)
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_order_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
-                      f"Old value of {update_product_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                      f"Old value of {update_order_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
                 new_val = input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
                 if new_val not in products.index and new_val != "" and len(new_val) >= 3:
@@ -663,7 +664,7 @@ def update_product(products: pd.DataFrame):
             elif cmd == "9" or cmd == "":
                 break
             else:
-                d_type = update_product_menu[cmd]
+                d_type = update_order_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
@@ -846,3 +847,128 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     else:
         throw_error('error', f"Invalid Data",
                     'The data is invalid, please try again.')
+
+def delete_order(orders: pd.DataFrame):
+    cls()
+    id = input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
+    # Check if id is in the df
+    if id not in orders.index:
+        throw_error("error", "Order ID is not in the Database",
+                    "Please make sure if the ID you have entered is correct")
+    else:
+        sel_rec = orders.loc[id]
+        print(
+            f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        confirm_check = "ADMIN#" + id[len(id)-3:]
+        confirm = input(
+            f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check:
+            print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        else:
+            orders.drop(id, inplace=True)
+            print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        pause()
+
+
+update_order_menu = {
+    "1" : "orderId",
+    "2" : "customerID",
+    "3" : "productID",
+    "4" : "qty",
+    "5" : "total_price",
+    "6" : "doo",
+    "7" : "State",
+    "8": "Back"
+}
+
+def data_validator_order_bool(customers, products, orders, id, data, d_type):
+    order = orders.loc[id]
+    if d_type == "orderId":
+        return not (data in orders.index)
+    elif d_type in "customerID":
+        return data in customers.index
+    elif d_type in "products":
+        return data in products.index
+    elif d_type == "State":
+        return data in ["Cancelled", "Delivered", "Pending", "Pre-Shipment", "Unshipped"]
+    elif d_type == "qty":
+        return data.isdigit()
+    elif d_type == "total_price":
+        return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
+    elif d_type == "doo":
+        if date_decoder(data):
+            return True
+        else:
+            return False
+
+
+def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
+    cls()
+    id = input(Fore.CYAN + "Order ID To Update: " + Fore.RESET).strip()
+    if id not in orders.index:
+        throw_error('error', "ID not found: " + id,
+                    "Order ID was not found in the database.\nPlease make sure you have entered a valid Order ID.")
+        print(orders.index)
+    else:
+        sel_rec = orders.loc[id]
+        print(Fore.CYAN + "This is the selected Record: \n" +
+              Fore.RESET, sel_rec, sep="")
+        pause()
+        cls()
+        while True:
+            cls()
+            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
+        1)  orderId
+        2)  customerID
+        3)  productID
+        4)  qty
+        5)  total_price
+        6)  doo
+        7)  State
+        8)  Back
+            """)
+            cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
+            if cmd == "1":
+                print(
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_order_menu[cmd]}" + Fore.RESET)
+                print(Fore.CYAN +
+                      f"Old value of {update_order_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = input(
+                    Fore.CYAN + "Enter your new value: " + Fore.RESET)
+                if new_val not in orders.index and new_val != "" and len(new_val) >= 3:
+                    orders.rename(
+                        index={sel_rec.name: new_val}, inplace=True)
+                    print("ID changed successfully")
+                    id = new_val
+                    sel_rec = orders.loc[id]
+                else:
+                    throw_error('error', f'Invalid order ID: {new_val}')
+            elif cmd == "8" or cmd == "":
+                break
+            else:
+                d_type = update_order_menu[cmd]
+                print(Fore.CYAN +
+                      f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
+                print(
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
+                new_val = input(f"Enter your new value: {Fore.RED}")
+                print(f"{Fore.CYAN}Your new value for {d_type}: " +
+                      Fore.RED, new_val, Fore.RESET)
+                if data_validator_order_bool(customers, products,  orders, id, new_val, d_type):
+                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
+                        orders.at[id, d_type] = new_val
+                        if d_type == "customerID":
+                            cust = customers.loc[new_val]
+                            orders.at[id, "customerFirstName"] = cust["first_name"]
+                            orders.at[id, "customerLastName"] = cust["last_name"]
+                            orders.at[id, "address"] = cust["address"]
+                        elif d_type == "productID":
+                            prod = products.loc[new_val]
+                            orders.at[id, "productName"] = prod["name"]
+                    else:
+                        print("\nUpdating value cancelled.")
+                        pause()
+                else:
+                    throw_error('error', 'Error while updating order data',
+                                "Please make sure you have entered the correct details.")
+                sel_rec = orders.loc[id]
