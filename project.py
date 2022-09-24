@@ -14,7 +14,7 @@ print(f"[{datetime.now()}] Loading Files...")
 # Read the Files
 customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=[
                         'dob'], infer_datetime_format=True)
-orders = pd.read_csv('Data\orders.csv')
+orders = pd.read_csv('Data\orders.csv', index_col='orderID')
 products = pd.read_csv('Data\products.csv', index_col='id')
 tickets = pd.read_csv(r'Data\tickets.csv')
 
@@ -384,7 +384,6 @@ def am_prod_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        # Show all products
         # Exit
         if cmd == "8":
             menu_level = "1"
@@ -415,7 +414,7 @@ def am_prod_f():
             if input("Do you want to update a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 actions.update_product(products)
             else:
-                print("Command Cancelled: Update a customer.")
+                print("Command Cancelled: Update a product.")
                 pause()
         # Delete products
         elif cmd == "5":
@@ -503,23 +502,47 @@ def am_ord_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "1":
-            print("Show all Orders")
+        if cmd == "7":
+            menu_level = "1"
+            break
+        # Show all orders
+        elif cmd == "1":
+            cls()
+            print(orders)
+            pause()
+        # Search for orders
         elif cmd == "2":
             menu_level = "1.3.1"
             amo_Search()
+        # Add Order
         elif cmd == "3":
-            print("Add an order")
+            if input("Do you want to add an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                n = input("How many orders would you like to add? ")
+                try:
+                    for _ in range(int(n)):
+                        cls()
+                        actions.add_an_order(customers, products, orders)
+                except Exception as e:
+                    actions.throw_error('error', f"{e}", e.with_traceback)
+            else:
+                print("Command Cancelled: Add an order.")
+                pause()
+        # Update an order
         elif cmd == "4":
-            print("Update an order")
+            if input("Do you want to update an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                actions.update_order(products)
+            else:
+                print("Command Cancelled: Update an order.")
+                pause()
         elif cmd == "5":
-            print("Delete an order")
+            if input("Do you want to delete an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                actions.delete_order(products)
+            else:
+                print("Command Cancelled: Delete an order.")
+                pause()
         elif cmd == "6":
             menu_level = "1.3.2"
             amo_Sort()
-        elif cmd == "7":
-            menu_level = "1"
-            break
 
 
 def amt_Search():
