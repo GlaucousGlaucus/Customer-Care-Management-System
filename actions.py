@@ -1,4 +1,5 @@
 import re
+from telnetlib import STATUS
 import time
 import uuid
 from colorama import Fore
@@ -103,7 +104,7 @@ data_error_msgs = {
                                       "\n> First Name should only have alphabets and must not be blank!\n\n"),
     "last_name": lambda last_name: (f'Invalid Lastname: {last_name}',
                                     "\n> Last Name should only have alphabets and must not be blank!\n\n"),
-    "dob": lambda dob_check: (f'Invalid DOB: {dob_check}', f"""Please make sure you have a entered a valid date."""),
+    "dob": lambda dob_check: (f'Invalid Date: {dob_check}', f"""Please make sure you have a entered a valid date."""),
     "gender": lambda gender_check: (f'Invlaid gender: {gender_check}',
                                     "Make sure you have entered a valid gender."),
     "address": 0,
@@ -693,3 +694,155 @@ def update_product(products: pd.DataFrame):
                     throw_error('error', 'Error while updating product data',
                                 "Please make sure you have entered the correct details.")
                 sel_rec = products.loc[id]
+
+# ----------------------------------------------------------------------------------------------------
+
+def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
+    print("+" + "-"*25 + "ADD AN ORDER" + "-"*25 + "+" + "\n\n")  # GUI
+    # OrderID
+    orderId = input(Fore.LIGHTMAGENTA_EX +
+               "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    while orderId in orders.index:
+        throw_error('error', "Duplicate ID")
+        orderId = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                   "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    if orderId == "":  # Gen uuid if input is empty
+        orderId = str(uuid.uuid4())
+    cls()
+
+    # CustomerID
+    customerID = input(Fore.LIGHTMAGENTA_EX +
+               "Enter Customer ID: " + Fore.RESET)
+    while customerID not in customers.index:
+        throw_error('error', "Customer ID not found!")
+        customerID = input(Fore.LIGHTMAGENTA_EX +
+               "Enter Customer ID: " + Fore.RESET)
+    cls()
+    # ProductID
+    productID = input(Fore.LIGHTMAGENTA_EX +
+               "Enter Product ID: " + Fore.RESET)
+    while productID not in products.index:
+        throw_error('error', "Product ID not found!")
+        productID = input(Fore.LIGHTMAGENTA_EX +
+               "Enter Product ID: " + Fore.RESET)
+    cls()
+    
+    # Qty
+    qty = input(Fore.LIGHTMAGENTA_EX +
+               "Enter Quantity: " + Fore.RESET)
+    while not qty.isdigit():
+        throw_error('error', "Invalid value for quantity: " + qty)
+        qty = input(Fore.LIGHTMAGENTA_EX +
+               "Enter Quantity: " + Fore.RESET)
+    cls()
+
+    # Price
+    price = input(Fore.LIGHTMAGENTA_EX + "Enter Price: " + Fore.RESET)
+    while type(price) != float:
+        try:
+            price = float(price)
+        except Exception as e:
+            throw_error(
+                'error', "Invalid Price: %s" % price)
+            price = input(Fore.LIGHTMAGENTA_EX +
+                               "Enter Price: " + Fore.RESET)
+    total_price = int(qty) * price
+    cls()
+
+    # DOO
+    # Print DOO GUI
+    print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+    doo_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date of Order: " + Fore.RESET)
+    doo = date_decoder(doo_check)
+    while doo is None:  # Retake inputs for DOB till its valid
+        throw_error('error', *data_error_msgs["dob"](doo_check))
+        cls()
+        print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+        doo_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date of Order: " + Fore.RESET)
+        doo = date_decoder(doo_check)
+    cls()
+
+    # Status
+    States = ["Cancelled", "Delivered", "Pending", "Pre-Shipment", "Unshipped"]
+    States_check = input(Fore.LIGHTMAGENTA_EX +
+"""==== STATUS LIST ====
+1)  Cancelled
+2)  Delivered
+3)  Pending
+4)  Pre-Shipment
+5)  Unshipped
+""" + Fore.RESET).strip().lower().title()
+    State = None
+    # Verify State
+    while State is None:
+        try:
+            State = States[int(States_check)-1]
+            break
+        except Exception as e:
+            throw_error('error', "Invalid State: %s" % State)
+            States_check = input(Fore.LIGHTMAGENTA_EX +
+"""==== STATUS LIST ====
+1)  Cancelled
+2)  Delivered
+3)  Pre-Shipment
+4)  Unshipped
+""" + Fore.RESET).strip().lower().title()
+    # Get Customer and Product data
+    cust = customers.loc[customerID]
+    cust_first_name = cust["first_name"]
+    cust_last_name = cust["last_name"]
+    cust_address = cust["address"]
+
+    prod = products.loc[productID]
+    prod_name = prod["name"]
+    # Data Summmarization
+    NewData = [customerID, cust_first_name, cust_last_name, productID, prod_name, qty,
+    total_price, doo, State, cust_address]
+    print("+" + "-"*50 + "+")
+    if all(NewData):
+        ll = max([len(str(x)) for x in NewData])
+        fac = 62 if ll <= 62 else ll
+        eq = ll - 62 if ll > 62 else 0
+        print(f"""
+    +{"=" * (eq//2)}=================================Please Confirm the Data Input============================{"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
+    | OrderID               :    {orderId           }{" " * (fac - len(str(orderId           )))}|
+    | CustomerID            :    {customerID        }{" " * (fac - len(str(customerID        )))}|
+    | Customer (First Name) :    {cust_first_name   }{" " * (fac - len(str(cust_first_name   )))}|
+    | Customer (Last Name)  :    {cust_last_name    }{" " * (fac - len(str(cust_last_name    )))}|
+    | ProductID             :    {productID         }{" " * (fac - len(str(productID         )))}|
+    | Product Name          :    {prod_name         }{" " * (fac - len(str(prod_name         )))}|
+    | Quantity              :    {qty               }{" " * (fac - len(str(qty               )))}|
+    | Total Price           :    {total_price       }{" " * (fac - len(str(total_price       )))}|
+    | Date Of Order         :    {doo               }{" " * (fac - len(str(doo               )))}|
+    | Status                :    {State             }{" " * (fac - len(str(State             )))}|
+    | Address               :    {cust_address      }{" " * (fac - len(str(cust_address      )))}|
+    +=========================================================================================={"=" * eq}+
+    """)
+        reck = input(
+            "Would you like to insert this data to Orders.csv ? (Y/N): ")
+        if reck.lower() == "y":
+            orders.loc[orderId] = NewData
+            print("Record inserted successfully!")
+        else:
+            print("Record Insertion Cancelled :(")
+        time.sleep(1)
+        pause()
+    else:
+        throw_error('error', f"Invalid Data",
+                    'The data is invalid, please try again.')
