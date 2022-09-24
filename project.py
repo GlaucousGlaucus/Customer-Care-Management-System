@@ -530,7 +530,7 @@ def am_ord_f():
         # Update an order
         elif cmd == "4":
             if input("Do you want to update an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.update_order(products)
+                actions.update_order(customers, products, orders)
             else:
                 print("Command Cancelled: Update an order.")
                 pause()
