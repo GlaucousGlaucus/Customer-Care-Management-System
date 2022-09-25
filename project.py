@@ -536,7 +536,7 @@ def am_ord_f():
                 pause()
         elif cmd == "5":
             if input("Do you want to delete an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.delete_order(products)
+                actions.delete_order(orders)
             else:
                 print("Command Cancelled: Delete an order.")
                 pause()

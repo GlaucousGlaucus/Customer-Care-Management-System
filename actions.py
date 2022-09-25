@@ -329,7 +329,6 @@ update_customer_menu = {
     "13": "prime"}
 
 
-# TODO: Fix update_customer() not updating customer record
 def update_customer(customers: pd.DataFrame):
     cls()
     id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET).strip()
@@ -383,9 +382,9 @@ Make sure that you have avoided any of the following errors:
     3. New Value is less than 3 characters.
     4. Not a duplicate value
                 """)
-            elif cmd == "14" or cmd == "":
+            elif cmd == "14":
                 break
-            else:
+            elif cmd in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]:
                 d_type = update_customer_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
@@ -661,9 +660,9 @@ def update_product(products: pd.DataFrame):
                     sel_rec = products.loc[id]
                 else:
                     throw_error('error', f'Invalid product ID: {new_val}')
-            elif cmd == "9" or cmd == "":
+            elif cmd == "9":
                 break
-            else:
+            elif cmd in ["2", "3", "4", "5", "6", "7", "8"]:
                 d_type = update_order_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
@@ -943,9 +942,9 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                     sel_rec = orders.loc[id]
                 else:
                     throw_error('error', f'Invalid order ID: {new_val}')
-            elif cmd == "8" or cmd == "":
+            elif cmd == "8":
                 break
-            else:
+            elif cmd in "2345667":
                 d_type = update_order_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
