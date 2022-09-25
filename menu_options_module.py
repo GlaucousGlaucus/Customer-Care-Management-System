@@ -212,6 +212,7 @@ maO_Search =  \
 10) Search by Status
 11) Search by Address
 12) Back
+13) Reset Dataframe
 """
 maO_Sort =  \
     """
