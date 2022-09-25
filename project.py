@@ -14,7 +14,8 @@ print(f"[{datetime.now()}] Loading Files...")
 # Read the Files
 customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=[
                         'dob'], infer_datetime_format=True)
-orders = pd.read_csv('Data\orders.csv', index_col='orderID')
+orders = pd.read_csv('Data\orders.csv', index_col='orderID', parse_dates=[
+                        'dateofOrder'], infer_datetime_format=True)
 products = pd.read_csv('Data\products.csv', index_col='id')
 tickets = pd.read_csv(r'Data\tickets.csv')
 
@@ -435,66 +436,110 @@ def am_prod_f():
 
 def amo_Search():
     global menu_level
+    df = orders.copy()
     while True:
         print_menu(menu_level)
-        cmd_n = input("Command: ")
-        if cmd_n == "1":
-            pass
-        elif cmd_n == "2":
-            pass
-        elif cmd_n == "3":
-            pass
-        elif cmd_n == "4":
-            pass
-        elif cmd_n == "5":
-            pass
-        elif cmd_n == "6":
-            pass
-        elif cmd_n == "7":
-            pass
-        elif cmd_n == "8":
-            pass
-        elif cmd_n == "9":
-            pass
-        elif cmd_n == "10":
-            pass
-        elif cmd_n == "11":
-            pass
-        elif cmd_n == "12":
+        cmd = input("Command: ")
+        if cmd == "1":
+            qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
+            qry_result = df.loc[qry] if qry in df.index else pd.DataFrame()
+        elif cmd in ["2", "3", "4", "5", "6", "11"]:
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
+            column = orders.columns[int(cmd)-2]
+            qry_df = df[column]
+            qry_result = df.loc[qry_df.str.contains(qry)]
+        elif cmd in ["7", "8"]:
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            column = orders.columns[int(cmd)-2]
+            qry_df = df[column].replace("-", "0").astype(int)
+            min, max = input(f"{Fore.LIGHTMAGENTA_EX}Enter Min: {Fore.RESET}"), input(
+                f"{Fore.LIGHTMAGENTA_EX}Enter Max: {Fore.RESET}")
+            if min == "":
+                min = "0"
+            if max == "":
+                max = str(qry_df.max())
+            try:
+                min, max = float(min), float(max)
+                qry_result = df.loc[(qry_df >= min) & (qry_df <= max)]
+            except Exception as e:
+                print(f"{Fore.RED}\nPlease enter a valid range!\n{Fore.RESET}")
+                qry_result = pd.DataFrame()
+        elif cmd == "10":
+            # Search By Status
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            cmdn = input("Index: \n1) Cancelled\n2) Delivered\n3) Pre-Shipment\n4) Unshipped\nCommand: ")
+            qry_df = df["status"]
+            if cmdn == "1":
+                qry_result = df.loc[qry_df == "Cancelled"]
+            elif cmdn == "2":
+                qry_result = df.loc[qry_df == "Delivered"]
+            elif cmdn == "3":
+                qry_result = df.loc[qry_df == "Pre-Shipment"]
+            elif cmdn == "4":
+                qry_result = df.loc[qry_df == "Unshipped"]
+            menu_level = "1.3.1"
+        # Search by DOO
+        elif cmd == "9":
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry_start = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
+            qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
+            qry_start, qry_end = pd.to_datetime(actions.date_decoder(
+                qry_start), format=r"%Y-%m-%d"), pd.to_datetime(actions.date_decoder(qry_end), format=r"%Y-%m-%d")
+            if qry_end is not None:
+                qry_df = (qry_end > df["dateofOrder"]) & (df["dateofOrder"] > qry_start)
+                qry_result = df[qry_df]
+            else:
+                qry_df = df["dateofOrder"] > qry_start
+                qry_result = df[qry_df]
+        elif cmd == "12":
             menu_level = "1.3"
             break
+        elif cmd == "13":
+            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+                df = orders.copy()
+                print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
+        # Check if the user wants to use the generated df for further queries
+        if cmd in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]:
+            print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
+            if not qry_result.empty:
+                print(qry_result)
+                if cmd != "1":
+                    udf = input(
+                        f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
+                    if udf.strip().lower() in "y1":
+                        df = qry_result.copy()
+            else:
+                print(f"\nEmpty dataframe\n")
+        pause()
 
 
 def amo_Sort():
     global menu_level
+    df = orders
     while True:
         print_menu(menu_level)
-        cmd_n = input("Command: ")
-        if cmd_n == "1":
-            pass
-        elif cmd_n == "2":
-            pass
-        elif cmd_n == "3":
-            pass
-        elif cmd_n == "4":
-            pass
-        elif cmd_n == "5":
-            pass
-        elif cmd_n == "6":
-            pass
-        elif cmd_n == "7":
-            pass
-        elif cmd_n == "8":
-            pass
-        elif cmd_n == "9":
-            pass
-        elif cmd_n == "10":
-            pass
-        elif cmd_n == "11":
-            pass
-        elif cmd_n == "12":
+        cmd = input("Command: ")
+        if cmd == "12":
             menu_level = "1.3"
             break
+        reversee = input(
+            f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
+        sort_df = None
+        in_place = input(
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"
+        if cmd == "1":
+            sort_df = df.sort_index(ascending=reversee, inplace=in_place)
+        elif cmd in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]:
+            col = df.columns[int(cmd)-2]
+            sort_df = df.sort_values(
+                by=col, ascending=reversee, inplace=in_place)
+        print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
+        pause()
+        cls()
+    return df
 
 
 def am_ord_f():
