@@ -17,7 +17,8 @@ customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=[
 orders = pd.read_csv('Data\orders.csv', index_col='orderID', parse_dates=[
                         'dateofOrder'], infer_datetime_format=True)
 products = pd.read_csv('Data\products.csv', index_col='id')
-tickets = pd.read_csv(r'Data\tickets.csv')
+tickets = pd.read_csv(r'Data\tickets.csv', index_col='TicketID', parse_dates=[
+                        'DateOpened', 'DateClosed'], infer_datetime_format=True)
 
 print(f"[{datetime.now()}] Files Loaded")
 
@@ -823,17 +824,41 @@ def am_tick_f():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
-        if cmd == "1":
-            pass
+        if cmd == "10":
+            menu_level = "1"
+            break
+        elif cmd == "1":
+            cls()
+            print(tickets)
+            pause()
         elif cmd == "2":
             menu_level = "1.4.1"
             amt_Search()
         elif cmd == "3":
-            pass
+            if input("Do you want to add a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                n = input("How many tickets would you like to add? ")
+                for _ in range(int(n)):
+                        cls()
+                        actions.add_a_ticket(customers, products, orders, tickets)
+                # try:
+                #     pass
+                # except Exception as e:
+                #     actions.throw_error('error', f"{e}", e.with_traceback)
+            else:
+                print("Command Cancelled: Add a ticket.")
+                pause()
         elif cmd == "4":
-            pass
+            if input("Do you want to update a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                actions.update_ticket(customers, products, orders, tickets)
+            else:
+                print("Command Cancelled: Update a ticket.")
+                pause()
         elif cmd == "5":
-            pass
+            if input("Do you want to delete a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
+                actions.delete_ticket(tickets)
+            else:
+                print("Command Cancelled: Delete a ticket.")
+                pause()
         elif cmd == "6":
             menu_level = "1.4.2"
             amt_Sort()
@@ -846,9 +871,6 @@ def am_tick_f():
         elif cmd == "9":
             menu_level = "1.4.5"
             amt_MG()
-        elif cmd == "10":
-            menu_level = "1"
-            break
 
 
 def admin_menu_f():
