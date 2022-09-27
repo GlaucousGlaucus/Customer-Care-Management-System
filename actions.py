@@ -7,6 +7,7 @@ from colorama import Fore
 from datetime import datetime
 
 import pandas as pd
+import numpy as np
 
 from util import text_formatting as tf
 
@@ -215,7 +216,7 @@ def add_a_Customer(customers: pd.DataFrame):
     cls()
     # Address
     address = input(Fore.LIGHTMAGENTA_EX + "Enter Address: " +
-                    Fore.RESET)  # TODO Address format
+                    Fore.RESET)
     cls()
     # Country
     country = input(Fore.LIGHTMAGENTA_EX +
@@ -605,7 +606,7 @@ def delete_product(products: pd.DataFrame):
         pause()
 
 
-update_order_menu = {
+update_ticket_menu = {
     "1": "id",
     "2": "name",
     "3": "manufacturer",
@@ -647,9 +648,9 @@ def update_product(products: pd.DataFrame):
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
-                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_order_menu[cmd]}" + Fore.RESET)
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
-                      f"Old value of {update_order_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
                 new_val = input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
                 if new_val not in products.index and new_val != "" and len(new_val) >= 3:
@@ -663,7 +664,7 @@ def update_product(products: pd.DataFrame):
             elif cmd == "9":
                 break
             elif cmd in ["2", "3", "4", "5", "6", "7", "8"]:
-                d_type = update_order_menu[cmd]
+                d_type = update_ticket_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
@@ -697,43 +698,44 @@ def update_product(products: pd.DataFrame):
 
 # ----------------------------------------------------------------------------------------------------
 
+
 def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
     print("+" + "-"*25 + "ADD AN ORDER" + "-"*25 + "+" + "\n\n")  # GUI
     # OrderID
     orderId = input(Fore.LIGHTMAGENTA_EX +
-               "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+                    "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     while orderId in orders.index:
         throw_error('error', "Duplicate ID")
         orderId = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                   "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+                        "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     if orderId == "":  # Gen uuid if input is empty
         orderId = str(uuid.uuid4())
     cls()
 
     # CustomerID
     customerID = input(Fore.LIGHTMAGENTA_EX +
-               "Enter Customer ID: " + Fore.RESET)
+                       "Enter Customer ID: " + Fore.RESET)
     while customerID not in customers.index:
         throw_error('error', "Customer ID not found!")
         customerID = input(Fore.LIGHTMAGENTA_EX +
-               "Enter Customer ID: " + Fore.RESET)
+                           "Enter Customer ID: " + Fore.RESET)
     cls()
     # ProductID
     productID = input(Fore.LIGHTMAGENTA_EX +
-               "Enter Product ID: " + Fore.RESET)
+                      "Enter Product ID: " + Fore.RESET)
     while productID not in products.index:
         throw_error('error', "Product ID not found!")
         productID = input(Fore.LIGHTMAGENTA_EX +
-               "Enter Product ID: " + Fore.RESET)
+                          "Enter Product ID: " + Fore.RESET)
     cls()
-    
+
     # Qty
     qty = input(Fore.LIGHTMAGENTA_EX +
-               "Enter Quantity: " + Fore.RESET)
+                "Enter Quantity: " + Fore.RESET)
     while not qty.isdigit():
         throw_error('error', "Invalid value for quantity: " + qty)
         qty = input(Fore.LIGHTMAGENTA_EX +
-               "Enter Quantity: " + Fore.RESET)
+                    "Enter Quantity: " + Fore.RESET)
     cls()
 
     # Price
@@ -745,7 +747,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
             throw_error(
                 'error', "Invalid Price: %s" % price)
             price = input(Fore.LIGHTMAGENTA_EX +
-                               "Enter Price: " + Fore.RESET)
+                          "Enter Price: " + Fore.RESET)
     total_price = int(qty) * price
     cls()
 
@@ -760,7 +762,8 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 |        "16th January 2021"     OR      "16 January 2021"         |
 |        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
 +==================================================================+{Fore.RESET}\n\n\n""")
-    doo_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date of Order: " + Fore.RESET)
+    doo_check = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter Date of Order: " + Fore.RESET)
     doo = date_decoder(doo_check)
     while doo is None:  # Retake inputs for DOB till its valid
         throw_error('error', *data_error_msgs["dob"](doo_check))
@@ -774,14 +777,15 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 |        "16th January 2021"     OR      "16 January 2021"         |
 |        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
 +==================================================================+{Fore.RESET}\n\n\n""")
-        doo_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date of Order: " + Fore.RESET)
+        doo_check = input(Fore.LIGHTMAGENTA_EX +
+                          "Enter Date of Order: " + Fore.RESET)
         doo = date_decoder(doo_check)
     cls()
 
     # Status
     States = ["Cancelled", "Delivered", "Pending", "Pre-Shipment", "Unshipped"]
     States_check = input(Fore.LIGHTMAGENTA_EX +
-"""==== STATUS LIST ====
+                         """==== STATUS LIST ====
 1)  Cancelled
 2)  Delivered
 3)  Pending
@@ -797,7 +801,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         except Exception as e:
             throw_error('error', "Invalid State: %s" % State)
             States_check = input(Fore.LIGHTMAGENTA_EX +
-"""==== STATUS LIST ====
+                                 """==== STATUS LIST ====
 1)  Cancelled
 2)  Delivered
 3)  Pre-Shipment
@@ -813,7 +817,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     prod_name = prod["name"]
     # Data Summmarization
     NewData = [customerID, cust_first_name, cust_last_name, productID, prod_name, qty,
-    total_price, doo, State, cust_address]
+               total_price, doo, State, cust_address]
     print("+" + "-"*50 + "+")
     if all(NewData):
         ll = max([len(str(x)) for x in NewData])
@@ -847,6 +851,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         throw_error('error', f"Invalid Data",
                     'The data is invalid, please try again.')
 
+
 def delete_order(orders: pd.DataFrame):
     cls()
     id = input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
@@ -869,16 +874,17 @@ def delete_order(orders: pd.DataFrame):
         pause()
 
 
-update_order_menu = {
-    "1" : "orderId",
-    "2" : "customerID",
-    "3" : "productID",
-    "4" : "qty",
-    "5" : "total_price",
-    "6" : "doo",
-    "7" : "State",
+update_ticket_menu = {
+    "1": "orderId",
+    "2": "customerID",
+    "3": "productID",
+    "4": "qty",
+    "5": "total_price",
+    "6": "doo",
+    "7": "State",
     "8": "Back"
 }
+
 
 def data_validator_order_bool(customers, products, orders, id, data, d_type):
     order = orders.loc[id]
@@ -929,9 +935,9 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
-                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_order_menu[cmd]}" + Fore.RESET)
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
-                      f"Old value of {update_order_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
                 new_val = input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
                 if new_val not in orders.index and new_val != "" and len(new_val) >= 3:
@@ -945,7 +951,7 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
             elif cmd == "8":
                 break
             elif cmd in "2345667":
-                d_type = update_order_menu[cmd]
+                d_type = update_ticket_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
@@ -958,7 +964,8 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                         orders.at[id, d_type] = new_val
                         if d_type == "customerID":
                             cust = customers.loc[new_val]
-                            orders.at[id, "customerFirstName"] = cust["first_name"]
+                            orders.at[id,
+                                      "customerFirstName"] = cust["first_name"]
                             orders.at[id, "customerLastName"] = cust["last_name"]
                             orders.at[id, "address"] = cust["address"]
                         elif d_type == "productID":
@@ -971,3 +978,464 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                     throw_error('error', 'Error while updating order data',
                                 "Please make sure you have entered the correct details.")
                 sel_rec = orders.loc[id]
+
+def delete_order(orders: pd.DataFrame):
+    cls()
+    id = input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
+    # Check if id is in the df
+    if id not in orders.index:
+        throw_error("error", "Order ID is not in the Database",
+                    "Please make sure if the ID you have entered is correct")
+    else:
+        sel_rec = orders.loc[id]
+        print(
+            f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        confirm_check = "ADMIN#" + id[len(id)-3:]
+        confirm = input(
+            f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check:
+            print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        else:
+            orders.drop(id, inplace=True)
+            print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        pause()
+
+
+update_ticket_menu = {
+    "1": "orderId",
+    "2": "customerID",
+    "3": "productID",
+    "4": "qty",
+    "5": "total_price",
+    "6": "doo",
+    "7": "State",
+    "8": "Back"
+}
+
+
+def data_validator_order_bool(customers, products, orders, id, data, d_type):
+    order = orders.loc[id]
+    if d_type == "orderId":
+        return not (data in orders.index)
+    elif d_type in "customerID":
+        return data in customers.index
+    elif d_type in "products":
+        return data in products.index
+    elif d_type == "State":
+        return data in ["Cancelled", "Delivered", "Pending", "Pre-Shipment", "Unshipped"]
+    elif d_type == "qty":
+        return data.isdigit()
+    elif d_type == "total_price":
+        return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
+    elif d_type == "doo":
+        if date_decoder(data):
+            return True
+        else:
+            return False
+
+
+def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
+    cls()
+    id = input(Fore.CYAN + "Order ID To Update: " + Fore.RESET).strip()
+    if id not in orders.index:
+        throw_error('error', "ID not found: " + id,
+                    "Order ID was not found in the database.\nPlease make sure you have entered a valid Order ID.")
+        print(orders.index)
+    else:
+        sel_rec = orders.loc[id]
+        print(Fore.CYAN + "This is the selected Record: \n" +
+              Fore.RESET, sel_rec, sep="")
+        pause()
+        cls()
+        while True:
+            cls()
+            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
+        1)  orderId
+        2)  customerID
+        3)  productID
+        4)  qty
+        5)  total_price
+        6)  doo
+        7)  State
+        8)  Back
+            """)
+            cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
+            if cmd == "1":
+                print(
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
+                print(Fore.CYAN +
+                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = input(
+                    Fore.CYAN + "Enter your new value: " + Fore.RESET)
+                if new_val not in orders.index and new_val != "" and len(new_val) >= 3:
+                    orders.rename(
+                        index={sel_rec.name: new_val}, inplace=True)
+                    print("ID changed successfully")
+                    id = new_val
+                    sel_rec = orders.loc[id]
+                else:
+                    throw_error('error', f'Invalid order ID: {new_val}')
+            elif cmd == "8":
+                break
+            elif cmd in "2345667":
+                d_type = update_ticket_menu[cmd]
+                print(Fore.CYAN +
+                      f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
+                print(
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
+                new_val = input(f"Enter your new value: {Fore.RED}")
+                print(f"{Fore.CYAN}Your new value for {d_type}: " +
+                      Fore.RED, new_val, Fore.RESET)
+                if data_validator_order_bool(customers, products,  orders, id, new_val, d_type):
+                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
+                        orders.at[id, d_type] = new_val
+                        if d_type == "customerID":
+                            cust = customers.loc[new_val]
+                            orders.at[id,
+                                      "customerFirstName"] = cust["first_name"]
+                            orders.at[id, "customerLastName"] = cust["last_name"]
+                            orders.at[id, "address"] = cust["address"]
+                        elif d_type == "productID":
+                            prod = products.loc[new_val]
+                            orders.at[id, "productName"] = prod["name"]
+                    else:
+                        print("\nUpdating value cancelled.")
+                        pause()
+                else:
+                    throw_error('error', 'Error while updating order data',
+                                "Please make sure you have entered the correct details.")
+                sel_rec = orders.loc[id]
+
+# ----------------------------------------------------------------------------------------------------
+
+
+def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame):
+    print("+" + "-"*25 + "ADD A TICKET" + "-"*25 + "+" + "\n\n")  # GUI
+    # TicketID
+    ticketID = input(Fore.LIGHTMAGENTA_EX +
+                     "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    while ticketID in tickets.index:
+        throw_error('error', "Duplicate ID")
+        ticketID = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
+                         "Enter ID (Leave blank for random uuid): " + Fore.RESET)
+    if ticketID == "":  # Gen uuid if input is empty
+        ticketID = str(uuid.uuid4())
+    cls()
+
+    # CustID
+    CustID = input(Fore.LIGHTMAGENTA_EX +
+                   "Enter Customer ID: " + Fore.RESET)
+    while CustID not in customers.index:
+        throw_error('error', "Customer ID not found!")
+        CustID = input(Fore.LIGHTMAGENTA_EX +
+                       "Enter Customer ID: " + Fore.RESET)
+    cls()
+    # OrderID
+    OrderID = input(Fore.LIGHTMAGENTA_EX +
+                    "Enter Order ID: " + Fore.RESET)
+    while OrderID not in orders.index:
+        throw_error('error', "Order ID not found!")
+        print(orders.index)
+        OrderID = input(Fore.LIGHTMAGENTA_EX +
+                        "Enter Order ID: " + Fore.RESET)
+    cls()
+
+    # Issue Category & Issue
+    issueCategory = input(Fore.LIGHTMAGENTA_EX + "Enter Issue Category: " +
+                          Fore.RESET)
+    issue = input(Fore.LIGHTMAGENTA_EX + "Enter Issue: " +
+                  Fore.RESET)
+
+    # Date of Open
+    print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+    do_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date Opened: " + Fore.RESET)
+    do = date_decoder(do_check)
+    while do is None:  # Retake inputs for DOB till its valid
+        throw_error('error', *data_error_msgs["dob"](do_check))
+        cls()
+        print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+        do_check = input(Fore.LIGHTMAGENTA_EX +
+                         "Enter Date of Opened: " + Fore.RESET)
+        do = date_decoder(do_check)
+    cls()
+
+    # Date of Closed
+    print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+    doc_check = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter Date Closed: " + Fore.RESET)
+    doc = date_decoder(doc_check)
+    while doc is None and doc_check != "-":  # Retake inputs for DOB till its valid
+        throw_error('error', *data_error_msgs["dob"](doc_check))
+        cls()
+        print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+        doc_check = input(Fore.LIGHTMAGENTA_EX +
+                          "Enter Date Closed: " + Fore.RESET)
+        doc = date_decoder(doc_check)
+    if doc_check == "-":
+        doc = np.NaN
+    cls()
+
+    # FRT
+    frt = input(Fore.LIGHTMAGENTA_EX +
+                "Enter First Response Time: " + Fore.RESET)
+    while type(frt) != float:
+        try:
+            frt = float(frt)
+        except Exception as e:
+            throw_error(
+                'error', "Invalid Price: %s" % frt)
+            frt = input(Fore.LIGHTMAGENTA_EX +
+                        "Enter First Response Time: " + Fore.RESET)
+    cls()
+
+    # Customer Satisfaction
+    custSatis = input(Fore.LIGHTMAGENTA_EX +
+                      "Enter Customer Satisfaction: " + Fore.RESET)
+    while type(custSatis) != float:
+        try:
+            custSatis = float(custSatis)
+        except Exception as e:
+            throw_error(
+                'error', "Invalid Customer Satisfaction: %s" % custSatis)
+            custSatis = input(Fore.LIGHTMAGENTA_EX +
+                              "Enter Customer Satisfaction: " + Fore.RESET)
+    cls()
+
+    # Replies
+    replies = input(Fore.LIGHTMAGENTA_EX +
+                    "Enter Replies: " + Fore.RESET)
+    while not replies.isdigit():
+        throw_error('error', "Invalid value for replies: " + replies)
+        replies = input(Fore.LIGHTMAGENTA_EX +
+                    "Enter Replies: " + Fore.RESET)
+    cls()
+
+    # Get Customer and Product data
+    cust = customers.loc[CustID]
+    cust_first_name = cust["first_name"]
+    cust_phone = cust["phone"]
+
+    order = orders.loc[OrderID]
+    status = order["status"]
+
+    # HoursTaken
+    if doc_check == "-":
+        hoursTaken = np.NaN
+    else:
+        res = doc - do
+        hoursTaken = res.days * 24
+
+    prod = products.loc[order['productID']]
+    prod_name = prod["name"]
+    prod_category = prod["category"]
+    # Data Summmarization
+    NewData = [CustID, OrderID, prod_name, prod_category,
+               cust_first_name, cust_phone, status, issueCategory, issue,
+               do, doc, frt, replies, custSatis]
+    print("+" + "-"*50 + "+")
+    if all(NewData):
+        ll = max([len(str(x)) for x in NewData])
+        fac = 62 if ll <= 62 else ll
+        eq = ll - 62 if ll > 62 else 0
+        print(f"""
+    +{"=" * (eq//2)}=================================Please Confirm the Data Input============================{"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
+    | TicketID                 : {ticketID}                      {" " * (fac - len(str(ticketID          )))}|
+    | CustID                   : {CustID}                        {" " * (fac - len(str(CustID            )))}|
+    | OrderID                  : {OrderID}                       {" " * (fac - len(str(OrderID           )))}|
+    | ProductName              : {prod_name}                     {" " * (fac - len(str(prod_name         )))}|
+    | ProductCategory          : {prod_category}                 {" " * (fac - len(str(prod_category     )))}|
+    | CustFirstName            : {cust_first_name}               {" " * (fac - len(str(cust_first_name   )))}|
+    | CustPhone                : {cust_phone}                    {" " * (fac - len(str(cust_phone        )))}|
+    | Status                   : {status}                        {" " * (fac - len(str(status            )))}|
+    | IssueCategory            : {issueCategory}                 {" " * (fac - len(str(issueCategory     )))}|
+    | Issue                    : {issue}                         {" " * (fac - len(str(issue             )))}|
+    | DateOpened               : {do}                            {" " * (fac - len(str(do                )))}|
+    | DateClosed               : {doc}                           {" " * (fac - len(str(doc               )))}|
+    | HoursTaken               : {hoursTaken}                    {" " * (fac - len(str(hoursTaken        )))}|
+    | FirstResponseTime        : {frt}                           {" " * (fac - len(str(frt               )))}|
+    | Replies                  : {replies}                       {" " * (fac - len(str(replies           )))}|
+    | CustomerSatisfaction(%)  : {custSatis}                     {" " * (fac - len(str(custSatis         )))}|
+    +=========================================================================================={"=" * eq}+
+    """)
+        reck = input(
+            "Would you like to insert this data to Orders.csv ? (Y/N): ")
+        if reck.lower() == "y":
+            tickets.loc[ticketID] = NewData
+            print("Record inserted successfully!")
+        else:
+            print("Record Insertion Cancelled :(")
+        time.sleep(1)
+        pause()
+    else:
+        throw_error('error', f"Invalid Data",
+                    'The data is invalid, please try again.')
+
+def delete_ticket(tickets: pd.DataFrame):
+    cls()
+    id = input(f"{Fore.CYAN}Enter the ticket ID to delete: {Fore.RESET}")
+    # Check if id is in the df
+    if id not in tickets.index:
+        throw_error("error", "Ticket ID is not in the Database",
+                    "Please make sure if the ID you have entered is correct")
+    else:
+        sel_rec = tickets.loc[id]
+        print(
+            f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
+        confirm_check = "ADMIN#" + id[len(id)-3:]
+        confirm = input(
+            f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
+        if confirm != confirm_check:
+            print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
+        else:
+            tickets.drop(id, inplace=True)
+            print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        pause()
+
+
+update_ticket_menu = {
+    "1": "TicketId",
+    "2": "CustID",
+    "3": "OrderID",
+    "4": "Status",
+    "5": "IssueCategory",
+    "6": "Issue",
+    "7": "DateOpened",
+    "8": "DateClosed",
+    "9": "HoursTaken",
+    "10": "FirstResponseTime",
+    "11": "Replies",
+    "12": "CustomerSatisfaction"
+}
+
+
+def data_validator_ticket_bool(customers, products, orders, tickets, id, data, d_type):
+    ticket = tickets.loc[id]
+    if d_type == "TicketID":
+        return not (data in tickets.index)
+    elif d_type in "CustID":
+        return data in customers.index
+    elif d_type in "OrderID":
+        return data in orders.index
+    elif d_type == "Status":
+        return data in ["Open", "Closed"]
+    elif d_type in ["IssueCategory", "Issue"]:
+        return True
+    elif d_type == "Replies":
+        return data.isdigit()
+    elif d_type in ["HoursTaken", "FirstResponseTime", "CustomerSatisfaction"]:
+        return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
+    elif d_type in ["DateOpened", "DateClosed"]:
+        if date_decoder(data):
+            return True
+        else:
+            return False
+
+
+def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame):
+    cls()
+    id = input(Fore.CYAN + "Ticket ID To Update: " + Fore.RESET).strip()
+    if id not in tickets.index:
+        throw_error('error', "ID not found: " + id,
+                    "Ticket ID was not found in the database.\nPlease make sure you have entered a valid Ticket ID.")
+        print(tickets.index)
+    else:
+        sel_rec = tickets.loc[id]
+        print(Fore.CYAN + "This is the selected Record: \n" +
+              Fore.RESET, sel_rec, sep="")
+        pause()
+        cls()
+        while True:
+            cls()
+            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
+        1) TicketId
+        2) CustID
+        3) OrderID
+        4) Status
+        5) IssueCategory
+        6) Issue
+        7) DateOpened
+        8) DateClosed
+        9) HoursTaken
+        10) FirstResponseTime
+        11) Replies
+        12) CustomerSatisfaction
+            """)
+            cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
+            if cmd == "1":
+                print(
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
+                print(Fore.CYAN +
+                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = input(
+                    Fore.CYAN + "Enter your new value: " + Fore.RESET)
+                if new_val not in tickets.index and new_val != "" and len(new_val) >= 3:
+                    tickets.rename(
+                        index={sel_rec.name: new_val}, inplace=True)
+                    print("ID changed successfully")
+                    id = new_val
+                    sel_rec = tickets.loc[id]
+                else:
+                    throw_error('error', f'Invalid order ID: {new_val}')
+            elif cmd == "13":
+                break
+            elif cmd in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]:
+                d_type = update_ticket_menu[cmd]
+                print(Fore.CYAN +
+                      f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
+                print(
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
+                new_val = input(f"Enter your new value: {Fore.RED}")
+                print(f"{Fore.CYAN}Your new value for {d_type}: " +
+                      Fore.RED, new_val, Fore.RESET)
+                if data_validator_ticket_bool(customers, products, orders, tickets, id, new_val, d_type):
+                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
+                        tickets.at[id, d_type] = new_val
+                        if d_type == "CustID":
+                            cust = customers.loc[new_val]
+                            tickets.at[id,
+                                      "CustFirstName"] = cust["first_name"]
+                            tickets.at[id, "CustPhone"] = cust["phone"]
+                        elif d_type == "OrderID":
+                            order = orders.loc[new_val]
+                            prod = products.loc[order["productID"]]
+                            tickets.at[id, "ProductName"] = prod["name"]
+                            tickets.at[id, "ProductCategory"] = prod["category"]
+                    else:
+                        print("\nUpdating value cancelled.")
+                        pause()
+                else:
+                    throw_error('error', 'Error while updating order data',
+                                "Please make sure you have entered the correct details.")
+                sel_rec = tickets.loc[id]
