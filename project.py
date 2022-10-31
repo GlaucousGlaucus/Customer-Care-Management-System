@@ -15,14 +15,14 @@ print(f"[{datetime.now()}] Loading Files...")
 
 # Read the Files
 date_format = r"%Y/%m/%d %H:%M:%S"
-customers = pd.read_csv('Data\customers.csv', index_col='id')
+customers = pd.read_csv('Data\customers1.csv', index_col='id')
 customers["dob"] = pd.to_datetime(
     customers["dob"], format=date_format)
-orders = pd.read_csv('Data\orders.csv', index_col='orderID')
+orders = pd.read_csv('Data\orders1.csv', index_col='orderID')
 orders["dateofOrder"] = pd.to_datetime(
     orders["dateofOrder"], format=date_format)
-products = pd.read_csv('Data\products.csv', index_col='id')
-tickets = pd.read_csv(r'Data\tickets.csv', index_col='TicketID')
+products = pd.read_csv('Data\products1.csv', index_col='id')
+tickets = pd.read_csv(r'Data\tickets1.csv', index_col='TicketID')
 tickets["DateOpened"] = pd.to_datetime(
     tickets["DateOpened"], format=date_format)
 tickets["DateClosed"] = pd.to_datetime(
@@ -44,6 +44,31 @@ date_info = f"""{Fore.LIGHTRED_EX}
 |        "16th January 2021"     OR      "16 January 2021"         |
 |        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
 +==================================================================+{Fore.RESET}\n\n\n"""
+
+def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: list):
+    global menu_level
+    other_options = [str(x) for x in other_options]
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == str(exit_code):
+            menu_level = str(exit_to_level)
+            break
+        reversee = input(
+            f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
+        sort_df = None
+        in_place = input(
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"
+        if cmd == "1":
+            sort_df = df.sort_index(ascending=reversee, inplace=in_place)
+        elif cmd in other_options:
+            col = df.columns[int(cmd)-2]
+            sort_df = df.sort_values(
+                by=col, ascending=reversee, inplace=in_place)
+        print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
+        actions.pause()
+        actions.cls()
+    return df
 
 
 def amc_Search():
@@ -74,7 +99,9 @@ def amc_Search():
         elif cmd_n == "13":
             qry = input(
                 f"{Fore.CYAN}Index:\n\t1) PRIME\n\t2) Not PRIME\nEnter Query: {Fore.RESET}").strip().lower()
-            qry_result = search_engine.by_options(int(qry), col(cmd_n), {1: "PRIME", 2: "-"})
+            options = {"1": "PRIME", "2": "-"}
+            qry_result = search_engine.by_options(
+                qry, col(cmd_n), options=options, like=True)
         # Reset the operating df
         elif cmd_n == "14":
             if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
@@ -84,7 +111,7 @@ def amc_Search():
             menu_level = "1.1"
             break
         # Check if the user wants to use the generated df for further queries
-        if cmd_n in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]:
+        if cmd_n in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]:
             print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
             if not qry_result.empty:
                 print(qry_result)
@@ -217,7 +244,7 @@ def am_cust_f():
         # Sort
         elif cmd == "6":
             menu_level = "1.1.2"
-            customers = SortData(customers, 1.1, 14, [
+            SortData(customers, 1.1, "14", [
                                  "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"])
         # Data Analysis
         elif cmd == "7":
@@ -372,7 +399,7 @@ def am_prod_f():
         # Sort products
         elif cmd == "6":
             menu_level = "1.2.2"
-            products = SortData(products, 1.2, 9, [
+            SortData(products, 1.2, "9", [
                                 "2", "3", "4", "5", "6", "7", "8"])
         # Data Analysis
         elif cmd == "7":
@@ -509,7 +536,7 @@ def am_ord_f():
                 pause()
         elif cmd == "6":
             menu_level = "1.3.2"
-            orders = SortData(orders, 1.3, 12, [
+            SortData(orders, 1.3, "12", [
                               "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])
 
 
@@ -533,7 +560,7 @@ def amt_Search():
         # Search by Status
         elif cmd == "8":
             qry = input("Index: \n\t1) Open\n\t2) Closed\nCommand: ")
-            options = {1: "Open", 2: "Closed"}
+            options = {"1": "Open", "2": "Closed"}
             qry_result = search_engine.by_options(qry, col(cmd), options)
         # Search by Issue Category
         elif cmd == "9":  # TODO Maybe use options here
@@ -567,31 +594,6 @@ def amt_Search():
             else:
                 print(f"\nEmpty dataframe\n")
         pause()
-
-
-def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: list):
-    global menu_level
-    while True:
-        print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == exit_code:
-            menu_level = exit_to_level
-            break
-        reversee = input(
-            f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
-        sort_df = None
-        in_place = input(
-            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"
-        if cmd == "1":
-            sort_df = df.sort_index(ascending=reversee, inplace=in_place)
-        elif cmd in other_options:
-            col = df.columns[int(cmd)-2]
-            sort_df = df.sort_values(
-                by=col, ascending=reversee, inplace=in_place)
-        print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
-        pause()
-        cls()
-    return df
 
 
 def amt_DA_PieChart():
@@ -732,7 +734,8 @@ def amt_RG_Summerzie():
         cmd = input("Command: ")
         # TODO Ask to show graph
         tdy = pd.to_datetime(datetime.today().date())
-        cmd_index = {1: "Today's", 2: "Weekly", 3: "Monthly", 4: "Yearly", 5: "Custom"}
+        cmd_index = {1: "Today's", 2: "Weekly",
+                     3: "Monthly", 4: "Yearly", 5: "Custom"}
         range_index = {
             1: [tdy, tdy],
             2: [tdy - pd.to_timedelta(7, unit='D'), tdy],
@@ -749,54 +752,58 @@ def amt_RG_Summerzie():
                     do_check = input(Fore.LIGHTMAGENTA_EX + sore + Fore.RESET)
                     do = actions.date_decoder(do_check, time=True)
                     while do is None:
-                        actions.throw_error('error', *actions.data_error_msgs["dob"](do_check))
+                        actions.throw_error(
+                            'error', *actions.data_error_msgs["dob"](do_check))
                         cls()
                         print(date_info)
                         do_check = input(Fore.LIGHTMAGENTA_EX +
-                                 sore + Fore.RESET)
+                                         sore + Fore.RESET)
                         do = actions.date_decoder(do_check, time=True)
                     rangee.append(do)
             else:
                 rangee = range_index[int(cmd)]
             # Generate Dataframe and Report
             start, end = pd.to_datetime(rangee[0]), pd.to_datetime(rangee[1])
-            start_cond = (tickets['DateOpened'] >= start) | (tickets['DateClosed'] >= start)
-            end_cond = (tickets['DateOpened'] <= end) | (tickets['DateClosed'] <= end)
+            start_cond = (tickets['DateOpened'] >= start) | (
+                tickets['DateClosed'] >= start)
+            end_cond = (tickets['DateOpened'] <= end) | (
+                tickets['DateClosed'] <= end)
             df = tickets[start_cond & end_cond]
-            if df.empty: return None
+            if df.empty:
+                return None
             print_text(Fore.CYAN, "Your Data:")
             print(df)
             pause()
             print(Fore.CYAN,
                   f"""
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-▒                        ___ _   _ _ __ ___  _ __ ___   __ _ _ __ _   _ 
-▒                       / __| | | | '_ ` _ \| '_ ` _ \ / _` | '__| | | |
-▒                       \__ \ |_| | | | | | | | | | | | (_| | |  | |_| |
-▒                       |___/\__,_|_| |_| |_|_| |_| |_|\__,_|_|   \__, |
-▒                                                                  __/ |
-▒                                                                 |___/ 
-▒                                                                                                                                                                                
-▒   
-▒   {cmd_index} Data:                                                                              
-▒                                                                                            
-▒   Date:                       {Fore.RED}{pd.to_datetime(datetime.today())}{Fore.CYAN}                                                  
-▒                                                                                            
-▒   Total Replies:              {Fore.RED}{df['Replies'].sum()}{Fore.CYAN}                                
-▒   Tickets Opened:             {Fore.RED}{len(df[(df['DateOpened'] >= start) & (df['DateOpened'] <= end)])}{Fore.CYAN}                  
-▒   Tickets Closed:             {Fore.RED}{len(df[(df['DateClosed'] >= start) & (df['DateClosed'] <= end)])}{Fore.CYAN}                  
-▒                                                                                            
-▒   Avg First Response:         {Fore.RED}{df['FirstResponseTime(Min)'].mean()}{Fore.CYAN}           
-▒   Avg Customer Satisfaction:  {Fore.RED}{df['CustomerSatisfaction(%)'].mean()}{Fore.CYAN}   
-▒                                                                                            
-▒   Products Categories Reported For {cmd_index}:                                                  
-▒   {Fore.RED}{set(list(df['ProductCategory']))}{Fore.CYAN}                                              
-▒                                                                                            
-▒   Most Popular Issue Category:{Fore.RED}{df['IssueCategory'].mode()[0]}{Fore.CYAN}     
-▒                                                                                            
-▒   Total Replies [Open]:       {Fore.RED}{df[(df['DateOpened'] >= start) & (df['DateOpened'] <= end)]['Replies'].sum()}{Fore.CYAN}                         
-▒   Total Replies [Closed]:     {Fore.RED}{df[(df['DateOpened'] >= start) & (df['DateOpened'] <= end)]['Replies'].sum()}{Fore.CYAN}                       
-▒
+                        ___ _   _ _ __ ___  _ __ ___   __ _ _ __ _   _ 
+                       / __| | | | '_ ` _ \| '_ ` _ \ / _` | '__| | | |
+                       \__ \ |_| | | | | | | | | | | | (_| | |  | |_| |
+                       |___/\__,_|_| |_| |_|_| |_| |_|\__,_|_|   \__, |
+                                                                  __/ |
+                                                                 |___/ 
+                                                                                                                                                                                
+   
+   {cmd_index} Data:                                                                              
+                                                                                            
+   Date:                       {Fore.RED}{pd.to_datetime(datetime.today())}{Fore.CYAN}                                                  
+                                                                                            
+   Total Replies:              {Fore.RED}{df['Replies'].sum()}{Fore.CYAN}                                
+   Tickets Opened:             {Fore.RED}{len(df[(df['DateOpened'] >= start) & (df['DateOpened'] <= end)])}{Fore.CYAN}                  
+   Tickets Closed:             {Fore.RED}{len(df[(df['DateClosed'] >= start) & (df['DateClosed'] <= end)])}{Fore.CYAN}                  
+                                                                                            
+   Avg First Response:         {Fore.RED}{df['FirstResponseTime(Min)'].mean()}{Fore.CYAN}           
+   Avg Customer Satisfaction:  {Fore.RED}{df['CustomerSatisfaction(%)'].mean()}{Fore.CYAN}   
+                                                                                            
+   Products Categories Reported For {cmd_index}:                                                  
+   {Fore.RED}{set(list(df['ProductCategory']))}{Fore.CYAN}                                              
+                                                                                            
+   Most Popular Issue Category:{Fore.RED}{df['IssueCategory'].mode()[0]}{Fore.CYAN}     
+                                                                                            
+   Total Replies [Open]:       {Fore.RED}{df[(df['DateOpened'] >= start) & (df['DateOpened'] <= end)]['Replies'].sum()}{Fore.CYAN}                         
+   Total Replies [Closed]:     {Fore.RED}{df[(df['DateOpened'] >= start) & (df['DateOpened'] <= end)]['Replies'].sum()}{Fore.CYAN}                       
+
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 """, Fore.RESET)
             pause()
@@ -810,9 +817,12 @@ def amt_MG_GenFromTemplate():
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
+        if cmd == "4":
+            menu_level = "1.4.5"
+            break
         # TicketID
         TicketID = input(Fore.LIGHTMAGENTA_EX +
-                   "Enter Ticket ID: " + Fore.RESET)
+                         "Enter Ticket ID: " + Fore.RESET)
         if TicketID not in tickets.index:
             actions.throw_error('error', "Ticket ID not found!")
             continue
@@ -820,7 +830,7 @@ def amt_MG_GenFromTemplate():
         # First Response
         if cmd == "1":
             print(
-f"""
+                f"""
   ______ _          _     _____                                      
  |  ____(_)        | |   |  __ \                                     
  | |__   _ _ __ ___| |_  | |__) |___  ___ _ __   ___  _ __  ___  ___ 
@@ -850,7 +860,7 @@ possible. This may take upto a few minutes.
         # Denied
         elif cmd == "2":
             print(
-f"""
+                f"""
    _____                            _     _____             _          _ 
   |  __ \                          | |   |  __ \           (_)        | |
   | |__) |___  __ _ _   _  ___  ___| |_  | |  | | ___ _ __  _  ___  __| |
@@ -878,7 +888,7 @@ Please inform us of any other issue we can help you with.
         # Acknolwegement
         elif cmd == "3":
             print(
-f"""
+                f"""
                 _                        _          _                _ 
       /\       | |                      | |        | |              | |
      /  \   ___| | ___ __   _____      _| | ___  __| | __ _  ___  __| |
@@ -904,9 +914,6 @@ Status:     {ticket_data['Status']}
 The process may take upto several minuites to complete, hence please be patient
 with us. Thank you for contacting us.
 """)
-        elif cmd == "4":
-            menu_level = "1.4.5"
-            break
 
 
 def amt_MG_Custom():
@@ -915,19 +922,21 @@ def amt_MG_Custom():
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
-        # TicketID
-            cmd = input("Command: ")
+            # TicketID
             TicketID = input(Fore.LIGHTMAGENTA_EX +
-                       "Enter Ticket ID: " + Fore.RESET)
+                             "Enter Ticket ID: " + Fore.RESET)
             while TicketID not in tickets.index:
-                actions.throw_error('error', "Ticket ID not found!")
+                if TicketID == "EXT": 
+                    break
+                actions.throw_error('error', "Ticket ID not found! Type EXT TO QUIT")
                 TicketID = input(Fore.LIGHTMAGENTA_EX +
-                                   "Enter Ticket ID: " + Fore.RESET)
-            ticket_data = tickets.loc[TicketID]
-            print_menu(menu_level)
-            message = input("Enter your message: \n")
-            print(
-f"""
+                                 "Enter Ticket ID: " + Fore.RESET)
+            else:
+                ticket_data = tickets.loc[TicketID]
+                print_menu(menu_level)
+                message = input("Enter your message: \n")
+                print(
+                f"""
    _____          _                               _____                              _   
   / ____|        | |                             / ____|                            | |  
  | |    _   _ ___| |_ ___  _ __ ___   ___ _ __  | (___  _   _ _ __  _ __   ___  _ __| |_ 
@@ -1026,7 +1035,7 @@ def am_tick_f():
                 pause()
         elif cmd == "6":
             menu_level = "1.4.2"
-            tickets = SortData(tickets, 1.4, 17, [
+            SortData(tickets, 1.4, "17", [
                                2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
         elif cmd == "7":
             menu_level = "1.4.3"
@@ -1083,18 +1092,21 @@ def cust_menu_f():
                     cmd = input("Command: ")
                     if cmd == "1":
                         cls()
-                        actions.add_a_ticket(customers, products, orders, tickets, custid=CustID, register=True)
+                        actions.add_a_ticket(
+                            customers, products, orders, tickets, custid=CustID, register=True)
                     elif cmd == "2":
                         search_engine = Searchy(tickets)
-                        qry_result = search_engine.by_string(CustID, tickets.columns[0])
+                        qry_result = search_engine.by_string(
+                            CustID, tickets.columns[0])
                         print(Fore.LIGHTMAGENTA_EX, qry_result, Fore.RESET)
                         pause()
                     elif cmd == "3":
-                        actions.update_ticket(customers, products, orders, tickets, close=True)
+                        actions.update_ticket(
+                            customers, products, orders, tickets, close=True)
                     elif cmd == "4":
                         data = customers.loc[CustID]
                         print(Fore.CYAN,
-f"""
+                              f"""
                                     ╔═╗╦═╗╔═╗╔═╗╦╦  ╔═╗
                                     ╠═╝╠╦╝║ ║╠╣ ║║  ║╣ 
                                     ╩  ╩╚═╚═╝╚  ╩╩═╝╚═╝
@@ -1143,8 +1155,8 @@ f"""
                 pause()
         elif cmd == "2":
             cls()
-            print(Fore.LIGHTCYAN_EX + 
-"""
+            print(Fore.LIGHTCYAN_EX +
+                  """
 │                        ╦═╗╔═╗╔═╗╦╔═╗╔╦╗╔═╗╦═╗                        │
 │                        ╠╦╝║╣ ║ ╦║╚═╗ ║ ║╣ ╠╦╝                        │
 │                        ╩╚═╚═╝╚═╝╩╚═╝ ╩ ╚═╝╩╚═                        │
@@ -1182,4 +1194,8 @@ while True:
 
 print("Thank you for using this software.")
 print(f"[{datetime.now()}] Quitting...")
+customers.to_csv(r'Data\customers1.csv')
+products.to_csv(r'Data\products1.csv')
+orders.to_csv(r'Data\orders1.csv')
+tickets.to_csv(r'Data\tickets1.csv')
 time.sleep(1)

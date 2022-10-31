@@ -5,8 +5,10 @@ import actions
 
 # TODO: Move the Sort method from project.py to this file
 
+
 def print_text(Color, *text):
     print(f"{Color}{text}{Fore.RESET}")
+
 
 class Searchy:
 
@@ -39,9 +41,12 @@ class Searchy:
             qry_result = pd.DataFrame()
         return qry_result
 
-    def by_options(self, qry, col: str, options: list):
+    def by_options(self, qry, col: str, options: list, like=False):
         qry_df = self.df[col]
-        qry_result = self.df.loc[qry_df == options[qry]]
+        if like:
+            qry_result = self.df.loc[qry_df.str.contains(options[qry])]
+        else:
+            qry_result = self.df.loc[qry_df == options[qry]]
         return qry_result
 
     def by_date(self, col, format=r"%Y-%m-%d", time=False):
