@@ -2,8 +2,6 @@ import pandas as pd
 from colorama import Fore
 from datetime import datetime
 import actions
-import re
-import time
 
 # TODO: Move the Sort method from project.py to this file
 
@@ -47,13 +45,14 @@ class Searchy:
         return qry_result
 
     def by_date(self, col, format=r"%Y-%m-%d", time=False):
+        print(self.df[col])
         qry_start = input(
             f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
         qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
         qry_start, qry_end = pd.to_datetime(actions.date_decoder(
             qry_start, time=time), format=format), pd.to_datetime(actions.date_decoder(qry_end, time=time), format=format)
         if qry_end is not None:
-            qry_df = (qry_end > self.df[col]) & (
+            qry_df = (self.df[col] < qry_end) & (
                 self.df[col] > qry_start)
             qry_result = self.df[qry_df]
         else:
