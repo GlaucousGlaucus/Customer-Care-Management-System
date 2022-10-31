@@ -1,6 +1,5 @@
 from logging.handlers import DatagramHandler
 import re
-from telnetlib import STATUS
 import time
 import uuid
 from colorama import Fore
@@ -8,8 +7,6 @@ from datetime import datetime
 
 import pandas as pd
 import numpy as np
-
-from util import text_formatting as tf
 
 
 def pause(): return input('\n'*2 + "Press Any key To Contine...")
@@ -52,31 +49,43 @@ def validate_email(email):
     return rem if len(email) >= 3 else None
 
 
-def date_decoder(date):
-    d, m, y = None, None, None
-    if " " in date:
-        date = date.split(" ")
-        if str(date[1]).isdigit() or len(date) != 3:
-            return None
-        M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        d, m, y = date[0].replace("th", "").replace("st", "").replace("rd", "").replace("nd", ""), M.index(
-            str((date[1][:3]).lower()).capitalize()) + 1, date[2]
-    elif "/" in date:
-        date = date.split("/")
-        d, m, y = date
-    else:
-        return None
+def date_decoder(date, time=False, dob_chck=False):
+    d, m, y, hrs, min, sec = None, None, None, None, None, None
     try:
-        datetime(year=int(y), month=int(m), day=int(d))
+        if time:
+            date = date.split(' ')
+            time, date = date[-1], " ".join(date[:len(date)-1])
+            time = time.split(':')
+            hrs, min, sec = time[0], time[1], time[2]
+        if " " in date:
+            date = date.split(" ")
+            if str(date[1]).isdigit() or len(date) != 3:
+                return None
+            M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            d, m, y = date[0].replace("th", "").replace("st", "").replace("rd", "").replace("nd", ""), M.index(
+                str((date[1][:3]).lower()).capitalize()) + 1, date[2]
+        elif "/" in date:
+            date = date.split("/")
+            d, m, y = date
+        else:
+            return None
+        if time:
+            datetime(year=int(y), month=int(m), day=int(d),
+                     hour=int(hrs), minute=int(min), second=int(sec))
+        else:
+            datetime(year=int(y), month=int(m), day=int(d))
         if len(y) == 2:
             y = "20" + y
-        if y > str(datetime.today().year):
+        if dob_chck and y > str(datetime.today().year):
             raise ValueError(
                 "Invalid DOB \n year of birth cannot be greater then this year!")
-        return pd.to_datetime(f"{int(y)}-{int(m)}-{int(d)}")
-    except ValueError as e:
-        #throw_error('error', 'INVALID DATE', f'{d, m, y} \n {e}')
+        if time:
+            return pd.to_datetime(f"{int(y)}-{int(m)}-{int(d)} {hrs}:{min}:{sec}")
+        else:
+            return pd.to_datetime(f"{int(y)}-{int(m)}-{int(d)}")
+    except Exception as e:
+        throw_error('error', 'INVALID DATE', f'{d, m, y} \n {e}')
         return None
 
 
@@ -84,7 +93,7 @@ def data_validator_customer(data, d_type):
     if d_type in ["first_name", "last_name", "country", "city", "state"]:
         return data if all(c.isalpha() for c in data.split(" ")) else None
     elif d_type == "dob":
-        return date_decoder(data)
+        return date_decoder(data, dob_chck=True)
     elif d_type == "gender":
         gc = data.strip().lower()
         return "Male" if gc in ["male", "m"] else "Female" if gc in ["male", "female", "m", "f"] else None
@@ -979,6 +988,7 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                                 "Please make sure you have entered the correct details.")
                 sel_rec = orders.loc[id]
 
+
 def delete_order(orders: pd.DataFrame):
     cls()
     id = input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
@@ -1157,7 +1167,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 |        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
 +==================================================================+{Fore.RESET}\n\n\n""")
     do_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date Opened: " + Fore.RESET)
-    do = date_decoder(do_check)
+    do = date_decoder(do_check, time=True)
     while do is None:  # Retake inputs for DOB till its valid
         throw_error('error', *data_error_msgs["dob"](do_check))
         cls()
@@ -1172,7 +1182,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 +==================================================================+{Fore.RESET}\n\n\n""")
         do_check = input(Fore.LIGHTMAGENTA_EX +
                          "Enter Date of Opened: " + Fore.RESET)
-        do = date_decoder(do_check)
+        do = date_decoder(do_check, time=True)
     cls()
 
     # Date of Closed
@@ -1180,6 +1190,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 +============================= FORMAT =============================+
 |   > The date must not be blank                                   |
 |   > The date must be on the calander                             |
+|   > The date-time must be in 24-hr Format                        |
 |   > The date must be in any of the following Formats             |
 |        "16th Jan 2021"         OR      "16 Jan 2021"             |
 |        "16th January 2021"     OR      "16 January 2021"         |
@@ -1187,14 +1198,15 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 +==================================================================+{Fore.RESET}\n\n\n""")
     doc_check = input(Fore.LIGHTMAGENTA_EX +
                       "Enter Date Closed: " + Fore.RESET)
-    doc = date_decoder(doc_check)
-    while doc is None and doc_check != "-":  # Retake inputs for DOB till its valid
+    doc = date_decoder(doc_check, time=True)
+    while (doc is None and doc_check != "-") or doc < do:  # Retake inputs for DOB till its valid
         throw_error('error', *data_error_msgs["dob"](doc_check))
         cls()
         print(f"""{Fore.LIGHTRED_EX}
 +============================= FORMAT =============================+
 |   > The date must not be blank                                   |
 |   > The date must be on the calander                             |
+|   > The date-time must be in 24-hr Format                        |
 |   > The date must be in any of the following Formats             |
 |        "16th Jan 2021"         OR      "16 Jan 2021"             |
 |        "16th January 2021"     OR      "16 January 2021"         |
@@ -1202,7 +1214,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 +==================================================================+{Fore.RESET}\n\n\n""")
         doc_check = input(Fore.LIGHTMAGENTA_EX +
                           "Enter Date Closed: " + Fore.RESET)
-        doc = date_decoder(doc_check)
+        doc = date_decoder(doc_check, time=True)
     if doc_check == "-":
         doc = np.NaN
     cls()
@@ -1239,7 +1251,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     while not replies.isdigit():
         throw_error('error', "Invalid value for replies: " + replies)
         replies = input(Fore.LIGHTMAGENTA_EX +
-                    "Enter Replies: " + Fore.RESET)
+                        "Enter Replies: " + Fore.RESET)
     cls()
 
     # Get Customer and Product data
@@ -1248,7 +1260,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     cust_phone = cust["phone"]
 
     order = orders.loc[OrderID]
-    status = order["status"]
+    status = "Closed" if doc != "-" else "Open"
 
     # HoursTaken
     if doc_check == "-":
@@ -1263,13 +1275,12 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     # Data Summmarization
     NewData = [CustID, OrderID, prod_name, prod_category,
                cust_first_name, cust_phone, status, issueCategory, issue,
-               do, doc, frt, replies, custSatis]
+               do, doc, hoursTaken, frt, replies, custSatis]
     print("+" + "-"*50 + "+")
-    if all(NewData):
-        ll = max([len(str(x)) for x in NewData])
-        fac = 62 if ll <= 62 else ll
-        eq = ll - 62 if ll > 62 else 0
-        print(f"""
+    ll = max([len(str(x)) for x in NewData])
+    fac = 62 if ll <= 62 else ll
+    eq = ll - 62 if ll > 62 else 0
+    print(f"""
     +{"=" * (eq//2)}=================================Please Confirm the Data Input============================{"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
     | TicketID                 : {ticketID}                      {" " * (fac - len(str(ticketID          )))}|
     | CustID                   : {CustID}                        {" " * (fac - len(str(CustID            )))}|
@@ -1289,18 +1300,16 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     | CustomerSatisfaction(%)  : {custSatis}                     {" " * (fac - len(str(custSatis         )))}|
     +=========================================================================================={"=" * eq}+
     """)
-        reck = input(
+    reck = input(
             "Would you like to insert this data to Orders.csv ? (Y/N): ")
-        if reck.lower() == "y":
-            tickets.loc[ticketID] = NewData
-            print("Record inserted successfully!")
-        else:
-            print("Record Insertion Cancelled :(")
-        time.sleep(1)
-        pause()
+    if reck.lower() == "y":
+        tickets.loc[ticketID] = NewData
+        print("Record inserted successfully!")
     else:
-        throw_error('error', f"Invalid Data",
-                    'The data is invalid, please try again.')
+        print("Record Insertion Cancelled :(")
+    time.sleep(1)
+    pause()
+
 
 def delete_ticket(tickets: pd.DataFrame):
     cls()
@@ -1357,7 +1366,7 @@ def data_validator_ticket_bool(customers, products, orders, tickets, id, data, d
     elif d_type in ["HoursTaken", "FirstResponseTime", "CustomerSatisfaction"]:
         return re.fullmatch(r"[0-9]+\.?[0-9]*", data)
     elif d_type in ["DateOpened", "DateClosed"]:
-        if date_decoder(data):
+        if date_decoder(data, time=True):
             return True
         else:
             return False
@@ -1425,13 +1434,14 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
                         if d_type == "CustID":
                             cust = customers.loc[new_val]
                             tickets.at[id,
-                                      "CustFirstName"] = cust["first_name"]
+                                       "CustFirstName"] = cust["first_name"]
                             tickets.at[id, "CustPhone"] = cust["phone"]
                         elif d_type == "OrderID":
                             order = orders.loc[new_val]
                             prod = products.loc[order["productID"]]
                             tickets.at[id, "ProductName"] = prod["name"]
-                            tickets.at[id, "ProductCategory"] = prod["category"]
+                            tickets.at[id,
+                                       "ProductCategory"] = prod["category"]
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
