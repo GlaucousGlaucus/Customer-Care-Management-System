@@ -1,3 +1,4 @@
+from http import server
 import time
 from datetime import date, datetime
 from colorama import Fore
@@ -13,16 +14,19 @@ print(f"[{datetime.now()}] Initializing...")
 print(f"[{datetime.now()}] Loading Files...")
 
 # Read the Files
-customers = pd.read_csv('Data\customers.csv', index_col='id', parse_dates=[
-                        'dob'], infer_datetime_format=True)
-orders = pd.read_csv('Data\orders.csv', index_col='orderID', parse_dates=[
-    'dateofOrder'], infer_datetime_format=True)
+date_format = r"%Y/%m/%d %H:%M:%S"
+customers = pd.read_csv('Data\customers.csv', index_col='id')
+customers["dob"] = pd.to_datetime(
+    customers["dob"], format=date_format)
+orders = pd.read_csv('Data\orders.csv', index_col='orderID')
+orders["dateofOrder"] = pd.to_datetime(
+    orders["dateofOrder"], format=date_format)
 products = pd.read_csv('Data\products.csv', index_col='id')
 tickets = pd.read_csv(r'Data\tickets.csv', index_col='TicketID')
 tickets["DateOpened"] = pd.to_datetime(
-    tickets["DateOpened"], format=r"%Y/%m/%d %H:%M:%S")
+    tickets["DateOpened"], format=date_format)
 tickets["DateClosed"] = pd.to_datetime(
-    tickets["DateClosed"], format=r"%Y/%m/%d %H:%M:%S")
+    tickets["DateClosed"], format=date_format)
 
 print(f"[{datetime.now()}] Files Loaded")
 
@@ -45,61 +49,38 @@ date_info = f"""{Fore.LIGHTRED_EX}
 def amc_Search():
     global menu_level
     df = customers.copy()
+    search_engine = Searchy(df)
+    def col(x): return customers.columns[int(x)-2]
     while True:
         print_menu(menu_level)
         cmd_n = input("Command: ")
         if cmd_n == "1":
             qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = df.loc[qry] if qry in df.index else pd.DataFrame()
-        # Search by name
-        elif cmd_n == "2":
-            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
-            qry = input(
-                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_df = df["first_name"] + " " + df["last_name"]
-            qry_result = df.loc[qry_df.str.contains(qry)]
+            qry_result = search_engine.by_id(qry)
         # Search by DOB
-        elif cmd_n == "3":
-            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
-            qry_start = input(
-                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
-            qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
-            qry_start, qry_end = pd.to_datetime(actions.date_decoder(
-                qry_start), format=r"%Y-%m-%d"), pd.to_datetime(actions.date_decoder(qry_end), format=r"%Y-%m-%d")
-            if qry_end is not None:
-                qry_df = (qry_end > df["dob"]) & (df["dob"] > qry_start)
-                qry_result = df[qry_df]
-            else:
-                qry_df = df["dob"] > qry_start
-                qry_result = df[qry_df]
-        # Search by Gender
         elif cmd_n == "4":
-            qry = input(
-                f"{Fore.CYAN}Enter Query: {Fore.RESET}").strip().lower()
-            qry = "Male" if qry in ["male", "m"] else "Female" if qry in [
-                "female", "f", "fe"] else "Unknown"
-            qry_result = df.loc[df["gender"] == qry]
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry_result = search_engine.by_date(col(cmd_n))
         # General String Search
-        elif cmd_n in ["5", "6", "7", "8", "9", "10", "11"]:
+        elif cmd_n in ["2", "3", "5", "6", "7", "8", "9", "11", "12"]:
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             qry = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            column = customers.columns[int(cmd_n)-1]
-            qry_df = df[column].astype(str)
-            qry_result = df.loc[qry_df.str.contains(qry)]
+            qry_result = search_engine.by_string(qry, col(cmd_n))
         # Search by Prime
-        elif cmd_n == "12":
-            qry = input(
-                f"{Fore.CYAN}Enter Query: {Fore.RESET}").strip().lower()
-            qry = "PRIME" if qry in ["Prime", "PRIME",
-                                     "Yes", "1", "Y", "P", "p"] else "-"
-            qry_result = df.loc[df["prime"] == qry]
-        # Reset the operating df
+        elif cmd_n == "10":
+            print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
+            qry_result = search_engine.by_num(col(cmd_n))
         elif cmd_n == "13":
+            qry = input(
+                f"{Fore.CYAN}Index:\n\t1) PRIME\n\t2) Not PRIME\nEnter Query: {Fore.RESET}").strip().lower()
+            qry_result = search_engine.by_options(int(qry), col(cmd_n), {1: "PRIME", 2: "-"})
+        # Reset the operating df
+        elif cmd_n == "14":
             if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = customers.copy()
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
-        elif cmd_n == "14":
+        elif cmd_n == "15":
             menu_level = "1.1"
             break
         # Check if the user wants to use the generated df for further queries
@@ -535,10 +516,10 @@ def am_ord_f():
 def amt_Search():
     global menu_level
     df = tickets.copy()
+    search_engine = Searchy(df)
     def col(x): return tickets.columns[int(x)-2]
     while True:
         print_menu(menu_level)
-        search_engine = Searchy(df)
         cmd = input("Command: ")
         # Search by Ticket ID
         if cmd == "1":
@@ -827,16 +808,15 @@ def amt_RG_Summerzie():
 def amt_MG_GenFromTemplate():
     global menu_level
     while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
         # TicketID
         TicketID = input(Fore.LIGHTMAGENTA_EX +
                    "Enter Ticket ID: " + Fore.RESET)
-        while TicketID not in tickets.index:
+        if TicketID not in tickets.index:
             actions.throw_error('error', "Ticket ID not found!")
-            TicketID = input(Fore.LIGHTMAGENTA_EX +
-                               "Enter Ticket ID: " + Fore.RESET)
+            continue
         ticket_data = tickets.loc[TicketID]
-        print_menu(menu_level)
-        cmd = input("Command: ")
         # First Response
         if cmd == "1":
             print(
@@ -936,6 +916,7 @@ def amt_MG_Custom():
         cmd = input("Command: ")
         if cmd == "1":
         # TicketID
+            cmd = input("Command: ")
             TicketID = input(Fore.LIGHTMAGENTA_EX +
                        "Enter Ticket ID: " + Fore.RESET)
             while TicketID not in tickets.index:
@@ -944,7 +925,6 @@ def amt_MG_Custom():
                                    "Enter Ticket ID: " + Fore.RESET)
             ticket_data = tickets.loc[TicketID]
             print_menu(menu_level)
-            cmd = input("Command: ")
             message = input("Enter your message: \n")
             print(
 f"""
@@ -1089,21 +1069,88 @@ def cust_menu_f():
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
-            menu_level = "2.1"
-            while True:
-                print_menu(menu_level)
-                cmd = input("Command: ")
-                if cmd == "1":
-                    print("Open a ticket")
-                elif cmd == "2":
-                    print("View ticket")
-                elif cmd == "3":
-                    print("Close a ticket")
-                elif cmd == "4":
-                    menu_level = "2"
-                    break
+            CustID = input(Fore.LIGHTMAGENTA_EX + "Enter ID: " + Fore.RESET)
+            if CustID in customers.index:
+                print(Fore.LIGHTGREEN_EX + """
+                                ╦  ╔═╗╔═╗╦╔╗╔  ╔═╗╦ ╦╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗╦ ╦╦  
+                                ║  ║ ║║ ╦║║║║  ╚═╗║ ║║  ║  ║╣ ╚═╗╚═╗╠╣ ║ ║║  
+                                ╩═╝╚═╝╚═╝╩╝╚╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚  ╚═╝╩═╝
+                """, Fore.RESET)
+                pause()
+                menu_level = "2.1"
+                while True:
+                    print_menu(menu_level)
+                    cmd = input("Command: ")
+                    if cmd == "1":
+                        cls()
+                        actions.add_a_ticket(customers, products, orders, tickets, custid=CustID, register=True)
+                    elif cmd == "2":
+                        search_engine = Searchy(tickets)
+                        qry_result = search_engine.by_string(CustID, tickets.columns[0])
+                        print(Fore.LIGHTMAGENTA_EX, qry_result, Fore.RESET)
+                        pause()
+                    elif cmd == "3":
+                        actions.update_ticket(customers, products, orders, tickets, close=True)
+                    elif cmd == "4":
+                        data = customers.loc[CustID]
+                        print(Fore.CYAN,
+f"""
+                                    ╔═╗╦═╗╔═╗╔═╗╦╦  ╔═╗
+                                    ╠═╝╠╦╝║ ║╠╣ ║║  ║╣ 
+                                    ╩  ╩╚═╚═╝╚  ╩╩═╝╚═╝
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        ______              +===========================================================+
+       ╱      ╲              Customer ID:  {Fore.LIGHTGREEN_EX}{CustID}{Fore.CYAN}                                    
+      ╱        ╲             Name       :  {Fore.LIGHTGREEN_EX}{data['first_name'] + data['last_name']}{Fore.CYAN}  
+     │          │            DOB        :  {Fore.LIGHTGREEN_EX}{data['dob']}{Fore.CYAN}  
+     │          │            Gender     :  {Fore.LIGHTGREEN_EX}{data['gender']}{Fore.CYAN}  
+     │          │            Email      :  {Fore.LIGHTGREEN_EX}{data['email']}{Fore.CYAN}  
+   _╱------------╲_          Phone      :  {Fore.LIGHTGREEN_EX}{data['phone']}{Fore.CYAN}
+ _╱                ╲_       +===========================================================+
+╱____________________╲
+
+┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭
+│        o         │        o         │        o         │        o         │        o         │
+┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴
+
+      ________________
+     /                \\
+    /   ____________   \\
+   /   /            \   \\
+  /   /              \   \      +===========================================================+
+  |   |              |   |       Address  :   {Fore.LIGHTGREEN_EX}{data['address']}{Fore.CYAN}                                
+  |   |              |   |       Country  :   {Fore.LIGHTGREEN_EX}{data['country']}{Fore.CYAN}
+  |   |              |   |       State    :   {Fore.LIGHTGREEN_EX}{data['city']}{Fore.CYAN}                        
+   \   \_____________/   /       City     :   {Fore.LIGHTGREEN_EX}{data['state']}{Fore.CYAN}                      
+    \                   /        Pincode  :   {Fore.LIGHTGREEN_EX}{data['pincode']}{Fore.CYAN}
+     \_               _/         Prime    :   {Fore.LIGHTGREEN_EX}{data['prime']}{Fore.CYAN}
+       \_           _/          +===========================================================+
+         \_       _/
+          \_     _/
+            \___/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                 
+   
+""", Fore.RESET)
+                        pause()
+                    elif cmd == "5":
+                        menu_level = "2"
+                        break
+            else:
+                print(Fore.LIGHTRED_EX + "Wrong Credentials" + Fore.RESET)
+                pause()
         elif cmd == "2":
-            print("Registering")
+            cls()
+            print(Fore.LIGHTCYAN_EX + 
+"""
+│                        ╦═╗╔═╗╔═╗╦╔═╗╔╦╗╔═╗╦═╗                        │
+│                        ╠╦╝║╣ ║ ╦║╚═╗ ║ ║╣ ╠╦╝                        │
+│                        ╩╚═╚═╝╚═╝╩╚═╝ ╩ ╚═╝╩╚═                        │
+╰──────────────────────────────────────────────────────────────────────╯
+""" + Fore.RESET)
+            actions.add_a_Customer(customers=customers, register=True)
         elif cmd == "3":
             menu_level = "0"
             break

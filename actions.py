@@ -22,7 +22,7 @@ def throw_error(type: str, title: str, message=""):
         print(f"! WARNING: {title} !")
         print(message)
     elif type == 'info':
-        print(f"{tf.BOLD} INFO: {title}{message}")
+        print(f"INFO: {title}{message}")
     else:
         print(f"======================{title}======================")
         print(message)
@@ -152,9 +152,10 @@ Avoid the above errors and try again.
 }
 
 
-def add_a_Customer(customers: pd.DataFrame):
+def add_a_Customer(customers: pd.DataFrame, register=False):
     # TODO: Formatting
-    print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n")  # GUI
+    if not register:
+        print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n")  # GUI
     id = input(Fore.LIGHTMAGENTA_EX +
                "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     # Verify that the customer id is not a duplicate
@@ -307,13 +308,17 @@ def add_a_Customer(customers: pd.DataFrame):
     | prime       :    {prime     }{" " * (fac - len(str(prime     )))}|
     +================================================================================{"=" * eq}+
     """)
-        reck = input(
-            "Would you like to insert this data to Customers.csv ? (Y/N): ")
+        if not register:
+            reck = input(
+                "Would you like to insert this data to Customers.csv ? (Y/N): ")
+        else:
+            reck = input(
+                "Would you like to complete Registration ? (Y/N): ")
         if reck.lower() == "y":
             customers.loc[id] = NewData
-            print("Record inserted successfully!")
+            print("Record inserted successfully!" if not register else "Registerd Successfully!")
         else:
-            print("Record Insertion Cancelled :(")
+            print("Record Insertion Cancelled :(" if not register else "Registration Cancelled :(")
         time.sleep(1)
         pause()
     else:
@@ -1119,7 +1124,7 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 # ----------------------------------------------------------------------------------------------------
 
 
-def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame):
+def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, custid=None, register=False):
     print("+" + "-"*25 + "ADD A TICKET" + "-"*25 + "+" + "\n\n")  # GUI
     # TicketID
     ticketID = input(Fore.LIGHTMAGENTA_EX +
@@ -1133,12 +1138,15 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     cls()
 
     # CustID
-    CustID = input(Fore.LIGHTMAGENTA_EX +
-                   "Enter Customer ID: " + Fore.RESET)
-    while CustID not in customers.index:
-        throw_error('error', "Customer ID not found!")
+    if register:
+        CustID = custid
+    else:
         CustID = input(Fore.LIGHTMAGENTA_EX +
                        "Enter Customer ID: " + Fore.RESET)
+        while CustID not in customers.index:
+            throw_error('error', "Customer ID not found!")
+            CustID = input(Fore.LIGHTMAGENTA_EX +
+                           "Enter Customer ID: " + Fore.RESET)
     cls()
     # OrderID
     OrderID = input(Fore.LIGHTMAGENTA_EX +
@@ -1186,22 +1194,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     cls()
 
     # Date of Closed
-    print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date-time must be in 24-hr Format                        |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
-    doc_check = input(Fore.LIGHTMAGENTA_EX +
-                      "Enter Date Closed: " + Fore.RESET)
-    doc = date_decoder(doc_check, time=True)
-    while (doc is None and doc_check != "-") or doc < do:  # Retake inputs for DOB till its valid
-        throw_error('error', *data_error_msgs["dob"](doc_check))
-        cls()
+    if not register:
         print(f"""{Fore.LIGHTRED_EX}
 +============================= FORMAT =============================+
 |   > The date must not be blank                                   |
@@ -1215,44 +1208,64 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         doc_check = input(Fore.LIGHTMAGENTA_EX +
                           "Enter Date Closed: " + Fore.RESET)
         doc = date_decoder(doc_check, time=True)
-    if doc_check == "-":
-        doc = np.NaN
-    cls()
+        while (doc is None and doc_check != "-"):  # Retake inputs for DOB till its valid
+            throw_error('error', *data_error_msgs["dob"](doc_check))
+            cls()
+            print(f"""{Fore.LIGHTRED_EX}
++============================= FORMAT =============================+
+|   > The date must not be blank                                   |
+|   > The date must be on the calander                             |
+|   > The date-time must be in 24-hr Format                        |
+|   > The date must be in any of the following Formats             |
+|        "16th Jan 2021"         OR      "16 Jan 2021"             |
+|        "16th January 2021"     OR      "16 January 2021"         |
+|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
++==================================================================+{Fore.RESET}\n\n\n""")
+            doc_check = input(Fore.LIGHTMAGENTA_EX +
+                              "Enter Date Closed: " + Fore.RESET)
+            doc = date_decoder(doc_check, time=True)
+        if doc_check == "-":
+            doc = np.NaN
+        cls()
 
-    # FRT
-    frt = input(Fore.LIGHTMAGENTA_EX +
-                "Enter First Response Time: " + Fore.RESET)
-    while type(frt) != float:
-        try:
-            frt = float(frt)
-        except Exception as e:
-            throw_error(
-                'error', "Invalid Price: %s" % frt)
-            frt = input(Fore.LIGHTMAGENTA_EX +
-                        "Enter First Response Time: " + Fore.RESET)
-    cls()
+        # FRT
+        frt = input(Fore.LIGHTMAGENTA_EX +
+                    "Enter First Response Time: " + Fore.RESET)
+        while type(frt) != float:
+            try:
+                frt = float(frt)
+            except Exception as e:
+                throw_error(
+                    'error', "Invalid Price: %s" % frt)
+                frt = input(Fore.LIGHTMAGENTA_EX +
+                            "Enter First Response Time: " + Fore.RESET)
+        cls()
 
-    # Customer Satisfaction
-    custSatis = input(Fore.LIGHTMAGENTA_EX +
-                      "Enter Customer Satisfaction: " + Fore.RESET)
-    while type(custSatis) != float:
-        try:
-            custSatis = float(custSatis)
-        except Exception as e:
-            throw_error(
-                'error', "Invalid Customer Satisfaction: %s" % custSatis)
-            custSatis = input(Fore.LIGHTMAGENTA_EX +
-                              "Enter Customer Satisfaction: " + Fore.RESET)
-    cls()
+        # Customer Satisfaction
+        custSatis = input(Fore.LIGHTMAGENTA_EX +
+                          "Enter Customer Satisfaction: " + Fore.RESET)
+        while type(custSatis) != float:
+            try:
+                custSatis = float(custSatis)
+            except Exception as e:
+                throw_error(
+                    'error', "Invalid Customer Satisfaction: %s" % custSatis)
+                custSatis = input(Fore.LIGHTMAGENTA_EX +
+                                  "Enter Customer Satisfaction: " + Fore.RESET)
+        cls()
 
-    # Replies
-    replies = input(Fore.LIGHTMAGENTA_EX +
-                    "Enter Replies: " + Fore.RESET)
-    while not replies.isdigit():
-        throw_error('error', "Invalid value for replies: " + replies)
+        # Replies
         replies = input(Fore.LIGHTMAGENTA_EX +
                         "Enter Replies: " + Fore.RESET)
-    cls()
+        while not replies.isdigit():
+            throw_error('error', "Invalid value for replies: " + replies)
+            replies = input(Fore.LIGHTMAGENTA_EX +
+                            "Enter Replies: " + Fore.RESET)
+        cls()
+    else:
+        doc_check = "-"
+        replies = custSatis = frt = doc = np.nan
+
 
     # Get Customer and Product data
     cust = customers.loc[CustID]
@@ -1372,7 +1385,7 @@ def data_validator_ticket_bool(customers, products, orders, tickets, id, data, d
             return False
 
 
-def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame):
+def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, close=False):
     cls()
     id = input(Fore.CYAN + "Ticket ID To Update: " + Fore.RESET).strip()
     if id not in tickets.index:
@@ -1385,6 +1398,18 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
               Fore.RESET, sel_rec, sep="")
         pause()
         cls()
+        if close:
+            tickets.at[id, "Status"] = "Closed"
+            tdy = pd.to_datetime(datetime.today())
+            tickets.at[id, "DateClosed"] = tdy
+            res = tdy - tickets.loc[id]["DateOpened"]
+            tickets.at[id, "HoursTaken"] = res.days * 24
+            interaction = input(Fore.LIGHTMAGENTA_EX + "Please rate your experience with us: (Rate them on a scale of 1-10) \nHow was our staff's interaction with you ?" + Fore.RESET)
+            frtt = input(Fore.LIGHTMAGENTA_EX + "Did you recieve the first interaction message from our staff quick ?" + Fore.RESET)
+            theclock = input(Fore.LIGHTMAGENTA_EX + "How quickly your issue was resolved ?" + Fore.RESET)
+            satis_deter = [float(interaction), float(frtt), float(theclock)]
+            tickets.at[id, "CustomerSatisfaction(%)"] = round(sum(satis_deter)/len(satis_deter)*1000) / 10
+            return None
         while True:
             cls()
             print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
