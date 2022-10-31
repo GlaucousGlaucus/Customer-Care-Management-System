@@ -9,6 +9,25 @@ import pandas as pd
 import numpy as np
 
 
+
+dateformat_info = f"""{Fore.LIGHTRED_EX}
+                              ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
+                              ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
+                              ╚  ╚═╝╩╚═╩ ╩╩ ╩ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+   > The date must not be blank                                   
+   > The date must be on the calander      
+   > The date must not be in the future       
+   > The time must be in the format {Fore.LIGHTCYAN_EX}hh:mm:ss{Fore.LIGHTRED_EX}                
+   > The date must be in any of the following Formats             
+        
+        "16th Jan 2021"         OR      "16 Jan 2021"             
+        "16th January 2021"     OR      "16 January 2021"         
+        "dd/mm/yy"              OR      "dd/mm/yyyy"   
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+{Fore.RESET}\n\n\n"""
+
 def pause(): return input('\n'*2 + "Press Any key To Contine...")
 def cls(): return print("\n" * 30)
 
@@ -155,7 +174,13 @@ Avoid the above errors and try again.
 def add_a_Customer(customers: pd.DataFrame, register=False):
     # TODO: Formatting
     if not register:
-        print("+" + "-"*25 + "ADD A CUSTOMER" + "-"*25 + "+" + "\n\n")  # GUI
+        print(
+"""
+                    ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦ ╦╔═╗╔╦╗╔═╗╔╦╗╔═╗╦═╗
+                    ╠═╣ ║║ ║║  ╠═╣  ║  ║ ║╚═╗ ║ ║ ║║║║║╣ ╠╦╝
+                    ╩ ╩═╩╝═╩╝  ╩ ╩  ╚═╝╚═╝╚═╝ ╩ ╚═╝╩ ╩╚═╝╩╚═
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+""")
     id = input(Fore.LIGHTMAGENTA_EX +
                "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     # Verify that the customer id is not a duplicate
@@ -184,29 +209,13 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     cls()
     # DOB
     # Print DOB GUI
-    print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+    print(dateformat_info)
     dob_check = input(Fore.LIGHTMAGENTA_EX + "Enter Dob: " + Fore.RESET)
     dob = date_decoder(dob_check)
     while dob is None:  # Retake inputs for DOB till its valid
         throw_error('error', *data_error_msgs["dob"](dob_check))
         cls()
-        print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+        print(dateformat_info)
         dob_check = input(Fore.LIGHTMAGENTA_EX + "Enter Dob: " + Fore.RESET)
         dob = date_decoder(dob_check)
     cls()
@@ -292,25 +301,29 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
         print(f"""
-    +{"=" * (eq//2)}============================Please Confirm the Data Input======================={"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
-    | id          :    {id        }{" " * (fac - len(str(id        )))}|
-    | first_name  :    {first_name}{" " * (fac - len(str(first_name)))}|
-    | last_name   :    {last_name }{" " * (fac - len(str(last_name )))}|
-    | dob         :    {dob       }{" " * (fac - len(str(dob       )))}|
-    | gender      :    {gender    }{" " * (fac - len(str(gender    )))}|
-    | address     :    {address   }{" " * (fac - len(str(address   )))}|
-    | country     :    {country   }{" " * (fac - len(str(country   )))}|
-    | city        :    {city      }{" " * (fac - len(str(city      )))}|
-    | state       :    {state     }{" " * (fac - len(str(state     )))}|
-    | pincode     :    {pincode   }{" " * (fac - len(str(pincode   )))}|
-    | phone       :    {phone     }{" " * (fac - len(str(phone     )))}|
-    | email       :    {email     }{" " * (fac - len(str(email     )))}|
-    | prime       :    {prime     }{" " * (fac - len(str(prime     )))}|
-    +================================================================================{"=" * eq}+
+                                    ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
+                                    ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
+                                    ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+            ID          :    {id        }
+            First Name  :    {first_name}
+            Last Name   :    {last_name }
+            DOB         :    {dob       }
+            Gender      :    {gender    }
+            Address     :    {address   }
+            Country     :    {country   }
+            City        :    {city      }
+            State       :    {state     }
+            Pincode     :    {pincode   }
+            Phone       :    {phone     }
+            E-mail      :    {email     }
+            Prime       :    {prime     }
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     """)
         if not register:
             reck = input(
-                "Would you like to insert this data to Customers.csv ? (Y/N): ")
+                f"Would you like to insert this data to {Fore.GREEN}Customers.csv{Fore.RESET} ? (Y/N): ")
         else:
             reck = input(
                 "Would you like to complete Registration ? (Y/N): ")
@@ -358,21 +371,21 @@ def update_customer(customers: pd.DataFrame):
         cls()
         while True:
             cls()
-            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
-    1) id        
-    2) first_name
-    3) last_name 
-    4) dob       
-    5) gender    
-    6) address   
-    7) country   
-    8) city      
-    9) state     
-    10) pincode   
-    11) phone     
-    12) email     
-    13) prime
-    14) Back     
+            print(Fore.CYAN + 
+f"""
+                                    ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                    ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                    ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                                
+                                 Selected ID:{Fore.RED} {id}{Fore.RESET}
+                    1) id               4) dob          7) country      10) pincode
+                    2) first_name       5) gender       8) city         11) phone  
+                    3) last_name        6) address      9) state        12) email  
+      
+                              13) prime                       14) Back  
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                       
             """)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
@@ -478,7 +491,13 @@ def data_validator_product_bool(products, id, data, d_type):
 
 
 def add_a_Product(products: pd.DataFrame):
-    print("+" + "-"*25 + "ADD A PRODUCT" + "-"*25 + "+" + "\n\n")  # GUI
+    print(
+"""
+                       ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦═╗╔═╗╔╦╗╦ ╦╔═╗╔╦╗
+                       ╠═╣ ║║ ║║  ╠═╣  ╠═╝╠╦╝║ ║ ║║║ ║║   ║ 
+                       ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+""")
     id = input(Fore.LIGHTMAGENTA_EX +
                "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     # Verify that the product id is not a duplicate
@@ -571,19 +590,23 @@ def add_a_Product(products: pd.DataFrame):
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
         print(f"""
-    +{"=" * (eq//2)}============================Please Confirm the Data Input======================={"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
-    | id           :    {id          }{" " * (fac - len(str(id          )))}|
-    | name         :    {name        }{" " * (fac - len(str(name        )))}|
-    | manufacturer  :    {manufacturer }{" " * (fac - len(str(manufacturer )))}|
-    | category     :    {category    }{" " * (fac - len(str(category    )))}|
-    | Returnable   :    {Returnable  }{" " * (fac - len(str(Returnable  )))}|
-    | stock        :    {stock       }{" " * (fac - len(str(stock       )))}|
-    | avg_rating   :    {avg_rating  }{" " * (fac - len(str(avg_rating  )))}|
-    | dtr          :    {dtr         }{" " * (fac - len(str(dtr         )))}|
-    +================================================================================{"=" * eq}+
+                                    ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
+                                    ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
+                                    ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+            ID              :    {id          }
+            Name            :    {name        }
+            Manufacturer    :    {manufacturer}
+            Category        :    {category    }
+            Returnable      :    {Returnable  }
+            Stock           :    {stock       }
+            Avg_rating      :    {avg_rating  }
+            Days to Return  :    {dtr         }
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     """)
         reck = input(
-            "Would you like to insert this data to Products.csv ? (Y/N): ")
+            f"Would you like to insert this data to {Fore.LIGHTCYAN_EX}Products.csv{Fore.RESET} ? (Y/N): ")
         if reck.lower() == "y":
             products.loc[id] = NewData
             print("Record inserted successfully!")
@@ -648,16 +671,19 @@ def update_product(products: pd.DataFrame):
         cls()
         while True:
             cls()
-            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
-    1) id        
-    2) name
-    3) manufacturer 
-    4) category       
-    5) In-Stock    
-    6) AvgRating   
-    7) Returnable   
-    8) Days to Return      
-    9) Back     
+            print(Fore.CYAN + 
+f"""
+                                                ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                                ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                                ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                                            Selected ID:{Fore.RED} {id}{Fore.RESET}
+
+                            1) id                       4) category               7) Returnable   
+                            2) name                     5) In-Stock               8) Days to Return
+                            3) manufacturer             6) AvgRating              9) Back     
+                    
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                
             """)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
@@ -714,7 +740,13 @@ def update_product(products: pd.DataFrame):
 
 
 def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
-    print("+" + "-"*25 + "ADD AN ORDER" + "-"*25 + "+" + "\n\n")  # GUI
+    print(
+"""
+                          ╔═╗╔╦╗╔╦╗  ╔═╗╔╗╔  ╔═╗╦═╗╔╦╗╔═╗╦═╗
+                          ╠═╣ ║║ ║║  ╠═╣║║║  ║ ║╠╦╝ ║║║╣ ╠╦╝
+                          ╩ ╩═╩╝═╩╝  ╩ ╩╝╚╝  ╚═╝╩╚══╩╝╚═╝╩╚═
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+""")
     # OrderID
     orderId = input(Fore.LIGHTMAGENTA_EX +
                     "Enter ID (Leave blank for random uuid): " + Fore.RESET)
@@ -767,30 +799,14 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 
     # DOO
     # Print DOO GUI
-    print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+    print(dateformat_info)
     doo_check = input(Fore.LIGHTMAGENTA_EX +
                       "Enter Date of Order: " + Fore.RESET)
     doo = date_decoder(doo_check)
     while doo is None:  # Retake inputs for DOB till its valid
         throw_error('error', *data_error_msgs["dob"](doo_check))
         cls()
-        print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+        print(dateformat_info)
         doo_check = input(Fore.LIGHTMAGENTA_EX +
                           "Enter Date of Order: " + Fore.RESET)
         doo = date_decoder(doo_check)
@@ -838,22 +854,26 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
         print(f"""
-    +{"=" * (eq//2)}=================================Please Confirm the Data Input============================{"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
-    | OrderID               :    {orderId           }{" " * (fac - len(str(orderId           )))}|
-    | CustomerID            :    {customerID        }{" " * (fac - len(str(customerID        )))}|
-    | Customer (First Name) :    {cust_first_name   }{" " * (fac - len(str(cust_first_name   )))}|
-    | Customer (Last Name)  :    {cust_last_name    }{" " * (fac - len(str(cust_last_name    )))}|
-    | ProductID             :    {productID         }{" " * (fac - len(str(productID         )))}|
-    | Product Name          :    {prod_name         }{" " * (fac - len(str(prod_name         )))}|
-    | Quantity              :    {qty               }{" " * (fac - len(str(qty               )))}|
-    | Total Price           :    {total_price       }{" " * (fac - len(str(total_price       )))}|
-    | Date Of Order         :    {doo               }{" " * (fac - len(str(doo               )))}|
-    | Status                :    {State             }{" " * (fac - len(str(State             )))}|
-    | Address               :    {cust_address      }{" " * (fac - len(str(cust_address      )))}|
-    +=========================================================================================={"=" * eq}+
+                                    ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
+                                    ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
+                                    ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+            OrderID               :    {orderId           }
+            CustomerID            :    {customerID        }
+            Customer (First Name) :    {cust_first_name   }
+            Customer (Last Name)  :    {cust_last_name    }
+            ProductID             :    {productID         }
+            Product Name          :    {prod_name         }
+            Quantity              :    {qty               }
+            Total Price           :    {total_price       }
+            Date Of Order         :    {doo               }
+            Status                :    {State             }
+            Address               :    {cust_address      }
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     """)
         reck = input(
-            "Would you like to insert this data to Orders.csv ? (Y/N): ")
+            f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Orders.csv{Fore.RESET} ? (Y/N): ")
         if reck.lower() == "y":
             orders.loc[orderId] = NewData
             print("Record inserted successfully!")
@@ -936,15 +956,20 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         cls()
         while True:
             cls()
-            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
-        1)  orderId
-        2)  customerID
-        3)  productID
-        4)  qty
-        5)  total_price
-        6)  doo
-        7)  State
-        8)  Back
+            print(Fore.CYAN + 
+f"""
+                                    ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                    ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                    ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                              Selected ID:{Fore.RED} {id}{Fore.RESET}
+
+                           1)  orderId                         4)  qty
+                           2)  customerID                      5)  total_price
+                           3)  productID                       6)  doo
+                                        7)  State   8)  Back
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
             """)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
@@ -1048,84 +1073,17 @@ def data_validator_order_bool(customers, products, orders, id, data, d_type):
         else:
             return False
 
-
-def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
-    cls()
-    id = input(Fore.CYAN + "Order ID To Update: " + Fore.RESET).strip()
-    if id not in orders.index:
-        throw_error('error', "ID not found: " + id,
-                    "Order ID was not found in the database.\nPlease make sure you have entered a valid Order ID.")
-        print(orders.index)
-    else:
-        sel_rec = orders.loc[id]
-        print(Fore.CYAN + "This is the selected Record: \n" +
-              Fore.RESET, sel_rec, sep="")
-        pause()
-        cls()
-        while True:
-            cls()
-            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
-        1)  orderId
-        2)  customerID
-        3)  productID
-        4)  qty
-        5)  total_price
-        6)  doo
-        7)  State
-        8)  Back
-            """)
-            cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
-            if cmd == "1":
-                print(
-                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
-                print(Fore.CYAN +
-                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
-                new_val = input(
-                    Fore.CYAN + "Enter your new value: " + Fore.RESET)
-                if new_val not in orders.index and new_val != "" and len(new_val) >= 3:
-                    orders.rename(
-                        index={sel_rec.name: new_val}, inplace=True)
-                    print("ID changed successfully")
-                    id = new_val
-                    sel_rec = orders.loc[id]
-                else:
-                    throw_error('error', f'Invalid order ID: {new_val}')
-            elif cmd == "8":
-                break
-            elif cmd in "2345667":
-                d_type = update_ticket_menu[cmd]
-                print(Fore.CYAN +
-                      f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
-                print(
-                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
-                new_val = input(f"Enter your new value: {Fore.RED}")
-                print(f"{Fore.CYAN}Your new value for {d_type}: " +
-                      Fore.RED, new_val, Fore.RESET)
-                if data_validator_order_bool(customers, products,  orders, id, new_val, d_type):
-                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
-                        orders.at[id, d_type] = new_val
-                        if d_type == "customerID":
-                            cust = customers.loc[new_val]
-                            orders.at[id,
-                                      "customerFirstName"] = cust["first_name"]
-                            orders.at[id, "customerLastName"] = cust["last_name"]
-                            orders.at[id, "address"] = cust["address"]
-                        elif d_type == "productID":
-                            prod = products.loc[new_val]
-                            orders.at[id, "productName"] = prod["name"]
-                    else:
-                        print("\nUpdating value cancelled.")
-                        pause()
-                else:
-                    throw_error('error', 'Error while updating order data',
-                                "Please make sure you have entered the correct details.")
-                sel_rec = orders.loc[id]
-
 # ----------------------------------------------------------------------------------------------------
 
 
 def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, custid=None, register=False):
-    print("+" + "-"*25 + "ADD A TICKET" + "-"*25 + "+" + "\n\n")  # GUI
+    print(
+"""
+                       ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦═╗╔═╗╔╦╗╦ ╦╔═╗╔╦╗
+                       ╠═╣ ║║ ║║  ╠═╣  ╠═╝╠╦╝║ ║ ║║║ ║║   ║ 
+                       ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+""")
     # TicketID
     ticketID = input(Fore.LIGHTMAGENTA_EX +
                      "Enter ID (Leave blank for random uuid): " + Fore.RESET)
@@ -1165,29 +1123,13 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                   Fore.RESET)
 
     # Date of Open
-    print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+    print(dateformat_info)
     do_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date Opened: " + Fore.RESET)
     do = date_decoder(do_check, time=True)
     while do is None:  # Retake inputs for DOB till its valid
         throw_error('error', *data_error_msgs["dob"](do_check))
         cls()
-        print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+        print(dateformat_info)
         do_check = input(Fore.LIGHTMAGENTA_EX +
                          "Enter Date of Opened: " + Fore.RESET)
         do = date_decoder(do_check, time=True)
@@ -1195,32 +1137,14 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 
     # Date of Closed
     if not register:
-        print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date-time must be in 24-hr Format                        |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+        print(dateformat_info)
         doc_check = input(Fore.LIGHTMAGENTA_EX +
                           "Enter Date Closed: " + Fore.RESET)
         doc = date_decoder(doc_check, time=True)
         while (doc is None and doc_check != "-"):  # Retake inputs for DOB till its valid
             throw_error('error', *data_error_msgs["dob"](doc_check))
             cls()
-            print(f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date-time must be in 24-hr Format                        |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n""")
+            print(dateformat_info)
             doc_check = input(Fore.LIGHTMAGENTA_EX +
                               "Enter Date Closed: " + Fore.RESET)
             doc = date_decoder(doc_check, time=True)
@@ -1294,24 +1218,29 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     fac = 62 if ll <= 62 else ll
     eq = ll - 62 if ll > 62 else 0
     print(f"""
-    +{"=" * (eq//2)}=================================Please Confirm the Data Input============================{"=" * ((eq//2) + (1 if eq % 2 != 0 else 0))}+
-    | TicketID                 : {ticketID}                      {" " * (fac - len(str(ticketID          )))}|
-    | CustID                   : {CustID}                        {" " * (fac - len(str(CustID            )))}|
-    | OrderID                  : {OrderID}                       {" " * (fac - len(str(OrderID           )))}|
-    | ProductName              : {prod_name}                     {" " * (fac - len(str(prod_name         )))}|
-    | ProductCategory          : {prod_category}                 {" " * (fac - len(str(prod_category     )))}|
-    | CustFirstName            : {cust_first_name}               {" " * (fac - len(str(cust_first_name   )))}|
-    | CustPhone                : {cust_phone}                    {" " * (fac - len(str(cust_phone        )))}|
-    | Status                   : {status}                        {" " * (fac - len(str(status            )))}|
-    | IssueCategory            : {issueCategory}                 {" " * (fac - len(str(issueCategory     )))}|
-    | Issue                    : {issue}                         {" " * (fac - len(str(issue             )))}|
-    | DateOpened               : {do}                            {" " * (fac - len(str(do                )))}|
-    | DateClosed               : {doc}                           {" " * (fac - len(str(doc               )))}|
-    | HoursTaken               : {hoursTaken}                    {" " * (fac - len(str(hoursTaken        )))}|
-    | FirstResponseTime        : {frt}                           {" " * (fac - len(str(frt               )))}|
-    | Replies                  : {replies}                       {" " * (fac - len(str(replies           )))}|
-    | CustomerSatisfaction(%)  : {custSatis}                     {" " * (fac - len(str(custSatis         )))}|
-    +=========================================================================================={"=" * eq}+
+                                    ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
+                                    ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
+                                    ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+    
+                TicketID                 : {ticketID}                 
+                CustID                   : {CustID}                   
+                OrderID                  : {OrderID}                  
+                ProductName              : {prod_name}                
+                ProductCategory          : {prod_category}            
+                CustFirstName            : {cust_first_name}          
+                CustPhone                : {cust_phone}               
+                Status                   : {status}                   
+                IssueCategory            : {issueCategory}            
+                Issue                    : {issue}                    
+                DateOpened               : {do}                       
+                DateClosed               : {doc}                      
+                HoursTaken               : {hoursTaken}               
+                FirstResponseTime        : {frt}                      
+                Replies                  : {replies}                  
+                CustomerSatisfaction(%)  : {custSatis}                
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     """)
     reck = input(
             "Would you like to insert this data to Orders.csv ? (Y/N): ")
@@ -1412,19 +1341,18 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
             return None
         while True:
             cls()
-            print(Fore.CYAN + f"""What would you like to Modify ?  Selected ID:{Fore.RED} {id}{Fore.RESET}
-        1) TicketId
-        2) CustID
-        3) OrderID
-        4) Status
-        5) IssueCategory
-        6) Issue
-        7) DateOpened
-        8) DateClosed
-        9) HoursTaken
-        10) FirstResponseTime
-        11) Replies
-        12) CustomerSatisfaction
+            print(Fore.CYAN + 
+f"""
+                                                ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                                ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                                ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                                            Selected ID:{Fore.RED} {id}{Fore.RESET}
+        1) TicketId         4) Status               7) DateOpened          10) FirstResponseTime
+        2) CustID           5) IssueCategory        8) DateClosed          11) Replies
+        3) OrderID          6) Issue                9) HoursTaken          12) CustomerSatisfaction
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
             """)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
