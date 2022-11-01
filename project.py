@@ -1,6 +1,5 @@
-from http import server
 import time
-from datetime import date, datetime
+from datetime import datetime
 from colorama import Fore
 from helpfultools import Searchy, print_text, cls, pause
 from actions import dateformat_info as date_info
@@ -47,8 +46,8 @@ def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: lis
             sort_df = df.sort_values(
                 by=col, ascending=reversee, inplace=in_place)
         print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
-        actions.pause()
-        actions.cls()
+        pause()
+        cls()
     return df
 
 
@@ -203,23 +202,23 @@ def am_cust_f():
                 try:
                     for _ in range(int(n)):
                         cls()
-                        actions.add_a_Customer(customers)
+                        add_a_Customer(customers)
                 except Exception as e:
-                    actions.throw_error('error', f"{e}", e.with_traceback)
+                    throw_error('error', f"{e}", e.with_traceback)
             else:
                 print("Command Cancelled: Add a customer.")
                 pause()
         # Updating a customer
         elif cmd == "4":
             if input("Do you want to update a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.update_customer(customers)
+                update_customer(customers)
             else:
                 print("Command Cancelled: Update a customer.")
                 pause()
         # Delete a customer
         elif cmd == "5":
             if input("Do you want to delete a customer ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.delete_customer(customers)
+                delete_customer(customers)
             else:
                 print("Command Cancelled: Delete a customer.")
                 pause()
@@ -236,6 +235,8 @@ def am_cust_f():
             menu_level = "1"
             break
 
+
+# -----------------------------------------------------------------------------------------------------------------------------
 
 def amp_Search():
     global menu_level
@@ -359,23 +360,23 @@ def am_prod_f():
                 try:
                     for _ in range(int(n)):
                         cls()
-                        actions.add_a_Product(products)
+                        add_a_Product(products)
                 except Exception as e:
-                    actions.throw_error('error', f"{e}", e.with_traceback)
+                    throw_error('error', f"{e}", e.with_traceback)
             else:
                 print("Command Cancelled: Add a product.")
                 pause()
         # Update products
         elif cmd == "4":
             if input("Do you want to update a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.update_product(products)
+                update_product(products)
             else:
                 print("Command Cancelled: Update a product.")
                 pause()
         # Delete products
         elif cmd == "5":
             if input("Do you want to delete a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.delete_product(products)
+                delete_product(products)
             else:
                 print("Command Cancelled: Delete a product.")
                 pause()
@@ -389,6 +390,8 @@ def am_prod_f():
             menu_level = "1.2.3"
             amp_DA()
 
+
+# -----------------------------------------------------------------------------------------------------------------------------
 
 def amo_Search():
     global menu_level
@@ -478,22 +481,22 @@ def am_ord_f():
                 try:
                     for _ in range(int(n)):
                         cls()
-                        actions.add_an_order(customers, products, orders)
+                        add_an_order(customers, products, orders)
                 except Exception as e:
-                    actions.throw_error('error', f"{e}", e.with_traceback)
+                    throw_error('error', f"{e}", e.with_traceback)
             else:
                 print("Command Cancelled: Add an order.")
                 pause()
         # Update an order
         elif cmd == "4":
             if input("Do you want to update an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.update_order(customers, products, orders)
+                update_order(customers, products, orders)
             else:
                 print("Command Cancelled: Update an order.")
                 pause()
         elif cmd == "5":
             if input("Do you want to delete an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.delete_order(orders)
+                delete_order(orders)
             else:
                 print("Command Cancelled: Delete an order.")
                 pause()
@@ -502,6 +505,7 @@ def am_ord_f():
             SortData(orders, 1.3, "12", [
                 "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])
 
+# -----------------------------------------------------------------------------------------------------------------------------
 
 def amt_Search():
     global menu_level
@@ -714,15 +718,15 @@ def amt_RG_Summerzie():
                     print(date_info)
                     sore = "Start: " if x == 0 else "End: "
                     do_check = input(Fore.LIGHTMAGENTA_EX + sore + Fore.RESET)
-                    do = actions.date_decoder(do_check, time=True)
+                    do = date_decoder(do_check, time=True)
                     while do is None:
-                        actions.throw_error(
-                            'error', *actions.data_error_msgs["dob"](do_check))
+                        throw_error(
+                            'error', *data_error_msgs["dob"](do_check))
                         cls()
                         print(date_info)
                         do_check = input(Fore.LIGHTMAGENTA_EX +
                                          sore + Fore.RESET)
-                        do = actions.date_decoder(do_check, time=True)
+                        do = date_decoder(do_check, time=True)
                     rangee.append(do)
             else:
                 rangee = range_index[int(cmd)]
@@ -788,7 +792,7 @@ def amt_MG_GenFromTemplate():
         TicketID = input(Fore.LIGHTMAGENTA_EX +
                          "Enter Ticket ID: " + Fore.RESET)
         if TicketID not in tickets.index:
-            actions.throw_error('error', "Ticket ID not found!")
+            throw_error('error', "Ticket ID not found!")
             continue
         ticket_data = tickets.loc[TicketID]
         # First Response
@@ -892,7 +896,7 @@ def amt_MG_Custom():
             while TicketID not in tickets.index:
                 if TicketID == "EXT":
                     break
-                actions.throw_error(
+                throw_error(
                     'error', "Ticket ID not found! Type EXT TO QUIT")
                 TicketID = input(Fore.LIGHTMAGENTA_EX +
                                  "Enter Ticket ID: " + Fore.RESET)
@@ -978,23 +982,23 @@ def am_tick_f():
                 n = input("How many tickets would you like to add? ")
                 for _ in range(int(n)):
                     cls()
-                    actions.add_a_ticket(customers, products, orders, tickets)
+                    add_a_ticket(customers, products, orders, tickets)
                 # try:
                 #     pass
                 # except Exception as e:
-                #     actions.throw_error('error', f"{e}", e.with_traceback)
+                #     throw_error('error', f"{e}", e.with_traceback)
             else:
                 print("Command Cancelled: Add a ticket.")
                 pause()
         elif cmd == "4":
             if input("Do you want to update a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.update_ticket(customers, products, orders, tickets)
+                update_ticket(customers, products, orders, tickets)
             else:
                 print("Command Cancelled: Update a ticket.")
                 pause()
         elif cmd == "5":
             if input("Do you want to delete a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
-                actions.delete_ticket(tickets)
+                delete_ticket(tickets)
             else:
                 print("Command Cancelled: Delete a ticket.")
                 pause()
@@ -1013,6 +1017,7 @@ def am_tick_f():
             amt_MG()
 
 
+# -----------------------------------------------------------------------------------------------------------------------------
 def admin_menu_f():
     global menu_level
     while True:
@@ -1057,7 +1062,7 @@ def cust_menu_f():
                     cmd = input("Command: ")
                     if cmd == "1":
                         cls()
-                        actions.add_a_ticket(
+                        add_a_ticket(
                             customers, products, orders, tickets, custid=CustID, register=True)
                     elif cmd == "2":
                         search_engine = Searchy(tickets)
@@ -1066,7 +1071,7 @@ def cust_menu_f():
                         print(Fore.LIGHTMAGENTA_EX, qry_result, Fore.RESET)
                         pause()
                     elif cmd == "3":
-                        actions.update_ticket(
+                        update_ticket(
                             customers, products, orders, tickets, close=True)
                     elif cmd == "4":
                         data = customers.loc[CustID]
@@ -1090,21 +1095,21 @@ def cust_menu_f():
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-      ________________
-     /                \\
-    /   ____________   \\
-   /   /            \   \\
-  /   /              \   \      ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-  |   |              |   |       Address  :   {Fore.LIGHTGREEN_EX}{data['address']}{Fore.CYAN}                                
-  |   |              |   |       Country  :   {Fore.LIGHTGREEN_EX}{data['country']}{Fore.CYAN}
-  |   |              |   |       State    :   {Fore.LIGHTGREEN_EX}{data['city']}{Fore.CYAN}                        
-   \   \_____________/   /       City     :   {Fore.LIGHTGREEN_EX}{data['state']}{Fore.CYAN}                      
-    \                   /        Pincode  :   {Fore.LIGHTGREEN_EX}{data['pincode']}{Fore.CYAN}
-     \_               _/         Prime    :   {Fore.LIGHTGREEN_EX}{data['prime']}{Fore.CYAN}
-       \_           _/          ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-         \_       _/
-          \_     _/
-            \___/
+       ______________
+      ╱              ╲
+     ╱   __________   ╲
+    ╱   /          \   ╲
+   ╱   /            \   ╲      ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+  |   │              │   │       Address  :   {Fore.LIGHTGREEN_EX}{data['address']}{Fore.CYAN}                                
+  |   │              │   │       Country  :   {Fore.LIGHTGREEN_EX}{data['country']}{Fore.CYAN}
+  |   │              │   │       State    :   {Fore.LIGHTGREEN_EX}{data['city']}{Fore.CYAN}                        
+   ╲   \____________/    ╱       City     :   {Fore.LIGHTGREEN_EX}{data['state']}{Fore.CYAN}                      
+    ╲                   ╱        Pincode  :   {Fore.LIGHTGREEN_EX}{data['pincode']}{Fore.CYAN}
+     ╲_               _╱         Prime    :   {Fore.LIGHTGREEN_EX}{data['prime']}{Fore.CYAN}
+       ╲_           _╱          ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+         ╲_       _╱
+          ╲_     _╱
+            ╲___╱
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
                                                                  
@@ -1126,7 +1131,7 @@ def cust_menu_f():
 │                        ╩╚═╚═╝╚═╝╩╚═╝ ╩ ╚═╝╩╚═                        │
 ╰──────────────────────────────────────────────────────────────────────╯
 """ + Fore.RESET)
-            actions.add_a_Customer(customers=customers, register=True)
+            add_a_Customer(customers=customers, register=True)
         elif cmd == "3":
             menu_level = "0"
             break

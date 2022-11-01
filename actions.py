@@ -1,9 +1,8 @@
-from logging.handlers import DatagramHandler
-import re
 import time
 import uuid
 from colorama import Fore
 from datetime import datetime
+from project import SaveCust, SaveOrd, SaveProd, SaveTick
 
 import pandas as pd
 import numpy as np
@@ -28,6 +27,8 @@ dateformat_info = f"""{Fore.LIGHTRED_EX}
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 {Fore.RESET}\n\n\n"""
+
+# ----------------------------------------------------------------------------------------------------
 
 
 def add_a_Customer(customers: pd.DataFrame, register=False):
@@ -188,6 +189,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
                 "Would you like to complete Registration ? (Y/N): ")
         if reck.lower() == "y":
             customers.loc[id] = NewData
+            SaveCust()
             print(
                 "Record inserted successfully!" if not register else "Registerd Successfully!")
         else:
@@ -198,8 +200,6 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     else:
         throw_error('error', f"Invalid Data",
                     'The data is invalid, please try again.')
-
-# ----------------------------------------------------------------------------------------------------
 
 
 update_customer_menu = {
@@ -287,6 +287,7 @@ Make sure that you have avoided any of the following errors:
                 if new_data:
                     if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
                         customers.at[id, d_type] = new_data
+                        SaveCust()
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
@@ -332,6 +333,7 @@ def delete_customer(customers: pd.DataFrame):
         else:
             customers.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+            SaveCust()
         pause()
 
 
@@ -456,6 +458,7 @@ def add_a_Product(products: pd.DataFrame):
             f"Would you like to insert this data to {Fore.LIGHTCYAN_EX}Products.csv{Fore.RESET} ? (Y/N): ")
         if reck.lower() == "y":
             products.loc[id] = NewData
+            SaveProd()
             print("Record inserted successfully!")
         else:
             print("Record Insertion Cancelled :(")
@@ -464,8 +467,6 @@ def add_a_Product(products: pd.DataFrame):
     else:
         throw_error('error', f"Invalid Data",
                     'The data is invalid, please try again.')
-
-# ----------------------------------------------------------------------------------------------------
 
 
 def delete_product(products: pd.DataFrame):
@@ -487,6 +488,7 @@ def delete_product(products: pd.DataFrame):
         else:
             products.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        SaveProd()
         pause()
 
 
@@ -576,6 +578,7 @@ def update_product(products: pd.DataFrame):
                         products.at[id, d_type] = new_val
                         if d_type == "Returnable" and new_val == "Not Returnable":
                             products.at[id, "DaysToReturn"] = "-"
+                        SaveProd()
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
@@ -725,6 +728,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         if reck.lower() == "y":
             orders.loc[orderId] = NewData
             print("Record inserted successfully!")
+            SaveOrd()
         else:
             print("Record Insertion Cancelled :(")
         time.sleep(1)
@@ -753,6 +757,7 @@ def delete_order(orders: pd.DataFrame):
         else:
             orders.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        SaveOrd()
         pause()
 
 
@@ -839,6 +844,7 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                         elif d_type == "productID":
                             prod = products.loc[new_val]
                             orders.at[id, "productName"] = prod["name"]
+                            SaveOrd()
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
@@ -867,7 +873,10 @@ def delete_order(orders: pd.DataFrame):
         else:
             orders.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        SaveOrd()
         pause()
+
+# ----------------------------------------------------------------------------------------------------
 
 
 update_ticket_menu = {
@@ -880,9 +889,6 @@ update_ticket_menu = {
     "7": "State",
     "8": "Back"
 }
-
-
-# ----------------------------------------------------------------------------------------------------
 
 
 def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, custid=None, register=False):
@@ -932,16 +938,23 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                   Fore.RESET)
 
     # Date of Open
-    print(dateformat_info)
-    do_check = input(Fore.LIGHTMAGENTA_EX + "Enter Date Opened: " + Fore.RESET)
-    do = date_decoder(do_check, time=True)
-    while do is None:  # Retake inputs for DOB till its valid
-        throw_error('error', *data_error_msgs["dob"](do_check))
-        cls()
+    if not register:
         print(dateformat_info)
         do_check = input(Fore.LIGHTMAGENTA_EX +
-                         "Enter Date of Opened: " + Fore.RESET)
-        do = date_decoder(do_check, time=True)
+                         "Enter Date Opened: " + Fore.RESET)
+        if do_check != "now":
+            do = date_decoder(do_check, time=True)
+            while do is None:  # Retake inputs for DOB till its valid
+                throw_error('error', *data_error_msgs["dob"](do_check))
+                cls()
+                print(dateformat_info)
+                do_check = input(Fore.LIGHTMAGENTA_EX +
+                                 "Enter Date of Opened: " + Fore.RESET)
+                do = date_decoder(do_check, time=True)
+        else:
+            do = pd.to_datetime(datetime.now())
+    else:
+        do = pd.to_datetime(datetime.now())
     cls()
 
     # Date of Closed
@@ -1051,9 +1064,10 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     """ + Fore.RESET)
     reck = input(
-        "Would you like to insert this data to Orders.csv ? (Y/N): ")
+        f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Tickets.csv{Fore.RESET} ? (Y/N): ")
     if reck.lower() == "y":
         tickets.loc[ticketID] = NewData
+        SaveTick()
         print("Record inserted successfully!")
     else:
         print("Record Insertion Cancelled :(")
@@ -1080,6 +1094,7 @@ def delete_ticket(tickets: pd.DataFrame):
         else:
             tickets.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
+        SaveTick()
         pause()
 
 
@@ -1118,15 +1133,17 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
             tickets.at[id, "DateClosed"] = tdy
             res = tdy - tickets.loc[id]["DateOpened"]
             tickets.at[id, "HoursTaken"] = res.days * 24
-            interaction = input(
-                Fore.LIGHTMAGENTA_EX + "Please rate your experience with us: (Rate them on a scale of 1-10) \nHow was our staff's interaction with you ?" + Fore.RESET)
-            frtt = input(Fore.LIGHTMAGENTA_EX +
-                         "Did you recieve the first interaction message from our staff quick ?" + Fore.RESET)
-            theclock = input(Fore.LIGHTMAGENTA_EX +
-                             "How quickly your issue was resolved ?" + Fore.RESET)
-            satis_deter = [float(interaction), float(frtt), float(theclock)]
+            fail_text = "Please Enter on a scale of 1-10"
+            interaction = safe_input(
+                Fore.LIGHTMAGENTA_EX + "Please rate your experience with us: (Rate them on a scale of 1-10) \nHow was our staff's interaction with you ?" + Fore.RESET, fail_text=fail_text)
+            frtt = safe_input(Fore.LIGHTMAGENTA_EX +
+                              "Did you recieve the first interaction message from our staff quick ?" + Fore.RESET, fail_text=fail_text)
+            theclock = safe_input(Fore.LIGHTMAGENTA_EX +
+                                  "How quickly your issue was resolved ?" + Fore.RESET, fail_text=fail_text)
+            satis_deter = [interaction, frtt, theclock]
             tickets.at[id, "CustomerSatisfaction(%)"] = round(
                 sum(satis_deter)/len(satis_deter)*1000) / 10
+            SaveTick()
             return None
         while True:
             cls()
@@ -1141,7 +1158,8 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
         
              1) TicketId         4) Status               7) DateOpened          10) FirstResponseTime
              2) CustID           5) IssueCategory        8) DateClosed          11) Replies
-             3) OrderID          6) Issue                9) HoursTaken          12) CustomerSatisfaction{Fore.CYAN}
+             3) OrderID          6) Issue                9) HoursTaken          12) CustomerSatisfaction
+                                                            13) Back{Fore.CYAN}
         
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
             """+Fore.RESET)
@@ -1193,3 +1211,4 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
                     throw_error('error', 'Error while updating order data',
                                 "Please make sure you have entered the correct details.")
                 sel_rec = tickets.loc[id]
+        SaveTick()
