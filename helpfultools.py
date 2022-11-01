@@ -3,8 +3,6 @@ from colorama import Fore
 from datetime import datetime
 import re
 
-# TODO: Move the Sort method from project.py to this file
-
 data_error_msgs = {
     "id": lambda id: (f'Duplicate ID: {id}', "\n> ID should be a unique ID."),
     "first_name": lambda first_name: (f'Invalid Firstname: {first_name}',
@@ -266,3 +264,15 @@ def data_validator_ticket_bool(customers: pd.DataFrame, products: pd.DataFrame, 
             return True
         else:
             return False
+
+
+def safe_input(text:str, fail_text:str=None, dtype:str="int"):
+    fail_text = f"Please Enter Data as {dtype}" if fail_text is None else fail_text
+    try:
+        match dtype:
+            case "int":
+                return int(input(text))
+            case "float":
+                return float(input(text))
+    except ValueError as e:
+        throw_error(err_type="error", title="Wrong Value", message=fail_text)
