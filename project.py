@@ -28,6 +28,18 @@ tickets["DateOpened"] = pd.to_datetime(
 tickets["DateClosed"] = pd.to_datetime(
     tickets["DateClosed"], format=date_format)
 
+
+def SaveCust(): return customers.to_csv(r'Data\customers1.csv')
+def SaveProd(): return products.to_csv(r'Data\products1.csv')
+def SaveOrd(): return orders.to_csv(r'Data\orders1.csv')
+def SaveTick(): return tickets.to_csv(r'Data\tickets1.csv')
+def SaveAll():
+    SaveCust()
+    SaveProd()
+    SaveOrd()
+    SaveTick()
+
+
 print(f"[{datetime.now()}] Files Loaded")
 
 # Creating the Menu
@@ -35,15 +47,8 @@ menu_level = "0"
 pause = actions.pause
 cls = actions.cls
 
-date_info = f"""{Fore.LIGHTRED_EX}
-+============================= FORMAT =============================+
-|   > The date must not be blank                                   |
-|   > The date must be on the calander                             |
-|   > The date must be in any of the following Formats             |
-|        "16th Jan 2021"         OR      "16 Jan 2021"             |
-|        "16th January 2021"     OR      "16 January 2021"         |
-|        "dd/mm/yy"              OR      "dd/mm/yyyy"              |
-+==================================================================+{Fore.RESET}\n\n\n"""
+date_info = actions.dateformat_info
+
 
 def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: list):
     global menu_level
@@ -120,6 +125,7 @@ def amc_Search():
                         f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
                     if udf.strip().lower() in "y1":
                         df = qry_result.copy()
+                        search_engine = Searchy(df)
             else:
                 print(f"\nEmpty dataframe\n")
         pause()
@@ -245,7 +251,7 @@ def am_cust_f():
         elif cmd == "6":
             menu_level = "1.1.2"
             SortData(customers, 1.1, "14", [
-                                 "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"])
+                "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"])
         # Data Analysis
         elif cmd == "7":
             menu_level = "1.1.3"
@@ -317,6 +323,7 @@ def amp_Search():
                         f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
                     if udf.strip().lower() in "y1":
                         df = qry_result.copy()
+                        search_engine = Searchy(df)
             else:
                 print(f"\nEmpty dataframe\n")
         pause()
@@ -400,7 +407,7 @@ def am_prod_f():
         elif cmd == "6":
             menu_level = "1.2.2"
             SortData(products, 1.2, "9", [
-                                "2", "3", "4", "5", "6", "7", "8"])
+                "2", "3", "4", "5", "6", "7", "8"])
         # Data Analysis
         elif cmd == "7":
             menu_level = "1.2.3"
@@ -410,65 +417,42 @@ def am_prod_f():
 def amo_Search():
     global menu_level
     df = orders.copy()
+    search_engine = Searchy(df)
+    def col(x): return orders.columns[int(x)-2]
     while True:
         print_menu(menu_level)
         cmd = input("Command: ")
         if cmd == "1":
             qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = df.loc[qry] if qry in df.index else pd.DataFrame()
+            qry_result = search_engine.by_id(qry)
         elif cmd in ["2", "3", "4", "5", "6", "11"]:
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             qry = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            column = orders.columns[int(cmd)-2]
-            qry_df = df[column]
-            qry_result = df.loc[qry_df.str.contains(qry)]
+            qry_result = search_engine.by_string(qry, col(cmd))
         elif cmd in ["7", "8"]:
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
-            column = orders.columns[int(cmd)-2]
-            qry_df = df[column].replace("-", "0").astype(int)
-            min, max = input(f"{Fore.LIGHTMAGENTA_EX}Enter Min: {Fore.RESET}"), input(
-                f"{Fore.LIGHTMAGENTA_EX}Enter Max: {Fore.RESET}")
-            if min == "":
-                min = "0"
-            if max == "":
-                max = str(qry_df.max())
-            try:
-                min, max = float(min), float(max)
-                qry_result = df.loc[(qry_df >= min) & (qry_df <= max)]
-            except Exception as e:
-                print(f"{Fore.RED}\nPlease enter a valid range!\n{Fore.RESET}")
-                qry_result = pd.DataFrame()
+            qry_result = search_engine.by_num(col(cmd))
         elif cmd == "10":
             # Search By Status
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             cmdn = input(
                 "Index: \n1) Cancelled\n2) Delivered\n3) Pre-Shipment\n4) Unshipped\nCommand: ")
-            qry_df = df["status"]
-            if cmdn == "1":
-                qry_result = df.loc[qry_df == "Cancelled"]
-            elif cmdn == "2":
-                qry_result = df.loc[qry_df == "Delivered"]
-            elif cmdn == "3":
-                qry_result = df.loc[qry_df == "Pre-Shipment"]
-            elif cmdn == "4":
-                qry_result = df.loc[qry_df == "Unshipped"]
-            menu_level = "1.3.1"
+            qry_result = search_engine.by_options(cmdn, col(cmd), {"1": "Cancelled", "2": "Delivered", "3":"Pre-Shipment", "4": "Unshipped"})
+            # qry_df = df["status"]
+            # if cmdn == "1":
+            #     qry_result = df.loc[qry_df == "Cancelled"]
+            # elif cmdn == "2":
+            #     qry_result = df.loc[qry_df == "Delivered"]
+            # elif cmdn == "3":
+            #     qry_result = df.loc[qry_df == "Pre-Shipment"]
+            # elif cmdn == "4":
+            #     qry_result = df.loc[qry_df == "Unshipped"]
+            #menu_level = "1.3.1"
         # Search by DOO
         elif cmd == "9":
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
-            qry_start = input(
-                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
-            qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
-            qry_start, qry_end = pd.to_datetime(actions.date_decoder(
-                qry_start), format=r"%Y-%m-%d"), pd.to_datetime(actions.date_decoder(qry_end), format=r"%Y-%m-%d")
-            if qry_end is not None:
-                qry_df = (qry_end > df["dateofOrder"]) & (
-                    df["dateofOrder"] > qry_start)
-                qry_result = df[qry_df]
-            else:
-                qry_df = df["dateofOrder"] > qry_start
-                qry_result = df[qry_df]
+            qry_result = search_engine.by_date(col=col(cmd), format=date_format, time=True)
         elif cmd == "12":
             menu_level = "1.3"
             break
@@ -486,6 +470,7 @@ def amo_Search():
                         f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
                     if udf.strip().lower() in "y1":
                         df = qry_result.copy()
+                        search_engine = Searchy(df)
             else:
                 print(f"\nEmpty dataframe\n")
         pause()
@@ -537,7 +522,7 @@ def am_ord_f():
         elif cmd == "6":
             menu_level = "1.3.2"
             SortData(orders, 1.3, "12", [
-                              "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])
+                "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])
 
 
 def amt_Search():
@@ -591,6 +576,7 @@ def amt_Search():
                         f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
                     if udf.strip().lower() in "y1":
                         df = qry_result.copy()
+                        search_engine = Searchy(df)
             else:
                 print(f"\nEmpty dataframe\n")
         pause()
@@ -926,9 +912,10 @@ def amt_MG_Custom():
             TicketID = input(Fore.LIGHTMAGENTA_EX +
                              "Enter Ticket ID: " + Fore.RESET)
             while TicketID not in tickets.index:
-                if TicketID == "EXT": 
+                if TicketID == "EXT":
                     break
-                actions.throw_error('error', "Ticket ID not found! Type EXT TO QUIT")
+                actions.throw_error(
+                    'error', "Ticket ID not found! Type EXT TO QUIT")
                 TicketID = input(Fore.LIGHTMAGENTA_EX +
                                  "Enter Ticket ID: " + Fore.RESET)
             else:
@@ -936,7 +923,7 @@ def amt_MG_Custom():
                 print_menu(menu_level)
                 message = input("Enter your message: \n")
                 print(
-                f"""
+                    f"""
    _____          _                               _____                              _   
   / ____|        | |                             / ____|                            | |  
  | |    _   _ ___| |_ ___  _ __ ___   ___ _ __  | (___  _   _ _ __  _ __   ___  _ __| |_ 
@@ -1036,7 +1023,7 @@ def am_tick_f():
         elif cmd == "6":
             menu_level = "1.4.2"
             SortData(tickets, 1.4, "17", [
-                               2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
+                2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
         elif cmd == "7":
             menu_level = "1.4.3"
             amt_DA()
@@ -1110,39 +1097,38 @@ def cust_menu_f():
                                     ╔═╗╦═╗╔═╗╔═╗╦╦  ╔═╗
                                     ╠═╝╠╦╝║ ║╠╣ ║║  ║╣ 
                                     ╩  ╩╚═╚═╝╚  ╩╩═╝╚═╝
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-        ______              +===========================================================+
+        ______              ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
        ╱      ╲              Customer ID:  {Fore.LIGHTGREEN_EX}{CustID}{Fore.CYAN}                                    
       ╱        ╲             Name       :  {Fore.LIGHTGREEN_EX}{data['first_name'] + data['last_name']}{Fore.CYAN}  
      │          │            DOB        :  {Fore.LIGHTGREEN_EX}{data['dob']}{Fore.CYAN}  
      │          │            Gender     :  {Fore.LIGHTGREEN_EX}{data['gender']}{Fore.CYAN}  
      │          │            Email      :  {Fore.LIGHTGREEN_EX}{data['email']}{Fore.CYAN}  
    _╱------------╲_          Phone      :  {Fore.LIGHTGREEN_EX}{data['phone']}{Fore.CYAN}
- _╱                ╲_       +===========================================================+
+ _╱                ╲_       ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 ╱____________________╲
 
-┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┭
-│        o         │        o         │        o         │        o         │        o         │
-┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┴
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
       ________________
      /                \\
     /   ____________   \\
    /   /            \   \\
-  /   /              \   \      +===========================================================+
+  /   /              \   \      ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
   |   |              |   |       Address  :   {Fore.LIGHTGREEN_EX}{data['address']}{Fore.CYAN}                                
   |   |              |   |       Country  :   {Fore.LIGHTGREEN_EX}{data['country']}{Fore.CYAN}
   |   |              |   |       State    :   {Fore.LIGHTGREEN_EX}{data['city']}{Fore.CYAN}                        
    \   \_____________/   /       City     :   {Fore.LIGHTGREEN_EX}{data['state']}{Fore.CYAN}                      
     \                   /        Pincode  :   {Fore.LIGHTGREEN_EX}{data['pincode']}{Fore.CYAN}
      \_               _/         Prime    :   {Fore.LIGHTGREEN_EX}{data['prime']}{Fore.CYAN}
-       \_           _/          +===========================================================+
+       \_           _/          ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
          \_       _/
           \_     _/
             \___/
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
                                                                  
    
 """, Fore.RESET)
@@ -1193,9 +1179,7 @@ while True:
         print("Unknown command, please try again.")
 
 print("Thank you for using this software.")
+print(f"[{datetime.now()}] Saving Files...")
+SaveAll()
 print(f"[{datetime.now()}] Quitting...")
-customers.to_csv(r'Data\customers1.csv')
-products.to_csv(r'Data\products1.csv')
-orders.to_csv(r'Data\orders1.csv')
-tickets.to_csv(r'Data\tickets1.csv')
 time.sleep(1)
