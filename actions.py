@@ -174,13 +174,13 @@ Avoid the above errors and try again.
 def add_a_Customer(customers: pd.DataFrame, register=False):
     # TODO: Formatting
     if not register:
-        print(
+        print(Fore.CYAN+
 """
                     ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦ ╦╔═╗╔╦╗╔═╗╔╦╗╔═╗╦═╗
                     ╠═╣ ║║ ║║  ╠═╣  ║  ║ ║╚═╗ ║ ║ ║║║║║╣ ╠╦╝
                     ╩ ╩═╩╝═╩╝  ╩ ╩  ╚═╝╚═╝╚═╝ ╩ ╚═╝╩ ╩╚═╝╩╚═
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-""")
+"""+ Fore.RESET)
     id = input(Fore.LIGHTMAGENTA_EX +
                "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     # Verify that the customer id is not a duplicate
@@ -300,27 +300,27 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
         ll = max([len(str(x)) for x in NewData])
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
-        print(f"""
+        print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
                                     ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-            ID          :    {id        }
-            First Name  :    {first_name}
-            Last Name   :    {last_name }
-            DOB         :    {dob       }
-            Gender      :    {gender    }
-            Address     :    {address   }
-            Country     :    {country   }
-            City        :    {city      }
-            State       :    {state     }
-            Pincode     :    {pincode   }
-            Phone       :    {phone     }
-            E-mail      :    {email     }
-            Prime       :    {prime     }
+            ID          :    {Fore.LIGHTMAGENTA_EX}{id        }{Fore.CYAN}
+            First Name  :    {Fore.LIGHTMAGENTA_EX}{first_name}{Fore.CYAN}
+            Last Name   :    {Fore.LIGHTMAGENTA_EX}{last_name }{Fore.CYAN}
+            DOB         :    {Fore.LIGHTMAGENTA_EX}{dob       }{Fore.CYAN}
+            Gender      :    {Fore.LIGHTMAGENTA_EX}{gender    }{Fore.CYAN}
+            Address     :    {Fore.LIGHTMAGENTA_EX}{address   }{Fore.CYAN}
+            Country     :    {Fore.LIGHTMAGENTA_EX}{country   }{Fore.CYAN}
+            City        :    {Fore.LIGHTMAGENTA_EX}{city      }{Fore.CYAN}
+            State       :    {Fore.LIGHTMAGENTA_EX}{state     }{Fore.CYAN}
+            Pincode     :    {Fore.LIGHTMAGENTA_EX}{pincode   }{Fore.CYAN}
+            Phone       :    {Fore.LIGHTMAGENTA_EX}{phone     }{Fore.CYAN}
+            E-mail      :    {Fore.LIGHTMAGENTA_EX}{email     }{Fore.CYAN}
+            Prime       :    {Fore.LIGHTMAGENTA_EX}{prime     }{Fore.CYAN}
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-    """)
+    """+Fore.RESET)
         if not register:
             reck = input(
                 f"Would you like to insert this data to {Fore.GREEN}Customers.csv{Fore.RESET} ? (Y/N): ")
@@ -373,20 +373,21 @@ def update_customer(customers: pd.DataFrame):
             cls()
             print(Fore.CYAN + 
 f"""
-                                    ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
-                                    ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
-                                    ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+                                                    ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                                    ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                                    ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
                                 
-                                 Selected ID:{Fore.RED} {id}{Fore.RESET}
-                    1) id               4) dob          7) country      10) pincode
-                    2) first_name       5) gender       8) city         11) phone  
-                    3) last_name        6) address      9) state        12) email  
-      
-                              13) prime                       14) Back  
+                                                 Selected ID:{Fore.RED} {id}{Fore.RESET}
+
+                                    1) id               4) dob          7) country      10) pincode
+                                    2) first_name       5) gender       8) city         11) phone  
+                                    3) last_name        6) address      9) state        12) email  
+
+                                              13) prime                       14) Back{Fore.CYAN}  
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                       
-            """)
+            """+ Fore.RESET)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
@@ -589,22 +590,22 @@ def add_a_Product(products: pd.DataFrame):
         ll = max([len(str(x)) for x in NewData])
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
-        print(f"""
+        print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
                                     ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-            ID              :    {id          }
-            Name            :    {name        }
-            Manufacturer    :    {manufacturer}
-            Category        :    {category    }
-            Returnable      :    {Returnable  }
-            Stock           :    {stock       }
-            Avg_rating      :    {avg_rating  }
-            Days to Return  :    {dtr         }
+            ID              :    {Fore.LIGHTMAGENTA_EX}{id          }{Fore.CYAN}
+            Name            :    {Fore.LIGHTMAGENTA_EX}{name        }{Fore.CYAN}
+            Manufacturer    :    {Fore.LIGHTMAGENTA_EX}{manufacturer}{Fore.CYAN}
+            Category        :    {Fore.LIGHTMAGENTA_EX}{category    }{Fore.CYAN}
+            Returnable      :    {Fore.LIGHTMAGENTA_EX}{Returnable  }{Fore.CYAN}
+            Stock           :    {Fore.LIGHTMAGENTA_EX}{stock       }{Fore.CYAN}
+            Avg_rating      :    {Fore.LIGHTMAGENTA_EX}{avg_rating  }{Fore.CYAN}
+            Days to Return  :    {Fore.LIGHTMAGENTA_EX}{dtr         }{Fore.CYAN}
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-    """)
+    {Fore.RESET}""")
         reck = input(
             f"Would you like to insert this data to {Fore.LIGHTCYAN_EX}Products.csv{Fore.RESET} ? (Y/N): ")
         if reck.lower() == "y":
@@ -677,14 +678,15 @@ f"""
                                                 ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
                                                 ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                                            
                                             Selected ID:{Fore.RED} {id}{Fore.RESET}
 
                             1) id                       4) category               7) Returnable   
                             2) name                     5) In-Stock               8) Days to Return
-                            3) manufacturer             6) AvgRating              9) Back     
+                            3) manufacturer             6) AvgRating              9) Back{Fore.CYAN}     
                     
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                
-            """)
+            """ + Fore.RESET)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
@@ -740,13 +742,13 @@ f"""
 
 
 def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
-    print(
+    print(Fore.CYAN +
 """
                           ╔═╗╔╦╗╔╦╗  ╔═╗╔╗╔  ╔═╗╦═╗╔╦╗╔═╗╦═╗
                           ╠═╣ ║║ ║║  ╠═╣║║║  ║ ║╠╦╝ ║║║╣ ╠╦╝
                           ╩ ╩═╩╝═╩╝  ╩ ╩╝╚╝  ╚═╝╩╚══╩╝╚═╝╩╚═
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-""")
+""" + Fore.RESET)
     # OrderID
     orderId = input(Fore.LIGHTMAGENTA_EX +
                     "Enter ID (Leave blank for random uuid): " + Fore.RESET)
@@ -853,25 +855,25 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         ll = max([len(str(x)) for x in NewData])
         fac = 62 if ll <= 62 else ll
         eq = ll - 62 if ll > 62 else 0
-        print(f"""
+        print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
                                     ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-            OrderID               :    {orderId           }
-            CustomerID            :    {customerID        }
-            Customer (First Name) :    {cust_first_name   }
-            Customer (Last Name)  :    {cust_last_name    }
-            ProductID             :    {productID         }
-            Product Name          :    {prod_name         }
-            Quantity              :    {qty               }
-            Total Price           :    {total_price       }
-            Date Of Order         :    {doo               }
-            Status                :    {State             }
-            Address               :    {cust_address      }
+            OrderID               :    {Fore.LIGHTMAGENTA_EX}{orderId           }{Fore.CYAN}
+            CustomerID            :    {Fore.LIGHTMAGENTA_EX}{customerID        }{Fore.CYAN}
+            Customer (First Name) :    {Fore.LIGHTMAGENTA_EX}{cust_first_name   }{Fore.CYAN}
+            Customer (Last Name)  :    {Fore.LIGHTMAGENTA_EX}{cust_last_name    }{Fore.CYAN}
+            ProductID             :    {Fore.LIGHTMAGENTA_EX}{productID         }{Fore.CYAN}
+            Product Name          :    {Fore.LIGHTMAGENTA_EX}{prod_name         }{Fore.CYAN}
+            Quantity              :    {Fore.LIGHTMAGENTA_EX}{qty               }{Fore.CYAN}
+            Total Price           :    {Fore.LIGHTMAGENTA_EX}{total_price       }{Fore.CYAN}
+            Date Of Order         :    {Fore.LIGHTMAGENTA_EX}{doo               }{Fore.CYAN}
+            Status                :    {Fore.LIGHTMAGENTA_EX}{State             }{Fore.CYAN}
+            Address               :    {Fore.LIGHTMAGENTA_EX}{cust_address      }{Fore.CYAN}
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-    """)
+    {Fore.RESET}""")
         reck = input(
             f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Orders.csv{Fore.RESET} ? (Y/N): ")
         if reck.lower() == "y":
@@ -958,19 +960,21 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
             cls()
             print(Fore.CYAN + 
 f"""
-                                    ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
-                                    ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
-                                    ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+                                                    ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                                    ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                                    ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-                              Selected ID:{Fore.RED} {id}{Fore.RESET}
+                              
+                                              Selected ID:{Fore.RED} {id}{Fore.RESET}
 
-                           1)  orderId                         4)  qty
-                           2)  customerID                      5)  total_price
-                           3)  productID                       6)  doo
-                                        7)  State   8)  Back
+                                           1)  orderId                         4)  qty
+                                           2)  customerID                      5)  total_price
+                                           3)  productID                       6)  doo
+                                                        
+                                                    7)  State       8)  Back{Fore.CYAN}
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-            """)
+            {Fore.RESET}""")
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
@@ -1077,13 +1081,13 @@ def data_validator_order_bool(customers, products, orders, id, data, d_type):
 
 
 def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, custid=None, register=False):
-    print(
+    print(Fore.CYAN+
 """
                        ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦═╗╔═╗╔╦╗╦ ╦╔═╗╔╦╗
                        ╠═╣ ║║ ║║  ╠═╣  ╠═╝╠╦╝║ ║ ║║║ ║║   ║ 
                        ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-""")
+"""+ Fore.RESET)
     # TicketID
     ticketID = input(Fore.LIGHTMAGENTA_EX +
                      "Enter ID (Leave blank for random uuid): " + Fore.RESET)
@@ -1217,31 +1221,31 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     ll = max([len(str(x)) for x in NewData])
     fac = 62 if ll <= 62 else ll
     eq = ll - 62 if ll > 62 else 0
-    print(f"""
+    print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
                                     ╚═╝╚═╝╝╚╝╚  ╩╩╚═╩ ╩  ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     
-                TicketID                 : {ticketID}                 
-                CustID                   : {CustID}                   
-                OrderID                  : {OrderID}                  
-                ProductName              : {prod_name}                
-                ProductCategory          : {prod_category}            
-                CustFirstName            : {cust_first_name}          
-                CustPhone                : {cust_phone}               
-                Status                   : {status}                   
-                IssueCategory            : {issueCategory}            
-                Issue                    : {issue}                    
-                DateOpened               : {do}                       
-                DateClosed               : {doc}                      
-                HoursTaken               : {hoursTaken}               
-                FirstResponseTime        : {frt}                      
-                Replies                  : {replies}                  
-                CustomerSatisfaction(%)  : {custSatis}                
+                TicketID                 : {Fore.LIGHTMAGENTA_EX}{ticketID}       {Fore.CYAN}
+                CustID                   : {Fore.LIGHTMAGENTA_EX}{CustID}         {Fore.CYAN}
+                OrderID                  : {Fore.LIGHTMAGENTA_EX}{OrderID}        {Fore.CYAN}
+                ProductName              : {Fore.LIGHTMAGENTA_EX}{prod_name}      {Fore.CYAN}
+                ProductCategory          : {Fore.LIGHTMAGENTA_EX}{prod_category}  {Fore.CYAN}
+                CustFirstName            : {Fore.LIGHTMAGENTA_EX}{cust_first_name}{Fore.CYAN}
+                CustPhone                : {Fore.LIGHTMAGENTA_EX}{cust_phone}     {Fore.CYAN}
+                Status                   : {Fore.LIGHTMAGENTA_EX}{status}         {Fore.CYAN}
+                IssueCategory            : {Fore.LIGHTMAGENTA_EX}{issueCategory}  {Fore.CYAN}
+                Issue                    : {Fore.LIGHTMAGENTA_EX}{issue}          {Fore.CYAN}
+                DateOpened               : {Fore.LIGHTMAGENTA_EX}{do}             {Fore.CYAN}
+                DateClosed               : {Fore.LIGHTMAGENTA_EX}{doc}            {Fore.CYAN}
+                HoursTaken               : {Fore.LIGHTMAGENTA_EX}{hoursTaken}     {Fore.CYAN}
+                FirstResponseTime        : {Fore.LIGHTMAGENTA_EX}{frt}            {Fore.CYAN}
+                Replies                  : {Fore.LIGHTMAGENTA_EX}{replies}        {Fore.CYAN}
+                CustomerSatisfaction(%)  : {Fore.LIGHTMAGENTA_EX}{custSatis}      {Fore.CYAN}
 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-    """)
+    """+ Fore.RESET)
     reck = input(
             "Would you like to insert this data to Orders.csv ? (Y/N): ")
     if reck.lower() == "y":
@@ -1342,18 +1346,20 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
         while True:
             cls()
             print(Fore.CYAN + 
-f"""
-                                                ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
-                                                ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
-                                                ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
+f"""      
+                                                   ╔╦╗╔═╗╔╦╗╦╔═╗╦ ╦  ╔╦╗╔═╗╔╦╗╔═╗
+                                                   ║║║║ ║ ║║║╠╣ ╚╦╝   ║║╠═╣ ║ ╠═╣
+                                                   ╩ ╩╚═╝═╩╝╩╚   ╩   ═╩╝╩ ╩ ╩ ╩ ╩
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-                                            Selected ID:{Fore.RED} {id}{Fore.RESET}
-        1) TicketId         4) Status               7) DateOpened          10) FirstResponseTime
-        2) CustID           5) IssueCategory        8) DateClosed          11) Replies
-        3) OrderID          6) Issue                9) HoursTaken          12) CustomerSatisfaction
-
+                                            
+                                                 Selected ID:{Fore.RED} {id}{Fore.RESET}
+        
+             1) TicketId         4) Status               7) DateOpened          10) FirstResponseTime
+             2) CustID           5) IssueCategory        8) DateClosed          11) Replies
+             3) OrderID          6) Issue                9) HoursTaken          12) CustomerSatisfaction{Fore.CYAN}
+        
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-            """)
+            """+Fore.RESET)
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
