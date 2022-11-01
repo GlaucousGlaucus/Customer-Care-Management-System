@@ -1083,9 +1083,9 @@ def data_validator_order_bool(customers, products, orders, id, data, d_type):
 def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, custid=None, register=False):
     print(Fore.CYAN+
 """
-                       ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦═╗╔═╗╔╦╗╦ ╦╔═╗╔╦╗
-                       ╠═╣ ║║ ║║  ╠═╣  ╠═╝╠╦╝║ ║ ║║║ ║║   ║ 
-                       ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
+                       ╔═╗╔╦╗╔╦╗  ╔═╗  ╔╦╗╦╔═╗╦╔═╔═╗╔╦╗
+                       ╠═╣ ║║ ║║  ╠═╣   ║ ║║  ╠╩╗║╣  ║ 
+                       ╩ ╩═╩╝═╩╝  ╩ ╩   ╩ ╩╚═╝╩ ╩╚═╝ ╩ 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """+ Fore.RESET)
     # TicketID
