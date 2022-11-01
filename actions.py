@@ -2,7 +2,6 @@ import time
 import uuid
 from colorama import Fore
 from datetime import datetime
-from project import SaveCust, SaveOrd, SaveProd, SaveTick
 
 import pandas as pd
 import numpy as np
@@ -10,26 +9,7 @@ import numpy as np
 from helpfultools import *
 
 
-dateformat_info = f"""{Fore.LIGHTRED_EX}
-                              ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
-                              ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
-                              ╚  ╚═╝╩╚═╩ ╩╩ ╩ ╩ 
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-   > The date must not be blank                                   
-   > The date must be on the calander      
-   > The date must not be in the future       
-   > The time must be in the format {Fore.LIGHTCYAN_EX}hh:mm:ss{Fore.LIGHTRED_EX}                
-   > The date must be in any of the following Formats             
-        
-        "16th Jan 2021"         OR      "16 Jan 2021"             
-        "16th January 2021"     OR      "16 January 2021"         
-        "dd/mm/yy"              OR      "dd/mm/yyyy"   
-
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-{Fore.RESET}\n\n\n"""
-
 # ----------------------------------------------------------------------------------------------------
-
 
 def add_a_Customer(customers: pd.DataFrame, register=False):
     # TODO: Formatting
@@ -149,17 +129,14 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
                       "Enter Email: " + Fore.RESET)
     cls()
     # Prime
-    prime = "PRIME" if input(Fore.LIGHTMAGENTA_EX + "Enter Prime: " + Fore.RESET) in [
-        "Prime", "PRIME", "Yes", "1", "Y", "P", "p"] else "-"
+    prime = "PRIME" if input(Fore.LIGHTMAGENTA_EX + "Enter Prime: " + Fore.RESET).lower() in [
+        "prime","yes", "p", "y", "oui"] else "-"
     # Data Summmarization
     NewData = [first_name, last_name, dob,
                gender, address, country, city, state, pincode,
                phone, email, prime]
     print("+" + "-"*50 + "+")
     if all(NewData):
-        ll = max([len(str(x)) for x in NewData])
-        fac = 62 if ll <= 62 else ll
-        eq = ll - 62 if ll > 62 else 0
         print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
@@ -189,7 +166,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
                 "Would you like to complete Registration ? (Y/N): ")
         if reck.lower() == "y":
             customers.loc[id] = NewData
-            SaveCust()
+            SaveData(customers, "Customers")
             print(
                 "Record inserted successfully!" if not register else "Registerd Successfully!")
         else:
@@ -287,7 +264,7 @@ Make sure that you have avoided any of the following errors:
                 if new_data:
                     if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
                         customers.at[id, d_type] = new_data
-                        SaveCust()
+                        SaveData(customers, "Customers")
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
@@ -333,20 +310,20 @@ def delete_customer(customers: pd.DataFrame):
         else:
             customers.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
-            SaveCust()
+            SaveData(customers, "Customers")
         pause()
 
 
 # -----------------------------------------------------------------------------------------------------
 
 def add_a_Product(products: pd.DataFrame):
-    print(
+    print(Fore.CYAN + 
         """
                        ╔═╗╔╦╗╔╦╗  ╔═╗  ╔═╗╦═╗╔═╗╔╦╗╦ ╦╔═╗╔╦╗
                        ╠═╣ ║║ ║║  ╠═╣  ╠═╝╠╦╝║ ║ ║║║ ║║   ║ 
                        ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-""")
+""" + Fore.RESET)
     id = input(Fore.LIGHTMAGENTA_EX +
                "Enter ID (Leave blank for random uuid): " + Fore.RESET)
     # Verify that the product id is not a duplicate
@@ -458,7 +435,7 @@ def add_a_Product(products: pd.DataFrame):
             f"Would you like to insert this data to {Fore.LIGHTCYAN_EX}Products.csv{Fore.RESET} ? (Y/N): ")
         if reck.lower() == "y":
             products.loc[id] = NewData
-            SaveProd()
+            SaveData(products, "Products")
             print("Record inserted successfully!")
         else:
             print("Record Insertion Cancelled :(")
@@ -488,7 +465,7 @@ def delete_product(products: pd.DataFrame):
         else:
             products.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
-        SaveProd()
+        SaveData(products, "Products")
         pause()
 
 
@@ -578,7 +555,7 @@ def update_product(products: pd.DataFrame):
                         products.at[id, d_type] = new_val
                         if d_type == "Returnable" and new_val == "Not Returnable":
                             products.at[id, "DaysToReturn"] = "-"
-                        SaveProd()
+                        SaveData(products, "Products")
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
@@ -728,7 +705,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         if reck.lower() == "y":
             orders.loc[orderId] = NewData
             print("Record inserted successfully!")
-            SaveOrd()
+            SaveData(orders, "Orders")
         else:
             print("Record Insertion Cancelled :(")
         time.sleep(1)
@@ -757,7 +734,7 @@ def delete_order(orders: pd.DataFrame):
         else:
             orders.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
-        SaveOrd()
+        SaveData(orders, "Orders")
         pause()
 
 
@@ -844,7 +821,7 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                         elif d_type == "productID":
                             prod = products.loc[new_val]
                             orders.at[id, "productName"] = prod["name"]
-                            SaveOrd()
+                            SaveData(orders, "Orders")
                     else:
                         print("\nUpdating value cancelled.")
                         pause()
@@ -852,29 +829,6 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                     throw_error('error', 'Error while updating order data',
                                 "Please make sure you have entered the correct details.")
                 sel_rec = orders.loc[id]
-
-
-def delete_order(orders: pd.DataFrame):
-    cls()
-    id = input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
-    # Check if id is in the df
-    if id not in orders.index:
-        throw_error("error", "Order ID is not in the Database",
-                    "Please make sure if the ID you have entered is correct")
-    else:
-        sel_rec = orders.loc[id]
-        print(
-            f"{Fore.CYAN}The record to be deleted is shown below:{Fore.RESET} \n{sel_rec}")
-        confirm_check = "ADMIN#" + id[len(id)-3:]
-        confirm = input(
-            f"{Fore.RED}Are you sure you want to delete this record ? \nThis action will not reversible!\nType {Fore.CYAN}{confirm_check}{Fore.RED} to Proceed: {Fore.RESET}")
-        if confirm != confirm_check:
-            print(f"{Fore.CYAN}\n\nRecord deletion cancelled{Fore.RESET}")
-        else:
-            orders.drop(id, inplace=True)
-            print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
-        SaveOrd()
-        pause()
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -926,7 +880,6 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                     "Enter Order ID: " + Fore.RESET)
     while OrderID not in orders.index:
         throw_error('error', "Order ID not found!")
-        print(orders.index)
         OrderID = input(Fore.LIGHTMAGENTA_EX +
                         "Enter Order ID: " + Fore.RESET)
     cls()
@@ -939,7 +892,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 
     # Date of Open
     if not register:
-        print(dateformat_info)
+        print(datetimeformat_info)
         do_check = input(Fore.LIGHTMAGENTA_EX +
                          "Enter Date Opened: " + Fore.RESET)
         if do_check != "now":
@@ -947,7 +900,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
             while do is None:  # Retake inputs for DOB till its valid
                 throw_error('error', *data_error_msgs["dob"](do_check))
                 cls()
-                print(dateformat_info)
+                print(datetimeformat_info)
                 do_check = input(Fore.LIGHTMAGENTA_EX +
                                  "Enter Date of Opened: " + Fore.RESET)
                 do = date_decoder(do_check, time=True)
@@ -959,14 +912,14 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 
     # Date of Closed
     if not register:
-        print(dateformat_info)
+        print(datetimeformat_info)
         doc_check = input(Fore.LIGHTMAGENTA_EX +
                           "Enter Date Closed: " + Fore.RESET)
         doc = date_decoder(doc_check, time=True)
         while (doc is None and doc_check != "-"):  # Retake inputs for DOB till its valid
             throw_error('error', *data_error_msgs["dob"](doc_check))
             cls()
-            print(dateformat_info)
+            print(datetimeformat_info)
             doc_check = input(Fore.LIGHTMAGENTA_EX +
                               "Enter Date Closed: " + Fore.RESET)
             doc = date_decoder(doc_check, time=True)
@@ -1067,7 +1020,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
         f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Tickets.csv{Fore.RESET} ? (Y/N): ")
     if reck.lower() == "y":
         tickets.loc[ticketID] = NewData
-        SaveTick()
+        SaveData(tickets, "Tickets")
         print("Record inserted successfully!")
     else:
         print("Record Insertion Cancelled :(")
@@ -1094,7 +1047,7 @@ def delete_ticket(tickets: pd.DataFrame):
         else:
             tickets.drop(id, inplace=True)
             print(f"{Fore.CYAN}\n\nRecord deleted successfully {Fore.RESET}")
-        SaveTick()
+        SaveData(tickets, "Tickets")
         pause()
 
 
@@ -1143,7 +1096,7 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
             satis_deter = [interaction, frtt, theclock]
             tickets.at[id, "CustomerSatisfaction(%)"] = round(
                 sum(satis_deter)/len(satis_deter)*1000) / 10
-            SaveTick()
+            SaveData(tickets, "Tickets")
             return None
         while True:
             cls()
@@ -1211,4 +1164,4 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
                     throw_error('error', 'Error while updating order data',
                                 "Please make sure you have entered the correct details.")
                 sel_rec = tickets.loc[id]
-        SaveTick()
+        SaveData(tickets, "Tickets")

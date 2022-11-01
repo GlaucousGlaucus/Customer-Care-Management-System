@@ -11,18 +11,11 @@ import matplotlib.pyplot as plt
 from menu_options_module import print_menu
 
 
-# Methods to save files
-def SaveCust(): return customers.to_csv(r'Data\customers1.csv')
-def SaveProd(): return products.to_csv(r'Data\products1.csv')
-def SaveOrd(): return orders.to_csv(r'Data\orders1.csv')
-def SaveTick(): return tickets.to_csv(r'Data\tickets1.csv')
-
-
 def SaveAll():
-    SaveCust()
-    SaveProd()
-    SaveOrd()
-    SaveTick()
+    SaveData(customers, "Customers")
+    SaveData(products, "Products")
+    SaveData(orders, "Orders")
+    SaveData(tickets, "Tickets")
 
 
 def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: list):
@@ -1145,14 +1138,14 @@ if __name__ == "__main__":
 
     # Read the Files
     date_format = r"%Y/%m/%d %H:%M:%S"
-    customers = pd.read_csv('Data\customers1.csv', index_col='id')
+    customers = pd.read_csv('Data\customers.csv', index_col='id')
     customers["dob"] = pd.to_datetime(
         customers["dob"], format=date_format)
-    orders = pd.read_csv('Data\orders1.csv', index_col='orderID')
+    orders = pd.read_csv('Data\orders.csv', index_col='orderID')
     orders["dateofOrder"] = pd.to_datetime(
         orders["dateofOrder"], format=date_format)
-    products = pd.read_csv('Data\products1.csv', index_col='id')
-    tickets = pd.read_csv(r'Data\tickets1.csv', index_col='TicketID')
+    products = pd.read_csv('Data\products.csv', index_col='id')
+    tickets = pd.read_csv(r'Data\tickets.csv', index_col='TicketID')
     tickets["DateOpened"] = pd.to_datetime(
         tickets["DateOpened"], format=date_format)
     tickets["DateClosed"] = pd.to_datetime(
