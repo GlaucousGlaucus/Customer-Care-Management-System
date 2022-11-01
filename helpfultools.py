@@ -3,6 +3,51 @@ from colorama import Fore
 from datetime import datetime
 import re
 
+dateformat_info = f"""{Fore.LIGHTRED_EX}
+                              ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
+                              ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
+                              ╚  ╚═╝╩╚═╩ ╩╩ ╩ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+   > The date must not be blank                                   
+   > The date must be on the calander      
+   > The date must not be in the future                  
+   > The date must be in any of the following Formats             
+        
+            "16th Jan 2021"         OR          "16th January 2021"
+            "16 Jan 2021"           OR          "16 January 2021"  
+            "dd/mm/yy"              OR          "dd/mm/yyyy" 
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+{Fore.RESET}\n\n\n"""
+
+datetimeformat_info = f"""{Fore.LIGHTRED_EX}
+                              ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
+                              ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
+                              ╚  ╚═╝╩╚═╩ ╩╩ ╩ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+   > The date must not be blank                                   
+   > The date must be on the calander      
+   > The date must not be in the future       
+   > The time must be in the format {Fore.LIGHTCYAN_EX}hh:mm:ss{Fore.LIGHTRED_EX}
+   > The time must be in 24-hr time format
+   > Do to give a space between the date and the time{Fore.LIGHTGREEN_EX}
+        Correct       -->  "16th Jan 2021 12:42:35" {Fore.LIGHTYELLOW_EX}   
+        InCorrect     -->  "16th Jan 2021  12:42:35" 
+                                          ↑
+                                Should be exactly One Space {Fore.LIGHTRED_EX}           
+   > The date must be in any of the following Formats             
+        
+    "16th Jan 2021"         OR      "16th Jan 2021 {Fore.LIGHTCYAN_EX}12:42:35"{Fore.LIGHTRED_EX}
+    "16 Jan 2021"           OR      "16 Jan 2021 {Fore.LIGHTCYAN_EX}12:42:35"{Fore.LIGHTRED_EX}
+    "16th January 2021"     OR      "16th January 2021 {Fore.LIGHTCYAN_EX}12:42:35"{Fore.LIGHTRED_EX}
+    "16 January 2021"       OR      "16 January 2021 {Fore.LIGHTCYAN_EX}12:42:35{Fore.LIGHTRED_EX}
+    "dd/mm/yy"              OR      "dd/mm/yy {Fore.LIGHTCYAN_EX}hh:mm:ss"{Fore.LIGHTRED_EX}
+    "dd/mm/yyyy"            OR      "dd/mm/yyyy {Fore.LIGHTCYAN_EX}hh:mm:ss"{Fore.LIGHTRED_EX}
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+{Fore.RESET}\n\n\n"""
+
+
 data_error_msgs = {
     "id": lambda id: (f'Duplicate ID: {id}', "\n> ID should be a unique ID."),
     "first_name": lambda first_name: (f'Invalid Firstname: {first_name}',
@@ -44,6 +89,12 @@ Avoid the above errors and try again.
         """),
     "prime": 0,
 }
+
+# Methods to save files
+
+
+def SaveData(df: pd.DataFrame, filename: str): return df.to_csv(
+    f'Data\\{filename}.csv')
 
 
 def print_text(Color, *text):
@@ -90,6 +141,10 @@ class Searchy:
         return qry_result
 
     def by_date(self, col, format=r"%Y-%m-%d", time=False):
+        if time:
+            print(datetimeformat_info)
+        else:
+            print(dateformat_info)
         qry_start = input(
             f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter range for date \nStart: {Fore.RESET}")
         qry_end = input(f"{Fore.CYAN}End: {Fore.RESET}")
@@ -107,7 +162,7 @@ class Searchy:
         return qry_result
 
 
-def pause(): return input('\n'*2 + "Press Any key To Contine...")
+def pause(): return input('\n'*2 + "Press ENTER To Contine...")
 def cls(): return print("\n" * 49)
 
 
@@ -266,7 +321,7 @@ def data_validator_ticket_bool(customers: pd.DataFrame, products: pd.DataFrame, 
             return False
 
 
-def safe_input(text:str, fail_text:str=None, dtype:str="int"):
+def safe_input(text: str, fail_text: str = None, dtype: str = "int"):
     fail_text = f"Please Enter Data as {dtype}" if fail_text is None else fail_text
     try:
         match dtype:
