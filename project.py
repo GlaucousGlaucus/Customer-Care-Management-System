@@ -16,6 +16,7 @@ def SaveAll():
     SaveData(products, "Products")
     SaveData(orders, "Orders")
     SaveData(tickets, "Tickets")
+    SaveData(msgs, "Messages")
 
 
 def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: list):
@@ -1009,6 +1010,106 @@ def am_tick_f():
             menu_level = "1.4.5"
             amt_MG()
 
+def amMsg_Search():
+    global menu_level
+    df = msgs.copy()
+    search_engine = Searchy(df)
+    def col(x): return msgs.columns[int(x)-2]
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        # Search by Msg ID
+        if cmd == "1":
+            qry = input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
+            qry_result = search_engine.by_id(qry)
+        # Search by Strings
+        elif cmd in ["2", "3", "4"]:
+            qry = input(
+                f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
+            qry_result = search_engine.by_string(qry, col(cmd))
+        elif cmd == "6":
+            menu_level = "1.5"
+            break
+        elif cmd == "5":
+            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+                df = msgs.copy()
+                print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
+        # Check if the user wants to use the generated df for further queries
+        if cmd in ["1", "2", "3", "4"]:
+            print(f"\n\n{Fore.CYAN}Your Query Result: {Fore.RESET}\n")
+            if not qry_result.empty:
+                print(qry_result)
+                if cmd != "1":
+                    udf = input(
+                        f"{Fore.CYAN}Do you want to use the above dataframe for rest of the queries?\n(Y/N): {Fore.RESET}")
+                    if udf.strip().lower() in "y1":
+                        df = qry_result.copy()
+                        search_engine = Searchy(df)
+            else:
+                print(f"\nEmpty dataframe\n")
+        pause()
+
+def msgui(msgs:pd.DataFrame, custid=None, admin=True):
+    global menu_level
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "5":
+            menu_level = "1.5"
+            break
+        # TicketID
+        TicketID = input(Fore.LIGHTMAGENTA_EX +
+                         "Enter Ticket ID: " + Fore.RESET)
+        if TicketID not in tickets.index or (not admin and tickets.loc[TicketID]["CustID"] != custid):
+            throw_error('error', "Ticket ID not found!")
+            continue
+        # Set the side
+        side = "ADMIN" if admin else "CLIENT"
+        data = msgs[msgs['TicketID'] == TicketID]
+        client_msgs = data[data['Side']=='CLIENT']
+        admin_msgs = data[data['Side']=='ADMIN']
+        if cmd == "1":
+            print("Show Chat")
+            print("CLIENT")
+            print_chat(list(client_msgs['Message']), side='CLIENT')
+            print("ADMIN")
+            print_chat(list(admin_msgs['Message']), side='ADMIN')
+            pause()
+        elif cmd == "2":
+            print(f"Post Message, SIDE= {side}")
+        elif cmd == "3":
+            print("Delete Message")
+        elif cmd == "4":
+            print("Search Message")
+
+
+def am_msg_f():
+    global menu_level
+    global msgs
+    while True:
+        print_menu(menu_level)
+        cmd = input("Command: ")
+        if cmd == "6":
+            menu_level = "1"
+            break
+        elif cmd == "1":
+            cls()
+            print(msgs)
+            pause()
+        elif cmd == "2":
+            menu_level = "1.5.1"
+            amMsg_Search()
+        elif cmd == "3":
+            menu_level = "1.5.2"
+            SortData(msgs, 1.5, "5", [2, 3, 4])
+        elif cmd == "4":
+            print('D.A.')
+            #menu_level = "1.4.3"
+            #amMsg_DA()
+        elif cmd == "5":
+            menu_level = "1.5.5"
+            msgui(msgs)
+
 
 # -----------------------------------------------------------------------------------------------------------------------------
 def admin_menu_f():
@@ -1029,6 +1130,9 @@ def admin_menu_f():
             menu_level = "1.4"
             am_tick_f()
         elif cmd == "5":
+            menu_level = "1.5"
+            am_msg_f()
+        elif cmd == "6":
             menu_level = "0"
             break
         else:
@@ -1110,6 +1214,9 @@ def cust_menu_f():
 """, Fore.RESET)
                         pause()
                     elif cmd == "5":
+                        menu_level = "2.5"
+                        msgui(msgs, custid=CustID, admin=False)
+                    elif cmd == "6":
                         menu_level = "2"
                         break
             else:
@@ -1138,7 +1245,7 @@ if __name__ == "__main__":
 
     # Read the Files
     date_format = r"%Y/%m/%d %H:%M:%S"
-    customers = pd.read_csv('Data\customers.csv', index_col='id')
+    customers = pd.read_csv('Data\Customers.csv', index_col='id')
     customers["dob"] = pd.to_datetime(
         customers["dob"], format=date_format)
     orders = pd.read_csv('Data\orders.csv', index_col='orderID')
@@ -1150,6 +1257,7 @@ if __name__ == "__main__":
         tickets["DateOpened"], format=date_format)
     tickets["DateClosed"] = pd.to_datetime(
         tickets["DateClosed"], format=date_format)
+    msgs = pd.read_csv('Data\Messages.csv', index_col='MsgID')
     print(f"[{datetime.now()}] Files Loaded")
 
     # Creating the Menu

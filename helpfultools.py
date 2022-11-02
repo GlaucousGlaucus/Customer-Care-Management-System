@@ -331,3 +331,10 @@ def safe_input(text: str, fail_text: str = None, dtype: str = "int"):
                 return float(input(text))
     except ValueError as e:
         throw_error(err_type="error", title="Wrong Value", message=fail_text)
+
+
+def print_chat(chat:list, side:str):
+    print(
+f"""
+[{side}] :  \n\t\t{chat}
+""")
