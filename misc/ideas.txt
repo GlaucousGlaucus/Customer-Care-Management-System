@@ -1,10 +1,8 @@
-> MSG UI
+How to make OTP ?
 
-> Take: TICKET ID
-# Side will be automatically decided from login
+> Generate 6 digit code
+> Send it via email
+> Set up a background counter for a min
 
-> Options
-    > Show Chat
-    > Post Message
-    > Delete Message
-    > Search Message
+
+- Add Regex Guide for user

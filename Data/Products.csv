@@ -1,1001 +1,1002 @@
 id,name,manufacturer,category,In-Stock,AvgRating,Returnable,DaysToReturn
-62e54916f032398e8e000bb4,faucibus orci luctus,"West, Thiel and Fahey",Industrial & Scientific,33,0.19,Returnable,19
-62e54916f032398e8e000bb5,amet,"Dicki, Boyer and Senger",Grocery & Gourmet Food,21,2.27,Returnable,16
-62e54916f032398e8e000bb6,nulla,"Reinger, Ondricka and Dibbert",Electronics,96,3.69,Not Returnable,-
-62e54916f032398e8e000bb7,nec sem duis,"Friesen, Kozey and Kassulke",Household & Baby Care,77,4.72,Returnable,16
-62e54916f032398e8e000bb8,nulla,Nienow-Turner,Computers,70,4.1,Returnable,7
-62e54916f032398e8e000bb9,aliquam augue quam,Mitchell-Abshire,Garden & Outdoor,90,4.36,Returnable,18
-62e54916f032398e8e000bba,nunc purus phasellus,Walter LLC,Home & Kitchen,85,3.57,Returnable,9
-62e54916f032398e8e000bbb,ante,"Wehner, Mayer and Bailey",Appliances,90,0.23,Returnable,9
-62e54916f032398e8e000bbc,sollicitudin,Mitchell and Sons,Electronics,100,3.77,Returnable,2
-62e54916f032398e8e000bbd,amet sapien,"Kohler, Walker and Skiles",Garden & Outdoor,99,2.21,Returnable,12
-62e54916f032398e8e000bbe,vel lectus in,Fahey-Cruickshank,Books,87,2.31,Returnable,11
-62e54916f032398e8e000bbf,quam turpis,Schmeler-Russel,Electronics,90,4.89,Returnable,4
-62e54916f032398e8e000bc0,aliquam erat volutpat,"Ferry, Kohler and Schmeler",Appliances,28,1.23,Not Returnable,-
-62e54916f032398e8e000bc1,mollis molestie,Leffler LLC,Household & Baby Care,5,2.13,Returnable,3
-62e54916f032398e8e000bc2,dui maecenas,Murphy-Bernhard,Books,55,3.66,Returnable,10
-62e54916f032398e8e000bc3,nulla pede,Thompson Inc,Cell Phones & Accessories,37,4.27,Exchange-Only,8
-62e54916f032398e8e000bc4,lobortis,"Lindgren, Krajcik and Spinka",Industrial & Scientific,4,2.11,Returnable,13
-62e54916f032398e8e000bc5,nisi volutpat,"Baumbach, Becker and Spencer",Books,16,3.92,Not Returnable,-
-62e54916f032398e8e000bc6,justo,"Ortiz, Dare and Schaefer",Computers,2,2.25,Returnable,17
-62e54916f032398e8e000bc7,curabitur in,Haley-O'Keefe,Computers,77,4.51,Exchange-Only,20
-62e54916f032398e8e000bc8,ultrices vel,Dietrich LLC,Industrial & Scientific,4,0.17,Returnable,6
-62e54916f032398e8e000bc9,magnis dis,Beahan-Greenholt,Home & Kitchen,23,0.12,Exchange-Only,19
-62e54916f032398e8e000bca,laoreet,Stoltenberg Group,Computers,39,3.96,Exchange-Only,5
-62e54916f032398e8e000bcb,nulla,"Breitenberg, Hayes and Kuphal",Shoes and Jewelry,8,4.51,Returnable,8
-62e54916f032398e8e000bcc,nascetur ridiculus mus,"Ziemann, Conroy and Gleason",Sports & Outdoors,77,0.17,Returnable,20
-62e54916f032398e8e000bcd,eget nunc,Parker-Hermiston,Garden & Outdoor,82,3.07,Exchange-Only,8
-62e54916f032398e8e000bce,semper interdum mauris,Reynolds-Christiansen,Toys & Games,92,0.27,Returnable,10
-62e54916f032398e8e000bcf,pretium iaculis diam,Schuppe-Morissette,Household & Baby Care,19,2.94,Returnable,10
-62e54916f032398e8e000bd0,eget nunc,Treutel-Schultz,Electronics,97,2.35,Returnable,1
-62e54916f032398e8e000bd1,et ultrices,Kiehn and Sons,Shoes and Jewelry,64,4.29,Returnable,4
-62e54916f032398e8e000bd2,elit proin,"McCullough, Hettinger and Gerhold",Sports & Outdoors,59,2.04,Returnable,8
-62e54916f032398e8e000bd3,massa,Osinski Inc,Computers,47,4.19,Exchange-Only,9
-62e54916f032398e8e000bd4,quis turpis,Hegmann Group,Household & Baby Care,51,3.37,Returnable,20
-62e54916f032398e8e000bd5,amet,Osinski Group,Toys & Games,57,2.46,Returnable,6
-62e54916f032398e8e000bd6,donec,"Durgan, Jacobi and Williamson",Books,53,1.64,Not Returnable,-
-62e54916f032398e8e000bd7,elementum,Hegmann-Feeney,Industrial & Scientific,38,2.09,Returnable,14
-62e54916f032398e8e000bd8,faucibus orci luctus,"Wyman, Moore and Hansen",Grocery & Gourmet Food,73,4.86,Returnable,11
-62e54916f032398e8e000bd9,pharetra,Bergstrom Group,Computers,43,2.99,Returnable,8
-62e54916f032398e8e000bda,amet cursus id,"Ziemann, Jaskolski and Lueilwitz",Health,68,2.32,Returnable,18
-62e54916f032398e8e000bdb,curabitur at,Lakin-Lubowitz,Beauty & Personal Care,86,4.52,Returnable,15
-62e54916f032398e8e000bdc,vel,"Herzog, Lubowitz and VonRueden",Clothing,21,4.71,Returnable,13
-62e54916f032398e8e000bdd,congue eget,Wiza-Mohr,Cell Phones & Accessories,45,2.25,Returnable,8
-62e54916f032398e8e000bde,in,"Johns, Ward and Schiller",Shoes and Jewelry,68,4.85,Exchange-Only,15
-62e54916f032398e8e000bdf,mi integer ac,"Fay, Rath and Schroeder",Cell Phones & Accessories,84,2.78,Not Returnable,-
-62e54916f032398e8e000be0,orci luctus et,"Mayert, Will and Kihn",Sports & Outdoors,42,2.34,Returnable,3
-62e54916f032398e8e000be1,non pretium,"Wyman, Kreiger and Schumm",Home & Kitchen,5,2.07,Not Returnable,-
-62e54916f032398e8e000be2,pulvinar sed,"Adams, Schmeler and Hayes",Shoes and Jewelry,7,4.59,Returnable,6
-62e54916f032398e8e000be3,odio elementum,"Koelpin, Hirthe and Macejkovic",Grocery & Gourmet Food,53,4.18,Not Returnable,-
-62e54916f032398e8e000be4,ac diam cras,Smith and Sons,Household & Baby Care,41,3.76,Exchange-Only,4
-62e54916f032398e8e000be5,molestie hendrerit,Simonis-Nienow,Clothing,48,1.45,Returnable,17
-62e54916f032398e8f000b92,mi,Metz and Sons,Health,11,4.34,Returnable,8
-62e54916f032398e8f000b93,duis bibendum,"Emmerich, Gleason and Kovacek",Beauty & Personal Care,4,2.45,Returnable,1
-62e54916f032398e8f000b94,nisi nam,"Windler, Murphy and Okuneva",Health,71,4.45,Not Returnable,-
-62e54916f032398e8f000b95,nulla ultrices,Thiel-Collier,Cell Phones & Accessories,1,3.79,Not Returnable,-
-62e54916f032398e8f000b96,neque aenean auctor,Nader-Gislason,Beauty & Personal Care,2,3.03,Returnable,2
-62e54916f032398e8f000b97,sagittis nam congue,"Effertz, Homenick and Parker",Health,16,2.87,Returnable,18
-62e54916f032398e8f000b98,praesent id,Skiles Group,Electronics,89,3.5,Returnable,17
-62e54916f032398e8f000b99,sit amet cursus,"Steuber, Konopelski and Ortiz",Beauty & Personal Care,89,1.24,Exchange-Only,6
-62e54916f032398e8f000b9a,sit,Cassin-Stokes,Clothing,98,2.08,Returnable,8
-62e54916f032398e8f000b9b,est donec,"Stokes, Nicolas and Kessler",Grocery & Gourmet Food,49,3.29,Returnable,18
-62e54916f032398e8f000b9c,vivamus vel nulla,"Rippin, Rath and Goodwin",Clothing,89,0.58,Returnable,19
-62e54916f032398e8f000b9d,hac,"Rosenbaum, Kilback and Pollich",Grocery & Gourmet Food,22,0.4,Not Returnable,-
-62e54916f032398e8f000b9e,sapien a,"Windler, Schulist and Herzog",Appliances,87,4.62,Returnable,14
-62e54916f032398e8f000b9f,condimentum neque,Davis and Sons,Cell Phones & Accessories,15,3.58,Returnable,7
-62e54916f032398e8f000ba0,arcu adipiscing,Kessler-Fahey,Sports & Outdoors,91,0.92,Returnable,7
-62e54916f032398e8f000ba1,nulla justo aliquam,"Lubowitz, Koss and Padberg",Shoes and Jewelry,53,1.28,Returnable,9
-62e54916f032398e8f000ba2,ultrices,"O'Reilly, Keeling and Rolfson",Health,91,4.12,Returnable,8
-62e54916f032398e8f000ba3,nisl venenatis lacinia,Howe LLC,Electronics,58,3.68,Returnable,12
-62e54916f032398e8f000ba4,massa tempor,"Senger, Heathcote and Klein",Appliances,58,4.94,Exchange-Only,19
-62e54916f032398e8f000ba5,lectus suspendisse potenti,Hegmann-Kirlin,Computers,60,0.5,Returnable,5
-62e54916f032398e8f000ba6,hac habitasse platea,Bailey-Schulist,Appliances,95,4.06,Returnable,17
-62e54916f032398e8f000ba7,nisl aenean,Grant LLC,Beauty & Personal Care,49,4.56,Exchange-Only,19
-62e54916f032398e8f000ba8,tempus sit amet,Schuster Inc,Home & Kitchen,86,2.4,Returnable,8
-62e54916f032398e8f000ba9,bibendum morbi,"Sanford, Watsica and Leannon",Clothing,93,4.3,Returnable,8
-62e54916f032398e8f000baa,justo nec,Stark-Wintheiser,Beauty & Personal Care,79,3.19,Returnable,13
-62e54916f032398e8f000bab,maecenas leo,Waters LLC,Books,38,2.8,Not Returnable,-
-62e54916f032398e8f000bac,turpis elementum,Hilpert Inc,Appliances,26,2.41,Returnable,19
-62e54916f032398e8f000bad,blandit ultrices enim,Stracke Inc,Computers,34,4.08,Returnable,2
-62e54916f032398e8f000bae,nibh,"McGlynn, Upton and VonRueden",Shoes and Jewelry,16,2.99,Returnable,16
-62e54916f032398e8f000baf,lacus at,"Braun, Emmerich and Mraz",Clothing,44,4.92,Returnable,18
-62e54916f032398e8f000bb0,malesuada in imperdiet,"Mohr, Crist and Tromp",Garden & Outdoor,84,4.28,Returnable,3
-62e54916f032398e8f000bb1,sed accumsan felis,Heathcote Group,Household & Baby Care,56,2.11,Returnable,10
-62e54916f032398e8f000bb2,eget,Tromp-Stoltenberg,Clothing,48,2.25,Exchange-Only,4
-62e54916f032398e8f000bb3,iaculis congue vivamus,"Willms, Huel and Roob",Garden & Outdoor,85,4.18,Returnable,11
-62e54916f032398e8f000bb4,dui vel sem,Mitchell Group,Clothing,10,4.77,Returnable,5
-62e54916f032398e8f000bb5,placerat ante nulla,West and Sons,Industrial & Scientific,17,2.17,Returnable,1
-62e54916f032398e8f000bb6,at,Murray Group,Home & Kitchen,75,0.25,Returnable,6
-62e54916f032398e8f000bb7,pellentesque eget nunc,Hermiston-Balistreri,Sports & Outdoors,2,4.26,Exchange-Only,18
-62e54916f032398e8f000bb8,eros elementum,Gutmann-Harris,Computers,23,3.54,Returnable,19
-62e54916f032398e8f000bb9,enim leo rhoncus,"Treutel, Labadie and Wisoky",Cell Phones & Accessories,67,3.18,Returnable,6
-62e54916f032398e8f000bba,lobortis ligula sit,Breitenberg LLC,Cell Phones & Accessories,68,4.64,Returnable,19
-62e54916f032398e8f000bbb,praesent blandit,"Schimmel, Tremblay and Schaefer",Appliances,1,1.68,Returnable,13
-62e54916f032398e8f000bbc,et ultrices,"Hills, Mohr and Tillman",Computers,46,4.75,Not Returnable,-
-62e54916f032398e8f000bbd,id mauris,O'Reilly-Ortiz,Toys & Games,26,2.26,Returnable,6
-62e54916f032398e8f000bbe,lorem quisque,Hauck Group,Garden & Outdoor,76,4.62,Returnable,13
-62e54916f032398e8f000bbf,neque,Cummerata-Haag,Computers,92,4.8,Exchange-Only,9
-62e54916f032398e8f000bc0,ipsum dolor,Torp LLC,Electronics,29,4.75,Not Returnable,-
-62e54916f032398e8f000bc1,non sodales,"Hilll, Kuhn and Volkman",Computers,66,4.55,Not Returnable,-
-62e54916f032398e8f000bc2,et ultrices,Nolan Inc,Appliances,75,3.57,Returnable,1
-62e54916f032398e8f000bc3,platea,"Wisozk, King and Murray",Beauty & Personal Care,55,4.13,Returnable,8
-62e54916f032398ee7000bb1,integer ac leo,Adams LLC,Electronics,84,0.37,Returnable,14
-62e54916f032398ee7000bb2,at,Cronin LLC,Industrial & Scientific,46,4.85,Returnable,3
-62e54916f032398ee7000bb3,posuere metus,Corwin Inc,Appliances,78,0.77,Returnable,12
-62e54916f032398ee7000bb4,sapien sapien,Terry-Schuster,Household & Baby Care,93,3.02,Not Returnable,-
-62e54916f032398ee7000bb5,in,Cronin Inc,Beauty & Personal Care,64,4.44,Returnable,8
-62e54916f032398ee7000bb6,id consequat,Douglas Group,Sports & Outdoors,99,4.15,Returnable,2
-62e54916f032398ee7000bb7,tincidunt eu felis,Gusikowski-Ledner,Toys & Games,32,4.1,Not Returnable,-
-62e54916f032398ee7000bb8,aenean,"Becker, Cremin and Kerluke",Garden & Outdoor,0,4.57,Returnable,11
-62e54916f032398ee7000bb9,sociis natoque,Kuphal-Hodkiewicz,Grocery & Gourmet Food,13,2.28,Returnable,6
-62e54916f032398ee7000bba,id turpis integer,Gerlach-Cassin,Shoes and Jewelry,44,3.82,Returnable,5
-62e54916f032398ee7000bbb,faucibus,Keeling-Schamberger,Toys & Games,79,4.89,Returnable,1
-62e54916f032398ee7000bbc,dui nec nisi,Wilderman-Schowalter,Electronics,36,2.67,Returnable,18
-62e54916f032398ee7000bbd,massa id nisl,Powlowski-Langworth,Books,27,4.96,Returnable,4
-62e54916f032398ee7000bbe,dapibus,Kessler-Durgan,Shoes and Jewelry,73,4.75,Not Returnable,-
-62e54916f032398ee7000bbf,odio,Hamill Inc,Books,61,3.74,Not Returnable,-
-62e54916f032398ee7000bc0,nulla pede ullamcorper,"Cremin, Watsica and Rowe",Home & Kitchen,87,3.57,Not Returnable,-
-62e54916f032398ee7000bc1,duis,Mayert Inc,Books,33,4.47,Returnable,11
-62e54916f032398ee7000bc2,pharetra,"Kshlerin, Balistreri and Thiel",Sports & Outdoors,27,1.57,Returnable,16
-62e54916f032398ee7000bc3,ligula,Lehner-Leannon,Toys & Games,69,3.81,Returnable,3
-62e54916f032398ee7000bc4,magna vestibulum,Renner-Williamson,Cell Phones & Accessories,30,4.99,Returnable,7
-62e54916f032398ee7000bc5,felis,"Huel, Bruen and Durgan",Health,49,4.49,Returnable,13
-62e54916f032398ee7000bc6,id ornare,Schmeler-Swift,Sports & Outdoors,34,3.19,Returnable,18
-62e54916f032398ee7000bc7,id justo,Kunde-Runte,Electronics,10,3.23,Returnable,18
-62e54916f032398ee7000bc8,lorem quisque,"Russel, Gusikowski and Runolfsson",Beauty & Personal Care,78,1.27,Returnable,14
-62e54916f032398ee7000bc9,sagittis,"Schaefer, Brown and Jaskolski",Industrial & Scientific,7,2.36,Returnable,14
-62e54916f032398ee7000bca,vestibulum,Huel Group,Cell Phones & Accessories,84,4.4,Returnable,9
-62e54916f032398ee7000bcb,a suscipit,"McClure, Dooley and Jenkins",Home & Kitchen,46,4.04,Exchange-Only,2
-62e54916f032398ee7000bcc,ligula vehicula consequat,"Bernier, Dibbert and Friesen",Shoes and Jewelry,90,3.99,Returnable,10
-62e54916f032398ee7000bcd,congue risus,Hills and Sons,Sports & Outdoors,9,2.17,Returnable,3
-62e54916f032398ee7000bce,mauris,Lebsack and Sons,Sports & Outdoors,23,1.15,Not Returnable,-
-62e54916f032398ee7000bcf,phasellus in felis,"Johns, Smitham and Rutherford",Sports & Outdoors,45,1.22,Returnable,9
-62e54916f032398ee7000bd0,scelerisque mauris,"Pacocha, Graham and Larson",Cell Phones & Accessories,89,4.55,Returnable,2
-62e54916f032398ee7000bd1,eget,Yundt-Spinka,Industrial & Scientific,71,0.79,Not Returnable,-
-62e54916f032398ee7000bd2,lorem integer tincidunt,"Fay, Kirlin and Welch",Computers,51,3.17,Not Returnable,-
-62e54916f032398ee7000bd3,id consequat in,Schamberger and Sons,Grocery & Gourmet Food,62,4.55,Returnable,1
-62e54916f032398ee7000bd4,pede justo eu,Mayer-Bauch,Cell Phones & Accessories,55,4.32,Returnable,19
-62e54916f032398ee7000bd5,nisl aenean,Will LLC,Garden & Outdoor,26,2.15,Returnable,7
-62e54916f032398ee7000bd6,donec diam,Romaguera-Boyer,Sports & Outdoors,25,3.36,Returnable,5
-62e54916f032398ee7000bd7,mauris sit amet,Schneider Inc,Home & Kitchen,57,4.72,Returnable,18
-62e54916f032398ee7000bd8,eu,Pollich and Sons,Books,91,2.03,Returnable,7
-62e54916f032398ee7000bd9,luctus et ultrices,"Bayer, Padberg and Lynch",Shoes and Jewelry,62,3.18,Returnable,2
-62e54916f032398ee7000bda,velit vivamus,Brekke and Sons,Home & Kitchen,26,2.81,Returnable,10
-62e54916f032398ee7000bdb,velit,Kutch and Sons,Grocery & Gourmet Food,9,4.66,Returnable,18
-62e54916f032398ee7000bdc,luctus tincidunt nulla,Jones Group,Books,38,2.17,Returnable,6
-62e54916f032398ee7000bdd,consequat,Upton-Prohaska,Garden & Outdoor,41,4.8,Returnable,19
-62e54916f032398ee7000bde,sollicitudin mi sit,Wiza Group,Industrial & Scientific,26,4.93,Not Returnable,-
-62e54916f032398ee7000bdf,ac tellus semper,"Murazik, Rice and O'Keefe",Electronics,82,4.96,Returnable,5
-62e54916f032398ee7000be0,proin eu mi,Crist-Schimmel,Beauty & Personal Care,92,3.63,Returnable,8
-62e54916f032398ee7000be1,in hac,Douglas Group,Sports & Outdoors,18,3.4,Exchange-Only,14
-62e54916f032398ee7000be2,proin risus praesent,McLaughlin Group,Health,15,4.31,Returnable,19
-62e54916f032398eee000b9d,etiam justo,"Weissnat, Nienow and Corkery",Garden & Outdoor,72,3.63,Returnable,12
-62e54916f032398eee000b9e,lacus,Prohaska and Sons,Health,66,4.59,Exchange-Only,9
-62e54916f032398eee000b9f,velit eu est,"Langosh, Wisoky and Gislason",Shoes and Jewelry,12,1.39,Not Returnable,-
-62e54916f032398eee000ba0,mauris non,"Okuneva, Stiedemann and Pouros",Sports & Outdoors,0,2.85,Returnable,9
-62e54916f032398eee000ba1,vulputate justo,"Lehner, Hoppe and Balistreri",Beauty & Personal Care,39,4.8,Not Returnable,-
-62e54916f032398eee000ba2,vestibulum,Reichel-Keeling,Grocery & Gourmet Food,57,2.58,Returnable,20
-62e54916f032398eee000ba3,sed,"Berge, Schoen and Luettgen",Computers,40,2.3,Returnable,5
-62e54916f032398eee000ba4,convallis duis consequat,Metz-Gutkowski,Garden & Outdoor,57,3.95,Returnable,20
-62e54916f032398eee000ba5,nam nulla integer,"Kassulke, Jast and Wilkinson",Household & Baby Care,70,4.48,Not Returnable,-
-62e54916f032398eee000ba6,adipiscing molestie hendrerit,Hickle Inc,Clothing,47,4.23,Not Returnable,-
-62e54916f032398eee000ba7,rutrum nulla,"Steuber, Murphy and Spinka",Sports & Outdoors,35,3.56,Not Returnable,-
-62e54916f032398eee000ba8,est,Wilderman-Wunsch,Computers,20,4.09,Returnable,13
-62e54916f032398eee000ba9,donec,Hirthe-Carter,Health,40,4.18,Exchange-Only,11
-62e54916f032398eee000baa,sagittis nam,Predovic-Schowalter,Industrial & Scientific,67,4.54,Returnable,3
-62e54916f032398eee000bab,nunc viverra dapibus,Smitham-Hilpert,Home & Kitchen,1,4.08,Returnable,15
-62e54916f032398eee000bac,sit,"MacGyver, Ritchie and Mills",Industrial & Scientific,4,2.94,Not Returnable,-
-62e54916f032398eee000bad,vestibulum,Crist-Miller,Clothing,80,3.64,Returnable,10
-62e54916f032398eee000bae,commodo,"Kovacek, Howell and Dare",Clothing,73,0.87,Exchange-Only,13
-62e54916f032398eee000baf,nulla,Bergnaum Group,Computers,73,4.49,Exchange-Only,16
-62e54916f032398eee000bb0,at velit,Nicolas Inc,Toys & Games,98,1.1,Exchange-Only,11
-62e54916f032398eee000bb1,euismod scelerisque quam,O'Connell-Wolff,Electronics,76,4.39,Returnable,17
-62e54916f032398eee000bb2,vestibulum vestibulum,Hettinger-Bahringer,Home & Kitchen,67,2.32,Returnable,3
-62e54916f032398eee000bb3,sem fusce,Hodkiewicz and Sons,Beauty & Personal Care,0,3.83,Returnable,1
-62e54916f032398eee000bb4,purus eu,"Schamberger, Swift and Kassulke",Shoes and Jewelry,50,2.87,Returnable,8
-62e54916f032398eee000bb5,ultrices phasellus id,"Ernser, Abbott and Fritsch",Electronics,69,3.8,Exchange-Only,14
-62e54916f032398eee000bb6,aliquet at,Lebsack Inc,Books,46,1.88,Not Returnable,-
-62e54916f032398eee000bb7,nulla,"Padberg, Bode and Walker",Shoes and Jewelry,66,3.0,Exchange-Only,1
-62e54916f032398eee000bb8,hac habitasse,Gerlach-Bayer,Beauty & Personal Care,38,4.33,Not Returnable,-
-62e54916f032398eee000bb9,eleifend,Wilderman-Keebler,Grocery & Gourmet Food,49,4.47,Returnable,7
-62e54916f032398eee000bba,non interdum in,Carroll-Walsh,Computers,47,4.09,Returnable,11
-62e54916f032398eee000bbb,congue,Boehm Inc,Household & Baby Care,84,3.71,Exchange-Only,3
-62e54916f032398eee000bbc,magna bibendum,Larson Inc,Sports & Outdoors,38,1.55,Returnable,20
-62e54916f032398eee000bbd,dis,"Skiles, Breitenberg and Moen",Computers,48,1.09,Returnable,7
-62e54916f032398eee000bbe,vel lectus,Spencer and Sons,Home & Kitchen,89,1.29,Returnable,2
-62e54916f032398eee000bbf,pellentesque ultrices mattis,"Wisozk, Cartwright and Hirthe",Electronics,100,4.79,Returnable,2
-62e54916f032398eee000bc0,sit amet turpis,"Erdman, Ondricka and Mosciski",Cell Phones & Accessories,40,4.98,Returnable,12
-62e54916f032398eee000bc1,felis sed,Kuhlman Group,Health,100,1.61,Not Returnable,-
-62e54916f032398eee000bc2,nec nisi,"Heidenreich, Wiegand and Abshire",Clothing,100,1.45,Not Returnable,-
-62e54916f032398eee000bc3,curabitur,Huel-Torp,Clothing,76,3.93,Returnable,4
-62e54916f032398eee000bc4,duis at,Tremblay-Howell,Books,98,0.52,Not Returnable,-
-62e54916f032398eee000bc5,iaculis,Little-Wyman,Sports & Outdoors,86,0.73,Returnable,19
-62e54916f032398eee000bc6,fusce lacus purus,McCullough and Sons,Beauty & Personal Care,89,2.13,Not Returnable,-
-62e54916f032398eee000bc7,non,Stamm LLC,Books,8,3.71,Not Returnable,-
-62e54916f032398eee000bc8,donec dapibus,Romaguera Group,Computers,46,4.08,Not Returnable,-
-62e54916f032398eee000bc9,blandit,Cassin-Wilderman,Home & Kitchen,30,4.01,Returnable,2
-62e54916f032398eee000bca,proin,Lehner-MacGyver,Grocery & Gourmet Food,85,4.07,Exchange-Only,12
-62e54916f032398eee000bcb,integer a nibh,"Tillman, Powlowski and Wintheiser",Cell Phones & Accessories,74,1.31,Returnable,18
-62e54916f032398eee000bcc,mauris enim,Kling Group,Electronics,39,4.89,Returnable,1
-62e54916f032398eee000bcd,id ornare imperdiet,"Gerlach, Jaskolski and Schumm",Books,71,4.17,Returnable,3
-62e54916f032398eee000bce,ac est lacinia,Kassulke and Sons,Shoes and Jewelry,76,4.58,Returnable,3
-62e54916f032398ef9000bbc,nulla,Wilderman and Sons,Garden & Outdoor,4,3.76,Returnable,8
-62e54916f032398ef9000bbd,hac,Cummings-Macejkovic,Electronics,4,3.59,Returnable,6
-62e54916f032398ef9000bbe,congue etiam justo,Wuckert and Sons,Industrial & Scientific,77,2.06,Returnable,13
-62e54916f032398ef9000bbf,nonummy,Hackett-Gislason,Sports & Outdoors,23,2.61,Returnable,14
-62e54916f032398ef9000bc0,posuere,Schultz and Sons,Books,58,2.22,Returnable,14
-62e54916f032398ef9000bc1,curabitur,Kautzer-Russel,Beauty & Personal Care,37,4.25,Not Returnable,-
-62e54916f032398ef9000bc2,sed,Ledner-Champlin,Cell Phones & Accessories,40,2.94,Returnable,13
-62e54916f032398ef9000bc3,vestibulum vestibulum,Jakubowski-Schiller,Books,78,3.92,Returnable,7
-62e54916f032398ef9000bc4,lacus at velit,Renner-Murphy,Household & Baby Care,99,3.77,Exchange-Only,19
-62e54916f032398ef9000bc5,consequat nulla nisl,"Schultz, Aufderhar and Mueller",Clothing,64,5.0,Returnable,11
-62e54916f032398ef9000bc6,molestie hendrerit at,"Stiedemann, Barrows and Kulas",Sports & Outdoors,59,1.54,Exchange-Only,18
-62e54916f032398ef9000bc7,tellus,Rau-Beatty,Books,33,2.31,Returnable,14
-62e54916f032398ef9000bc8,viverra eget,Hirthe-Buckridge,Industrial & Scientific,84,1.73,Returnable,19
-62e54916f032398ef9000bc9,augue quam,Glover Group,Beauty & Personal Care,44,4.19,Not Returnable,-
-62e54916f032398ef9000bca,magna,Stanton Group,Clothing,82,2.5,Returnable,2
-62e54916f032398ef9000bcb,commodo placerat,Schimmel and Sons,Grocery & Gourmet Food,69,3.62,Returnable,5
-62e54916f032398ef9000bcc,lectus vestibulum,Wisoky-Streich,Toys & Games,36,0.28,Returnable,12
-62e54916f032398ef9000bcd,ut nunc vestibulum,Hauck-Kilback,Garden & Outdoor,56,4.93,Returnable,5
-62e54916f032398ef9000bce,risus semper porta,Kris-Yost,Grocery & Gourmet Food,79,4.94,Exchange-Only,1
-62e54916f032398ef9000bcf,felis donec semper,Volkman-Johns,Clothing,81,1.6,Returnable,13
-62e54916f032398ef9000bd0,est,Schulist Inc,Shoes and Jewelry,77,1.36,Returnable,10
-62e54916f032398ef9000bd1,lorem ipsum dolor,"Nolan, Hamill and Bechtelar",Toys & Games,42,4.48,Returnable,18
-62e54916f032398ef9000bd2,consequat metus,Okuneva Group,Toys & Games,81,4.65,Returnable,8
-62e54916f032398ef9000bd3,duis,Reilly-Parker,Appliances,76,3.2,Returnable,11
-62e54916f032398ef9000bd4,venenatis non,McGlynn and Sons,Clothing,57,4.28,Exchange-Only,18
-62e54916f032398ef9000bd5,metus,Bednar-Bogisich,Electronics,38,4.94,Returnable,1
-62e54916f032398ef9000bd6,dolor sit amet,Steuber Inc,Clothing,39,4.73,Returnable,9
-62e54916f032398ef9000bd7,duis,"Skiles, Kihn and Bartoletti",Grocery & Gourmet Food,27,1.75,Returnable,15
-62e54916f032398ef9000bd8,ultrices,Block-Bechtelar,Garden & Outdoor,46,3.8,Exchange-Only,8
-62e54916f032398ef9000bd9,quam a,Howell-Hauck,Industrial & Scientific,79,3.75,Exchange-Only,12
-62e54916f032398ef9000bda,et,Weissnat Group,Sports & Outdoors,57,4.01,Returnable,3
-62e54916f032398ef9000bdb,luctus et ultrices,Ratke-Frami,Beauty & Personal Care,22,4.31,Returnable,5
-62e54916f032398ef9000bdc,metus aenean fermentum,"Labadie, Hills and Schumm",Shoes and Jewelry,29,4.19,Not Returnable,-
-62e54916f032398ef9000bdd,vulputate elementum nullam,Konopelski and Sons,Books,14,2.82,Returnable,13
-62e54916f032398ef9000bde,faucibus,Wiegand Inc,Electronics,10,1.06,Returnable,6
-62e54916f032398ef9000bdf,elit,"Ruecker, Friesen and Schamberger",Garden & Outdoor,20,2.56,Returnable,2
-62e54916f032398ef9000be0,consequat varius integer,"Kling, Leffler and Veum",Grocery & Gourmet Food,75,3.07,Returnable,4
-62e54916f032398ef9000be1,blandit,Swift-Bartoletti,Cell Phones & Accessories,11,0.78,Not Returnable,-
-62e54916f032398ef9000be2,nisi nam,Schamberger and Sons,Household & Baby Care,49,1.5,Not Returnable,-
-62e54916f032398ef9000be3,sit amet diam,"Brakus, Rice and Collier",Beauty & Personal Care,61,3.12,Returnable,3
-62e54916f032398ef9000be4,sem,Kreiger-Dibbert,Appliances,57,2.64,Not Returnable,-
-62e54916f032398ef9000be5,dui,Crist-Ward,Clothing,51,4.77,Returnable,12
-62e54916f032398ef9000be6,nibh quisque id,Crooks-Walsh,Beauty & Personal Care,78,2.37,Exchange-Only,7
-62e54916f032398ef9000be7,vulputate,Kerluke-Cole,Home & Kitchen,40,1.17,Returnable,13
-62e54916f032398ef9000be8,varius,Thompson-Kemmer,Toys & Games,55,4.26,Returnable,11
-62e54916f032398ef9000be9,in hac,"Dicki, Kohler and Kutch",Industrial & Scientific,10,4.27,Returnable,20
-62e54916f032398ef9000bea,massa quis,Schamberger and Sons,Industrial & Scientific,69,4.51,Returnable,4
-62e54916f032398ef9000beb,vivamus in felis,Morar-Crona,Garden & Outdoor,68,2.65,Exchange-Only,9
-62e54916f032398ef9000bec,nulla justo,O'Reilly-Wiegand,Beauty & Personal Care,19,2.58,Returnable,15
-62e54916f032398ef9000bed,vestibulum ante,Koelpin Inc,Household & Baby Care,92,3.78,Exchange-Only,16
-62e54916f032398f07000ba2,potenti,"Reichert, O'Kon and Koelpin",Books,30,0.16,Not Returnable,-
-62e54916f032398f07000ba3,turpis,"Treutel, Barrows and Larson",Sports & Outdoors,59,2.43,Returnable,5
-62e54916f032398f07000ba4,vehicula condimentum,Balistreri-Osinski,Sports & Outdoors,24,4.84,Not Returnable,-
-62e54916f032398f07000ba5,consequat ut,"Wolff, Weissnat and Leannon",Toys & Games,84,4.66,Not Returnable,-
-62e54916f032398f07000ba6,sapien urna,Denesik-Borer,Household & Baby Care,48,2.48,Returnable,5
-62e54916f032398f07000ba7,in lectus,Hermiston Inc,Home & Kitchen,32,2.58,Exchange-Only,10
-62e54916f032398f07000ba8,tincidunt nulla mollis,Miller-Schumm,Books,37,4.45,Returnable,12
-62e54916f032398f07000ba9,at nunc,VonRueden-Beier,Books,23,2.22,Returnable,10
-62e54916f032398f07000baa,nulla,Kunde-Beahan,Shoes and Jewelry,48,4.78,Returnable,10
-62e54916f032398f07000bab,volutpat,Gottlieb LLC,Grocery & Gourmet Food,15,3.82,Returnable,13
-62e54916f032398f07000bac,rhoncus aliquet pulvinar,Veum-Jakubowski,Industrial & Scientific,35,0.78,Returnable,18
-62e54916f032398f07000bad,curabitur convallis duis,"Cassin, Mayer and Yundt",Industrial & Scientific,33,2.19,Returnable,6
-62e54916f032398f07000bae,sit amet,Hahn-Kris,Household & Baby Care,23,2.5,Returnable,14
-62e54916f032398f07000baf,integer pede,Jakubowski Group,Household & Baby Care,77,4.1,Returnable,19
-62e54916f032398f07000bb0,sagittis dui,"Jakubowski, Dare and Koepp",Home & Kitchen,29,2.08,Not Returnable,-
-62e54916f032398f07000bb1,convallis duis consequat,Davis Inc,Home & Kitchen,28,0.83,Returnable,10
-62e54916f032398f07000bb2,turpis a pede,"Streich, Beatty and Champlin",Household & Baby Care,85,3.65,Returnable,17
-62e54916f032398f07000bb3,pellentesque viverra,Rohan LLC,Cell Phones & Accessories,86,2.66,Returnable,20
-62e54916f032398f07000bb4,eget eros,Schowalter-Bashirian,Toys & Games,79,3.97,Returnable,9
-62e54916f032398f07000bb5,sapien,Schaden Inc,Sports & Outdoors,1,1.17,Returnable,20
-62e54916f032398f07000bb6,rhoncus sed,Price-Miller,Grocery & Gourmet Food,19,3.78,Returnable,7
-62e54916f032398f07000bb7,id nisl,Beatty-Kuhic,Industrial & Scientific,63,4.92,Exchange-Only,14
-62e54916f032398f07000bb8,vulputate ut ultrices,Fay-Ward,Home & Kitchen,29,4.01,Exchange-Only,7
-62e54916f032398f07000bb9,at dolor quis,Medhurst-Zulauf,Grocery & Gourmet Food,50,3.9,Returnable,20
-62e54916f032398f07000bba,quisque,Jast-Yost,Appliances,63,4.07,Returnable,12
-62e54916f032398f07000bbb,at velit,"Kutch, Herman and Casper",Health,44,4.14,Not Returnable,-
-62e54916f032398f07000bbc,vehicula condimentum,Steuber LLC,Shoes and Jewelry,99,4.44,Not Returnable,-
-62e54916f032398f07000bbd,donec dapibus,Adams-Kemmer,Industrial & Scientific,6,3.73,Returnable,2
-62e54916f032398f07000bbe,mollis molestie lorem,"Kunze, Streich and Adams",Cell Phones & Accessories,46,4.68,Returnable,4
-62e54916f032398f07000bbf,odio curabitur,Durgan-Dooley,Cell Phones & Accessories,91,0.18,Returnable,6
-62e54916f032398f07000bc0,vitae mattis,"Jenkins, Nader and Cummerata",Industrial & Scientific,87,4.22,Returnable,3
-62e54916f032398f07000bc1,pellentesque ultrices phasellus,Casper-Cartwright,Garden & Outdoor,44,2.45,Exchange-Only,10
-62e54916f032398f07000bc2,amet,Boehm-Ledner,Shoes and Jewelry,25,0.72,Returnable,1
-62e54916f032398f07000bc3,magna,"Bashirian, Funk and Hegmann",Clothing,39,4.31,Not Returnable,-
-62e54916f032398f07000bc4,sapien cum sociis,Wunsch-Robel,Garden & Outdoor,10,3.95,Returnable,17
-62e54916f032398f07000bc5,posuere metus,"Jerde, Kessler and Cremin",Toys & Games,99,1.9,Returnable,17
-62e54916f032398f07000bc6,quam pede,Shields-Nolan,Shoes and Jewelry,57,4.24,Returnable,3
-62e54916f032398f07000bc7,ante,"D'Amore, Lemke and Ernser",Cell Phones & Accessories,39,4.6,Exchange-Only,15
-62e54916f032398f07000bc8,nulla tellus,Medhurst-Predovic,Clothing,14,2.53,Exchange-Only,15
-62e54916f032398f07000bc9,aenean,Upton Group,Home & Kitchen,16,4.22,Returnable,16
-62e54916f032398f07000bca,pede malesuada in,Mohr-Treutel,Beauty & Personal Care,68,3.79,Not Returnable,-
-62e54916f032398f07000bcb,augue,"Breitenberg, Effertz and Armstrong",Books,15,2.28,Exchange-Only,3
-62e54916f032398f07000bcc,in consequat ut,Homenick-Veum,Health,57,2.97,Not Returnable,-
-62e54916f032398f07000bcd,justo maecenas,"Hand, Ondricka and Muller",Garden & Outdoor,6,3.88,Not Returnable,-
-62e54916f032398f07000bce,praesent blandit lacinia,Pollich Group,Home & Kitchen,44,3.72,Returnable,11
-62e54916f032398f07000bcf,pede libero quis,"Spencer, Beahan and Hyatt",Electronics,8,0.06,Not Returnable,-
-62e54916f032398f07000bd0,dictumst,Kihn-Koss,Electronics,32,2.92,Exchange-Only,3
-62e54916f032398f07000bd1,vitae nisi,Farrell Inc,Toys & Games,28,3.51,Returnable,6
-62e54916f032398f07000bd2,ultrices mattis,Schowalter LLC,Sports & Outdoors,79,0.99,Returnable,14
-62e54916f032398f07000bd3,augue quam sollicitudin,"Connelly, Mayert and Wuckert",Appliances,14,0.5,Returnable,8
-62e54916f032398f1a000b9f,nulla,Reilly LLC,Beauty & Personal Care,83,4.01,Returnable,20
-62e54916f032398f1a000ba0,sagittis sapien cum,Leffler and Sons,Toys & Games,94,0.42,Returnable,20
-62e54916f032398f1a000ba1,lectus pellentesque,King Inc,Health,27,4.06,Not Returnable,-
-62e54916f032398f1a000ba2,aenean,Klein and Sons,Computers,69,3.05,Returnable,6
-62e54916f032398f1a000ba3,augue,Franecki-Waelchi,Clothing,10,1.42,Returnable,4
-62e54916f032398f1a000ba4,turpis,Keeling and Sons,Computers,26,2.11,Returnable,18
-62e54916f032398f1a000ba5,morbi,Simonis Group,Beauty & Personal Care,27,1.14,Returnable,19
-62e54916f032398f1a000ba6,nonummy,Kozey-Kirlin,Books,3,1.31,Returnable,12
-62e54916f032398f1a000ba7,quis,Murazik-Oberbrunner,Shoes and Jewelry,46,2.71,Not Returnable,-
-62e54916f032398f1a000ba8,luctus,Keeling-Howe,Appliances,86,4.02,Returnable,7
-62e54916f032398f1a000ba9,nam nulla,Buckridge-Fahey,Grocery & Gourmet Food,6,3.68,Not Returnable,-
-62e54916f032398f1a000baa,aliquet maecenas,Brown LLC,Cell Phones & Accessories,5,4.38,Returnable,12
-62e54916f032398f1a000bab,amet,Beahan LLC,Grocery & Gourmet Food,44,0.34,Returnable,11
-62e54916f032398f1a000bac,enim blandit,Runolfsdottir-Schneider,Sports & Outdoors,61,2.6,Returnable,16
-62e54916f032398f1a000bad,justo sollicitudin ut,Flatley LLC,Electronics,60,1.22,Not Returnable,-
-62e54916f032398f1a000bae,eget massa,"Swift, Nader and Brakus",Books,52,2.83,Exchange-Only,15
-62e54916f032398f1a000baf,penatibus et magnis,Hahn and Sons,Computers,43,0.74,Returnable,9
-62e54916f032398f1a000bb0,duis faucibus accumsan,Luettgen-Brekke,Cell Phones & Accessories,13,4.74,Returnable,9
-62e54916f032398f1a000bb1,erat nulla tempus,Cruickshank-Nitzsche,Cell Phones & Accessories,86,2.49,Returnable,11
-62e54916f032398f1a000bb2,at,Powlowski-Balistreri,Sports & Outdoors,83,3.78,Not Returnable,-
-62e54916f032398f1a000bb3,mauris,"Ritchie, Stanton and Konopelski",Computers,80,1.9,Returnable,5
-62e54916f032398f1a000bb4,sit amet,"Schuppe, Ankunding and Stamm",Sports & Outdoors,39,0.01,Returnable,14
-62e54916f032398f1a000bb5,curabitur,Reilly Inc,Home & Kitchen,91,0.23,Returnable,14
-62e54916f032398f1a000bb6,purus,Doyle Inc,Books,43,4.22,Returnable,16
-62e54916f032398f1a000bb7,accumsan tellus nisi,Roob-Kessler,Appliances,21,3.98,Exchange-Only,13
-62e54916f032398f1a000bb8,luctus ultricies,Cummings Inc,Books,32,1.69,Returnable,9
-62e54916f032398f1a000bb9,accumsan tellus,Cassin-Goldner,Grocery & Gourmet Food,87,4.78,Exchange-Only,19
-62e54916f032398f1a000bba,id ligula suspendisse,"Abbott, Cummerata and Cronin",Clothing,45,3.23,Returnable,14
-62e54916f032398f1a000bbb,ante,Tromp Inc,Household & Baby Care,37,4.02,Returnable,17
-62e54916f032398f1a000bbc,in hac habitasse,"Roob, Bode and Glover",Health,61,2.47,Returnable,1
-62e54916f032398f1a000bbd,pulvinar sed nisl,Corwin LLC,Health,27,4.56,Returnable,4
-62e54916f032398f1a000bbe,praesent blandit lacinia,"O'Keefe, Lemke and Denesik",Clothing,40,3.96,Returnable,10
-62e54916f032398f1a000bbf,fusce lacus,Feil-Olson,Appliances,16,2.6,Returnable,9
-62e54916f032398f1a000bc0,eu magna,Spencer Group,Health,87,4.09,Returnable,14
-62e54916f032398f1a000bc1,dui nec,"Friesen, DuBuque and Morissette",Cell Phones & Accessories,63,3.2,Exchange-Only,8
-62e54916f032398f1a000bc2,habitasse platea,Champlin Group,Industrial & Scientific,16,4.91,Returnable,3
-62e54916f032398f1a000bc3,adipiscing,Gutmann-Runolfsdottir,Industrial & Scientific,50,2.11,Returnable,6
-62e54916f032398f1a000bc4,sapien,Boehm LLC,Shoes and Jewelry,60,1.72,Returnable,20
-62e54916f032398f1a000bc5,in,"Feil, Bergnaum and Rutherford",Beauty & Personal Care,71,4.86,Returnable,4
-62e54916f032398f1a000bc6,curabitur gravida,Collier-Emmerich,Health,94,3.39,Returnable,14
-62e54916f032398f1a000bc7,nulla,Swift-Brekke,Health,18,3.65,Returnable,11
-62e54916f032398f1a000bc8,blandit ultrices,Jaskolski LLC,Industrial & Scientific,70,4.28,Returnable,17
-62e54916f032398f1a000bc9,eu tincidunt in,Collier Group,Shoes and Jewelry,14,4.69,Returnable,1
-62e54916f032398f1a000bca,cursus vestibulum,"Kub, Olson and Wiegand",Toys & Games,56,2.95,Not Returnable,-
-62e54916f032398f1a000bcb,nunc nisl duis,Huels and Sons,Beauty & Personal Care,73,0.46,Returnable,9
-62e54916f032398f1a000bcc,ullamcorper purus,Bergnaum-Quigley,Appliances,49,3.13,Returnable,17
-62e54916f032398f1a000bcd,justo aliquam quis,Tillman-Howell,Books,26,3.71,Returnable,4
-62e54916f032398f1a000bce,etiam justo,Kassulke Group,Grocery & Gourmet Food,72,1.0,Returnable,17
-62e54916f032398f1a000bcf,in hac,Bergstrom LLC,Industrial & Scientific,20,2.73,Returnable,12
-62e54916f032398f1a000bd0,amet nulla quisque,"Johns, Lindgren and Crooks",Beauty & Personal Care,38,1.52,Returnable,12
-62e54916f032398f29000ba9,semper porta volutpat,Schinner-Toy,Industrial & Scientific,73,3.98,Exchange-Only,5
-62e54916f032398f29000baa,morbi non,"Lockman, Reichel and Bechtelar",Electronics,15,4.91,Returnable,1
-62e54916f032398f29000bab,amet sem fusce,Brekke and Sons,Garden & Outdoor,34,2.27,Returnable,16
-62e54916f032398f29000bac,pede,Kunze-Jerde,Clothing,30,3.64,Returnable,9
-62e54916f032398f29000bad,sagittis sapien cum,"Crooks, Herman and O'Keefe",Beauty & Personal Care,25,4.93,Not Returnable,-
-62e54916f032398f29000bae,praesent blandit lacinia,Yundt Inc,Cell Phones & Accessories,71,4.38,Not Returnable,-
-62e54916f032398f29000baf,eget,Erdman-Rippin,Electronics,95,3.69,Returnable,10
-62e54916f032398f29000bb0,aliquam non mauris,"Pouros, Schroeder and Pollich",Industrial & Scientific,21,2.75,Returnable,11
-62e54916f032398f29000bb1,blandit nam,"Hand, Herman and Keebler",Garden & Outdoor,61,3.63,Returnable,3
-62e54916f032398f29000bb2,felis,Rodriguez-Fisher,Beauty & Personal Care,31,4.68,Returnable,15
-62e54916f032398f29000bb3,ullamcorper augue a,Walter-Nicolas,Computers,21,2.68,Exchange-Only,10
-62e54916f032398f29000bb4,vel,Strosin-Auer,Garden & Outdoor,57,4.07,Returnable,16
-62e54916f032398f29000bb5,potenti in,Bauch LLC,Toys & Games,24,4.66,Returnable,2
-62e54916f032398f29000bb6,convallis,"Vandervort, Langworth and Stracke",Shoes and Jewelry,84,0.97,Not Returnable,-
-62e54916f032398f29000bb7,ornare consequat,Schulist-Ryan,Shoes and Jewelry,3,3.76,Returnable,5
-62e54916f032398f29000bb8,non interdum in,McLaughlin-Altenwerth,Health,13,3.97,Returnable,13
-62e54916f032398f29000bb9,morbi vel lectus,"Hyatt, Pfannerstill and Mayer",Sports & Outdoors,9,4.59,Returnable,7
-62e54916f032398f29000bba,volutpat quam pede,"Gaylord, Quigley and Lebsack",Cell Phones & Accessories,83,0.32,Not Returnable,-
-62e54916f032398f29000bbb,eleifend donec,"Schowalter, Wiegand and Schaefer",Beauty & Personal Care,30,3.22,Not Returnable,-
-62e54916f032398f29000bbc,nec condimentum neque,Kertzmann-Goodwin,Shoes and Jewelry,40,4.21,Not Returnable,-
-62e54916f032398f29000bbd,at,"Herman, Tromp and Waters",Sports & Outdoors,27,4.24,Returnable,2
-62e54916f032398f29000bbe,neque libero convallis,Fay-Lubowitz,Cell Phones & Accessories,55,4.67,Returnable,15
-62e54916f032398f29000bbf,quisque ut erat,McClure Inc,Industrial & Scientific,10,0.43,Returnable,15
-62e54916f032398f29000bc0,purus phasellus in,"Schoen, Keebler and Lakin",Toys & Games,17,4.01,Returnable,9
-62e54916f032398f29000bc1,in quam,"Emmerich, Willms and Connelly",Sports & Outdoors,76,1.7,Not Returnable,-
-62e54916f032398f29000bc2,tortor sollicitudin mi,Brown and Sons,Shoes and Jewelry,6,4.17,Returnable,17
-62e54916f032398f29000bc3,accumsan tortor quis,"Kutch, Little and Cormier",Computers,51,4.91,Returnable,16
-62e54916f032398f29000bc4,morbi sem,"Bayer, Romaguera and Champlin",Health,72,3.18,Not Returnable,-
-62e54916f032398f29000bc5,nec condimentum,Collins LLC,Garden & Outdoor,81,0.24,Returnable,4
-62e54916f032398f29000bc6,ultrices mattis,"Larkin, Abshire and Sipes",Shoes and Jewelry,17,4.85,Returnable,16
-62e54916f032398f29000bc7,curae duis,"Dicki, Bauch and Oberbrunner",Clothing,17,4.71,Exchange-Only,18
-62e54916f032398f29000bc8,consequat ut nulla,Thompson Group,Cell Phones & Accessories,48,3.18,Returnable,17
-62e54916f032398f29000bc9,nibh,Sauer LLC,Beauty & Personal Care,15,3.21,Returnable,19
-62e54916f032398f29000bca,in eleifend quam,"Rowe, Kub and Wyman",Shoes and Jewelry,79,3.6,Returnable,13
-62e54916f032398f29000bcb,libero rutrum ac,Lynch-Balistreri,Household & Baby Care,9,0.32,Returnable,10
-62e54916f032398f29000bcc,aliquet maecenas,"Walsh, Heller and Weimann",Appliances,22,4.51,Returnable,8
-62e54916f032398f29000bcd,orci pede venenatis,"Wunsch, Reichel and Powlowski",Computers,34,2.7,Returnable,9
-62e54916f032398f29000bce,commodo placerat praesent,Abshire Inc,Computers,70,1.7,Returnable,10
-62e54916f032398f29000bcf,nam tristique,Barton-Murazik,Computers,30,2.59,Returnable,8
-62e54916f032398f29000bd0,lacinia nisi venenatis,Cole and Sons,Shoes and Jewelry,1,4.69,Returnable,9
-62e54916f032398f29000bd1,aliquam convallis nunc,Will Group,Toys & Games,30,0.08,Not Returnable,-
-62e54916f032398f29000bd2,pede justo,Kertzmann-Koepp,Appliances,90,0.27,Exchange-Only,4
-62e54916f032398f29000bd3,erat,"Conroy, White and Medhurst",Garden & Outdoor,43,0.9,Not Returnable,-
-62e54916f032398f29000bd4,sapien placerat ante,Greenfelder Group,Clothing,76,2.25,Returnable,3
-62e54916f032398f29000bd5,id,"Waelchi, Waters and Jacobson",Industrial & Scientific,38,4.15,Returnable,13
-62e54916f032398f29000bd6,dui luctus rutrum,McCullough and Sons,Household & Baby Care,67,0.31,Returnable,8
-62e54916f032398f29000bd7,aliquet massa id,"Jenkins, Kub and Spinka",Garden & Outdoor,50,4.85,Returnable,7
-62e54916f032398f29000bd8,vestibulum quam,"Casper, Hagenes and Morar",Sports & Outdoors,39,4.84,Returnable,7
-62e54916f032398f29000bd9,ut nulla,Nader LLC,Garden & Outdoor,18,0.34,Returnable,2
-62e54916f032398f29000bda,magna vestibulum,Veum-Walker,Computers,47,4.6,Returnable,14
-62e54916f032398f30000ba3,turpis sed,Jerde Group,Household & Baby Care,78,3.57,Returnable,3
-62e54916f032398f30000ba4,ut at,Ritchie-Powlowski,Clothing,90,3.38,Returnable,8
-62e54916f032398f30000ba5,in libero ut,Kozey Group,Beauty & Personal Care,37,0.53,Returnable,17
-62e54916f032398f30000ba6,viverra,Beahan Inc,Sports & Outdoors,87,3.81,Returnable,11
-62e54916f032398f30000ba7,in tempus,"Stokes, Homenick and Wintheiser",Appliances,6,4.63,Not Returnable,-
-62e54916f032398f30000ba8,sit,"Yundt, Abernathy and Rau",Grocery & Gourmet Food,37,4.93,Exchange-Only,17
-62e54916f032398f30000ba9,habitasse platea dictumst,Muller and Sons,Clothing,61,1.16,Not Returnable,-
-62e54916f032398f30000baa,est,Cormier-Lynch,Industrial & Scientific,37,4.29,Returnable,13
-62e54916f032398f30000bab,suscipit a feugiat,Kertzmann-Tillman,Garden & Outdoor,27,2.86,Returnable,3
-62e54916f032398f30000bac,justo,Okuneva-Rath,Beauty & Personal Care,53,1.6,Returnable,18
-62e54916f032398f30000bad,dapibus,Heaney LLC,Grocery & Gourmet Food,77,3.07,Not Returnable,-
-62e54916f032398f30000bae,eu,"Bayer, Watsica and Shields",Sports & Outdoors,31,3.01,Returnable,2
-62e54916f032398f30000baf,quisque,"O'Kon, O'Reilly and Ortiz",Beauty & Personal Care,62,4.52,Not Returnable,-
-62e54916f032398f30000bb0,vulputate elementum,Adams LLC,Health,89,2.5,Returnable,4
-62e54916f032398f30000bb1,odio in,Heller and Sons,Shoes and Jewelry,41,0.55,Returnable,4
-62e54916f032398f30000bb2,sociis natoque penatibus,Harber-Schiller,Appliances,60,3.27,Not Returnable,-
-62e54916f032398f30000bb3,in hac,Breitenberg LLC,Clothing,45,1.48,Returnable,16
-62e54916f032398f30000bb4,in quis,Collier and Sons,Cell Phones & Accessories,10,0.66,Returnable,11
-62e54916f032398f30000bb5,in quis,"Friesen, Greenholt and Welch",Home & Kitchen,97,4.27,Returnable,12
-62e54916f032398f30000bb6,neque libero,Hahn-Lubowitz,Grocery & Gourmet Food,67,3.62,Not Returnable,-
-62e54916f032398f30000bb7,cum,Dare-Hermann,Health,58,2.87,Returnable,11
-62e54916f032398f30000bb8,placerat ante nulla,Shields-Bernier,Household & Baby Care,63,4.37,Not Returnable,-
-62e54916f032398f30000bb9,bibendum,Casper LLC,Computers,27,3.61,Returnable,3
-62e54916f032398f30000bba,dolor vel,Steuber LLC,Computers,67,3.22,Returnable,18
-62e54916f032398f30000bbb,hac habitasse,"Stoltenberg, Douglas and Schiller",Books,68,1.02,Returnable,6
-62e54916f032398f30000bbc,proin interdum mauris,Nader and Sons,Beauty & Personal Care,70,4.96,Returnable,2
-62e54916f032398f30000bbd,nibh,Feil LLC,Clothing,70,3.68,Exchange-Only,12
-62e54916f032398f30000bbe,auctor sed tristique,Blick Group,Industrial & Scientific,70,0.28,Not Returnable,-
-62e54916f032398f30000bbf,dui,"Franecki, Friesen and Bartoletti",Industrial & Scientific,35,2.88,Not Returnable,-
-62e54916f032398f30000bc0,tincidunt eu,Stehr Group,Household & Baby Care,25,2.8,Returnable,20
-62e54916f032398f30000bc1,montes nascetur ridiculus,Zboncak Group,Home & Kitchen,21,2.3,Exchange-Only,19
-62e54916f032398f30000bc2,pede venenatis non,Lueilwitz Inc,Home & Kitchen,21,3.85,Returnable,14
-62e54916f032398f30000bc3,vivamus metus arcu,Emard LLC,Appliances,81,4.75,Returnable,11
-62e54916f032398f30000bc4,est risus,"Kuhlman, Marquardt and Satterfield",Beauty & Personal Care,5,4.72,Returnable,18
-62e54916f032398f30000bc5,aenean sit amet,Botsford-Baumbach,Health,44,1.49,Returnable,14
-62e54916f032398f30000bc6,ultrices vel,Raynor and Sons,Computers,23,4.75,Returnable,19
-62e54916f032398f30000bc7,elementum nullam varius,Kreiger Group,Toys & Games,3,3.59,Not Returnable,-
-62e54916f032398f30000bc8,est lacinia,Hayes Inc,Industrial & Scientific,12,0.4,Returnable,11
-62e54916f032398f30000bc9,vel,"Hansen, Towne and Bogan",Household & Baby Care,89,1.05,Exchange-Only,15
-62e54916f032398f30000bca,orci nullam molestie,"Runte, Kuhic and Schmeler",Beauty & Personal Care,98,1.55,Not Returnable,-
-62e54916f032398f30000bcb,blandit,Hoeger-McClure,Electronics,88,4.53,Exchange-Only,11
-62e54916f032398f30000bcc,velit vivamus,"Barrows, Buckridge and Ondricka",Garden & Outdoor,35,1.61,Not Returnable,-
-62e54916f032398f30000bcd,sapien dignissim,Dooley LLC,Books,25,2.67,Returnable,1
-62e54916f032398f30000bce,nulla justo,Runte-Feeney,Household & Baby Care,87,4.61,Returnable,20
-62e54916f032398f30000bcf,eros vestibulum,Borer and Sons,Health,54,3.84,Exchange-Only,3
-62e54916f032398f30000bd0,rutrum ac lobortis,"Purdy, Okuneva and Pacocha",Grocery & Gourmet Food,47,2.24,Returnable,3
-62e54916f032398f30000bd1,nunc commodo placerat,Cormier-Dibbert,Appliances,5,3.51,Returnable,3
-62e54916f032398f30000bd2,pede,Blick Group,Grocery & Gourmet Food,57,1.4,Returnable,19
-62e54916f032398f30000bd3,et,"Rowe, Rice and Gerlach",Industrial & Scientific,31,3.55,Not Returnable,-
-62e54916f032398f30000bd4,ut rhoncus aliquet,"Wunsch, Lubowitz and Mayert",Clothing,6,2.66,Returnable,4
-62e54916f032398f34000b9e,vel augue vestibulum,Klocko-Ferry,Health,79,4.6,Exchange-Only,11
-62e54916f032398f34000b9f,eleifend,Vandervort Group,Home & Kitchen,35,4.76,Returnable,6
-62e54916f032398f34000ba0,nam tristique,Connelly Inc,Toys & Games,33,4.57,Returnable,5
-62e54916f032398f34000ba1,cras mi pede,Lemke-Rowe,Books,36,2.49,Returnable,10
-62e54916f032398f34000ba2,pede,Wilkinson LLC,Appliances,4,4.43,Returnable,19
-62e54916f032398f34000ba3,molestie sed,Howe-Harvey,Garden & Outdoor,37,1.41,Returnable,8
-62e54916f032398f34000ba4,amet eleifend,"Nicolas, Hermann and Ondricka",Books,32,4.76,Returnable,14
-62e54916f032398f34000ba5,duis,"Jacobs, Kassulke and Hagenes",Computers,65,2.13,Not Returnable,-
-62e54916f032398f34000ba6,in porttitor pede,Sipes-Douglas,Health,36,2.12,Returnable,20
-62e54916f032398f34000ba7,velit,"Marks, Hayes and McCullough",Beauty & Personal Care,26,4.62,Not Returnable,-
-62e54916f032398f34000ba8,neque aenean,Barrows-Weissnat,Books,81,3.15,Not Returnable,-
-62e54916f032398f34000ba9,pede,Wiegand LLC,Cell Phones & Accessories,79,3.99,Returnable,14
-62e54916f032398f34000baa,bibendum felis sed,Lockman-Renner,Computers,66,0.65,Returnable,17
-62e54916f032398f34000bab,cras,Langworth LLC,Grocery & Gourmet Food,40,0.09,Returnable,13
-62e54916f032398f34000bac,habitasse,Nader-Bradtke,Electronics,31,0.72,Returnable,2
-62e54916f032398f34000bad,pretium,"Yost, O'Hara and Larson",Toys & Games,14,4.4,Not Returnable,-
-62e54916f032398f34000bae,orci luctus,Stracke Group,Electronics,32,3.67,Returnable,2
-62e54916f032398f34000baf,consequat,Mueller-Bechtelar,Sports & Outdoors,64,1.64,Returnable,12
-62e54916f032398f34000bb0,ipsum dolor,"Nikolaus, Hodkiewicz and Vandervort",Beauty & Personal Care,80,0.36,Returnable,16
-62e54916f032398f34000bb1,blandit ultrices,Abbott Group,Computers,10,4.88,Returnable,7
-62e54916f032398f34000bb2,in hac habitasse,Baumbach-Nikolaus,Health,40,4.84,Returnable,13
-62e54916f032398f34000bb3,ac lobortis,Skiles Inc,Appliances,83,2.24,Not Returnable,-
-62e54916f032398f34000bb4,dictumst,Waelchi-Schulist,Sports & Outdoors,69,0.02,Not Returnable,-
-62e54916f032398f34000bb5,pellentesque eget nunc,Crona Inc,Health,93,3.01,Not Returnable,-
-62e54916f032398f34000bb6,praesent lectus vestibulum,Moen-Borer,Garden & Outdoor,48,3.92,Returnable,16
-62e54916f032398f34000bb7,eu,Connelly-McKenzie,Health,16,2.35,Not Returnable,-
-62e54916f032398f34000bb8,porta volutpat,Hills LLC,Appliances,17,2.87,Returnable,9
-62e54916f032398f34000bb9,magna vestibulum aliquet,Dickinson and Sons,Household & Baby Care,34,2.53,Returnable,14
-62e54916f032398f34000bba,justo in,Spinka-Labadie,Household & Baby Care,55,4.3,Returnable,3
-62e54916f032398f34000bbb,platea dictumst etiam,Wuckert-Sawayn,Home & Kitchen,81,4.48,Not Returnable,-
-62e54916f032398f34000bbc,turpis,Dooley-Ferry,Grocery & Gourmet Food,21,4.65,Returnable,8
-62e54916f032398f34000bbd,in congue,Carter Inc,Appliances,1,4.39,Returnable,19
-62e54916f032398f34000bbe,luctus,Bailey-Ledner,Beauty & Personal Care,71,4.93,Returnable,14
-62e54916f032398f34000bbf,at feugiat non,Reilly and Sons,Computers,9,3.83,Not Returnable,-
-62e54916f032398f34000bc0,sapien,Lang-Spencer,Garden & Outdoor,24,1.37,Returnable,5
-62e54916f032398f34000bc1,ut,Weissnat Group,Beauty & Personal Care,64,3.91,Returnable,8
-62e54916f032398f34000bc2,nulla tellus in,Tromp-Brown,Industrial & Scientific,30,2.63,Exchange-Only,1
-62e54916f032398f34000bc3,donec ut,"Brakus, Hand and Wunsch",Clothing,69,3.72,Returnable,8
-62e54916f032398f34000bc4,neque,Ferry-Balistreri,Toys & Games,84,3.59,Returnable,17
-62e54916f032398f34000bc5,orci,"Rolfson, Raynor and Wiza",Clothing,53,1.79,Returnable,11
-62e54916f032398f34000bc6,odio odio elementum,"McDermott, Luettgen and Jacobson",Home & Kitchen,52,2.43,Exchange-Only,2
-62e54916f032398f34000bc7,consectetuer eget rutrum,Parisian-Wisoky,Household & Baby Care,1,1.62,Returnable,1
-62e54916f032398f34000bc8,diam,Nader-Mohr,Cell Phones & Accessories,19,2.04,Returnable,7
-62e54916f032398f34000bc9,curae,"O'Kon, Willms and Streich",Home & Kitchen,98,4.56,Returnable,13
-62e54916f032398f34000bca,enim lorem ipsum,"Murazik, Brekke and Thompson",Grocery & Gourmet Food,57,1.21,Returnable,18
-62e54916f032398f34000bcb,odio porttitor id,"Mante, Runte and Veum",Garden & Outdoor,5,1.44,Returnable,1
-62e54916f032398f34000bcc,pede,"Orn, Wehner and O'Kon",Household & Baby Care,46,3.3,Returnable,7
-62e54916f032398f34000bcd,primis in,Kunde and Sons,Shoes and Jewelry,26,3.19,Returnable,15
-62e54916f032398f34000bce,semper sapien,Nikolaus Inc,Garden & Outdoor,56,4.68,Exchange-Only,3
-62e54916f032398f34000bcf,sapien cum,"Heathcote, Anderson and Stroman",Toys & Games,73,2.7,Returnable,1
-62e54916f032398e92000b8f,ultrices,Cassin LLC,Sports & Outdoors,13,3.8,Returnable,8
-62e54916f032398e92000b90,pellentesque ultrices phasellus,Klein Inc,Shoes and Jewelry,66,0.48,Exchange-Only,5
-62e54916f032398e92000b91,ac,Simonis Inc,Home & Kitchen,54,2.58,Returnable,15
-62e54916f032398e92000b92,justo,Reynolds-Kerluke,Books,6,2.93,Returnable,2
-62e54916f032398e92000b93,sapien cum,Hauck and Sons,Beauty & Personal Care,27,4.79,Returnable,20
-62e54916f032398e92000b94,justo lacinia,"Kohler, Schulist and Walker",Sports & Outdoors,76,4.07,Not Returnable,-
-62e54916f032398e92000b95,in,Renner-Thompson,Garden & Outdoor,56,2.47,Not Returnable,-
-62e54916f032398e92000b96,felis sed,"Weimann, Fahey and Bogisich",Grocery & Gourmet Food,4,2.1,Returnable,3
-62e54916f032398e92000b97,vulputate justo,Carroll Group,Sports & Outdoors,71,3.83,Returnable,4
-62e54916f032398e92000b98,nisl nunc,Thompson-Weimann,Industrial & Scientific,9,3.7,Returnable,9
-62e54916f032398e92000b99,non sodales,Dicki-Mills,Computers,8,1.11,Returnable,19
-62e54916f032398e92000b9a,luctus et,Weimann-Cole,Toys & Games,83,0.53,Returnable,17
-62e54916f032398e92000b9b,nulla,Jerde Group,Books,75,4.46,Returnable,18
-62e54916f032398e92000b9c,at dolor,Dietrich LLC,Electronics,81,3.82,Returnable,6
-62e54916f032398e92000b9d,nullam,"Hills, Reinger and Predovic",Toys & Games,81,2.51,Returnable,16
-62e54916f032398e92000b9e,praesent blandit lacinia,Wyman-Klein,Health,15,4.19,Returnable,8
-62e54916f032398e92000b9f,amet eros,Renner LLC,Books,0,2.31,Returnable,17
-62e54916f032398e92000ba0,sociis,"Hammes, Vandervort and Blanda",Industrial & Scientific,78,4.12,Not Returnable,-
-62e54916f032398e92000ba1,nunc viverra dapibus,"Hudson, Upton and Bahringer",Appliances,21,4.62,Returnable,6
-62e54916f032398e92000ba2,non velit nec,Hilpert-Witting,Garden & Outdoor,57,3.94,Exchange-Only,18
-62e54916f032398e92000ba3,luctus et ultrices,"Ryan, Cummings and Reinger",Appliances,62,3.69,Not Returnable,-
-62e54916f032398e92000ba4,pede posuere,Barrows and Sons,Home & Kitchen,37,2.86,Returnable,17
-62e54916f032398e92000ba5,mollis molestie,Legros-Corwin,Beauty & Personal Care,0,4.34,Returnable,10
-62e54916f032398e92000ba6,auctor,Bogan Group,Appliances,93,1.05,Returnable,18
-62e54916f032398e92000ba7,at,Hamill-Corwin,Health,21,3.22,Not Returnable,-
-62e54916f032398e92000ba8,porttitor,Frami Inc,Sports & Outdoors,43,2.45,Returnable,18
-62e54916f032398e92000ba9,massa,Marvin and Sons,Sports & Outdoors,97,2.05,Not Returnable,-
-62e54916f032398e92000baa,blandit,Swaniawski-Marvin,Health,6,2.51,Not Returnable,-
-62e54916f032398e92000bab,nec,Kub-Lang,Household & Baby Care,98,3.65,Exchange-Only,15
-62e54916f032398e92000bac,nec nisi vulputate,"Abshire, Ebert and Yundt",Appliances,37,4.44,Returnable,4
-62e54916f032398e92000bad,vitae nisi,Considine and Sons,Shoes and Jewelry,2,3.92,Returnable,20
-62e54916f032398e92000bae,vulputate vitae nisl,"Wunsch, Mosciski and Fadel",Computers,46,4.0,Not Returnable,-
-62e54916f032398e92000baf,facilisi cras non,Schneider-Gorczany,Computers,18,2.84,Not Returnable,-
-62e54916f032398e92000bb0,semper interdum mauris,Pfeffer LLC,Appliances,94,0.74,Returnable,6
-62e54916f032398e92000bb1,nulla elit,Reynolds Group,Household & Baby Care,97,2.64,Returnable,14
-62e54916f032398e92000bb2,nulla tellus in,Rohan Group,Shoes and Jewelry,24,4.43,Returnable,20
-62e54916f032398e92000bb3,ipsum,Donnelly Inc,Shoes and Jewelry,93,4.46,Returnable,9
-62e54916f032398e92000bb4,vestibulum quam sapien,Barton Inc,Toys & Games,66,2.8,Returnable,20
-62e54916f032398e92000bb5,duis ac nibh,"Casper, Gerhold and Kemmer",Beauty & Personal Care,22,4.55,Returnable,8
-62e54916f032398e92000bb6,nunc,Nolan-Howell,Sports & Outdoors,97,3.71,Returnable,14
-62e54916f032398e92000bb7,maecenas rhoncus,"Harber, Marks and Ziemann",Clothing,8,3.08,Exchange-Only,10
-62e54916f032398e92000bb8,sollicitudin ut suscipit,Olson-Ullrich,Garden & Outdoor,11,4.35,Returnable,19
-62e54916f032398e92000bb9,euismod scelerisque quam,"Gerhold, Nicolas and Krajcik",Cell Phones & Accessories,1,4.8,Returnable,13
-62e54916f032398e92000bba,non velit nec,"Gutkowski, DuBuque and Kilback",Household & Baby Care,56,4.44,Returnable,7
-62e54916f032398e92000bbb,tempor turpis,"Hessel, Stokes and Huel",Health,59,1.03,Returnable,2
-62e54916f032398e92000bbc,vestibulum vestibulum,Lesch LLC,Clothing,87,4.47,Returnable,2
-62e54916f032398e92000bbd,in,"Brakus, Mosciski and Daugherty",Books,51,2.96,Returnable,7
-62e54916f032398e92000bbe,ipsum,"Lind, Predovic and Nicolas",Clothing,89,2.98,Returnable,19
-62e54916f032398e92000bbf,semper est,"Willms, Hagenes and Witting",Garden & Outdoor,85,4.26,Not Returnable,-
-62e54916f032398e92000bc0,mattis odio,Tillman-Rutherford,Computers,49,0.03,Returnable,1
-62e54916f032398e99000b9c,id turpis integer,Dooley-Collins,Cell Phones & Accessories,20,4.01,Exchange-Only,8
-62e54916f032398e99000b9d,nunc donec quis,Koss-Hettinger,Shoes and Jewelry,64,3.57,Not Returnable,-
-62e54916f032398e99000b9e,integer,Kreiger-Haag,Grocery & Gourmet Food,47,3.62,Not Returnable,-
-62e54916f032398e99000b9f,mi nulla ac,"Keeling, Schroeder and Schaden",Beauty & Personal Care,74,1.82,Returnable,13
-62e54916f032398e99000ba0,non pretium quis,Mayer Inc,Computers,77,3.78,Returnable,19
-62e54916f032398e99000ba1,et,"Green, Murazik and Ortiz",Household & Baby Care,27,3.1,Returnable,7
-62e54916f032398e99000ba2,luctus nec molestie,Veum-Reichert,Health,72,4.4,Not Returnable,-
-62e54916f032398e99000ba3,cras,Wehner-Lynch,Toys & Games,45,4.16,Returnable,17
-62e54916f032398e99000ba4,pellentesque quisque,"Gorczany, Barrows and Weimann",Industrial & Scientific,27,2.77,Returnable,19
-62e54916f032398e99000ba5,vel pede,Hane-Bogisich,Toys & Games,26,2.13,Returnable,8
-62e54916f032398e99000ba6,primis in,Morar LLC,Books,53,2.25,Not Returnable,-
-62e54916f032398e99000ba7,sollicitudin ut,Mueller-Hettinger,Toys & Games,37,4.33,Returnable,17
-62e54916f032398e99000ba8,etiam vel,Heathcote-Willms,Clothing,33,2.97,Returnable,2
-62e54916f032398e99000ba9,gravida,"Dickens, Jakubowski and Turner",Electronics,14,2.03,Returnable,16
-62e54916f032398e99000baa,urna pretium nisl,Friesen-Watsica,Beauty & Personal Care,27,4.13,Returnable,13
-62e54916f032398e99000bab,non,Torp-Jones,Beauty & Personal Care,5,2.67,Returnable,14
-62e54916f032398e99000bac,vel,Padberg LLC,Electronics,96,2.39,Returnable,5
-62e54916f032398e99000bad,id mauris,"Jones, Mraz and Grimes",Appliances,51,4.04,Returnable,19
-62e54916f032398e99000bae,in blandit ultrices,"Ortiz, Mohr and Bednar",Appliances,84,4.87,Returnable,4
-62e54916f032398e99000baf,nisi at,"Mitchell, Zboncak and Kessler",Sports & Outdoors,12,0.32,Returnable,19
-62e54916f032398e99000bb0,felis eu sapien,Bins-MacGyver,Beauty & Personal Care,57,4.63,Returnable,2
-62e54916f032398e99000bb1,eget elit sodales,Fay LLC,Shoes and Jewelry,40,3.14,Returnable,13
-62e54916f032398e99000bb2,sodales sed,"McGlynn, Howe and Grimes",Books,14,1.73,Returnable,3
-62e54916f032398e99000bb3,ut blandit non,Hand LLC,Garden & Outdoor,61,4.7,Returnable,12
-62e54916f032398e99000bb4,turpis adipiscing,Stanton and Sons,Beauty & Personal Care,0,3.93,Returnable,16
-62e54916f032398e99000bb5,sapien a libero,"Goyette, MacGyver and Braun",Appliances,85,2.34,Returnable,2
-62e54916f032398e99000bb6,platea dictumst,"Cremin, Ledner and Altenwerth",Appliances,69,2.94,Returnable,6
-62e54916f032398e99000bb7,posuere metus,Schumm-Muller,Sports & Outdoors,92,4.35,Exchange-Only,7
-62e54916f032398e99000bb8,tincidunt nulla,Tremblay Inc,Beauty & Personal Care,88,2.07,Returnable,14
-62e54916f032398e99000bb9,porttitor lacus,Rice LLC,Toys & Games,86,3.57,Exchange-Only,4
-62e54916f032398e99000bba,non quam,Hammes and Sons,Sports & Outdoors,60,3.55,Returnable,4
-62e54916f032398e99000bbb,eros suspendisse,Murphy Inc,Cell Phones & Accessories,65,0.41,Returnable,6
-62e54916f032398e99000bbc,tincidunt,"Ankunding, Moen and Ferry",Clothing,71,3.37,Exchange-Only,4
-62e54916f032398e99000bbd,nisl,Leffler Group,Beauty & Personal Care,19,4.92,Returnable,10
-62e54916f032398e99000bbe,odio,Kirlin-Reilly,Grocery & Gourmet Food,54,2.34,Returnable,4
-62e54916f032398e99000bbf,felis,Kihn-Watsica,Toys & Games,50,4.51,Exchange-Only,6
-62e54916f032398e99000bc0,orci,Kuhlman Inc,Garden & Outdoor,72,3.2,Exchange-Only,15
-62e54916f032398e99000bc1,ac neque duis,Smitham-Hand,Beauty & Personal Care,61,4.03,Returnable,9
-62e54916f032398e99000bc2,in faucibus orci,Cartwright LLC,Electronics,62,4.89,Not Returnable,-
-62e54916f032398e99000bc3,ut tellus,"Grant, Rath and Flatley",Cell Phones & Accessories,67,4.69,Returnable,18
-62e54916f032398e99000bc4,quis,Zemlak and Sons,Electronics,73,2.88,Returnable,18
-62e54916f032398e99000bc5,nullam,"Kutch, Bartell and Herzog",Health,71,4.47,Returnable,18
-62e54916f032398e99000bc6,a pede,Swaniawski-Cremin,Garden & Outdoor,5,3.94,Returnable,18
-62e54916f032398e99000bc7,in blandit ultrices,"Dibbert, Anderson and Renner",Industrial & Scientific,35,1.02,Returnable,12
-62e54916f032398e99000bc8,id,Schamberger-Huels,Grocery & Gourmet Food,31,4.07,Returnable,3
-62e54916f032398e99000bc9,convallis morbi odio,"Quigley, Hessel and Cormier",Industrial & Scientific,58,2.79,Returnable,3
-62e54916f032398e99000bca,ligula suspendisse ornare,"Metz, Bradtke and Nader",Household & Baby Care,47,1.52,Returnable,9
-62e54916f032398e99000bcb,maecenas leo,"Hauck, Osinski and Crist",Health,14,0.88,Returnable,2
-62e54916f032398e99000bcc,tristique tortor,Renner and Sons,Beauty & Personal Care,16,4.88,Not Returnable,-
-62e54916f032398e99000bcd,ultrices mattis odio,Torp-Bahringer,Health,50,2.1,Returnable,17
-62e54916f032398ea4000ba0,et,Farrell Inc,Shoes and Jewelry,41,4.56,Returnable,5
-62e54916f032398ea4000ba1,lacinia nisi,Schneider-White,Garden & Outdoor,22,3.92,Not Returnable,-
-62e54916f032398ea4000ba2,aliquet ultrices erat,Bins-Welch,Electronics,50,2.65,Returnable,15
-62e54916f032398ea4000ba3,nunc vestibulum,Glover LLC,Industrial & Scientific,68,2.25,Returnable,10
-62e54916f032398ea4000ba4,integer,Emard Inc,Toys & Games,99,3.96,Returnable,14
-62e54916f032398ea4000ba5,nam,Fay Group,Computers,68,4.27,Returnable,8
-62e54916f032398ea4000ba6,odio donec,"Toy, Keebler and Kautzer",Shoes and Jewelry,89,3.97,Returnable,11
-62e54916f032398ea4000ba7,ut,"Koss, Sanford and Reichert",Clothing,3,3.35,Returnable,17
-62e54916f032398ea4000ba8,porta volutpat,Bosco and Sons,Beauty & Personal Care,36,2.16,Not Returnable,-
-62e54916f032398ea4000ba9,odio donec,Halvorson-Bins,Sports & Outdoors,39,1.0,Returnable,17
-62e54916f032398ea4000baa,tempus,"Thompson, Rice and Hudson",Electronics,75,2.82,Not Returnable,-
-62e54916f032398ea4000bab,pede justo,"Williamson, Fisher and Fisher",Industrial & Scientific,17,4.65,Returnable,3
-62e54916f032398ea4000bac,eget tincidunt,Raynor LLC,Cell Phones & Accessories,55,3.73,Not Returnable,-
-62e54916f032398ea4000bad,rutrum neque,Pollich-Brekke,Sports & Outdoors,31,2.78,Returnable,17
-62e54916f032398ea4000bae,in felis,"Koelpin, Kohler and Leuschke",Clothing,33,4.63,Not Returnable,-
-62e54916f032398ea4000baf,ac lobortis,McGlynn-Koch,Home & Kitchen,71,0.06,Returnable,19
-62e54916f032398ea4000bb0,vestibulum sed,Hickle LLC,Shoes and Jewelry,89,2.23,Not Returnable,-
-62e54916f032398ea4000bb1,ullamcorper purus,Connelly LLC,Computers,39,2.89,Returnable,15
-62e54916f032398ea4000bb2,pretium nisl ut,Padberg LLC,Health,84,0.45,Exchange-Only,14
-62e54916f032398ea4000bb3,elementum,"Block, Kautzer and McClure",Electronics,80,0.07,Not Returnable,-
-62e54916f032398ea4000bb4,nec sem duis,Mayert and Sons,Books,68,2.75,Returnable,2
-62e54916f032398ea4000bb5,justo sit amet,Hyatt LLC,Appliances,56,2.65,Not Returnable,-
-62e54916f032398ea4000bb6,a,Hauck Group,Cell Phones & Accessories,20,4.71,Returnable,16
-62e54916f032398ea4000bb7,faucibus orci,Cormier Group,Appliances,49,4.22,Returnable,3
-62e54916f032398ea4000bb8,risus auctor sed,"Effertz, Beer and Hermann",Appliances,93,2.32,Returnable,19
-62e54916f032398ea4000bb9,posuere nonummy,Armstrong-Bogan,Household & Baby Care,63,2.22,Returnable,19
-62e54916f032398ea4000bba,duis,"Roob, Wilderman and Bartell",Computers,36,4.54,Not Returnable,-
-62e54916f032398ea4000bbb,non,Hills-Leuschke,Health,76,2.38,Returnable,11
-62e54916f032398ea4000bbc,ac,Gislason and Sons,Clothing,88,3.73,Returnable,1
-62e54916f032398ea4000bbd,porttitor,Corwin-Mann,Grocery & Gourmet Food,69,1.05,Not Returnable,-
-62e54916f032398ea4000bbe,vestibulum,Dibbert-Frami,Grocery & Gourmet Food,31,4.38,Returnable,3
-62e54916f032398ea4000bbf,lectus,O'Conner Group,Home & Kitchen,92,0.71,Not Returnable,-
-62e54916f032398ea4000bc0,ligula in lacus,DuBuque-Stanton,Clothing,22,0.76,Returnable,18
-62e54916f032398ea4000bc1,lacus morbi sem,Spinka Group,Shoes and Jewelry,85,1.03,Returnable,11
-62e54916f032398ea4000bc2,massa,Mills-Runolfsson,Industrial & Scientific,48,2.58,Returnable,18
-62e54916f032398ea4000bc3,venenatis lacinia aenean,"Doyle, Wisoky and Gulgowski",Garden & Outdoor,46,3.84,Returnable,15
-62e54916f032398ea4000bc4,justo etiam pretium,"Watsica, Mann and Doyle",Garden & Outdoor,92,4.31,Exchange-Only,10
-62e54916f032398ea4000bc5,nibh,"Aufderhar, Kemmer and Fritsch",Health,43,3.05,Returnable,11
-62e54916f032398ea4000bc6,sed augue,Considine-Fritsch,Shoes and Jewelry,59,2.04,Not Returnable,-
-62e54916f032398ea4000bc7,tortor risus dapibus,Schimmel-Crooks,Books,44,2.99,Returnable,9
-62e54916f032398ea4000bc8,dui vel nisl,"Parker, Harris and McLaughlin",Health,9,2.89,Returnable,8
-62e54916f032398ea4000bc9,quisque,Langworth-Schaden,Sports & Outdoors,83,0.56,Exchange-Only,19
-62e54916f032398ea4000bca,in sapien,Moen Group,Health,93,4.19,Returnable,15
-62e54916f032398ea4000bcb,donec vitae,Gottlieb and Sons,Computers,53,4.82,Returnable,3
-62e54916f032398ea4000bcc,at diam nam,Boyle and Sons,Clothing,19,4.71,Returnable,3
-62e54916f032398ea4000bcd,ultrices enim lorem,Schiller and Sons,Household & Baby Care,5,2.95,Returnable,8
-62e54916f032398ea4000bce,proin,Hand-Wyman,Garden & Outdoor,18,4.94,Returnable,2
-62e54916f032398ea4000bcf,mattis odio,"Koelpin, Baumbach and Feeney",Garden & Outdoor,6,4.46,Returnable,12
-62e54916f032398ea4000bd0,platea dictumst,Collier-Osinski,Industrial & Scientific,63,1.7,Exchange-Only,15
-62e54916f032398ea4000bd1,amet,Kovacek-Jerde,Cell Phones & Accessories,29,4.83,Returnable,1
-62e54916f032398eae000b88,aliquam convallis nunc,Upton and Sons,Garden & Outdoor,3,4.78,Exchange-Only,5
-62e54916f032398eae000b89,hac habitasse platea,Purdy-Schoen,Toys & Games,23,4.42,Not Returnable,-
-62e54916f032398eae000b8a,at velit,Johnston Inc,Sports & Outdoors,50,2.23,Returnable,9
-62e54916f032398eae000b8b,nec euismod,Bartoletti and Sons,Electronics,27,4.62,Returnable,8
-62e54916f032398eae000b8c,convallis nulla neque,Donnelly-McKenzie,Sports & Outdoors,2,0.56,Returnable,12
-62e54916f032398eae000b8d,feugiat et,Leannon and Sons,Household & Baby Care,5,2.49,Returnable,10
-62e54916f032398eae000b8e,a odio in,Baumbach Inc,Appliances,62,2.91,Returnable,18
-62e54916f032398eae000b8f,eleifend pede,Williamson Group,Beauty & Personal Care,14,0.41,Exchange-Only,6
-62e54916f032398eae000b90,congue eget semper,Schamberger Inc,Computers,76,2.46,Not Returnable,-
-62e54916f032398eae000b91,nisl ut volutpat,"Wuckert, O'Keefe and Ortiz",Toys & Games,38,0.77,Returnable,1
-62e54916f032398eae000b92,vivamus in felis,Howe Inc,Clothing,30,4.04,Returnable,10
-62e54916f032398eae000b93,convallis,"Feest, Waters and Bernier",Household & Baby Care,4,3.93,Returnable,10
-62e54916f032398eae000b94,sapien arcu,Muller-Rutherford,Cell Phones & Accessories,99,4.95,Exchange-Only,18
-62e54916f032398eae000b95,ut nunc,Considine-Hickle,Clothing,13,2.99,Returnable,7
-62e54916f032398eae000b96,fusce congue diam,"MacGyver, Swift and Ledner",Garden & Outdoor,47,1.73,Returnable,14
-62e54916f032398eae000b97,mattis,Bins-Kautzer,Shoes and Jewelry,77,4.5,Returnable,13
-62e54916f032398eae000b98,sapien ut nunc,Little-Greenholt,Computers,70,2.87,Returnable,19
-62e54916f032398eae000b99,vestibulum velit id,Kirlin and Sons,Clothing,44,4.57,Returnable,8
-62e54916f032398eae000b9a,ut,Purdy and Sons,Home & Kitchen,58,2.96,Returnable,12
-62e54916f032398eae000b9b,lobortis est,Ondricka-Yost,Beauty & Personal Care,17,4.05,Not Returnable,-
-62e54916f032398eae000b9c,in,Pfannerstill-Beatty,Computers,90,4.35,Exchange-Only,19
-62e54916f032398eae000b9d,eu,Harvey and Sons,Industrial & Scientific,93,3.97,Returnable,2
-62e54916f032398eae000b9e,volutpat convallis morbi,"Gottlieb, Sipes and Morar",Clothing,78,4.07,Returnable,3
-62e54916f032398eae000b9f,lacus purus aliquet,"Berge, Glover and Collins",Computers,14,3.92,Returnable,15
-62e54916f032398eae000ba0,in,Daugherty-Carroll,Clothing,43,0.05,Returnable,7
-62e54916f032398eae000ba1,id sapien in,"Hagenes, Upton and Dare",Home & Kitchen,21,3.8,Returnable,11
-62e54916f032398eae000ba2,non sodales sed,Schuster-Bednar,Books,18,4.77,Exchange-Only,2
-62e54916f032398eae000ba3,potenti cras,Jaskolski LLC,Beauty & Personal Care,20,4.55,Not Returnable,-
-62e54916f032398eae000ba4,sit amet,"Zulauf, Greenholt and Becker",Shoes and Jewelry,60,2.76,Returnable,1
-62e54916f032398eae000ba5,arcu,Bailey-Corkery,Cell Phones & Accessories,84,3.74,Returnable,13
-62e54916f032398eae000ba6,massa,Rogahn-Tremblay,Appliances,54,4.58,Returnable,20
-62e54916f032398eae000ba7,etiam justo,Gutkowski-Brekke,Health,10,4.41,Exchange-Only,18
-62e54916f032398eae000ba8,nec,Spinka-Gutkowski,Household & Baby Care,36,0.98,Returnable,17
-62e54916f032398eae000ba9,eget eleifend,Fay and Sons,Beauty & Personal Care,33,4.01,Returnable,10
-62e54916f032398eae000baa,augue luctus,Runte-Lockman,Sports & Outdoors,3,2.73,Not Returnable,-
-62e54916f032398eae000bab,nec,Kessler Group,Cell Phones & Accessories,58,2.34,Returnable,12
-62e54916f032398eae000bac,nulla tempus,Goodwin-Sporer,Computers,27,4.58,Returnable,6
-62e54916f032398eae000bad,consequat,Mitchell Inc,Appliances,92,3.8,Exchange-Only,4
-62e54916f032398eae000bae,mauris morbi,"Hayes, Bosco and Olson",Industrial & Scientific,60,3.77,Returnable,4
-62e54916f032398eae000baf,pellentesque eget nunc,"Kirlin, Farrell and Gutkowski",Grocery & Gourmet Food,98,4.14,Not Returnable,-
-62e54916f032398eae000bb0,ornare,McCullough and Sons,Appliances,84,4.55,Returnable,4
-62e54916f032398eae000bb1,leo,"Ebert, Cronin and Wolf",Grocery & Gourmet Food,90,4.53,Not Returnable,-
-62e54916f032398eae000bb2,aliquet,Mitchell-Powlowski,Appliances,63,0.13,Not Returnable,-
-62e54916f032398eae000bb3,sed magna at,"Grady, McCullough and Stiedemann",Appliances,75,0.67,Returnable,13
-62e54916f032398eae000bb4,diam erat fermentum,Waelchi Inc,Clothing,15,2.91,Returnable,17
-62e54916f032398eae000bb5,est congue,Hand-Bergstrom,Appliances,68,3.88,Not Returnable,-
-62e54916f032398eae000bb6,praesent,Dickinson-Grant,Clothing,59,4.53,Not Returnable,-
-62e54916f032398eae000bb7,sit amet sapien,Smitham and Sons,Beauty & Personal Care,100,2.4,Returnable,6
-62e54916f032398eae000bb8,sollicitudin vitae consectetuer,Sanford-Maggio,Books,87,4.33,Returnable,7
-62e54916f032398eae000bb9,velit eu,Stiedemann LLC,Shoes and Jewelry,8,4.58,Exchange-Only,6
-62e54916f032398eb5000b7d,dui,Berge-Dare,Industrial & Scientific,87,1.06,Returnable,14
-62e54916f032398eb5000b7e,viverra,Conn and Sons,Grocery & Gourmet Food,91,0.25,Returnable,18
-62e54916f032398eb5000b7f,potenti,"Luettgen, Yundt and Spencer",Clothing,21,2.98,Exchange-Only,7
-62e54916f032398eb5000b80,facilisi,Predovic Inc,Industrial & Scientific,36,3.96,Returnable,20
-62e54916f032398eb5000b81,justo sit,Kreiger-Buckridge,Appliances,5,2.64,Returnable,16
-62e54916f032398eb5000b82,mauris viverra,Cronin-Cremin,Garden & Outdoor,37,1.64,Returnable,9
-62e54916f032398eb5000b83,sed nisl,Bosco-Stanton,Shoes and Jewelry,89,4.14,Not Returnable,-
-62e54916f032398eb5000b84,quis orci,Wolff-Lebsack,Home & Kitchen,94,3.68,Exchange-Only,8
-62e54916f032398eb5000b85,proin risus praesent,Corkery-Raynor,Appliances,57,3.07,Not Returnable,-
-62e54916f032398eb5000b86,habitasse platea,Gislason-Lakin,Computers,29,3.84,Returnable,20
-62e54916f032398eb5000b87,posuere nonummy,Ernser-Hoppe,Toys & Games,74,2.11,Exchange-Only,15
-62e54916f032398eb5000b88,parturient montes,Crona Inc,Household & Baby Care,99,2.32,Returnable,6
-62e54916f032398eb5000b89,amet,Friesen and Sons,Electronics,12,3.06,Returnable,17
-62e54916f032398eb5000b8a,tincidunt nulla,"Kassulke, Barrows and Klocko",Home & Kitchen,42,4.3,Returnable,7
-62e54916f032398eb5000b8b,lorem id ligula,Lowe Inc,Beauty & Personal Care,31,4.49,Returnable,10
-62e54916f032398eb5000b8c,interdum,"Goodwin, Legros and Legros",Health,51,3.22,Returnable,7
-62e54916f032398eb5000b8d,nunc,Rowe-Rutherford,Shoes and Jewelry,46,4.78,Returnable,3
-62e54916f032398eb5000b8e,tincidunt eget,"Sawayn, Blanda and Larkin",Industrial & Scientific,79,3.23,Not Returnable,-
-62e54916f032398eb5000b8f,sed,Hyatt and Sons,Cell Phones & Accessories,76,4.99,Returnable,16
-62e54916f032398eb5000b90,pharetra,Hegmann and Sons,Toys & Games,14,3.85,Exchange-Only,7
-62e54916f032398eb5000b91,ornare,Langworth-Beier,Sports & Outdoors,40,4.82,Returnable,15
-62e54916f032398eb5000b92,magna bibendum imperdiet,Bergnaum-Simonis,Electronics,43,4.85,Returnable,19
-62e54916f032398eb5000b93,risus,Rowe Inc,Electronics,13,0.45,Returnable,15
-62e54916f032398eb5000b94,nibh quisque id,"Mann, Stiedemann and Toy",Electronics,49,3.35,Returnable,15
-62e54916f032398eb5000b95,consectetuer adipiscing elit,Hagenes-D'Amore,Computers,4,2.54,Returnable,8
-62e54916f032398eb5000b96,tristique,Spencer-Champlin,Shoes and Jewelry,35,3.75,Returnable,13
-62e54916f032398eb5000b97,neque vestibulum,Schmidt and Sons,Clothing,60,4.11,Returnable,6
-62e54916f032398eb5000b98,eget massa,"Ruecker, Wyman and Waelchi",Electronics,41,1.55,Returnable,6
-62e54916f032398eb5000b99,vestibulum,Barton Inc,Electronics,51,4.92,Returnable,14
-62e54916f032398eb5000b9a,vestibulum,"Mante, Russel and Crooks",Shoes and Jewelry,19,1.4,Returnable,5
-62e54916f032398eb5000b9b,imperdiet,Nienow LLC,Home & Kitchen,24,0.83,Not Returnable,-
-62e54916f032398eb5000b9c,justo lacinia eget,"Little, Kerluke and Ernser",Household & Baby Care,99,4.16,Not Returnable,-
-62e54916f032398eb5000b9d,cubilia curae,"Erdman, Grimes and Kuphal",Grocery & Gourmet Food,65,3.54,Returnable,7
-62e54916f032398eb5000b9e,mus,"Buckridge, Ullrich and Mohr",Garden & Outdoor,5,1.01,Returnable,2
-62e54916f032398eb5000b9f,in,Kautzer-Lang,Beauty & Personal Care,98,3.55,Returnable,12
-62e54916f032398eb5000ba0,vulputate vitae,Kemmer-Baumbach,Toys & Games,23,3.2,Not Returnable,-
-62e54916f032398eb5000ba1,sit amet,"Mante, Goodwin and Brakus",Garden & Outdoor,88,3.72,Returnable,14
-62e54916f032398eb5000ba2,dui vel nisl,Kilback Inc,Computers,59,4.94,Not Returnable,-
-62e54916f032398eb5000ba3,aenean fermentum donec,Tremblay and Sons,Grocery & Gourmet Food,99,3.24,Returnable,14
-62e54916f032398eb5000ba4,luctus ultricies eu,Murphy LLC,Shoes and Jewelry,91,3.92,Not Returnable,-
-62e54916f032398eb5000ba5,sit,"Leannon, Kuvalis and Kessler",Toys & Games,2,0.11,Returnable,2
-62e54916f032398eb5000ba6,in,Hagenes-Graham,Toys & Games,18,4.66,Returnable,11
-62e54916f032398eb5000ba7,tortor risus dapibus,Schmidt-Kilback,Computers,90,4.95,Not Returnable,-
-62e54916f032398eb5000ba8,morbi,Schmidt-Conn,Garden & Outdoor,36,3.08,Not Returnable,-
-62e54916f032398eb5000ba9,eros suspendisse accumsan,Spencer-Botsford,Electronics,100,2.55,Returnable,7
-62e54916f032398eb5000baa,purus eu,Herzog Inc,Clothing,18,4.05,Not Returnable,-
-62e54916f032398eb5000bab,aenean,"Walker, Witting and Lebsack",Cell Phones & Accessories,29,4.66,Not Returnable,-
-62e54916f032398eb5000bac,turpis elementum ligula,"Gutkowski, Koepp and O'Kon",Garden & Outdoor,22,4.4,Not Returnable,-
-62e54916f032398eb5000bad,id mauris,MacGyver Group,Clothing,3,0.93,Returnable,7
-62e54916f032398eb5000bae,sem fusce consequat,"Runolfsdottir, Bashirian and McCullough",Sports & Outdoors,61,1.85,Returnable,12
-62e54916f032398ec3000b8b,mi pede malesuada,Champlin-Heller,Household & Baby Care,95,3.91,Returnable,16
-62e54916f032398ec3000b8c,porta volutpat erat,Von-Legros,Books,57,2.66,Returnable,8
-62e54916f032398ec3000b8d,lacinia erat,Rippin and Sons,Computers,90,0.06,Returnable,18
-62e54916f032398ec3000b8e,congue,Langworth-Will,Home & Kitchen,65,2.09,Returnable,14
-62e54916f032398ec3000b8f,erat tortor sollicitudin,"Boyer, Wehner and Bergstrom",Cell Phones & Accessories,36,4.79,Returnable,2
-62e54916f032398ec3000b90,iaculis justo in,Harber Group,Beauty & Personal Care,19,4.85,Exchange-Only,4
-62e54916f032398ec3000b91,convallis,King and Sons,Home & Kitchen,87,3.83,Returnable,3
-62e54916f032398ec3000b92,molestie nibh,Kirlin-Daugherty,Home & Kitchen,98,0.88,Not Returnable,-
-62e54916f032398ec3000b93,venenatis turpis enim,"Hoppe, Langosh and Jakubowski",Sports & Outdoors,13,1.82,Exchange-Only,12
-62e54916f032398ec3000b94,integer aliquet massa,"Wilkinson, Watsica and McKenzie",Appliances,1,4.72,Returnable,20
-62e54916f032398ec3000b95,libero,Jerde and Sons,Home & Kitchen,38,4.94,Returnable,14
-62e54916f032398ec3000b96,nullam,"Steuber, Braun and Lemke",Home & Kitchen,77,4.43,Not Returnable,-
-62e54916f032398ec3000b97,id,Quitzon LLC,Books,0,3.15,Returnable,16
-62e54916f032398ec3000b98,ligula,"Stehr, Bashirian and Corkery",Computers,92,1.54,Exchange-Only,11
-62e54916f032398ec3000b99,consequat metus,"Hintz, Walker and Waters",Shoes and Jewelry,27,3.96,Not Returnable,-
-62e54916f032398ec3000b9a,vestibulum sagittis sapien,Hintz-VonRueden,Home & Kitchen,63,4.29,Returnable,10
-62e54916f032398ec3000b9b,turpis,"Dooley, Schaefer and Morar",Grocery & Gourmet Food,84,4.05,Returnable,7
-62e54916f032398ec3000b9c,odio porttitor id,Jacobi-Littel,Health,93,3.57,Returnable,16
-62e54916f032398ec3000b9d,id luctus,Pfannerstill-Bechtelar,Beauty & Personal Care,72,2.44,Returnable,15
-62e54916f032398ec3000b9e,fusce lacus purus,Christiansen LLC,Grocery & Gourmet Food,28,3.8,Not Returnable,-
-62e54916f032398ec3000b9f,vestibulum eget,"Runolfsson, Leannon and Yundt",Household & Baby Care,91,3.07,Not Returnable,-
-62e54916f032398ec3000ba0,amet turpis,Ziemann-Lind,Industrial & Scientific,78,2.93,Returnable,5
-62e54916f032398ec3000ba1,mi integer,Kohler-Kuhn,Shoes and Jewelry,3,2.42,Returnable,15
-62e54916f032398ec3000ba2,erat tortor sollicitudin,Rosenbaum Inc,Books,92,3.89,Not Returnable,-
-62e54916f032398ec3000ba3,nec euismod,"Konopelski, Ferry and Feest",Toys & Games,48,5.0,Not Returnable,-
-62e54916f032398ec3000ba4,nunc rhoncus,Upton-Christiansen,Health,44,2.0,Exchange-Only,19
-62e54916f032398ec3000ba5,cursus id,Graham LLC,Clothing,22,4.98,Not Returnable,-
-62e54916f032398ec3000ba6,elit proin,"Friesen, Breitenberg and Goodwin",Household & Baby Care,87,2.39,Returnable,15
-62e54916f032398ec3000ba7,dui vel,Waters-Nitzsche,Toys & Games,24,3.7,Returnable,14
-62e54916f032398ec3000ba8,bibendum imperdiet nullam,"Kuvalis, D'Amore and Nader",Appliances,66,4.18,Not Returnable,-
-62e54916f032398ec3000ba9,magnis,Zulauf LLC,Shoes and Jewelry,0,4.53,Returnable,7
-62e54916f032398ec3000baa,nullam porttitor lacus,"Roob, Reichel and Dietrich",Shoes and Jewelry,73,2.9,Returnable,10
-62e54916f032398ec3000bab,sagittis nam congue,"Reilly, Koepp and Stanton",Industrial & Scientific,57,2.87,Not Returnable,-
-62e54916f032398ec3000bac,proin eu mi,Towne-Kessler,Health,16,3.83,Not Returnable,-
-62e54916f032398ec3000bad,nulla quisque,Cole-Doyle,Appliances,70,2.17,Not Returnable,-
-62e54916f032398ec3000bae,sit amet,Rowe-Veum,Appliances,96,4.66,Exchange-Only,9
-62e54917f032398ec3000baf,nunc nisl,"Green, Kris and Harris",Industrial & Scientific,4,1.6,Not Returnable,-
-62e54917f032398ec3000bb0,dui,Daugherty and Sons,Sports & Outdoors,77,4.03,Returnable,15
-62e54917f032398ec3000bb1,in hac,Stamm-Welch,Industrial & Scientific,80,1.28,Exchange-Only,1
-62e54917f032398ec3000bb2,odio,Mueller-Kessler,Home & Kitchen,46,3.93,Returnable,6
-62e54917f032398ec3000bb3,pede,"Kessler, Leuschke and Welch",Books,40,2.64,Returnable,20
-62e54917f032398ec3000bb4,erat id mauris,Wisozk-Kozey,Books,64,2.62,Returnable,15
-62e54917f032398ec3000bb5,tincidunt eu,Schultz-VonRueden,Beauty & Personal Care,63,3.12,Returnable,7
-62e54917f032398ec3000bb6,nulla,Bernhard and Sons,Computers,57,1.57,Returnable,7
-62e54917f032398ec3000bb7,in quis justo,Bayer LLC,Beauty & Personal Care,96,3.67,Not Returnable,-
-62e54917f032398ec3000bb8,luctus et ultrices,"Lynch, Ullrich and Swift",Appliances,99,2.71,Not Returnable,-
-62e54917f032398ec3000bb9,neque,Dibbert-Shields,Household & Baby Care,26,2.09,Returnable,17
-62e54917f032398ec3000bba,cras in,"Rice, Romaguera and McKenzie",Electronics,34,2.6,Returnable,6
-62e54917f032398ec3000bbb,massa volutpat convallis,Kemmer LLC,Appliances,7,3.92,Returnable,10
-62e54917f032398ec3000bbc,eget,"Little, Buckridge and Terry",Garden & Outdoor,56,3.9,Not Returnable,-
-62e54916f032398ec4000b9b,eu,"Wilkinson, Kling and Marquardt",Grocery & Gourmet Food,50,3.55,Exchange-Only,3
-62e54916f032398ec4000b9c,platea dictumst,Parisian-Hoppe,Beauty & Personal Care,4,4.74,Not Returnable,-
-62e54916f032398ec4000b9d,tempus,Rempel-Sawayn,Industrial & Scientific,1,2.39,Not Returnable,-
-62e54916f032398ec4000b9e,bibendum imperdiet nullam,Reinger-Roberts,Health,46,4.67,Not Returnable,-
-62e54916f032398ec4000b9f,ultrices aliquet,"Gislason, Ritchie and Price",Home & Kitchen,48,3.82,Not Returnable,-
-62e54916f032398ec4000ba0,amet,Baumbach-Larson,Cell Phones & Accessories,81,3.9,Returnable,6
-62e54916f032398ec4000ba1,purus aliquet,Medhurst-Lubowitz,Industrial & Scientific,26,1.15,Not Returnable,-
-62e54916f032398ec4000ba2,dui proin leo,Rowe-Donnelly,Books,35,4.97,Not Returnable,-
-62e54916f032398ec4000ba3,mauris ullamcorper,Blanda LLC,Computers,63,4.71,Not Returnable,-
-62e54916f032398ec4000ba4,integer non velit,"Thiel, McGlynn and Emard",Shoes and Jewelry,11,0.16,Returnable,8
-62e54916f032398ec4000ba5,rhoncus mauris,Durgan-Durgan,Toys & Games,59,2.09,Returnable,4
-62e54916f032398ec4000ba6,eget,Volkman Group,Clothing,2,1.74,Returnable,2
-62e54916f032398ec4000ba7,aliquam,Swift Inc,Electronics,79,4.87,Exchange-Only,7
-62e54916f032398ec4000ba8,aliquet maecenas,O'Conner Inc,Computers,74,4.01,Returnable,11
-62e54916f032398ec4000ba9,parturient,"Konopelski, Bode and McClure",Books,89,2.11,Returnable,15
-62e54916f032398ec4000baa,elit,"Turcotte, Barrows and Bogisich",Home & Kitchen,64,3.98,Not Returnable,-
-62e54916f032398ec4000bab,lorem vitae mattis,"Effertz, Fahey and Terry",Garden & Outdoor,24,4.44,Returnable,17
-62e54916f032398ec4000bac,aliquam quis,Rogahn Inc,Appliances,80,4.8,Returnable,1
-62e54916f032398ec4000bad,congue risus,"Rippin, Buckridge and Reynolds",Electronics,39,1.05,Returnable,17
-62e54916f032398ec4000bae,sapien placerat ante,Schultz-Pagac,Garden & Outdoor,3,3.62,Returnable,12
-62e54916f032398ec4000baf,accumsan tortor quis,Fisher and Sons,Shoes and Jewelry,90,4.13,Not Returnable,-
-62e54916f032398ec4000bb0,luctus tincidunt,"Kub, Langosh and Turcotte",Grocery & Gourmet Food,86,4.42,Returnable,8
-62e54916f032398ec4000bb1,sapien cum,"Gibson, Kutch and Schuster",Books,9,2.91,Returnable,6
-62e54916f032398ec4000bb2,justo sit,"Okuneva, Deckow and Koelpin",Grocery & Gourmet Food,27,1.52,Returnable,4
-62e54916f032398ec4000bb3,ac nibh,"Swift, King and Grady",Industrial & Scientific,80,4.77,Returnable,14
-62e54916f032398ec4000bb4,vivamus vel nulla,"Abernathy, Luettgen and Hagenes",Shoes and Jewelry,1,4.74,Returnable,12
-62e54916f032398ec4000bb5,ante,Collins-Runolfsson,Sports & Outdoors,85,4.45,Returnable,5
-62e54916f032398ec4000bb6,mus etiam vel,"Volkman, Botsford and Koepp",Industrial & Scientific,18,1.53,Returnable,13
-62e54916f032398ec4000bb7,non,Schoen Group,Toys & Games,30,4.19,Returnable,13
-62e54916f032398ec4000bb8,nisi nam,Quitzon-Douglas,Computers,78,0.35,Exchange-Only,4
-62e54916f032398ec4000bb9,cubilia,Tillman and Sons,Shoes and Jewelry,3,1.08,Returnable,12
-62e54916f032398ec4000bba,eget congue eget,Braun and Sons,Beauty & Personal Care,12,3.33,Returnable,3
-62e54916f032398ec4000bbb,duis faucibus accumsan,"Walsh, Pagac and Hintz",Toys & Games,47,3.32,Returnable,6
-62e54916f032398ec4000bbc,nec,O'Keefe-Tromp,Electronics,67,4.95,Not Returnable,-
-62e54916f032398ec4000bbd,nulla,Gusikowski-Predovic,Household & Baby Care,8,3.61,Returnable,6
-62e54916f032398ec4000bbe,vel,Nolan LLC,Industrial & Scientific,27,4.89,Not Returnable,-
-62e54916f032398ec4000bbf,integer ac,Klein Inc,Books,82,0.15,Returnable,2
-62e54916f032398ec4000bc0,integer ac,"Kemmer, Boyle and Oberbrunner",Toys & Games,17,4.62,Returnable,14
-62e54916f032398ec4000bc1,id consequat,Heller LLC,Books,27,4.56,Not Returnable,-
-62e54916f032398ec4000bc2,in purus,"Wyman, Kunde and Bosco",Garden & Outdoor,85,4.21,Returnable,9
-62e54916f032398ec4000bc3,a libero,Hilll Group,Cell Phones & Accessories,74,4.07,Returnable,7
-62e54916f032398ec4000bc4,non,Beahan-Gulgowski,Appliances,51,4.32,Returnable,13
-62e54916f032398ec4000bc5,faucibus,Lindgren LLC,Shoes and Jewelry,68,0.57,Returnable,16
-62e54916f032398ec4000bc6,ac lobortis vel,Bauch-O'Connell,Cell Phones & Accessories,20,4.57,Returnable,17
-62e54916f032398ec4000bc7,justo nec condimentum,"Abbott, Stokes and Kreiger",Appliances,87,2.77,Returnable,9
-62e54916f032398ec4000bc8,curae mauris viverra,Sporer Inc,Appliances,17,3.96,Not Returnable,-
-62e54916f032398ec4000bc9,natoque,"Gulgowski, Waelchi and Carter",Toys & Games,19,2.8,Returnable,9
-62e54916f032398ec4000bca,dui luctus,Monahan LLC,Toys & Games,19,2.81,Exchange-Only,14
-62e54916f032398ec4000bcb,magna vulputate,"Bode, Dare and Mertz",Grocery & Gourmet Food,68,1.12,Returnable,11
-62e54916f032398ec4000bcc,id massa,Mayert Group,Beauty & Personal Care,65,0.19,Returnable,17
-62e54916f032398ec9000b87,dictumst etiam faucibus,Koss Group,Garden & Outdoor,63,3.95,Returnable,18
-62e54916f032398ec9000b88,amet,"Beahan, Simonis and Rodriguez",Beauty & Personal Care,26,4.38,Returnable,20
-62e54916f032398ec9000b89,vestibulum velit,"Ullrich, Ritchie and Will",Shoes and Jewelry,49,4.56,Returnable,18
-62e54916f032398ec9000b8a,turpis,"King, Johnston and Bode",Health,98,4.27,Returnable,9
-62e54916f032398ec9000b8b,volutpat in,Shields LLC,Books,93,2.23,Not Returnable,-
-62e54916f032398ec9000b8c,lorem,Harber-Hayes,Books,12,4.8,Returnable,2
-62e54916f032398ec9000b8d,maecenas,Ledner and Sons,Appliances,62,4.5,Exchange-Only,17
-62e54916f032398ec9000b8e,non,Pfeffer-Homenick,Grocery & Gourmet Food,64,2.55,Not Returnable,-
-62e54916f032398ec9000b8f,justo,Marks-Bartell,Home & Kitchen,0,4.69,Returnable,2
-62e54916f032398ec9000b90,vehicula consequat,Friesen Inc,Sports & Outdoors,58,3.3,Returnable,19
-62e54916f032398ec9000b91,purus eu,Brown-Krajcik,Sports & Outdoors,49,2.42,Returnable,8
-62e54916f032398ec9000b92,in hac habitasse,Boyle-Ritchie,Computers,66,2.44,Returnable,5
-62e54916f032398ec9000b93,consectetuer,"Gutmann, Glover and Cassin",Garden & Outdoor,45,3.63,Returnable,2
-62e54916f032398ec9000b94,sollicitudin,Mitchell-Hagenes,Beauty & Personal Care,3,4.08,Returnable,9
-62e54916f032398ec9000b95,dapibus augue,Wiza Inc,Shoes and Jewelry,3,3.64,Not Returnable,-
-62e54916f032398ec9000b96,id,Abshire LLC,Health,90,4.98,Not Returnable,-
-62e54916f032398ec9000b97,mus etiam vel,Blick-McDermott,Home & Kitchen,72,4.6,Not Returnable,-
-62e54916f032398ec9000b98,a libero nam,Wilderman-Strosin,Electronics,5,4.19,Returnable,14
-62e54916f032398ec9000b99,odio,Miller LLC,Household & Baby Care,24,3.51,Not Returnable,-
-62e54916f032398ec9000b9a,adipiscing lorem vitae,"Purdy, Bradtke and Lind",Cell Phones & Accessories,98,0.32,Returnable,20
-62e54916f032398ec9000b9b,ultrices,Rempel-Hintz,Health,26,2.63,Returnable,2
-62e54916f032398ec9000b9c,purus phasellus in,Blanda Group,Industrial & Scientific,79,2.44,Not Returnable,-
-62e54916f032398ec9000b9d,dui vel,"Gutkowski, Casper and Collier",Electronics,4,2.71,Exchange-Only,15
-62e54916f032398ec9000b9e,cum sociis,Lynch-Jast,Grocery & Gourmet Food,71,3.66,Returnable,9
-62e54916f032398ec9000b9f,id,"Kassulke, Fisher and Greenholt",Cell Phones & Accessories,32,1.77,Not Returnable,-
-62e54916f032398ec9000ba0,praesent,Gutmann-McLaughlin,Clothing,26,4.37,Returnable,14
-62e54916f032398ec9000ba1,consequat,Heller Inc,Clothing,68,3.88,Returnable,10
-62e54916f032398ec9000ba2,gravida nisi at,Legros-Lind,Toys & Games,65,4.08,Returnable,17
-62e54916f032398ec9000ba3,ligula sit,Bogisich-Emmerich,Beauty & Personal Care,41,3.19,Not Returnable,-
-62e54916f032398ec9000ba4,luctus cum sociis,"Larkin, Considine and Cummings",Household & Baby Care,21,3.02,Exchange-Only,9
-62e54916f032398ec9000ba5,amet lobortis,"Romaguera, Thompson and Flatley",Books,31,4.95,Returnable,20
-62e54916f032398ec9000ba6,nibh in,McKenzie-Beahan,Books,87,0.88,Returnable,13
-62e54916f032398ec9000ba7,vel,Spinka-Schoen,Books,23,2.65,Returnable,13
-62e54916f032398ec9000ba8,ipsum,Hessel-Stark,Electronics,30,2.96,Not Returnable,-
-62e54916f032398ec9000ba9,neque vestibulum,"Cummings, Oberbrunner and Schmidt",Books,32,0.3,Returnable,2
-62e54916f032398ec9000baa,ipsum dolor,"Wuckert, Corwin and Schultz",Beauty & Personal Care,23,4.82,Exchange-Only,8
-62e54916f032398ec9000bab,ac,"Cole, Leannon and Lynch",Clothing,92,4.92,Returnable,20
-62e54916f032398ec9000bac,rhoncus aliquam,Ledner-Powlowski,Household & Baby Care,14,2.76,Exchange-Only,18
-62e54916f032398ec9000bad,nec,"Haag, Dare and Heaney",Industrial & Scientific,67,4.29,Returnable,7
-62e54916f032398ec9000bae,felis fusce,Purdy-Doyle,Toys & Games,35,4.48,Returnable,13
-62e54916f032398ec9000baf,sapien dignissim vestibulum,"Hilpert, Hartmann and Mills",Household & Baby Care,59,2.8,Returnable,1
-62e54916f032398ec9000bb0,turpis donec,Wuckert LLC,Electronics,42,4.35,Returnable,9
-62e54916f032398ec9000bb1,tincidunt eu felis,"Hilpert, Farrell and Lesch",Electronics,0,4.93,Not Returnable,-
-62e54916f032398ec9000bb2,eros,Mayer Inc,Clothing,63,2.7,Returnable,15
-62e54916f032398ec9000bb3,elit sodales,"Leannon, Gaylord and Mills",Grocery & Gourmet Food,52,3.75,Returnable,2
-62e54916f032398ec9000bb4,dui vel,Christiansen-Kuhn,Electronics,81,0.91,Returnable,16
-62e54916f032398ec9000bb5,eu massa,Feest-Ortiz,Industrial & Scientific,36,2.11,Returnable,4
-62e54916f032398ec9000bb6,vestibulum sit amet,Ferry-Witting,Household & Baby Care,47,2.86,Returnable,16
-62e54916f032398ec9000bb7,suspendisse,Stroman-Schroeder,Household & Baby Care,60,2.31,Returnable,4
-62e54916f032398ec9000bb8,diam,Gaylord Group,Beauty & Personal Care,2,1.04,Returnable,8
-62e54916f032398ed6000b7f,in faucibus orci,"Rodriguez, Steuber and Spencer",Appliances,33,0.5,Returnable,5
-62e54916f032398ed6000b80,in lacus,Emmerich-Nolan,Sports & Outdoors,89,0.59,Returnable,20
-62e54916f032398ed6000b81,elementum pellentesque quisque,Deckow-Spinka,Grocery & Gourmet Food,10,4.69,Returnable,6
-62e54916f032398ed6000b82,lorem quisque ut,"Ruecker, McGlynn and Quigley",Sports & Outdoors,95,2.58,Returnable,13
-62e54916f032398ed6000b83,purus,Muller-Carroll,Clothing,38,0.96,Returnable,7
-62e54916f032398ed6000b84,tellus nulla ut,Lueilwitz Group,Sports & Outdoors,3,4.57,Returnable,4
-62e54916f032398ed6000b85,orci luctus et,"Kulas, Ernser and Aufderhar",Computers,24,4.57,Returnable,1
-62e54916f032398ed6000b86,tortor sollicitudin mi,"Feil, Volkman and Huel",Electronics,3,2.77,Returnable,13
-62e54916f032398ed6000b87,ut at dolor,Crooks LLC,Computers,80,3.17,Not Returnable,-
-62e54916f032398ed6000b88,nec,"Oberbrunner, Mayert and Kunde",Appliances,96,2.66,Returnable,9
-62e54916f032398ed6000b89,scelerisque mauris,"Schaefer, Carroll and Beer",Shoes and Jewelry,15,4.31,Not Returnable,-
-62e54916f032398ed6000b8a,hac,Hegmann LLC,Computers,68,0.17,Returnable,1
-62e54916f032398ed6000b8b,suscipit nulla,Ryan and Sons,Grocery & Gourmet Food,66,3.93,Returnable,14
-62e54916f032398ed6000b8c,eleifend,Kulas LLC,Books,65,0.48,Returnable,8
-62e54916f032398ed6000b8d,luctus,"Macejkovic, Johnson and Kautzer",Garden & Outdoor,46,0.46,Returnable,7
-62e54916f032398ed6000b8e,donec quis,"Jacobi, McDermott and Bauch",Industrial & Scientific,11,0.88,Returnable,10
-62e54916f032398ed6000b8f,nec molestie sed,"Beier, Kutch and Hoeger",Sports & Outdoors,23,3.15,Returnable,5
-62e54916f032398ed6000b90,malesuada,"Schimmel, Auer and Morar",Beauty & Personal Care,86,0.71,Not Returnable,-
-62e54916f032398ed6000b91,accumsan tellus,Farrell and Sons,Industrial & Scientific,83,4.81,Returnable,2
-62e54916f032398ed6000b92,sit,Flatley and Sons,Health,30,4.6,Returnable,6
-62e54916f032398ed6000b93,augue,Beatty Inc,Beauty & Personal Care,98,2.07,Returnable,14
-62e54916f032398ed6000b94,erat,Botsford-Senger,Health,83,4.55,Not Returnable,-
-62e54916f032398ed6000b95,eros,"Schaden, Conroy and Welch",Shoes and Jewelry,32,1.55,Returnable,12
-62e54916f032398ed6000b96,ultrices,Goodwin Group,Appliances,75,3.61,Returnable,17
-62e54916f032398ed6000b97,ac,Bernier-Abshire,Computers,14,5.0,Returnable,16
-62e54916f032398ed6000b98,blandit,Sporer Inc,Home & Kitchen,31,1.51,Returnable,11
-62e54916f032398ed6000b99,potenti cras,Muller-Swift,Industrial & Scientific,19,4.09,Not Returnable,-
-62e54916f032398ed6000b9a,in faucibus,Durgan-Goyette,Cell Phones & Accessories,100,4.86,Returnable,13
-62e54916f032398ed6000b9b,at,Lemke Group,Health,3,3.29,Returnable,1
-62e54916f032398ed6000b9c,in tempor turpis,O'Connell-Keebler,Beauty & Personal Care,53,3.95,Exchange-Only,3
-62e54916f032398ed6000b9d,tempus sit amet,Ruecker-Cartwright,Health,17,4.6,Not Returnable,-
-62e54916f032398ed6000b9e,mauris,"Hintz, Bernier and Gottlieb",Beauty & Personal Care,86,2.44,Returnable,2
-62e54916f032398ed6000b9f,integer tincidunt,"Towne, Jacobs and Nolan",Appliances,73,3.36,Not Returnable,-
-62e54916f032398ed6000ba0,suscipit ligula,Schultz-Klocko,Toys & Games,61,4.78,Returnable,18
-62e54916f032398ed6000ba1,nulla tellus in,Rowe Inc,Garden & Outdoor,67,3.75,Returnable,7
-62e54916f032398ed6000ba2,vitae nisl aenean,"Huel, Roberts and Paucek",Garden & Outdoor,52,4.66,Returnable,7
-62e54916f032398ed6000ba3,cubilia curae donec,Upton Inc,Electronics,73,4.96,Returnable,15
-62e54916f032398ed6000ba4,consequat varius integer,Raynor Inc,Grocery & Gourmet Food,95,4.72,Returnable,15
-62e54916f032398ed6000ba5,molestie,Crooks LLC,Home & Kitchen,100,3.08,Not Returnable,-
-62e54916f032398ed6000ba6,tortor risus,"Nitzsche, Farrell and Gislason",Books,43,0.74,Not Returnable,-
-62e54916f032398ed6000ba7,blandit lacinia erat,Hills-Hammes,Books,82,4.21,Returnable,12
-62e54916f032398ed6000ba8,elementum eu,Dietrich-Gibson,Health,30,3.81,Returnable,20
-62e54916f032398ed6000ba9,molestie lorem quisque,Bins-VonRueden,Clothing,24,4.21,Returnable,2
-62e54916f032398ed6000baa,sapien dignissim vestibulum,Keebler-Hermann,Health,90,2.82,Returnable,3
-62e54916f032398ed6000bab,eget elit,Will and Sons,Household & Baby Care,10,4.65,Not Returnable,-
-62e54916f032398ed6000bac,viverra diam vitae,Wiza LLC,Cell Phones & Accessories,31,4.05,Returnable,1
-62e54916f032398ed6000bad,natoque penatibus,"Vandervort, Hayes and McClure",Sports & Outdoors,85,2.95,Returnable,3
-62e54916f032398ed6000bae,elit ac nulla,"Jenkins, Jakubowski and Bahringer",Electronics,31,0.51,Exchange-Only,11
-62e54916f032398ed6000baf,nec sem,Gorczany-Hettinger,Books,74,4.45,Not Returnable,-
-62e54916f032398ed6000bb0,suspendisse potenti,"Friesen, Hagenes and Shields",Appliances,72,1.15,Returnable,10
-62e54916f032398ee2000bcf,luctus,"Hackett, O'Connell and Schiller",Health,20,4.65,Exchange-Only,7
-62e54916f032398ee2000bd0,sed,"Rohan, Kemmer and Morissette",Computers,30,3.95,Returnable,15
-62e54916f032398ee2000bd1,consequat metus,Metz-Harvey,Garden & Outdoor,18,4.31,Returnable,18
-62e54916f032398ee2000bd2,vitae mattis,Price-Murphy,Appliances,60,4.22,Returnable,20
-62e54916f032398ee2000bd3,sit amet diam,Bradtke LLC,Home & Kitchen,23,4.57,Returnable,6
-62e54916f032398ee2000bd4,volutpat convallis morbi,Adams LLC,Clothing,51,2.85,Not Returnable,-
-62e54916f032398ee2000bd5,sed interdum venenatis,Streich and Sons,Electronics,47,0.43,Exchange-Only,3
-62e54916f032398ee2000bd6,erat,"Gutkowski, Halvorson and Marvin",Toys & Games,39,4.67,Not Returnable,-
-62e54916f032398ee2000bd7,volutpat quam pede,Lowe-O'Keefe,Household & Baby Care,86,0.24,Returnable,15
-62e54916f032398ee2000bd8,morbi,Douglas Group,Health,86,3.97,Not Returnable,-
-62e54916f032398ee2000bd9,quis,"Herman, Lebsack and Bergstrom",Beauty & Personal Care,28,4.91,Returnable,5
-62e54916f032398ee2000bda,dictumst,Franecki Inc,Toys & Games,35,3.39,Returnable,5
-62e54916f032398ee2000bdb,viverra,"Walsh, Wuckert and Rohan",Toys & Games,33,4.5,Returnable,12
-62e54916f032398ee2000bdc,in quam,Schaden and Sons,Appliances,14,2.45,Returnable,5
-62e54916f032398ee2000bdd,in,Bailey-Reynolds,Cell Phones & Accessories,78,2.55,Not Returnable,-
-62e54916f032398ee2000bde,nisl nunc,Doyle LLC,Household & Baby Care,32,2.03,Not Returnable,-
-62e54916f032398ee2000bdf,consequat dui nec,Sporer Group,Garden & Outdoor,44,3.57,Not Returnable,-
-62e54916f032398ee2000be0,metus vitae ipsum,"McKenzie, Schaden and Kling",Appliances,27,4.07,Returnable,15
-62e54916f032398ee2000be1,ac,Wintheiser-Wunsch,Sports & Outdoors,66,4.18,Returnable,15
-62e54916f032398ee2000be2,in sapien iaculis,"Nolan, Heller and Tremblay",Beauty & Personal Care,73,2.97,Returnable,14
-62e54916f032398ee2000be3,rhoncus aliquam lacus,Vandervort-Moen,Household & Baby Care,64,0.72,Returnable,8
-62e54916f032398ee2000be4,proin leo,Ledner-Auer,Household & Baby Care,86,3.39,Returnable,13
-62e54916f032398ee2000be5,interdum eu tincidunt,Doyle Group,Books,97,3.39,Returnable,6
-62e54916f032398ee2000be6,porta,"Spinka, Howell and Fay",Electronics,86,4.49,Returnable,19
-62e54916f032398ee2000be7,sit,Kling-Daniel,Home & Kitchen,60,4.85,Exchange-Only,1
-62e54916f032398ee2000be8,quam nec dui,"Conroy, Block and Blanda",Computers,18,3.13,Returnable,3
-62e54916f032398ee2000be9,lacinia,"Watsica, Boyle and Satterfield",Health,10,3.96,Returnable,6
-62e54916f032398ee2000bea,semper porta,"Botsford, Runte and Erdman",Books,30,4.77,Returnable,2
-62e54916f032398ee2000beb,sit,"Breitenberg, Kertzmann and Zulauf",Cell Phones & Accessories,60,4.77,Returnable,4
-62e54916f032398ee2000bec,fusce consequat nulla,Steuber and Sons,Beauty & Personal Care,41,4.06,Returnable,4
-62e54916f032398ee2000bed,condimentum,D'Amore-Zboncak,Industrial & Scientific,74,4.54,Returnable,7
-62e54916f032398ee2000bee,ultrices posuere cubilia,"Tremblay, Harvey and Sauer",Books,81,3.11,Returnable,3
-62e54916f032398ee2000bef,curabitur in,Abernathy Group,Household & Baby Care,8,3.72,Exchange-Only,10
-62e54916f032398ee2000bf0,sapien a,Jaskolski-Sauer,Books,63,3.7,Returnable,2
-62e54916f032398ee2000bf1,at turpis,"Goldner, Sauer and Fritsch",Electronics,41,1.23,Not Returnable,-
-62e54916f032398ee2000bf2,turpis nec euismod,Schuster Group,Shoes and Jewelry,71,3.26,Not Returnable,-
-62e54916f032398ee2000bf3,nulla facilisi cras,Gottlieb Group,Toys & Games,79,2.17,Exchange-Only,14
-62e54916f032398ee2000bf4,mi,"Little, Waters and Feeney",Cell Phones & Accessories,36,4.02,Exchange-Only,3
-62e54916f032398ee2000bf5,suspendisse,Lebsack Group,Toys & Games,8,3.38,Returnable,13
-62e54916f032398ee2000bf6,eu,Rice Inc,Household & Baby Care,76,3.83,Returnable,15
-62e54916f032398ee2000bf7,in,"DuBuque, Kreiger and Bradtke",Clothing,12,3.79,Not Returnable,-
-62e54916f032398ee2000bf8,eu tincidunt in,Stroman-Cormier,Clothing,65,3.77,Returnable,13
-62e54916f032398ee2000bf9,posuere,Bergstrom-Stoltenberg,Electronics,5,4.99,Exchange-Only,9
-62e54916f032398ee2000bfa,ante ipsum primis,Carroll-Zieme,Appliances,80,4.99,Exchange-Only,11
-62e54916f032398ee2000bfb,venenatis,"Rempel, Jaskolski and Wilderman",Computers,14,2.3,Returnable,1
-62e54916f032398ee2000bfc,ipsum primis,"Wilderman, Adams and Zemlak",Beauty & Personal Care,79,2.39,Returnable,4
-62e54916f032398ee2000bfd,sagittis sapien,Grady and Sons,Toys & Games,71,4.49,Returnable,1
-62e54916f032398ee2000bfe,odio consequat,Brown-Kemmer,Shoes and Jewelry,39,4.8,Returnable,8
-62e54916f032398ee2000bff,libero,Bergstrom-Conn,Home & Kitchen,28,1.79,Not Returnable,-
-62e54916f032398ee2000c00,libero nam,"Dickinson, Herman and Batz",Health,10,4.04,Returnable,2
+1,sollicitudin,"Howell, Hintz and Gerlach",Toys & Games,46,4.53,Returnable,19
+2,gravida,Schroeder-Maggio,Books,15,4.86,Exchange-Only,15
+3,nibh,Cremin and Sons,Books,96,3.31,Returnable,16
+4,penatibus et,"Christiansen, Dickinson and Ritchie",Books,22,3.36,Exchange-Only,19
+5,velit eu est,"Howell, Franecki and Funk",Clothing,98,3.88,Not Returnable,-
+6,dapibus duis at,Wehner and Sons,Toys & Games,6,2.41,Returnable,15
+7,pretium,Kutch and Sons,Toys & Games,43,4.37,Returnable,8
+8,vestibulum proin,"Gislason, Bosco and Kuvalis",Clothing,85,4.39,Returnable,16
+9,augue aliquam erat,Sawayn Inc,Cell Phones & Accessories,16,0.17,Returnable,6
+10,iaculis,"Witting, Hoeger and Crooks",Appliances,62,2.65,Not Returnable,-
+11,cubilia curae,Bahringer Inc,Household & Baby Care,53,0.55,Returnable,13
+12,vel,"Veum, Berge and Swaniawski",Cell Phones & Accessories,69,2.85,Returnable,20
+13,tempor,Kautzer-Kohler,Sports & Outdoors,64,0.93,Exchange-Only,2
+14,aliquam non,Stiedemann-Herzog,Sports & Outdoors,71,4.6,Exchange-Only,19
+15,tempus,"Prosacco, Cassin and Waelchi",Electronics,84,2.63,Returnable,20
+16,pellentesque,Balistreri Inc,Sports & Outdoors,16,4.75,Returnable,4
+17,luctus et,"Cremin, Heller and Grady",Clothing,35,1.77,Returnable,11
+18,fusce,"Cronin, Jacobs and Schamberger",Toys & Games,92,4.86,Exchange-Only,6
+19,ante vivamus,Walker-Marvin,Home & Kitchen,28,4.76,Returnable,7
+20,leo pellentesque,VonRueden-Wolff,Clothing,30,4.91,Returnable,18
+21,in,Anderson Inc,Electronics,28,1.36,Returnable,11
+22,convallis,Ruecker LLC,Computers,64,4.92,Returnable,19
+23,eros vestibulum,"Hudson, Rolfson and Kilback",Computers,70,3.94,Returnable,15
+24,non lectus,Considine Group,Appliances,4,4.85,Returnable,13
+25,ipsum,Reichel Group,Books,59,4.53,Not Returnable,-
+26,vivamus in felis,"Nikolaus, Barton and Nicolas",Home & Kitchen,13,2.68,Not Returnable,-
+27,molestie,"Roberts, Keeling and Abbott",Computers,59,1.31,Returnable,16
+28,pede lobortis,Mraz-Lemke,Beauty & Personal Care,87,2.59,Returnable,2
+29,sit,"Reichel, Ernser and O'Hara",Appliances,83,1.24,Exchange-Only,13
+30,eget eros elementum,Hessel LLC,Health,69,0.16,Not Returnable,-
+31,proin eu,O'Kon LLC,Health,25,4.44,Not Returnable,-
+32,velit,"Botsford, Muller and Kozey",Garden & Outdoor,13,4.87,Returnable,1
+33,dui maecenas tristique,"Walsh, Williamson and Hegmann",Grocery & Gourmet Food,18,1.27,Exchange-Only,15
+34,fusce lacus purus,Waters and Sons,Cell Phones & Accessories,5,3.89,Returnable,20
+35,mauris morbi non,"Bauch, Zieme and Schiller",Beauty & Personal Care,47,2.4,Returnable,8
+36,et tempus,Cormier-Heathcote,Household & Baby Care,99,4.95,Exchange-Only,20
+37,tempus vel pede,Schmidt LLC,Garden & Outdoor,21,0.91,Returnable,16
+38,diam,"Weber, Stehr and Hermiston",Garden & Outdoor,36,0.47,Returnable,18
+39,felis fusce,"Crist, Paucek and Hilll",Clothing,91,4.55,Returnable,3
+40,et tempus semper,Maggio Group,Grocery & Gourmet Food,86,2.12,Returnable,6
+41,natoque penatibus et,Leuschke and Sons,Shoes and Jewelry,33,4.38,Not Returnable,-
+42,est,"Bins, Schulist and Kutch",Electronics,78,4.33,Returnable,3
+43,nulla,Cassin-Morissette,Electronics,76,4.34,Returnable,1
+44,rutrum at,Windler Group,Computers,90,2.64,Returnable,10
+45,sollicitudin ut suscipit,Buckridge Inc,Health,94,1.68,Returnable,10
+46,amet,Rosenbaum LLC,Cell Phones & Accessories,47,0.25,Not Returnable,-
+47,vivamus metus arcu,"Rosenbaum, Kessler and Beahan",Computers,27,4.31,Not Returnable,-
+48,odio consequat varius,"Moore, Conn and Goyette",Clothing,87,4.43,Exchange-Only,12
+49,ante ipsum primis,Emmerich LLC,Grocery & Gourmet Food,29,4.21,Returnable,20
+50,convallis duis consequat,Aufderhar-Willms,Grocery & Gourmet Food,41,4.02,Returnable,17
+51,vestibulum ante ipsum,Murazik Group,Home & Kitchen,37,3.22,Returnable,1
+52,gravida,Halvorson-Donnelly,Home & Kitchen,67,0.1,Returnable,12
+53,magna,Mills Inc,Home & Kitchen,10,3.31,Returnable,5
+54,odio,"Cremin, Frami and Hyatt",Beauty & Personal Care,12,3.53,Returnable,19
+55,eu est congue,"Ruecker, Bauch and Schultz",Grocery & Gourmet Food,5,2.54,Returnable,9
+56,bibendum felis,"Gerhold, Jones and Crist",Clothing,59,4.56,Returnable,6
+57,nunc,"Paucek, Wiegand and Metz",Cell Phones & Accessories,58,4.22,Returnable,1
+58,in sapien,Toy-Batz,Industrial & Scientific,24,4.25,Exchange-Only,9
+59,a,"Mraz, Stokes and Hahn",Clothing,53,3.17,Exchange-Only,17
+60,parturient,"Jacobi, Harris and Goodwin",Garden & Outdoor,84,2.98,Not Returnable,-
+61,interdum venenatis turpis,"Bosco, Fisher and Littel",Clothing,26,3.78,Returnable,19
+62,posuere,"Klocko, Becker and Reichert",Grocery & Gourmet Food,18,0.68,Not Returnable,-
+63,sapien,"Wilderman, Conn and O'Hara",Computers,77,4.42,Returnable,6
+64,nisi nam ultrices,Shanahan-Blick,Household & Baby Care,1,4.77,Returnable,14
+65,morbi,"Macejkovic, Friesen and Weissnat",Appliances,48,3.66,Not Returnable,-
+66,est lacinia,Metz Group,Home & Kitchen,17,4.47,Returnable,8
+67,tempus,Toy Inc,Garden & Outdoor,73,4.24,Returnable,19
+68,ullamcorper,O'Conner and Sons,Cell Phones & Accessories,97,3.9,Returnable,5
+69,congue etiam justo,Roob-Lehner,Clothing,59,1.13,Not Returnable,-
+70,non,Zboncak-Schaden,Appliances,1,3.6,Not Returnable,-
+71,pede posuere,Koepp-Powlowski,Electronics,73,4.0,Returnable,15
+72,nulla eget,"Hudson, Nicolas and Mosciski",Beauty & Personal Care,93,4.82,Returnable,4
+73,adipiscing,Lakin-Robel,Industrial & Scientific,80,1.38,Returnable,14
+74,consectetuer adipiscing elit,Kunde-Effertz,Clothing,51,2.71,Not Returnable,-
+75,nec,"Wolff, Rice and Gleason",Health,96,3.03,Not Returnable,-
+76,hac habitasse platea,"Hintz, Cummerata and Thompson",Industrial & Scientific,5,3.95,Returnable,19
+77,sodales sed tincidunt,McClure and Sons,Home & Kitchen,7,0.45,Returnable,19
+78,hac habitasse,Nader-Renner,Books,12,4.78,Returnable,12
+79,varius,Marvin LLC,Industrial & Scientific,69,4.55,Not Returnable,-
+80,luctus et ultrices,Cassin-Miller,Clothing,56,3.65,Returnable,14
+81,elementum,"Pfannerstill, Dicki and Flatley",Books,62,2.23,Returnable,16
+82,accumsan odio,Treutel-Nicolas,Toys & Games,23,3.24,Not Returnable,-
+83,montes nascetur,Nikolaus-Lebsack,Industrial & Scientific,34,4.36,Returnable,13
+84,mauris ullamcorper,Jones and Sons,Garden & Outdoor,31,3.21,Not Returnable,-
+85,dapibus duis at,McDermott-Maggio,Clothing,66,4.86,Returnable,1
+86,rutrum,Hodkiewicz-McGlynn,Home & Kitchen,33,1.38,Exchange-Only,1
+87,praesent id massa,Mohr and Sons,Books,10,1.33,Returnable,8
+88,montes,Kreiger-Predovic,Household & Baby Care,22,3.86,Returnable,15
+89,curae mauris viverra,"Kunde, Upton and Rath",Cell Phones & Accessories,80,3.16,Not Returnable,-
+90,at diam nam,"Murphy, Wolff and Larkin",Health,51,4.27,Returnable,16
+91,ut dolor morbi,"McCullough, McLaughlin and Jacobson",Health,86,4.29,Returnable,13
+92,mi integer,"Quitzon, Schaden and Hane",Industrial & Scientific,47,4.68,Not Returnable,-
+93,tincidunt nulla mollis,Torphy and Sons,Electronics,41,3.5,Not Returnable,-
+94,pellentesque eget,"White, Gusikowski and Thiel",Books,20,3.84,Exchange-Only,11
+95,sit amet justo,Pollich LLC,Beauty & Personal Care,1,2.95,Returnable,3
+96,aliquet,"Koss, Konopelski and McCullough",Toys & Games,91,2.46,Returnable,3
+97,metus,Green and Sons,Beauty & Personal Care,90,2.18,Returnable,16
+98,odio consequat,"Turcotte, Raynor and Spencer",Grocery & Gourmet Food,75,2.91,Returnable,14
+99,montes nascetur ridiculus,Barton-Moore,Grocery & Gourmet Food,35,4.59,Returnable,9
+100,suspendisse potenti,Bins LLC,Garden & Outdoor,16,4.24,Not Returnable,-
+101,at velit,Blick LLC,Household & Baby Care,87,4.2,Returnable,1
+102,turpis,Ernser LLC,Toys & Games,47,2.78,Exchange-Only,9
+103,lobortis,Waelchi-Rau,Home & Kitchen,97,4.21,Not Returnable,-
+104,felis,Williamson Group,Industrial & Scientific,10,1.5,Returnable,17
+105,feugiat,Shields Group,Garden & Outdoor,24,4.73,Returnable,17
+106,feugiat,"Swaniawski, Goldner and Waters",Health,47,4.28,Returnable,13
+107,vel,Heaney Group,Grocery & Gourmet Food,85,2.18,Not Returnable,-
+108,amet cursus id,Kemmer LLC,Garden & Outdoor,38,4.77,Returnable,8
+109,at,Morissette LLC,Cell Phones & Accessories,12,4.04,Not Returnable,-
+110,vestibulum sit amet,Bogisich Group,Appliances,27,0.35,Returnable,4
+111,vivamus in,Bartell-Franecki,Toys & Games,56,2.35,Not Returnable,-
+112,odio,Wehner-Ebert,Home & Kitchen,4,3.95,Not Returnable,-
+113,amet nulla,Ernser Group,Sports & Outdoors,95,0.75,Returnable,19
+114,nulla sed accumsan,Gulgowski LLC,Beauty & Personal Care,31,4.88,Returnable,9
+115,rhoncus dui vel,Bartell-Zboncak,Toys & Games,46,3.88,Not Returnable,-
+116,adipiscing,O'Conner-Goyette,Household & Baby Care,49,4.18,Not Returnable,-
+117,vivamus,Krajcik and Sons,Garden & Outdoor,99,1.02,Returnable,4
+118,ipsum ac,"Kris, Corkery and Bins",Shoes and Jewelry,3,4.25,Returnable,7
+119,suspendisse accumsan,"Pagac, Bayer and Cronin",Sports & Outdoors,68,2.83,Not Returnable,-
+120,ut dolor,Schmitt-MacGyver,Industrial & Scientific,94,2.37,Not Returnable,-
+121,accumsan tellus,Pouros-Dare,Grocery & Gourmet Food,67,4.81,Returnable,7
+122,aliquam convallis nunc,"Miller, Hintz and Rolfson",Shoes and Jewelry,21,0.14,Exchange-Only,3
+123,vel pede morbi,Roberts and Sons,Grocery & Gourmet Food,58,2.66,Returnable,1
+124,luctus nec molestie,Von Inc,Sports & Outdoors,14,3.07,Returnable,15
+125,vel nisl duis,Marquardt-Reichert,Beauty & Personal Care,93,4.0,Returnable,18
+126,convallis,Hand-Sawayn,Health,97,3.83,Returnable,1
+127,parturient montes nascetur,"Gutkowski, Turner and Rath",Shoes and Jewelry,71,3.14,Returnable,3
+128,augue,"Wyman, Doyle and Price",Electronics,68,2.39,Exchange-Only,20
+129,vestibulum sit,Jacobs-Zboncak,Electronics,43,1.44,Not Returnable,-
+130,non,Kirlin-Berge,Garden & Outdoor,72,2.89,Returnable,18
+131,nulla dapibus dolor,"Murray, Marks and Schuppe",Clothing,97,4.67,Returnable,19
+132,nulla dapibus,Emmerich Group,Garden & Outdoor,89,4.27,Returnable,5
+133,blandit nam,Jerde-Gleichner,Household & Baby Care,92,2.0,Returnable,16
+134,dis,"Schoen, McLaughlin and Turcotte",Beauty & Personal Care,8,3.27,Not Returnable,-
+135,lectus pellentesque eget,Murazik Inc,Industrial & Scientific,5,1.36,Returnable,9
+136,duis at,"Douglas, Osinski and Hoeger",Appliances,84,1.76,Not Returnable,-
+137,ac,"Schultz, Schneider and Huels",Appliances,17,2.47,Returnable,4
+138,porttitor id consequat,"Altenwerth, Dibbert and Dicki",Shoes and Jewelry,50,4.78,Returnable,8
+139,vivamus vel,Hoppe and Sons,Health,79,1.45,Not Returnable,-
+140,mauris,"Spinka, Herman and Quigley",Computers,61,3.02,Exchange-Only,1
+141,ac,Waters-Turner,Household & Baby Care,78,3.99,Returnable,6
+142,sapien placerat ante,"King, Rippin and Connelly",Sports & Outdoors,23,4.83,Returnable,2
+143,sociis natoque penatibus,Schuppe Inc,Household & Baby Care,76,4.91,Returnable,5
+144,augue,Blick Inc,Computers,25,3.25,Returnable,16
+145,fermentum donec ut,Koss-Runolfsdottir,Electronics,63,4.51,Returnable,2
+146,vel,"Lang, Kessler and Predovic",Appliances,59,4.75,Returnable,4
+147,ut,"Medhurst, Bogan and McCullough",Industrial & Scientific,12,4.6,Not Returnable,-
+148,dui proin leo,"Donnelly, Hilpert and Wehner",Household & Baby Care,9,3.38,Returnable,2
+149,auctor,"McKenzie, Kuvalis and Murphy",Computers,93,2.63,Returnable,14
+150,faucibus orci,"Davis, Kutch and Runolfsson",Industrial & Scientific,31,0.76,Returnable,15
+151,dui,"Conroy, West and Orn",Toys & Games,45,4.38,Not Returnable,-
+152,at nunc,"Durgan, Luettgen and Strosin",Cell Phones & Accessories,82,0.76,Returnable,2
+153,porttitor lacus,Labadie and Sons,Computers,76,4.15,Not Returnable,-
+154,blandit non,Hermiston-Corwin,Sports & Outdoors,90,4.31,Not Returnable,-
+155,iaculis justo in,"Kutch, Ledner and Bergnaum",Home & Kitchen,56,0.92,Returnable,9
+156,tincidunt,"Dickinson, Reilly and Carter",Toys & Games,10,4.12,Returnable,11
+157,at turpis donec,Connelly Inc,Shoes and Jewelry,47,1.58,Returnable,18
+158,leo,Leffler LLC,Garden & Outdoor,46,2.34,Exchange-Only,6
+159,at nibh,"Pfeffer, Marks and Stanton",Grocery & Gourmet Food,98,3.19,Returnable,8
+160,vel dapibus,Stracke Group,Cell Phones & Accessories,76,4.4,Returnable,19
+161,orci pede,"Toy, Hand and Kunze",Appliances,40,0.28,Exchange-Only,1
+162,suspendisse,Dickinson Inc,Health,30,3.95,Not Returnable,-
+163,faucibus,Hayes LLC,Clothing,37,4.57,Not Returnable,-
+164,a suscipit nulla,Flatley Inc,Toys & Games,52,1.2,Not Returnable,-
+165,quam,Heathcote Group,Clothing,68,2.25,Returnable,2
+166,sem fusce,"Schimmel, Smitham and Denesik",Home & Kitchen,77,2.36,Not Returnable,-
+167,magna,"Parker, Robel and Ferry",Computers,51,0.87,Returnable,15
+168,purus eu magna,Hand Group,Computers,68,3.22,Returnable,5
+169,ut massa quis,Hauck Inc,Computers,53,3.16,Returnable,18
+170,neque,"Wyman, Simonis and Hodkiewicz",Clothing,2,4.11,Returnable,13
+171,duis,Franecki-Turner,Shoes and Jewelry,73,4.45,Exchange-Only,7
+172,non,"Hodkiewicz, Vandervort and Gorczany",Home & Kitchen,31,2.04,Returnable,20
+173,vel,"Rolfson, O'Connell and Russel",Clothing,44,0.72,Exchange-Only,12
+174,massa quis,"Breitenberg, Jaskolski and Green",Books,36,3.74,Returnable,10
+175,quam a odio,"Bernhard, Ernser and Beer",Electronics,67,3.7,Exchange-Only,6
+176,sed,"Reynolds, Conn and Schmitt",Shoes and Jewelry,19,4.03,Returnable,20
+177,massa donec dapibus,Feil-Murphy,Electronics,87,4.06,Not Returnable,-
+178,vestibulum ac est,"Koepp, Heidenreich and Satterfield",Sports & Outdoors,15,3.22,Returnable,11
+179,nulla,Senger-Pfannerstill,Sports & Outdoors,19,4.92,Not Returnable,-
+180,amet eros suspendisse,"Hane, Stracke and Gerlach",Home & Kitchen,3,3.77,Exchange-Only,2
+181,in felis donec,"Gutmann, Powlowski and Balistreri",Household & Baby Care,46,3.02,Returnable,9
+182,magna,"Gleason, Ullrich and Anderson",Toys & Games,41,2.53,Not Returnable,-
+183,lacinia sapien quis,"Durgan, Nienow and Wiegand",Cell Phones & Accessories,57,2.2,Returnable,6
+184,id turpis integer,Hane and Sons,Health,53,0.74,Returnable,11
+185,tortor,Hermiston-Bauch,Books,54,1.28,Not Returnable,-
+186,eu est congue,McDermott-Cassin,Computers,91,3.39,Returnable,15
+187,vivamus metus,"Swaniawski, Sporer and Goyette",Sports & Outdoors,25,3.94,Not Returnable,-
+188,posuere cubilia,"Hane, Fadel and Hirthe",Industrial & Scientific,79,2.95,Returnable,12
+189,justo,Langosh LLC,Sports & Outdoors,65,0.73,Returnable,1
+190,pretium,Graham Group,Health,74,1.23,Returnable,8
+191,morbi sem mauris,Halvorson-Lueilwitz,Garden & Outdoor,83,3.73,Returnable,1
+192,sed vestibulum,Kassulke-Rau,Shoes and Jewelry,92,4.4,Returnable,9
+193,pede malesuada in,Klocko-Cormier,Beauty & Personal Care,96,4.21,Not Returnable,-
+194,proin risus,Dach-Jast,Electronics,42,3.66,Returnable,10
+195,semper rutrum,Kassulke-Von,Computers,9,1.4,Not Returnable,-
+196,id justo,"Mills, Marvin and Stiedemann",Clothing,1,3.76,Returnable,3
+197,blandit,MacGyver Group,Shoes and Jewelry,47,4.91,Not Returnable,-
+198,neque aenean,Waelchi Inc,Appliances,74,0.88,Returnable,5
+199,ut at,"Kling, Rolfson and Ratke",Sports & Outdoors,84,2.57,Not Returnable,-
+200,interdum venenatis,"Franecki, Feil and Wintheiser",Computers,25,2.28,Not Returnable,-
+201,porttitor lacus at,Kunde-Kuhn,Computers,18,0.29,Exchange-Only,18
+202,rhoncus,"Collier, Ruecker and Thompson",Computers,38,3.12,Returnable,12
+203,dapibus augue vel,Kris-Gleichner,Sports & Outdoors,47,2.54,Returnable,6
+204,fermentum donec ut,Schinner Group,Electronics,73,0.86,Returnable,15
+205,vivamus,Boehm and Sons,Books,83,4.56,Not Returnable,-
+206,non lectus aliquam,"Champlin, Treutel and Beer",Computers,89,4.96,Returnable,20
+207,aliquet,Ryan LLC,Industrial & Scientific,83,3.94,Exchange-Only,1
+208,lectus vestibulum,Herzog LLC,Industrial & Scientific,94,0.04,Returnable,18
+209,lorem vitae mattis,Macejkovic-Legros,Garden & Outdoor,15,4.94,Exchange-Only,10
+210,rhoncus,Luettgen-Grady,Shoes and Jewelry,72,1.04,Not Returnable,-
+211,aliquam,"Rau, Schneider and Marks",Clothing,37,2.38,Returnable,16
+212,ut volutpat,"Cummings, Ritchie and Bayer",Beauty & Personal Care,61,0.54,Returnable,3
+213,viverra eget,"Auer, Breitenberg and Gulgowski",Clothing,6,4.0,Returnable,11
+214,dui proin leo,Green-Boyle,Home & Kitchen,27,1.84,Not Returnable,-
+215,neque sapien,Murphy-McCullough,Home & Kitchen,82,3.74,Returnable,20
+216,pede venenatis non,Senger LLC,Beauty & Personal Care,29,4.79,Not Returnable,-
+217,fusce posuere felis,Feil LLC,Books,42,3.99,Returnable,7
+218,cursus vestibulum,Strosin-Jacobi,Industrial & Scientific,95,3.38,Returnable,14
+219,porttitor,Daugherty-Kulas,Clothing,47,3.74,Not Returnable,-
+220,dui,Koch-Zemlak,Toys & Games,39,4.43,Returnable,11
+221,duis bibendum,Cassin-Smith,Home & Kitchen,13,2.74,Returnable,11
+222,gravida,"Turner, Bergstrom and Feil",Grocery & Gourmet Food,39,3.78,Returnable,13
+223,parturient,Morar-Ullrich,Electronics,28,2.05,Exchange-Only,13
+224,blandit,"Miller, Rowe and Larkin",Clothing,98,3.7,Exchange-Only,17
+225,pellentesque quisque porta,"Runolfsson, Cole and Kunze",Household & Baby Care,22,4.63,Returnable,17
+226,porttitor lacus at,Koch-Sauer,Industrial & Scientific,13,2.91,Returnable,17
+227,convallis nunc,Stokes Inc,Books,57,2.17,Returnable,6
+228,vel nulla,"McLaughlin, Ernser and Schamberger",Computers,68,2.02,Returnable,12
+229,amet consectetuer adipiscing,Becker Inc,Health,26,4.74,Returnable,4
+230,interdum in ante,Mertz-Pollich,Books,19,3.71,Returnable,18
+231,sapien cum sociis,Terry-Macejkovic,Home & Kitchen,7,2.32,Returnable,17
+232,vitae nisi nam,"Kemmer, Rau and Rolfson",Home & Kitchen,45,4.84,Exchange-Only,16
+233,libero non,Leannon Inc,Health,11,3.97,Not Returnable,-
+234,imperdiet,Wilkinson LLC,Books,74,1.39,Returnable,2
+235,aliquam,Bergstrom-Herman,Appliances,98,0.44,Returnable,19
+236,lacinia erat vestibulum,Rodriguez-Wyman,Sports & Outdoors,70,3.22,Returnable,16
+237,libero quis,Connelly LLC,Toys & Games,69,4.03,Returnable,6
+238,ipsum,"Cruickshank, Herman and Conroy",Shoes and Jewelry,53,4.42,Returnable,19
+239,porta volutpat,Haley Group,Computers,75,2.73,Returnable,14
+240,fusce lacus,Pfeffer Inc,Garden & Outdoor,90,2.53,Returnable,6
+241,viverra eget congue,Nikolaus-Pagac,Computers,92,4.05,Returnable,15
+242,primis,"Blick, Schuppe and Predovic",Shoes and Jewelry,6,1.39,Not Returnable,-
+243,tincidunt lacus,Rippin LLC,Cell Phones & Accessories,58,3.68,Returnable,13
+244,porttitor id,Gleason and Sons,Toys & Games,75,1.37,Not Returnable,-
+245,augue vel,"Schinner, Kris and Rogahn",Clothing,62,4.45,Returnable,18
+246,quis odio,Christiansen Group,Household & Baby Care,1,2.83,Returnable,4
+247,congue risus,Kuhic and Sons,Clothing,69,0.6,Returnable,19
+248,a ipsum integer,Feil Inc,Clothing,61,3.87,Not Returnable,-
+249,natoque,Runolfsdottir Inc,Appliances,31,4.25,Returnable,11
+250,in est,Kuvalis-Kohler,Books,2,2.13,Not Returnable,-
+251,adipiscing lorem vitae,"Padberg, Kozey and Kilback",Garden & Outdoor,73,4.49,Returnable,3
+252,leo odio porttitor,Nienow Inc,Shoes and Jewelry,63,2.94,Not Returnable,-
+253,faucibus,Schumm Inc,Household & Baby Care,87,3.95,Returnable,16
+254,pede,"Robel, Gottlieb and Greenholt",Books,63,2.04,Not Returnable,-
+255,maecenas pulvinar lobortis,VonRueden LLC,Garden & Outdoor,60,2.1,Returnable,18
+256,lobortis est phasellus,"Macejkovic, Jaskolski and Stracke",Books,50,3.12,Returnable,5
+257,cras non velit,Stoltenberg-Huel,Garden & Outdoor,89,4.7,Returnable,10
+258,tristique,"Gusikowski, Mertz and Hansen",Toys & Games,16,0.87,Returnable,14
+259,erat volutpat,Bailey-Kertzmann,Toys & Games,63,0.36,Returnable,15
+260,ultricies,Stamm and Sons,Books,35,1.14,Returnable,8
+261,elit proin interdum,Klein-Zboncak,Garden & Outdoor,43,3.72,Returnable,5
+262,amet eros suspendisse,Beatty-Champlin,Clothing,29,4.61,Returnable,12
+263,ac neque duis,"McCullough, Metz and Kassulke",Shoes and Jewelry,96,4.73,Returnable,8
+264,aliquam erat,Yost and Sons,Computers,3,2.27,Not Returnable,-
+265,augue vel,Mayert-Aufderhar,Cell Phones & Accessories,6,4.58,Not Returnable,-
+266,pede justo eu,Hackett Inc,Books,56,2.84,Returnable,16
+267,mauris ullamcorper,"Nicolas, Gottlieb and Herzog",Grocery & Gourmet Food,81,3.27,Returnable,9
+268,felis fusce,Kshlerin Inc,Industrial & Scientific,30,3.31,Returnable,1
+269,integer,Hane-Botsford,Computers,19,3.84,Returnable,1
+270,blandit nam nulla,"Heathcote, Pfannerstill and Leuschke",Garden & Outdoor,9,4.71,Returnable,12
+271,sem,"Moen, Hegmann and Barton",Shoes and Jewelry,80,4.19,Exchange-Only,20
+272,ac,Gusikowski-Koepp,Home & Kitchen,24,2.72,Returnable,13
+273,in sagittis,Rosenbaum-Christiansen,Appliances,40,2.21,Returnable,11
+274,quam turpis adipiscing,"Johnson, Price and Nolan",Toys & Games,21,3.73,Returnable,8
+275,amet eleifend pede,"Berge, Fahey and Bartoletti",Clothing,29,2.22,Returnable,19
+276,ipsum aliquam non,Streich Inc,Industrial & Scientific,4,4.94,Returnable,14
+277,sit,Krajcik-Lang,Electronics,40,4.87,Exchange-Only,11
+278,consequat,Hermiston-Corkery,Garden & Outdoor,65,0.5,Returnable,14
+279,rhoncus,Buckridge-Krajcik,Sports & Outdoors,11,1.0,Returnable,15
+280,nulla tempus,"Stokes, Huel and Kshlerin",Books,43,0.82,Returnable,14
+281,nisl nunc rhoncus,Ferry-Bernier,Electronics,82,3.29,Not Returnable,-
+282,aliquam,O'Kon-Hills,Garden & Outdoor,18,1.15,Returnable,6
+283,diam,Hegmann-Breitenberg,Clothing,11,4.92,Returnable,5
+284,hendrerit at vulputate,"Kessler, Koch and Bergstrom",Clothing,41,4.63,Returnable,4
+285,mi sit,Lubowitz Inc,Home & Kitchen,22,2.11,Returnable,9
+286,elementum nullam varius,Purdy Inc,Books,61,3.28,Not Returnable,-
+287,metus,Schuppe LLC,Cell Phones & Accessories,62,4.35,Returnable,16
+288,eget elit sodales,"Nicolas, Carter and Wunsch",Toys & Games,77,3.9,Returnable,18
+289,convallis tortor risus,Dibbert LLC,Beauty & Personal Care,65,4.38,Returnable,5
+290,pellentesque quisque porta,Dickens Inc,Garden & Outdoor,42,4.1,Not Returnable,-
+291,nibh in lectus,"Cruickshank, Emmerich and Dietrich",Sports & Outdoors,18,2.62,Returnable,17
+292,at turpis,"Hirthe, Carter and Turner",Health,12,3.81,Returnable,1
+293,maecenas,Mann-Stark,Books,12,4.35,Not Returnable,-
+294,amet consectetuer,Sporer and Sons,Toys & Games,51,3.34,Not Returnable,-
+295,lobortis ligula sit,Osinski LLC,Clothing,74,3.32,Returnable,17
+296,sit amet justo,"Stehr, Treutel and Zulauf",Grocery & Gourmet Food,55,0.04,Returnable,13
+297,libero ut,"Bosco, Bartoletti and Balistreri",Home & Kitchen,25,4.93,Returnable,6
+298,morbi,Prosacco-Walker,Home & Kitchen,2,0.78,Returnable,7
+299,odio porttitor,Kshlerin-Lynch,Beauty & Personal Care,50,4.79,Exchange-Only,11
+300,rutrum ac lobortis,"White, Becker and Kris",Computers,38,0.2,Returnable,5
+301,adipiscing molestie hendrerit,Littel and Sons,Clothing,46,3.55,Returnable,3
+302,eget orci,Dicki-Bernhard,Health,27,1.7,Returnable,16
+303,etiam faucibus cursus,Dickens-Smith,Toys & Games,92,1.48,Returnable,2
+304,erat volutpat,"O'Hara, Spencer and Bernier",Cell Phones & Accessories,10,4.64,Returnable,2
+305,pellentesque,"Tillman, Kilback and Mayer",Health,88,2.12,Returnable,6
+306,ultricies,"O'Kon, Okuneva and Vandervort",Cell Phones & Accessories,91,2.68,Returnable,13
+307,ante vivamus,"Gusikowski, Homenick and Bosco",Electronics,67,4.96,Not Returnable,-
+308,ultrices phasellus,Raynor and Sons,Sports & Outdoors,69,0.84,Returnable,18
+309,porttitor lacus,Kassulke Group,Computers,76,2.58,Not Returnable,-
+310,ut at,"Christiansen, Becker and Ferry",Clothing,36,3.39,Exchange-Only,6
+311,felis ut at,"Koepp, Hyatt and Russel",Garden & Outdoor,28,1.38,Returnable,18
+312,gravida sem,Block Group,Household & Baby Care,82,4.35,Returnable,15
+313,ante vel ipsum,"McCullough, Will and Stroman",Household & Baby Care,0,3.91,Returnable,4
+314,dui luctus,Oberbrunner-Dach,Household & Baby Care,82,0.53,Returnable,15
+315,odio justo,"Towne, Hahn and Keebler",Cell Phones & Accessories,98,1.14,Returnable,2
+316,porttitor pede justo,"Beer, Bruen and Turner",Appliances,51,3.69,Not Returnable,-
+317,curae nulla,"Dicki, Legros and Marvin",Computers,96,3.91,Returnable,5
+318,non lectus,Heidenreich-Wuckert,Household & Baby Care,47,1.51,Returnable,17
+319,rhoncus sed vestibulum,Roob and Sons,Appliances,26,1.13,Exchange-Only,15
+320,posuere,Schoen Inc,Books,52,4.02,Exchange-Only,6
+321,eu interdum eu,Homenick and Sons,Grocery & Gourmet Food,37,4.72,Not Returnable,-
+322,at turpis donec,"O'Kon, Blanda and Schneider",Household & Baby Care,97,4.56,Returnable,3
+323,rutrum,"Johnson, Von and Waters",Industrial & Scientific,66,2.28,Returnable,7
+324,tempor,Denesik-Mitchell,Toys & Games,76,4.22,Returnable,16
+325,orci,"Runte, Schmeler and Beier",Computers,21,0.75,Not Returnable,-
+326,at nibh,Schoen-Koch,Clothing,26,1.48,Exchange-Only,10
+327,curae mauris,Waters Inc,Books,75,3.51,Exchange-Only,6
+328,pede libero quis,"Koss, Leannon and Gislason",Health,33,2.79,Exchange-Only,12
+329,at nulla,"West, Crooks and Gusikowski",Beauty & Personal Care,5,4.42,Returnable,13
+330,turpis integer,Cassin Group,Clothing,90,4.77,Returnable,10
+331,suspendisse,Morar and Sons,Shoes and Jewelry,72,2.0,Returnable,16
+332,lacus,Mayert-Nader,Computers,0,2.01,Not Returnable,-
+333,rutrum,Halvorson LLC,Industrial & Scientific,38,2.58,Returnable,9
+334,sed tincidunt eu,Klein Group,Beauty & Personal Care,27,2.64,Returnable,5
+335,dolor morbi vel,"Lynch, Ward and Braun",Cell Phones & Accessories,49,4.83,Returnable,10
+336,elit sodales,McCullough Inc,Electronics,85,4.4,Returnable,2
+337,id,Metz Inc,Sports & Outdoors,53,2.92,Not Returnable,-
+338,eget congue,"Nader, Gerlach and Pfeffer",Health,32,3.64,Returnable,2
+339,luctus et,Hilll Group,Clothing,59,4.54,Returnable,9
+340,vel,Gorczany-Bednar,Shoes and Jewelry,79,2.96,Returnable,15
+341,rutrum,"Haley, Torphy and Langworth",Health,68,2.31,Returnable,5
+342,posuere,Schmidt Group,Shoes and Jewelry,45,4.71,Returnable,7
+343,sit amet,"Skiles, Dibbert and Reinger",Computers,34,3.64,Returnable,11
+344,faucibus cursus urna,"Johns, O'Reilly and Carter",Beauty & Personal Care,4,3.19,Not Returnable,-
+345,erat eros viverra,Reichel Group,Cell Phones & Accessories,82,4.31,Returnable,11
+346,convallis morbi odio,Windler-Denesik,Electronics,75,2.21,Not Returnable,-
+347,in,"Hahn, Carroll and Rice",Books,51,3.59,Not Returnable,-
+348,at velit,"Tremblay, Rowe and Mante",Household & Baby Care,33,4.08,Not Returnable,-
+349,dapibus at diam,"Witting, Farrell and McCullough",Sports & Outdoors,39,2.12,Exchange-Only,4
+350,potenti cras in,"Larkin, Ondricka and Nader",Grocery & Gourmet Food,90,2.18,Returnable,12
+351,ut at dolor,Kertzmann Group,Books,85,4.0,Returnable,13
+352,curae donec pharetra,Gutkowski-MacGyver,Garden & Outdoor,93,4.41,Not Returnable,-
+353,accumsan odio curabitur,Ruecker Group,Sports & Outdoors,62,3.86,Returnable,14
+354,condimentum,"Cremin, Schamberger and Smitham",Health,66,4.38,Returnable,11
+355,ut,Fay-Hettinger,Industrial & Scientific,12,4.63,Not Returnable,-
+356,pretium,Keebler Inc,Books,81,3.7,Not Returnable,-
+357,amet turpis,"Lakin, Haag and Toy",Grocery & Gourmet Food,36,0.74,Not Returnable,-
+358,duis consequat dui,Harvey-Brown,Electronics,29,4.55,Returnable,19
+359,potenti nullam porttitor,Feil-Rolfson,Household & Baby Care,63,0.25,Returnable,15
+360,consequat lectus,"Romaguera, Hyatt and Torp",Home & Kitchen,92,4.31,Exchange-Only,20
+361,platea dictumst,Halvorson-Nikolaus,Beauty & Personal Care,94,2.3,Returnable,15
+362,turpis eget elit,"D'Amore, Schulist and Connelly",Books,47,1.22,Returnable,9
+363,ante vel ipsum,Harris Inc,Cell Phones & Accessories,32,1.86,Returnable,9
+364,in porttitor,"Kling, Buckridge and Prohaska",Clothing,87,4.66,Not Returnable,-
+365,praesent lectus vestibulum,Schiller LLC,Household & Baby Care,77,4.68,Returnable,15
+366,bibendum imperdiet nullam,"Sanford, Koss and Price",Computers,15,4.27,Returnable,20
+367,lectus,Moen Inc,Health,30,4.77,Exchange-Only,11
+368,ante vel,Lang-Kuhic,Beauty & Personal Care,59,1.48,Exchange-Only,6
+369,curae,Hirthe LLC,Sports & Outdoors,86,2.32,Returnable,14
+370,vivamus metus arcu,Schulist-Watsica,Beauty & Personal Care,92,4.53,Not Returnable,-
+371,in,"Dare, Conn and Thompson",Books,51,0.07,Returnable,17
+372,iaculis,"Boehm, Mills and Hayes",Household & Baby Care,23,3.67,Returnable,10
+373,ante ipsum primis,Keebler-Wehner,Electronics,29,3.27,Returnable,4
+374,bibendum,"Kulas, Stokes and Johns",Electronics,76,3.84,Returnable,16
+375,non,Braun and Sons,Beauty & Personal Care,64,0.68,Returnable,4
+376,duis,Mann-Grady,Electronics,69,4.92,Returnable,5
+377,sapien,"Nolan, Bernier and Abbott",Industrial & Scientific,29,4.8,Returnable,16
+378,quisque,Little-Reichel,Electronics,68,4.8,Returnable,7
+379,et magnis,"Mayer, Beer and Stanton",Industrial & Scientific,8,3.36,Returnable,19
+380,in,Cremin-Conn,Electronics,40,2.99,Returnable,15
+381,vel augue vestibulum,Tillman-Bogan,Health,47,4.89,Not Returnable,-
+382,tempus semper est,Kub-Schaden,Shoes and Jewelry,45,4.95,Returnable,1
+383,pede malesuada,"Abbott, Kling and Lindgren",Books,23,2.51,Returnable,3
+384,vel augue vestibulum,"Langworth, Bradtke and Graham",Books,67,4.5,Not Returnable,-
+385,ullamcorper purus sit,Thiel LLC,Industrial & Scientific,5,4.47,Exchange-Only,5
+386,turpis,Schimmel-Hills,Toys & Games,80,3.89,Exchange-Only,14
+387,posuere,"Keeling, Bahringer and Jacobson",Toys & Games,6,3.78,Returnable,8
+388,at,Hand LLC,Household & Baby Care,20,4.3,Returnable,19
+389,mauris morbi,Treutel-Kuhic,Health,33,4.36,Returnable,17
+390,ultrices phasellus,Wolf-Jacobs,Books,27,4.14,Not Returnable,-
+391,rhoncus aliquet pulvinar,"Rogahn, Osinski and Thompson",Sports & Outdoors,35,3.81,Returnable,20
+392,nam nulla,O'Hara-Koepp,Grocery & Gourmet Food,38,4.61,Not Returnable,-
+393,ultrices,Little and Sons,Computers,35,4.04,Returnable,3
+394,justo etiam,"Huels, Rempel and Weber",Appliances,82,3.7,Returnable,9
+395,felis,"Balistreri, Cartwright and Kuphal",Sports & Outdoors,39,4.47,Exchange-Only,5
+396,ante vivamus,Metz and Sons,Sports & Outdoors,66,3.77,Returnable,4
+397,tristique est,Hills and Sons,Garden & Outdoor,17,1.16,Returnable,20
+398,pellentesque,Gislason-Beer,Electronics,43,3.3,Not Returnable,-
+399,ut,Stracke Inc,Computers,60,4.93,Returnable,9
+400,non pretium,"Shanahan, Boyer and Halvorson",Beauty & Personal Care,8,4.92,Returnable,20
+401,et magnis,Breitenberg-Schaefer,Beauty & Personal Care,57,4.55,Exchange-Only,11
+402,duis,"MacGyver, Ritchie and Powlowski",Cell Phones & Accessories,7,4.5,Returnable,15
+403,sapien quis libero,"Kemmer, Ruecker and Gorczany",Shoes and Jewelry,58,4.51,Not Returnable,-
+404,nulla nunc purus,Pagac LLC,Grocery & Gourmet Food,22,1.34,Not Returnable,-
+405,rhoncus dui vel,Rutherford-Crooks,Clothing,96,4.77,Returnable,5
+406,vel est donec,Christiansen Group,Garden & Outdoor,18,4.17,Exchange-Only,3
+407,nulla justo aliquam,Lang-Ortiz,Toys & Games,5,4.15,Returnable,19
+408,viverra,"Pouros, MacGyver and Johns",Industrial & Scientific,73,0.27,Exchange-Only,3
+409,metus sapien,Beatty and Sons,Industrial & Scientific,3,3.92,Returnable,19
+410,eleifend luctus ultricies,Schoen and Sons,Health,64,3.78,Returnable,16
+411,ligula nec,"Murazik, Gaylord and Wehner",Cell Phones & Accessories,5,0.34,Returnable,20
+412,luctus nec,Bechtelar-Legros,Cell Phones & Accessories,52,0.62,Exchange-Only,11
+413,rutrum nulla tellus,Hirthe Group,Sports & Outdoors,74,4.04,Returnable,8
+414,blandit nam,"Bode, Jenkins and Volkman",Shoes and Jewelry,41,2.69,Returnable,6
+415,morbi ut odio,Botsford-Lesch,Toys & Games,45,3.18,Returnable,9
+416,lacinia aenean,Herman Inc,Appliances,81,4.25,Returnable,13
+417,rhoncus sed vestibulum,Goodwin LLC,Shoes and Jewelry,51,4.02,Exchange-Only,3
+418,quam,"Spinka, Maggio and Smitham",Health,55,4.38,Returnable,3
+419,varius nulla,Barrows-Spencer,Health,62,2.05,Not Returnable,-
+420,odio,Turner-Mayer,Sports & Outdoors,68,1.25,Returnable,16
+421,nisl ut volutpat,Ortiz Inc,Shoes and Jewelry,20,0.17,Returnable,18
+422,leo odio condimentum,Ortiz-Runolfsson,Electronics,87,4.11,Returnable,16
+423,quam,Rau Inc,Books,33,3.95,Exchange-Only,1
+424,neque vestibulum,Wehner Inc,Books,97,2.13,Returnable,4
+425,lobortis est,Ziemann-Steuber,Grocery & Gourmet Food,54,2.95,Not Returnable,-
+426,dictumst aliquam,"Price, VonRueden and Kassulke",Home & Kitchen,39,4.03,Returnable,12
+427,vulputate nonummy,Friesen Group,Beauty & Personal Care,38,4.28,Returnable,20
+428,convallis,"Kozey, Stanton and Huel",Books,10,2.65,Returnable,14
+429,leo rhoncus,"Jaskolski, O'Conner and Schneider",Clothing,36,2.14,Returnable,9
+430,vestibulum ante,Kozey Group,Health,1,2.57,Returnable,2
+431,luctus et ultrices,Koelpin-Hyatt,Garden & Outdoor,10,2.8,Returnable,7
+432,vehicula,Cummerata and Sons,Sports & Outdoors,62,4.97,Returnable,11
+433,nam,Bartell Group,Toys & Games,82,1.8,Returnable,1
+434,eget congue,"Hermann, Hills and Morissette",Health,72,4.45,Not Returnable,-
+435,congue diam,Bogan and Sons,Shoes and Jewelry,72,0.92,Returnable,14
+436,sapien cursus,"Wolf, Gaylord and Schulist",Health,79,4.13,Returnable,14
+437,ultrices phasellus id,Wilderman and Sons,Household & Baby Care,39,4.36,Returnable,1
+438,vel,"Prosacco, Sanford and Blanda",Appliances,88,2.05,Returnable,3
+439,vestibulum,"Kuhic, Champlin and Dickens",Health,95,4.11,Returnable,8
+440,justo lacinia,Wyman Group,Books,9,3.72,Returnable,7
+441,felis eu,Purdy-Ondricka,Household & Baby Care,36,3.84,Not Returnable,-
+442,molestie lorem,"Stroman, Blanda and Glover",Computers,68,2.66,Returnable,17
+443,primis in,Fahey-Cole,Sports & Outdoors,91,2.59,Returnable,15
+444,nunc nisl,Ziemann-Runolfsdottir,Computers,42,2.36,Not Returnable,-
+445,tellus semper interdum,Johnson-Glover,Books,12,4.33,Returnable,13
+446,vivamus vel nulla,Moen-Witting,Clothing,4,3.35,Exchange-Only,17
+447,pellentesque,Hoppe Group,Electronics,9,4.92,Returnable,18
+448,ac consequat metus,"Renner, Erdman and Bradtke",Home & Kitchen,97,0.69,Returnable,4
+449,dapibus duis,Hagenes-Wisozk,Clothing,98,0.74,Returnable,6
+450,quisque erat eros,Leannon LLC,Computers,89,4.72,Returnable,8
+451,ut massa volutpat,Padberg and Sons,Electronics,66,2.17,Returnable,7
+452,morbi vel,Heidenreich-Smith,Health,8,0.31,Returnable,13
+453,at,"Osinski, Aufderhar and Schmitt",Home & Kitchen,98,0.25,Returnable,20
+454,sapien sapien,Runte-Powlowski,Health,14,4.47,Not Returnable,-
+455,fermentum justo,"Fadel, Blanda and Romaguera",Toys & Games,34,3.18,Returnable,19
+456,morbi quis tortor,"Larkin, Reilly and McClure",Home & Kitchen,5,4.47,Exchange-Only,16
+457,quam suspendisse,Considine Inc,Home & Kitchen,26,2.72,Not Returnable,-
+458,nulla quisque arcu,"Labadie, Daugherty and Willms",Cell Phones & Accessories,78,4.23,Returnable,2
+459,rutrum nulla,Herzog and Sons,Shoes and Jewelry,17,2.64,Returnable,19
+460,congue vivamus,"Waters, Douglas and Bode",Toys & Games,80,2.47,Returnable,8
+461,vestibulum,Bins Inc,Toys & Games,77,2.82,Returnable,1
+462,in magna,Zemlak and Sons,Appliances,95,0.39,Returnable,14
+463,penatibus,"Satterfield, Yost and Connelly",Clothing,98,3.19,Returnable,20
+464,et,Mayer and Sons,Clothing,98,0.12,Not Returnable,-
+465,fusce congue,"Gerhold, Walsh and Kunze",Beauty & Personal Care,70,2.43,Returnable,16
+466,faucibus orci,Hane Group,Beauty & Personal Care,20,3.94,Returnable,3
+467,cum sociis,Daniel Inc,Sports & Outdoors,68,4.25,Returnable,8
+468,diam cras,Tillman-Mueller,Garden & Outdoor,76,3.71,Exchange-Only,8
+469,dapibus,Carroll Inc,Electronics,71,4.24,Returnable,20
+470,ligula,Bartoletti-Bernhard,Home & Kitchen,23,4.0,Returnable,9
+471,nisi eu orci,Rippin and Sons,Sports & Outdoors,4,4.4,Not Returnable,-
+472,condimentum neque,"Gottlieb, Stokes and Kub",Toys & Games,14,2.81,Returnable,19
+473,ultrices,Waelchi Group,Appliances,46,3.04,Returnable,16
+474,pede ullamcorper augue,Macejkovic-Altenwerth,Industrial & Scientific,75,0.86,Returnable,4
+475,nibh in hac,Lakin-Crooks,Beauty & Personal Care,16,3.95,Exchange-Only,15
+476,pulvinar,Rempel and Sons,Garden & Outdoor,55,3.29,Exchange-Only,2
+477,in hac,Dietrich-Cole,Industrial & Scientific,48,4.39,Not Returnable,-
+478,proin,Mosciski and Sons,Clothing,8,3.96,Returnable,12
+479,metus,Bayer and Sons,Beauty & Personal Care,70,2.6,Returnable,12
+480,risus praesent,"Gaylord, Upton and Nikolaus",Clothing,43,2.62,Not Returnable,-
+481,platea dictumst aliquam,Hagenes LLC,Health,99,4.5,Returnable,7
+482,tristique est et,"Cartwright, Hauck and Swaniawski",Household & Baby Care,4,4.44,Returnable,3
+483,ante ipsum,MacGyver-Rippin,Health,25,1.8,Returnable,14
+484,justo in,Stark Group,Computers,81,1.22,Returnable,1
+485,platea dictumst,Collins-Walter,Health,55,2.36,Not Returnable,-
+486,lacinia nisi,Pagac Group,Home & Kitchen,68,0.58,Returnable,6
+487,elit,Kautzer LLC,Sports & Outdoors,88,1.78,Returnable,17
+488,lorem ipsum,"Brekke, Wuckert and Runte",Health,68,2.94,Returnable,10
+489,sit amet consectetuer,Johnston-Connelly,Shoes and Jewelry,37,1.68,Returnable,15
+490,sed vestibulum,Schumm Inc,Cell Phones & Accessories,69,3.67,Returnable,16
+491,a odio in,"Blanda, Kozey and Schumm",Appliances,48,4.83,Returnable,16
+492,sociis natoque,Steuber and Sons,Computers,6,0.43,Returnable,16
+493,convallis morbi,VonRueden LLC,Electronics,4,3.75,Returnable,11
+494,velit eu est,Tillman-Legros,Toys & Games,32,2.89,Not Returnable,-
+495,felis,Franecki and Sons,Books,61,1.89,Returnable,11
+496,eros,Torphy-McKenzie,Computers,66,3.73,Returnable,7
+497,nibh in,"Christiansen, Orn and Schuster",Household & Baby Care,81,2.47,Returnable,20
+498,odio cras mi,Grady Group,Sports & Outdoors,72,1.28,Returnable,15
+499,consequat lectus in,Torphy-Waelchi,Home & Kitchen,97,2.85,Exchange-Only,9
+500,interdum venenatis turpis,"Deckow, Gorczany and Mraz",Appliances,10,1.11,Exchange-Only,19
+501,scelerisque,Glover and Sons,Appliances,29,2.85,Returnable,11
+502,feugiat et eros,Howell Group,Shoes and Jewelry,52,2.03,Returnable,6
+503,odio condimentum id,"Farrell, Langosh and Wintheiser",Clothing,38,3.79,Returnable,18
+504,ultrices,Kutch-Schaefer,Books,12,4.29,Exchange-Only,14
+505,ultricies eu nibh,"Turner, Weber and Brakus",Computers,84,4.56,Exchange-Only,10
+506,lacus at velit,Bechtelar-Franecki,Grocery & Gourmet Food,89,2.1,Exchange-Only,2
+507,in congue,Rogahn Inc,Home & Kitchen,88,1.45,Not Returnable,-
+508,dolor quis odio,Kuhlman-Lesch,Electronics,53,3.87,Returnable,20
+509,iaculis,"Prohaska, Mills and Walter",Toys & Games,13,4.99,Returnable,13
+510,nullam orci,"McDermott, Shanahan and MacGyver",Appliances,5,0.55,Exchange-Only,9
+511,non velit,"Heaney, Hane and Waelchi",Household & Baby Care,38,2.67,Returnable,14
+512,volutpat in,Bergnaum and Sons,Electronics,97,3.09,Returnable,15
+513,velit vivamus,Haley-Nikolaus,Garden & Outdoor,98,1.8,Returnable,20
+514,odio elementum eu,Wehner-Connelly,Grocery & Gourmet Food,58,2.57,Returnable,12
+515,in,Feest-Crooks,Grocery & Gourmet Food,21,0.7,Returnable,17
+516,eu magna vulputate,Buckridge-Paucek,Household & Baby Care,14,3.87,Not Returnable,-
+517,metus aenean,"Davis, Ryan and Paucek",Cell Phones & Accessories,48,1.43,Returnable,5
+518,parturient montes,Green Group,Beauty & Personal Care,7,4.0,Returnable,18
+519,morbi odio odio,Aufderhar-Conn,Industrial & Scientific,10,3.54,Returnable,1
+520,non lectus,Harber and Sons,Industrial & Scientific,31,4.2,Returnable,12
+521,est et,"Schaden, Friesen and Christiansen",Industrial & Scientific,21,3.15,Returnable,20
+522,proin,Leannon-Lang,Books,36,4.54,Returnable,17
+523,interdum mauris,Little and Sons,Garden & Outdoor,29,4.56,Returnable,14
+524,eu,"Fahey, Shanahan and Balistreri",Cell Phones & Accessories,25,3.83,Returnable,3
+525,donec odio,"Keeling, Gottlieb and Boehm",Beauty & Personal Care,76,4.22,Returnable,9
+526,eget,Dooley LLC,Computers,50,2.9,Returnable,6
+527,convallis,"Wilkinson, Rau and Dooley",Clothing,86,4.17,Returnable,8
+528,mi pede malesuada,"Parisian, Kling and Howe",Toys & Games,96,0.76,Returnable,7
+529,non sodales sed,Littel Inc,Clothing,91,2.38,Not Returnable,-
+530,eros elementum,Tremblay LLC,Computers,40,4.86,Not Returnable,-
+531,id mauris vulputate,McKenzie-Lueilwitz,Sports & Outdoors,44,4.94,Returnable,3
+532,sit amet,"Gerlach, Parisian and Gulgowski",Electronics,45,4.81,Returnable,6
+533,in,"Walter, Baumbach and Denesik",Household & Baby Care,63,0.07,Returnable,5
+534,nullam sit,"Gusikowski, Smitham and Herzog",Toys & Games,42,1.17,Returnable,6
+535,convallis tortor,"Zemlak, Beier and McKenzie",Electronics,17,4.46,Not Returnable,-
+536,turpis donec posuere,Smitham and Sons,Health,74,1.61,Returnable,6
+537,duis aliquam convallis,Bauch-Koelpin,Clothing,92,3.06,Not Returnable,-
+538,suspendisse ornare consequat,Kuhic-Balistreri,Grocery & Gourmet Food,91,0.17,Returnable,20
+539,id,Gusikowski-Doyle,Computers,73,2.44,Returnable,1
+540,dolor sit,Fritsch and Sons,Industrial & Scientific,28,3.28,Returnable,4
+541,cras in,"Kutch, Hessel and Keeling",Industrial & Scientific,48,2.07,Returnable,9
+542,ut blandit non,Marks Inc,Health,6,2.98,Not Returnable,-
+543,dis,"Medhurst, Moen and Boyer",Home & Kitchen,53,2.74,Not Returnable,-
+544,vivamus metus,"Rosenbaum, Altenwerth and Medhurst",Clothing,76,2.89,Returnable,16
+545,ante ipsum primis,Breitenberg LLC,Books,4,4.38,Not Returnable,-
+546,nisl,Nitzsche-Orn,Cell Phones & Accessories,50,3.24,Returnable,19
+547,odio in,Pfannerstill and Sons,Beauty & Personal Care,73,0.39,Not Returnable,-
+548,elementum eu interdum,Harber-Hahn,Health,11,3.99,Returnable,5
+549,in,"Monahan, Feeney and McDermott",Grocery & Gourmet Food,93,2.88,Returnable,6
+550,eleifend donec ut,Lebsack Group,Sports & Outdoors,25,3.03,Exchange-Only,18
+551,posuere,Waelchi-Rolfson,Grocery & Gourmet Food,36,3.52,Not Returnable,-
+552,nibh quisque,Dibbert LLC,Beauty & Personal Care,51,4.1,Returnable,15
+553,ut,Wyman-Pouros,Toys & Games,65,0.93,Not Returnable,-
+554,sociis natoque,Wisoky and Sons,Sports & Outdoors,9,4.39,Returnable,9
+555,duis consequat,Mante-Leffler,Grocery & Gourmet Food,42,1.33,Exchange-Only,19
+556,eleifend pede,Harber-Cremin,Garden & Outdoor,89,3.91,Exchange-Only,12
+557,tellus nulla ut,"Turner, Senger and Christiansen",Beauty & Personal Care,17,2.9,Returnable,5
+558,nam,Bartoletti Group,Sports & Outdoors,93,2.42,Returnable,3
+559,justo,"Yost, Borer and Schumm",Grocery & Gourmet Food,52,4.04,Returnable,7
+560,iaculis diam erat,Tromp-Okuneva,Books,8,3.8,Returnable,13
+561,lectus vestibulum,Thompson LLC,Toys & Games,14,3.33,Returnable,6
+562,etiam,"Heathcote, Trantow and Walter",Sports & Outdoors,38,4.11,Returnable,19
+563,urna,"Pacocha, Marquardt and Ortiz",Grocery & Gourmet Food,97,3.38,Not Returnable,-
+564,tempus sit,"Vandervort, Douglas and Simonis",Health,92,2.22,Not Returnable,-
+565,luctus tincidunt nulla,Gislason Group,Electronics,19,2.3,Not Returnable,-
+566,luctus ultricies eu,"Ruecker, Bailey and Luettgen",Toys & Games,94,4.81,Returnable,4
+567,dui luctus rutrum,Pfannerstill-Quigley,Grocery & Gourmet Food,99,3.22,Exchange-Only,3
+568,condimentum id luctus,Rogahn-Macejkovic,Sports & Outdoors,17,3.14,Returnable,20
+569,magnis dis parturient,"Stiedemann, Mayer and Moore",Household & Baby Care,68,4.63,Returnable,19
+570,nec,Anderson Inc,Toys & Games,37,1.04,Returnable,15
+571,eget tincidunt,Harris-Harvey,Home & Kitchen,42,1.58,Returnable,18
+572,vivamus in,McLaughlin-D'Amore,Computers,63,2.92,Returnable,5
+573,elementum eu interdum,"Fritsch, Windler and Hauck",Industrial & Scientific,1,4.58,Returnable,20
+574,vehicula consequat morbi,Kohler-Willms,Household & Baby Care,50,0.52,Returnable,9
+575,mauris sit,"Kuhlman, Krajcik and Funk",Shoes and Jewelry,0,2.04,Returnable,10
+576,quam sapien,Beer-Reinger,Books,4,4.39,Not Returnable,-
+577,porta volutpat erat,"Ledner, Fisher and Schowalter",Health,50,0.9,Returnable,2
+578,sagittis,Cartwright-Gusikowski,Sports & Outdoors,98,4.79,Returnable,14
+579,sem sed sagittis,Cummings Inc,Industrial & Scientific,3,4.57,Returnable,6
+580,eu,Funk Group,Health,69,0.05,Returnable,19
+581,amet cursus id,Sipes-Mills,Grocery & Gourmet Food,51,4.01,Returnable,17
+582,orci nullam molestie,Murphy-Hirthe,Household & Baby Care,55,2.01,Returnable,7
+583,mi nulla,Koch-Vandervort,Toys & Games,51,4.63,Not Returnable,-
+584,mus,Bode Inc,Grocery & Gourmet Food,88,3.54,Returnable,15
+585,nam ultrices libero,"Kertzmann, Bradtke and Bauch",Home & Kitchen,84,4.6,Exchange-Only,6
+586,tellus,Cummerata-Johnston,Appliances,97,4.78,Returnable,15
+587,nisl duis,Haag LLC,Electronics,77,4.34,Returnable,8
+588,non,Lang and Sons,Toys & Games,84,4.6,Returnable,2
+589,pede ac diam,Gusikowski-Lindgren,Clothing,96,4.76,Returnable,6
+590,platea dictumst morbi,Robel-Bruen,Electronics,66,4.51,Returnable,2
+591,neque aenean,Keebler Inc,Toys & Games,67,2.48,Returnable,8
+592,congue elementum,McKenzie Group,Computers,68,4.29,Returnable,7
+593,a suscipit,Lesch and Sons,Grocery & Gourmet Food,98,4.61,Returnable,12
+594,quis justo,Little Group,Garden & Outdoor,98,3.73,Returnable,1
+595,quisque arcu libero,Luettgen Inc,Garden & Outdoor,91,4.17,Not Returnable,-
+596,vivamus tortor duis,Hartmann-Gleason,Cell Phones & Accessories,23,0.32,Returnable,20
+597,sapien sapien non,O'Kon-Weissnat,Garden & Outdoor,19,2.55,Not Returnable,-
+598,nam,Graham-Roberts,Electronics,28,2.86,Returnable,15
+599,duis,Hyatt-Marquardt,Beauty & Personal Care,89,0.99,Returnable,10
+600,feugiat non pretium,O'Conner Group,Appliances,50,3.14,Returnable,7
+601,tincidunt ante vel,Schultz and Sons,Household & Baby Care,5,2.84,Not Returnable,-
+602,tristique in,King LLC,Electronics,50,1.89,Not Returnable,-
+603,erat nulla,Krajcik Group,Toys & Games,63,3.73,Not Returnable,-
+604,ut erat,Carter-Borer,Books,98,2.6,Returnable,5
+605,consequat morbi a,"Conn, Kunde and Murazik",Books,66,4.77,Returnable,11
+606,quisque erat,"Romaguera, Schroeder and Gerlach",Household & Baby Care,100,1.02,Returnable,10
+607,rutrum ac lobortis,"Abernathy, Bergstrom and Dietrich",Grocery & Gourmet Food,45,2.04,Returnable,16
+608,nam congue,"Hartmann, Hirthe and Gibson",Garden & Outdoor,83,1.43,Returnable,7
+609,dapibus duis,"Herman, Hamill and Vandervort",Toys & Games,35,3.32,Returnable,6
+610,mauris ullamcorper,Bergstrom Inc,Books,88,4.68,Returnable,4
+611,non,"Wolff, Grimes and Mann",Home & Kitchen,81,4.11,Returnable,18
+612,dui proin leo,Barton Inc,Industrial & Scientific,65,0.02,Returnable,9
+613,sapien varius ut,"Lakin, Stoltenberg and Legros",Household & Baby Care,85,3.75,Returnable,5
+614,orci eget,"Wintheiser, Grimes and Gislason",Toys & Games,42,4.45,Returnable,10
+615,felis sed interdum,Hand LLC,Cell Phones & Accessories,63,4.75,Returnable,7
+616,amet turpis,Keebler-Bogan,Clothing,61,2.08,Returnable,16
+617,ut massa,Collier LLC,Industrial & Scientific,99,4.33,Not Returnable,-
+618,nulla,Cremin Group,Electronics,89,4.07,Not Returnable,-
+619,consectetuer adipiscing,Abernathy-Balistreri,Household & Baby Care,31,2.58,Returnable,20
+620,vel,Murray-Schulist,Toys & Games,56,2.59,Returnable,14
+621,platea dictumst etiam,Lubowitz-Heathcote,Clothing,37,3.78,Returnable,17
+622,tempus vivamus in,Williamson-Luettgen,Appliances,98,3.66,Returnable,11
+623,vel pede,Quigley-Gusikowski,Industrial & Scientific,91,2.83,Returnable,9
+624,at nibh,"Skiles, Reilly and Haley",Sports & Outdoors,78,3.26,Not Returnable,-
+625,fermentum justo,"Johns, Rowe and Littel",Computers,75,4.84,Exchange-Only,2
+626,odio,Wisozk Inc,Shoes and Jewelry,5,4.96,Returnable,16
+627,vivamus,"Marvin, Wisozk and Gottlieb",Clothing,2,3.4,Returnable,11
+628,ultrices,VonRueden Group,Appliances,72,1.14,Returnable,5
+629,sit amet nunc,Ebert-Pouros,Electronics,41,0.39,Returnable,3
+630,et,Orn-Greenfelder,Household & Baby Care,41,3.79,Returnable,2
+631,aliquet ultrices erat,Weber LLC,Sports & Outdoors,98,2.55,Returnable,15
+632,condimentum id luctus,"Ward, Williamson and Ziemann",Cell Phones & Accessories,80,4.54,Exchange-Only,5
+633,donec diam neque,Emmerich Inc,Industrial & Scientific,15,4.67,Returnable,19
+634,turpis enim,"Parker, Morar and Huel",Shoes and Jewelry,80,4.92,Returnable,19
+635,semper,Mosciski-Mills,Garden & Outdoor,9,3.15,Returnable,13
+636,sagittis dui vel,Steuber-Effertz,Appliances,63,3.69,Returnable,2
+637,morbi,Stark-Daugherty,Beauty & Personal Care,91,2.43,Returnable,14
+638,justo maecenas,"Hartmann, Rogahn and Hayes",Appliances,38,2.29,Exchange-Only,13
+639,vulputate justo,Hyatt-Padberg,Home & Kitchen,97,3.39,Returnable,4
+640,ipsum praesent,"Gerlach, Crooks and Shanahan",Toys & Games,66,4.0,Not Returnable,-
+641,pellentesque ultrices phasellus,Reynolds-Williamson,Grocery & Gourmet Food,50,4.03,Returnable,14
+642,lectus,Wiegand-Von,Appliances,32,0.48,Not Returnable,-
+643,nunc viverra dapibus,Grant Group,Garden & Outdoor,10,2.26,Returnable,12
+644,lobortis ligula sit,"Hahn, Borer and Schimmel",Grocery & Gourmet Food,17,4.86,Not Returnable,-
+645,sed,Harris-Brekke,Home & Kitchen,94,0.98,Returnable,14
+646,ultrices,Dare-O'Connell,Beauty & Personal Care,83,3.59,Returnable,6
+647,at nibh in,Gutmann Group,Shoes and Jewelry,8,3.27,Returnable,18
+648,sociis natoque penatibus,Haag Inc,Electronics,58,1.65,Not Returnable,-
+649,libero non,Powlowski Inc,Computers,55,2.65,Not Returnable,-
+650,quisque,Leannon Inc,Computers,67,2.29,Not Returnable,-
+651,platea dictumst,"Crooks, Pfannerstill and Daugherty",Toys & Games,95,2.05,Exchange-Only,11
+652,nisl nunc,Langosh Inc,Industrial & Scientific,31,3.55,Returnable,7
+653,morbi odio,Kirlin-Senger,Clothing,94,2.68,Not Returnable,-
+654,auctor gravida sem,"Schultz, Zboncak and Runolfsdottir",Electronics,44,2.32,Returnable,15
+655,vulputate ut ultrices,Deckow-Abbott,Garden & Outdoor,8,2.94,Returnable,5
+656,pulvinar nulla,"Dooley, Little and Brakus",Household & Baby Care,87,4.65,Returnable,3
+657,dapibus nulla suscipit,"Borer, Senger and Kiehn",Sports & Outdoors,76,2.63,Exchange-Only,3
+658,duis,Ledner-Moore,Appliances,50,3.9,Returnable,8
+659,ut nulla sed,Lubowitz LLC,Grocery & Gourmet Food,74,3.62,Returnable,17
+660,in,"Wyman, Stanton and Rolfson",Industrial & Scientific,49,0.61,Not Returnable,-
+661,nullam porttitor,Fisher and Sons,Industrial & Scientific,97,4.24,Returnable,20
+662,ut,Mills-Bayer,Household & Baby Care,82,2.79,Not Returnable,-
+663,est,Luettgen Inc,Clothing,27,4.25,Returnable,8
+664,risus semper,Pollich-Pfannerstill,Electronics,16,3.83,Returnable,13
+665,cursus id turpis,Hickle-Wuckert,Beauty & Personal Care,37,3.13,Not Returnable,-
+666,sapien non mi,"Schimmel, Johnson and Bogisich",Sports & Outdoors,3,2.52,Returnable,20
+667,vitae mattis,"Olson, Gorczany and Crona",Appliances,54,3.22,Not Returnable,-
+668,tortor duis,"Vandervort, Satterfield and Jenkins",Toys & Games,17,0.42,Returnable,9
+669,vivamus vel,Kuphal and Sons,Health,74,2.32,Not Returnable,-
+670,non interdum in,"Bednar, Zieme and Hickle",Home & Kitchen,31,1.88,Returnable,6
+671,ut erat id,Stokes Inc,Household & Baby Care,66,1.08,Returnable,1
+672,augue vel,"Wintheiser, Frami and Brakus",Household & Baby Care,65,2.48,Exchange-Only,18
+673,in,Hyatt-Green,Industrial & Scientific,36,3.79,Returnable,19
+674,nibh fusce lacus,Nicolas-Schinner,Health,53,4.37,Exchange-Only,12
+675,quam fringilla rhoncus,"Pagac, Thompson and Schamberger",Garden & Outdoor,52,3.5,Returnable,1
+676,morbi,Bergnaum-Schmidt,Sports & Outdoors,100,1.84,Returnable,5
+677,nulla elit,Fahey Group,Books,92,1.79,Not Returnable,-
+678,id justo sit,"Cormier, Parisian and Gutkowski",Beauty & Personal Care,2,4.87,Not Returnable,-
+679,ut massa quis,"Gaylord, Crooks and Rau",Home & Kitchen,8,1.61,Returnable,4
+680,orci eget,Leannon-Nader,Clothing,51,4.23,Returnable,17
+681,nulla,Mayer and Sons,Clothing,38,3.59,Returnable,9
+682,ullamcorper,Leuschke-Torphy,Shoes and Jewelry,38,3.03,Returnable,3
+683,adipiscing,"Daugherty, Volkman and Kreiger",Computers,54,2.16,Returnable,7
+684,proin,"Gutkowski, Jast and Koepp",Appliances,59,0.33,Returnable,5
+685,aliquet ultrices erat,Gislason-Haag,Electronics,63,4.14,Returnable,12
+686,eleifend,"Hettinger, Stokes and Ortiz",Health,69,3.61,Returnable,9
+687,tortor id nulla,Schowalter-Feeney,Clothing,40,4.76,Returnable,15
+688,orci luctus,Effertz Inc,Electronics,79,3.95,Not Returnable,-
+689,in purus eu,"Streich, Brekke and Sanford",Industrial & Scientific,90,4.88,Returnable,18
+690,ipsum primis in,Konopelski Inc,Industrial & Scientific,0,4.21,Returnable,9
+691,quam sapien,"Daniel, Hammes and Conn",Shoes and Jewelry,84,1.29,Returnable,12
+692,a nibh,"Macejkovic, Farrell and Boyer",Sports & Outdoors,55,4.08,Returnable,17
+693,vel,Klein Group,Health,20,3.54,Not Returnable,-
+694,in,Jones-Huels,Appliances,76,2.73,Returnable,8
+695,id,"Schimmel, Larson and Hintz",Books,52,1.58,Not Returnable,-
+696,congue elementum,Christiansen-Nader,Shoes and Jewelry,19,2.16,Returnable,3
+697,libero non,Blick Group,Clothing,90,3.97,Not Returnable,-
+698,euismod,Bashirian LLC,Household & Baby Care,97,0.6,Returnable,3
+699,odio elementum,"Huel, Brekke and Harvey",Grocery & Gourmet Food,69,0.89,Returnable,11
+700,erat volutpat in,"Lynch, Wunsch and Boyle",Grocery & Gourmet Food,31,2.14,Returnable,20
+701,phasellus,Kutch-Daugherty,Home & Kitchen,43,4.23,Exchange-Only,2
+702,sit amet consectetuer,"Abshire, Deckow and Hauck",Shoes and Jewelry,15,1.54,Not Returnable,-
+703,praesent id massa,"Gutmann, VonRueden and Sauer",Shoes and Jewelry,83,4.91,Returnable,20
+704,curabitur convallis duis,McDermott and Sons,Garden & Outdoor,39,3.13,Returnable,11
+705,est,Nikolaus-Cruickshank,Home & Kitchen,6,4.02,Returnable,2
+706,faucibus orci luctus,Effertz Group,Computers,86,2.16,Returnable,15
+707,mattis odio donec,Gusikowski Inc,Household & Baby Care,91,2.42,Returnable,7
+708,a,Donnelly-Terry,Garden & Outdoor,85,3.54,Not Returnable,-
+709,amet diam in,Effertz-Bernhard,Industrial & Scientific,9,2.4,Exchange-Only,1
+710,turpis,Gerhold-Wisoky,Garden & Outdoor,38,4.72,Returnable,9
+711,morbi sem,Goyette-Reinger,Garden & Outdoor,40,4.6,Returnable,1
+712,nisi at,Langworth LLC,Toys & Games,65,2.28,Returnable,5
+713,ligula pellentesque ultrices,"Gutmann, Lindgren and Kreiger",Computers,75,2.02,Returnable,11
+714,nec,Kohler-Heaney,Health,55,1.66,Returnable,6
+715,dis,"Lubowitz, Gleason and O'Hara",Toys & Games,63,4.86,Returnable,17
+716,ligula suspendisse ornare,"Waters, Stark and Robel",Sports & Outdoors,37,4.4,Returnable,5
+717,vel dapibus at,"Runolfsson, Purdy and Wintheiser",Cell Phones & Accessories,69,0.98,Returnable,10
+718,eget tincidunt eget,"Greenholt, Greenholt and Conn",Grocery & Gourmet Food,95,2.36,Not Returnable,-
+719,eu tincidunt,Lebsack-Mraz,Cell Phones & Accessories,64,4.32,Returnable,2
+720,sapien in sapien,Donnelly-Casper,Electronics,40,2.22,Exchange-Only,5
+721,purus,Kertzmann-Kilback,Industrial & Scientific,46,3.26,Returnable,13
+722,interdum eu tincidunt,Macejkovic-Hessel,Beauty & Personal Care,66,4.84,Returnable,5
+723,aliquam lacus morbi,Boyle-Rodriguez,Garden & Outdoor,40,3.88,Returnable,14
+724,quam nec,Kuphal-Thompson,Household & Baby Care,3,2.13,Returnable,12
+725,nam dui proin,King-Smith,Toys & Games,44,4.09,Returnable,7
+726,sed,"Weimann, Hackett and Murazik",Shoes and Jewelry,21,2.14,Not Returnable,-
+727,pellentesque volutpat dui,Hirthe and Sons,Toys & Games,96,3.61,Returnable,20
+728,velit donec,Jakubowski LLC,Shoes and Jewelry,52,4.72,Returnable,11
+729,nibh,"Lehner, Purdy and Brekke",Books,20,4.58,Returnable,18
+730,curabitur in,"Herzog, Reinger and Brakus",Appliances,55,4.89,Not Returnable,-
+731,erat eros,Crist Group,Clothing,13,0.06,Returnable,8
+732,aliquet at feugiat,Lesch LLC,Health,44,4.82,Not Returnable,-
+733,mauris ullamcorper,Rath LLC,Industrial & Scientific,66,2.03,Returnable,17
+734,massa tempor,Feil Inc,Shoes and Jewelry,1,3.98,Not Returnable,-
+735,lorem,Pacocha-Spinka,Health,53,4.32,Returnable,2
+736,cum,Bernhard-Nikolaus,Household & Baby Care,53,1.03,Returnable,7
+737,placerat ante,Jerde Inc,Clothing,34,2.26,Returnable,19
+738,consequat dui,"Morar, Leffler and Stehr",Beauty & Personal Care,21,2.44,Returnable,18
+739,leo,"Dicki, VonRueden and Konopelski",Health,3,3.7,Not Returnable,-
+740,nulla pede ullamcorper,"McLaughlin, Rice and Bauch",Toys & Games,77,4.08,Returnable,15
+741,at,"Bednar, Collins and Nitzsche",Electronics,34,2.75,Returnable,19
+742,sagittis,"Tromp, Heller and Lakin",Home & Kitchen,11,3.05,Returnable,15
+743,tempor,Weimann-Herman,Beauty & Personal Care,14,3.69,Returnable,18
+744,nunc proin at,"Jacobi, Welch and Baumbach",Books,25,2.04,Returnable,15
+745,volutpat,"Breitenberg, Koepp and Kutch",Home & Kitchen,68,3.01,Exchange-Only,4
+746,aenean fermentum,Brown-Lesch,Home & Kitchen,83,3.63,Not Returnable,-
+747,massa id nisl,"Wiza, Miller and Kunde",Industrial & Scientific,94,3.07,Returnable,4
+748,ligula,"Bartell, Wiza and Wehner",Beauty & Personal Care,50,0.93,Returnable,16
+749,fusce lacus,"D'Amore, Kub and Heidenreich",Household & Baby Care,18,3.63,Returnable,8
+750,integer non velit,Hills-Hudson,Appliances,56,2.12,Returnable,1
+751,magna,Stiedemann LLC,Sports & Outdoors,21,4.01,Returnable,16
+752,adipiscing molestie hendrerit,Gulgowski LLC,Appliances,15,2.37,Not Returnable,-
+753,quam suspendisse potenti,"Schulist, Terry and Johns",Clothing,75,4.5,Returnable,17
+754,pede justo lacinia,Lebsack and Sons,Clothing,85,2.04,Returnable,18
+755,morbi odio odio,"Nolan, Yost and Torphy",Home & Kitchen,3,4.57,Returnable,20
+756,adipiscing,Strosin and Sons,Home & Kitchen,25,2.54,Exchange-Only,8
+757,morbi sem,Ratke Group,Health,54,0.49,Not Returnable,-
+758,mauris lacinia,Gislason-Collins,Shoes and Jewelry,38,2.83,Returnable,7
+759,orci luctus et,Dietrich and Sons,Industrial & Scientific,74,4.02,Returnable,1
+760,id,Sipes-Wuckert,Computers,61,2.17,Returnable,8
+761,nibh,Lemke-Zboncak,Household & Baby Care,32,3.96,Returnable,7
+762,eleifend donec,Kutch Group,Clothing,68,4.06,Returnable,6
+763,sem praesent,"Wiza, Olson and Fisher",Sports & Outdoors,27,3.78,Returnable,8
+764,vestibulum,Harvey and Sons,Clothing,80,4.15,Returnable,5
+765,pulvinar sed,Morar-Conn,Beauty & Personal Care,11,4.08,Not Returnable,-
+766,viverra eget,Funk Inc,Sports & Outdoors,11,4.47,Exchange-Only,11
+767,cursus id,"Kerluke, McGlynn and Olson",Grocery & Gourmet Food,2,3.85,Returnable,1
+768,rhoncus aliquet pulvinar,Stamm LLC,Toys & Games,60,3.0,Not Returnable,-
+769,sit,Smith-Konopelski,Beauty & Personal Care,12,3.68,Returnable,1
+770,non quam,"Jacobs, Leannon and Morar",Shoes and Jewelry,79,2.06,Not Returnable,-
+771,non,Glover Inc,Computers,71,2.61,Returnable,4
+772,lectus,Abernathy Inc,Electronics,89,4.15,Exchange-Only,11
+773,vel,"Buckridge, Rohan and Bins",Computers,38,0.45,Returnable,11
+774,non quam,"Funk, Dooley and Gaylord",Garden & Outdoor,48,4.6,Returnable,17
+775,pellentesque quisque,"Graham, Larson and Bruen",Health,49,1.88,Returnable,1
+776,nulla dapibus,"Botsford, Schowalter and Okuneva",Toys & Games,31,4.93,Not Returnable,-
+777,tempus vel pede,Kautzer Group,Books,77,3.54,Returnable,1
+778,libero ut massa,Luettgen Inc,Industrial & Scientific,1,1.3,Returnable,5
+779,ut,"Kohler, Treutel and Sipes",Toys & Games,83,2.96,Returnable,12
+780,at nibh in,Turner-Stehr,Electronics,76,3.77,Returnable,4
+781,maecenas tincidunt lacus,Swift-Rice,Home & Kitchen,91,4.66,Exchange-Only,19
+782,ac lobortis vel,Witting and Sons,Household & Baby Care,7,2.35,Returnable,16
+783,eget tincidunt,"Stoltenberg, Gerlach and Auer",Beauty & Personal Care,8,4.66,Not Returnable,-
+784,massa,"Beahan, Goodwin and Dibbert",Industrial & Scientific,32,4.98,Returnable,15
+785,lectus suspendisse potenti,Yost-Ernser,Cell Phones & Accessories,91,3.62,Returnable,9
+786,lorem id,Homenick LLC,Shoes and Jewelry,9,4.9,Not Returnable,-
+787,curabitur gravida,Collins-Langosh,Industrial & Scientific,50,3.05,Returnable,16
+788,cras pellentesque,"Wintheiser, Braun and Davis",Electronics,93,5.0,Returnable,2
+789,hac habitasse,Murphy Inc,Computers,43,1.07,Exchange-Only,15
+790,luctus ultricies eu,Breitenberg LLC,Beauty & Personal Care,57,3.74,Returnable,13
+791,ligula in lacus,Kovacek LLC,Garden & Outdoor,26,4.7,Returnable,9
+792,libero,Batz Group,Cell Phones & Accessories,33,3.63,Returnable,5
+793,cras,Donnelly Inc,Toys & Games,46,2.83,Returnable,9
+794,aliquet,"Schmidt, Harris and Brown",Garden & Outdoor,19,4.37,Returnable,14
+795,turpis nec euismod,Green-Bailey,Books,84,3.54,Not Returnable,-
+796,turpis integer,Schmitt-Hermann,Toys & Games,1,2.54,Not Returnable,-
+797,ut nulla sed,"Nader, Spinka and Becker",Sports & Outdoors,59,2.34,Returnable,16
+798,in quis justo,Rath and Sons,Electronics,32,3.05,Returnable,10
+799,nulla,Quitzon Inc,Household & Baby Care,37,1.29,Returnable,11
+800,feugiat non pretium,Gottlieb-Pouros,Cell Phones & Accessories,41,2.49,Returnable,4
+801,donec,Leannon-Herzog,Grocery & Gourmet Food,68,4.79,Returnable,5
+802,amet diam in,Collier and Sons,Sports & Outdoors,89,4.82,Returnable,17
+803,sed,"Hand, Senger and Gleichner",Shoes and Jewelry,46,0.08,Not Returnable,-
+804,volutpat convallis morbi,"Marvin, Abernathy and Goodwin",Sports & Outdoors,49,3.15,Returnable,6
+805,ipsum primis in,Reilly Group,Beauty & Personal Care,23,1.43,Returnable,5
+806,amet lobortis sapien,Botsford-Rippin,Electronics,45,2.87,Returnable,16
+807,luctus et,"Wilkinson, Runolfsson and Jakubowski",Garden & Outdoor,56,3.77,Returnable,15
+808,maecenas,Feeney LLC,Household & Baby Care,86,4.94,Returnable,12
+809,vivamus,"Mertz, Osinski and Romaguera",Industrial & Scientific,3,3.55,Not Returnable,-
+810,porttitor,Marvin-Torphy,Clothing,82,2.81,Not Returnable,-
+811,neque duis bibendum,Heller Group,Books,57,3.71,Returnable,11
+812,ullamcorper purus,Hyatt and Sons,Computers,56,3.54,Not Returnable,-
+813,vestibulum,Rutherford Inc,Health,73,3.6,Returnable,2
+814,etiam,Schinner LLC,Beauty & Personal Care,14,2.87,Returnable,8
+815,est quam pharetra,"Heidenreich, Little and Purdy",Sports & Outdoors,76,4.55,Returnable,8
+816,enim blandit,Schuppe LLC,Sports & Outdoors,64,3.55,Returnable,14
+817,lacus,Renner and Sons,Beauty & Personal Care,16,3.77,Not Returnable,-
+818,lobortis vel dapibus,"Schneider, Williamson and Lind",Grocery & Gourmet Food,73,2.86,Returnable,19
+819,ac tellus,Gerlach Inc,Computers,1,4.83,Returnable,19
+820,rhoncus dui,Paucek-Kutch,Grocery & Gourmet Food,14,4.68,Returnable,3
+821,felis fusce,Crist-Farrell,Health,9,2.36,Not Returnable,-
+822,metus sapien ut,Reilly-Bednar,Shoes and Jewelry,30,3.03,Exchange-Only,13
+823,nisi,Gerhold and Sons,Health,16,4.05,Returnable,9
+824,gravida nisi at,Hahn Group,Garden & Outdoor,22,4.82,Returnable,13
+825,nisl duis ac,"Rippin, Dickinson and Boyle",Garden & Outdoor,13,3.89,Returnable,3
+826,consequat varius integer,"Johnson, Grady and Gleason",Electronics,19,4.95,Returnable,2
+827,nonummy maecenas,"Zemlak, Pouros and Lesch",Grocery & Gourmet Food,86,4.77,Returnable,7
+828,turpis,Schamberger Group,Appliances,19,2.08,Not Returnable,-
+829,proin,Oberbrunner and Sons,Health,50,4.25,Returnable,6
+830,purus sit amet,Marks LLC,Home & Kitchen,89,0.16,Returnable,20
+831,vel lectus in,Hettinger Group,Computers,95,1.08,Returnable,14
+832,eu nibh quisque,Shanahan-Becker,Shoes and Jewelry,64,3.35,Not Returnable,-
+833,a libero,"Becker, Smitham and Kovacek",Shoes and Jewelry,48,0.59,Not Returnable,-
+834,sit amet,Goldner Inc,Appliances,87,2.28,Exchange-Only,4
+835,id luctus,Denesik LLC,Household & Baby Care,63,3.33,Not Returnable,-
+836,nam,Hermann-Jacobson,Books,97,4.9,Not Returnable,-
+837,mi,Terry LLC,Clothing,0,4.53,Returnable,2
+838,convallis duis consequat,Jones-Wilderman,Computers,33,0.51,Returnable,3
+839,luctus rutrum,Conn LLC,Home & Kitchen,57,3.01,Not Returnable,-
+840,sit amet diam,Bashirian-Little,Grocery & Gourmet Food,99,2.9,Returnable,6
+841,pede,MacGyver-Cremin,Home & Kitchen,1,3.35,Not Returnable,-
+842,sapien placerat,Jacobson-Gutkowski,Garden & Outdoor,45,4.06,Returnable,6
+843,eu est congue,Russel LLC,Appliances,93,3.28,Returnable,7
+844,sollicitudin,McDermott-Kirlin,Industrial & Scientific,68,4.79,Not Returnable,-
+845,suscipit nulla elit,"O'Connell, Tillman and Harris",Toys & Games,22,0.92,Returnable,11
+846,ante,Miller and Sons,Computers,18,0.36,Not Returnable,-
+847,maecenas,"Schiller, Ritchie and Wilkinson",Grocery & Gourmet Food,2,2.56,Returnable,19
+848,ipsum aliquam non,"Boehm, Nienow and Jerde",Shoes and Jewelry,22,3.77,Returnable,18
+849,convallis eget,"McCullough, Ondricka and Mayer",Clothing,42,4.35,Returnable,7
+850,eget,Daugherty-Schowalter,Computers,66,4.81,Not Returnable,-
+851,sapien placerat,Effertz Group,Grocery & Gourmet Food,0,4.93,Not Returnable,-
+852,nulla,"Denesik, Schimmel and Leffler",Grocery & Gourmet Food,19,1.22,Returnable,3
+853,luctus et,Hansen LLC,Cell Phones & Accessories,74,0.02,Returnable,20
+854,erat,Hoppe LLC,Home & Kitchen,42,4.11,Returnable,6
+855,vel nulla eget,Bartell-Will,Clothing,2,4.95,Not Returnable,-
+856,sagittis dui vel,Bayer-Erdman,Electronics,66,2.01,Not Returnable,-
+857,aliquam non,Lebsack Group,Cell Phones & Accessories,27,4.88,Not Returnable,-
+858,libero nam dui,"Stehr, Grant and Borer",Books,8,3.95,Returnable,18
+859,hac,Frami-Kohler,Clothing,39,0.79,Returnable,20
+860,sed vestibulum sit,Jenkins Group,Computers,82,2.19,Not Returnable,-
+861,lacinia,Boyle and Sons,Toys & Games,17,0.53,Returnable,19
+862,non pretium quis,Reinger LLC,Books,90,4.66,Returnable,6
+863,lorem ipsum,"Luettgen, Goyette and Anderson",Home & Kitchen,84,3.57,Not Returnable,-
+864,sed tristique in,"Maggio, Moore and Hermiston",Toys & Games,50,4.25,Returnable,16
+865,sapien dignissim vestibulum,Shanahan-Heller,Health,89,1.27,Returnable,17
+866,ut,Schumm Group,Toys & Games,6,0.84,Returnable,7
+867,habitasse platea,Schaefer Group,Toys & Games,84,0.77,Returnable,14
+868,pellentesque,"Funk, Turner and Kozey",Shoes and Jewelry,26,3.12,Returnable,15
+869,morbi,"Swift, Olson and Leuschke",Toys & Games,79,1.56,Returnable,9
+870,vulputate,Gulgowski LLC,Computers,25,2.41,Returnable,6
+871,blandit,"Hand, Robel and VonRueden",Health,33,4.58,Returnable,2
+872,nunc viverra,Jerde Group,Home & Kitchen,70,4.02,Not Returnable,-
+873,lectus vestibulum quam,"Ankunding, Morar and Leannon",Computers,9,3.74,Returnable,20
+874,fringilla rhoncus,Weber Inc,Sports & Outdoors,14,2.47,Returnable,6
+875,dui,Kiehn and Sons,Health,30,4.42,Returnable,16
+876,elementum nullam,Hettinger-Crist,Toys & Games,0,2.3,Returnable,13
+877,nulla ultrices aliquet,"Harber, Thompson and Block",Home & Kitchen,53,1.53,Returnable,9
+878,in,Spinka-Jenkins,Garden & Outdoor,85,2.8,Not Returnable,-
+879,ac leo pellentesque,"Stiedemann, Smith and Yundt",Sports & Outdoors,50,2.41,Returnable,3
+880,blandit mi in,Schmitt-Stark,Computers,43,4.08,Not Returnable,-
+881,convallis nunc proin,"Murphy, Green and Upton",Cell Phones & Accessories,18,4.7,Returnable,7
+882,congue diam,Nienow Inc,Appliances,48,0.85,Returnable,20
+883,lacus morbi,Lueilwitz-Hartmann,Appliances,75,3.28,Not Returnable,-
+884,fermentum justo,"Nicolas, Beahan and Olson",Household & Baby Care,66,3.59,Returnable,20
+885,pretium iaculis,Mueller Inc,Household & Baby Care,55,4.84,Returnable,18
+886,nulla eget eros,"Bruen, Raynor and Harris",Sports & Outdoors,91,0.26,Returnable,9
+887,leo,Goldner and Sons,Cell Phones & Accessories,60,3.84,Not Returnable,-
+888,tincidunt in,Hoeger Inc,Household & Baby Care,66,4.92,Returnable,15
+889,imperdiet nullam,Steuber and Sons,Shoes and Jewelry,40,0.42,Returnable,12
+890,sed vestibulum sit,Welch and Sons,Computers,93,3.27,Returnable,14
+891,est et,Harvey-Quigley,Health,80,4.75,Not Returnable,-
+892,imperdiet nullam,Schumm-Greenholt,Household & Baby Care,1,3.12,Returnable,2
+893,sapien,"Will, Bayer and Jerde",Household & Baby Care,61,3.87,Returnable,2
+894,venenatis lacinia aenean,"Wuckert, Nolan and Braun",Household & Baby Care,33,0.81,Returnable,15
+895,lorem ipsum,Pouros LLC,Industrial & Scientific,87,0.91,Returnable,18
+896,viverra,Ernser-Glover,Toys & Games,67,1.24,Not Returnable,-
+897,hac habitasse,Buckridge and Sons,Books,58,4.5,Exchange-Only,14
+898,nulla elit ac,Cremin-Langworth,Clothing,62,4.51,Returnable,6
+899,vestibulum,Brekke-Koss,Household & Baby Care,58,2.67,Returnable,3
+900,nulla tellus in,Fahey Group,Health,38,3.59,Exchange-Only,17
+901,pharetra magna ac,Dicki-Kunde,Books,49,0.7,Returnable,18
+902,egestas metus aenean,Stamm Inc,Computers,78,3.5,Returnable,20
+903,iaculis congue vivamus,"Sanford, Hilll and Kuphal",Clothing,44,4.05,Returnable,3
+904,natoque penatibus et,"Wiegand, Bechtelar and Flatley",Grocery & Gourmet Food,37,3.22,Not Returnable,-
+905,non,Krajcik LLC,Shoes and Jewelry,26,0.9,Not Returnable,-
+906,tristique,Moore Group,Home & Kitchen,58,2.52,Returnable,6
+907,viverra pede,Stehr LLC,Beauty & Personal Care,71,2.19,Not Returnable,-
+908,nam nulla,Borer Group,Computers,37,4.6,Not Returnable,-
+909,sed,Wiegand and Sons,Garden & Outdoor,14,4.22,Returnable,4
+910,lorem ipsum dolor,Bartoletti-Gerlach,Beauty & Personal Care,81,3.06,Returnable,4
+911,risus auctor,"Schultz, Schmeler and Kulas",Electronics,31,3.39,Returnable,1
+912,felis,"Swaniawski, Quitzon and Tremblay",Toys & Games,11,3.58,Not Returnable,-
+913,ultrices mattis,Weber-Bogisich,Beauty & Personal Care,58,0.42,Returnable,16
+914,platea dictumst aliquam,Rowe-Flatley,Electronics,48,4.26,Returnable,15
+915,sed vel enim,Cummings Inc,Beauty & Personal Care,78,4.97,Returnable,14
+916,in congue etiam,"Carroll, Morissette and Connelly",Garden & Outdoor,67,3.66,Returnable,3
+917,tristique fusce congue,"Kohler, Stroman and Feeney",Shoes and Jewelry,14,0.48,Returnable,5
+918,faucibus cursus urna,"Borer, Klocko and Schowalter",Household & Baby Care,14,0.42,Returnable,3
+919,lectus,Schmitt LLC,Garden & Outdoor,52,4.2,Returnable,2
+920,non,Rippin-Rodriguez,Household & Baby Care,21,1.01,Returnable,10
+921,pretium nisl ut,"Considine, Morar and Bailey",Toys & Games,9,4.57,Returnable,5
+922,odio odio elementum,Grant-Rath,Electronics,4,3.38,Not Returnable,-
+923,sed ante vivamus,VonRueden-Friesen,Beauty & Personal Care,41,2.67,Returnable,5
+924,penatibus et magnis,Volkman-Hackett,Appliances,61,3.9,Returnable,2
+925,ut suscipit,"Hoppe, Rogahn and Veum",Grocery & Gourmet Food,43,4.9,Not Returnable,-
+926,justo,Cremin Group,Health,27,3.32,Returnable,13
+927,ipsum,Tillman-Quitzon,Sports & Outdoors,1,1.9,Returnable,1
+928,non quam,Keebler Group,Cell Phones & Accessories,44,3.2,Exchange-Only,14
+929,et,"Gusikowski, Pfannerstill and Beer",Household & Baby Care,1,1.45,Returnable,9
+930,quis,"Padberg, Donnelly and Schaden",Appliances,13,3.61,Exchange-Only,14
+931,amet sem,Lakin-Williamson,Electronics,98,3.24,Returnable,12
+932,montes nascetur ridiculus,"Donnelly, McDermott and Abshire",Cell Phones & Accessories,70,2.63,Returnable,20
+933,ac,"Beier, Okuneva and DuBuque",Electronics,66,2.61,Returnable,13
+934,congue eget semper,Wisoky-Treutel,Grocery & Gourmet Food,95,2.42,Returnable,19
+935,commodo placerat praesent,"Krajcik, Lindgren and Ward",Home & Kitchen,15,2.89,Returnable,11
+936,rutrum neque aenean,"Ryan, Fadel and Heller",Computers,7,3.91,Returnable,12
+937,quam,Bartell-Schaden,Appliances,73,2.36,Returnable,9
+938,vel augue vestibulum,Crona and Sons,Sports & Outdoors,97,4.8,Not Returnable,-
+939,tortor duis mattis,Gaylord-Wehner,Books,69,3.11,Returnable,12
+940,risus dapibus augue,"Kozey, Williamson and Koepp",Beauty & Personal Care,65,4.53,Not Returnable,-
+941,erat,VonRueden Inc,Toys & Games,7,2.12,Not Returnable,-
+942,semper,Veum Group,Computers,25,4.58,Returnable,6
+943,nec nisi vulputate,"Kris, Goyette and Vandervort",Beauty & Personal Care,97,4.38,Exchange-Only,20
+944,et commodo vulputate,Kemmer Group,Computers,85,2.93,Returnable,8
+945,etiam pretium,Moore Inc,Toys & Games,64,1.16,Returnable,19
+946,aenean,Hahn Group,Sports & Outdoors,41,2.2,Not Returnable,-
+947,vel,Halvorson-Runolfsson,Grocery & Gourmet Food,97,2.53,Returnable,15
+948,convallis,Howe and Sons,Household & Baby Care,16,4.1,Exchange-Only,16
+949,morbi vestibulum,Kautzer LLC,Clothing,66,4.0,Not Returnable,-
+950,venenatis,"Purdy, Vandervort and Lang",Beauty & Personal Care,68,4.81,Returnable,3
+951,integer,Gusikowski Inc,Garden & Outdoor,15,2.72,Returnable,3
+952,lobortis,DuBuque-Kautzer,Health,26,0.04,Returnable,2
+953,nunc vestibulum,"Schultz, Graham and Swift",Computers,11,4.82,Not Returnable,-
+954,ligula,Shanahan Inc,Shoes and Jewelry,66,0.29,Returnable,18
+955,et magnis dis,"Legros, Larson and Hilll",Household & Baby Care,37,2.65,Returnable,6
+956,odio donec vitae,Quitzon and Sons,Computers,33,4.58,Returnable,12
+957,vestibulum eget vulputate,Quitzon LLC,Electronics,56,4.2,Not Returnable,-
+958,interdum,"Quitzon, Champlin and Harber",Household & Baby Care,79,2.38,Returnable,10
+959,pulvinar sed,Brown Group,Toys & Games,13,4.27,Returnable,7
+960,imperdiet sapien urna,Witting-Grady,Industrial & Scientific,53,4.54,Not Returnable,-
+961,ac,"Schumm, Pollich and Prosacco",Sports & Outdoors,14,3.04,Returnable,6
+962,morbi non,Brakus Inc,Industrial & Scientific,7,3.84,Returnable,13
+963,nonummy maecenas,Johns-Hettinger,Household & Baby Care,96,2.73,Returnable,15
+964,cras mi,"Torp, Gleichner and Robel",Household & Baby Care,89,3.33,Returnable,1
+965,lobortis convallis tortor,Harber Group,Grocery & Gourmet Food,21,4.39,Exchange-Only,19
+966,lorem quisque,Ernser Group,Beauty & Personal Care,48,1.61,Returnable,6
+967,dictumst,Mayer Inc,Clothing,32,3.23,Returnable,11
+968,aliquet,Fisher Group,Industrial & Scientific,31,4.65,Not Returnable,-
+969,cum sociis natoque,"Kunde, Ritchie and Zboncak",Beauty & Personal Care,76,1.36,Not Returnable,-
+970,platea,Feeney-Bechtelar,Appliances,15,0.34,Returnable,18
+971,convallis eget eleifend,"Mueller, Boehm and Turner",Toys & Games,13,4.6,Returnable,20
+972,ut dolor morbi,Schaden-Marvin,Computers,28,4.41,Not Returnable,-
+973,vestibulum vestibulum ante,"Schneider, Johnson and Von",Sports & Outdoors,87,4.55,Not Returnable,-
+974,augue a suscipit,"McCullough, Kutch and Klocko",Shoes and Jewelry,12,2.65,Not Returnable,-
+975,ligula pellentesque,"Schumm, McGlynn and Orn",Grocery & Gourmet Food,71,1.17,Exchange-Only,7
+976,lorem ipsum dolor,Blick-Hegmann,Computers,45,1.85,Returnable,8
+977,volutpat in congue,"Barrows, Kiehn and Luettgen",Household & Baby Care,93,1.8,Not Returnable,-
+978,pellentesque viverra,Towne LLC,Sports & Outdoors,74,2.4,Returnable,20
+979,a pede posuere,Johns and Sons,Home & Kitchen,64,4.13,Not Returnable,-
+980,dictumst,Harvey LLC,Home & Kitchen,65,4.1,Returnable,8
+981,pellentesque ultrices,Hackett Group,Industrial & Scientific,46,4.92,Returnable,5
+982,tristique,Prohaska-Walker,Appliances,77,4.26,Returnable,10
+983,at diam nam,Turner-Padberg,Books,81,4.7,Exchange-Only,8
+984,cubilia curae,Johnston-Hayes,Electronics,53,4.56,Not Returnable,-
+985,hac habitasse platea,"Smitham, Pfeffer and Gottlieb",Beauty & Personal Care,66,2.87,Returnable,13
+986,adipiscing lorem,Hermiston-Ortiz,Computers,72,4.36,Returnable,13
+987,sapien iaculis,"Rau, Swift and Pfannerstill",Beauty & Personal Care,8,2.68,Returnable,20
+988,duis at velit,"Terry, Zieme and Haag",Sports & Outdoors,49,2.78,Returnable,16
+989,luctus et ultrices,"Mueller, Schamberger and Kunde",Sports & Outdoors,42,3.61,Returnable,14
+990,eget,"Emard, Padberg and O'Kon",Toys & Games,63,4.13,Returnable,14
+991,dui,Nader-Ryan,Industrial & Scientific,36,2.11,Not Returnable,-
+992,dui,O'Conner and Sons,Shoes and Jewelry,85,0.43,Returnable,11
+993,velit eu est,Schaden-Ortiz,Shoes and Jewelry,62,2.11,Returnable,20
+994,id mauris vulputate,Stehr Group,Sports & Outdoors,93,4.67,Returnable,13
+995,elit,"Breitenberg, Wyman and Konopelski",Clothing,78,4.61,Returnable,14
+996,sit,Runolfsson and Sons,Sports & Outdoors,50,2.91,Returnable,14
+997,odio curabitur convallis,Cole and Sons,Shoes and Jewelry,54,2.31,Not Returnable,-
+998,ultrices,Collier-Lebsack,Sports & Outdoors,65,3.16,Returnable,8
+999,sed augue,"Bruen, Becker and Kunze",Garden & Outdoor,57,3.66,Returnable,16
+1000,habitasse,Dare-Conn,Books,98,2.23,Returnable,10
+1001,PortalHun,sghsdghgdsh,Electronics,Not Returnable,99.0,5.0,-

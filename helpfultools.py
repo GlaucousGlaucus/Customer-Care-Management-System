@@ -3,6 +3,46 @@ from colorama import Fore
 from datetime import datetime
 import re
 
+email_format_info = f"""{Fore.LIGHTRED_EX}
+                              ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
+                              ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
+                              ╚  ╚═╝╩╚═╩ ╩╩ ╩ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+The email address:
+> Should at least three characters long
+> Should have a valid Username: 
+    a) Can have A-Z and a-z characters
+    b) Can have digits and special characters (_%+-)
+> Should have the '@' seperator
+> Should have valid domain name:
+    a) Can have A-Z and a-z characters
+    b) Can have digits and hypen (-) no special characters
+> Should have valid top level domain name:
+    a) Can have A-Z and a-z characters
+    b) Can have digits and hypen (-) no special characters
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+{Fore.RESET}\n\n\n"""
+
+phone_format_info = f"""{Fore.LIGHTRED_EX}
+                              ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
+                              ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
+                              ╚  ╚═╝╩╚═╩ ╩╩ ╩ ╩ 
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+Please make sure that you enter the correct format for phone.
+
+    > It should not be blank.
+    > The first two digits of the phone must be between 0 and 91 (inclusive).
+    > There must be a space after the first two digits of the phone.
+    > The other digits of the phone must be between 0 and 9 (inclusive).
+
+You can enter the phone number in either of the formats given below:
+
+                    +XX XXX XXX XXXX OR +XX XXXXXXXXXX
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+{Fore.RESET}\n\n\n"""
+
 dateformat_info = f"""{Fore.LIGHTRED_EX}
                               ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
                               ╠╣ ║ ║╠╦╝║║║╠═╣ ║ 
@@ -74,7 +114,7 @@ Avoid the above errors and try again.
         """),
     "email": lambda email: (f"Invalid email address: {email}", """
 The email address should be:
-r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
 1) At least three characters long
 2) Should have a valid Username: 
     a) Can have A-Z and a-z characters
@@ -109,6 +149,11 @@ class Searchy:
     def by_id(self, qry):
         qry_result = self.df.loc[qry] if qry in self.df.index else pd.DataFrame(
         )
+        return qry_result
+
+    def by_single(self, qry, col):
+        qry_df = self.df[col]
+        qry_result = self.df.loc[qry_df == qry]
         return qry_result
 
     def by_string(self, qry, col):
@@ -183,21 +228,27 @@ def throw_error(err_type: str, title: str, message=""):
 
 
 def phone_validator(original: str):
-    original = original.split(" ")
-    if original[0][0] == "+":
-        original[0] = original[0][1:]
-    PatternA = re.compile("(0-91)?")
-    PatternB = re.compile("[0-9]{10}")
-    lhs = "".join(original[1:])
-    if PatternA.match(original[0]) and PatternB.match(lhs):
-        return f"+{original[0]} {lhs[:3]} {lhs[3:6]} {lhs[6:10]}"
-    else:
-        None
+    pattern = '\\+?([0-9]{2})?(\\s*)?[0-9]{3}(\\s*)?[0-9]{3}(\\s*)?[0-9]{4}'
+    if re.fullmatch(pattern, original):
+        if original[0] == "+":
+            original = original[1:]
+        original = "".join(original.split(" "))
+        return f"+{original[:2]} {original[2:5]} {original[5:8]} {original[8:]}"
+    # original = original.split(" ")
+    # if original[0][0] == "+":
+    #     original[0] = original[0][1:]
+    # PatternA = re.compile("(0-91)?")
+    # PatternB = re.compile("[0-9]{10}")
+    # lhs = "".join(original[1:])
+    # if PatternA.match(original[0]) and PatternB.match(lhs):
+    #     return f"+{original[0]} {lhs[:3]} {lhs[3:6]} {lhs[6:10]}"
+    # else:
+    #     None
 
 
 def validate_email(email):
     reg_email = re.fullmatch(
-        r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', email)
+        r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]+', email)
     return reg_email if len(email) >= 3 else None
 
 
@@ -258,7 +309,7 @@ def data_validator_customer(data, d_type):
     elif d_type == "email":
         return data if validate_email(data) else None
     elif d_type == "prime":
-        return "PRIME" if data.strip().lower() in ["prime", "yes", "1", "y", "p"] else "-"
+        return "PRIME" if data.strip().lower() in ["prime", "yes", "1", "y", "p"] else "NOT PRIME"
 
 
 def data_validator_product_bool(products: pd.DataFrame, id, data, d_type):
@@ -266,7 +317,7 @@ def data_validator_product_bool(products: pd.DataFrame, id, data, d_type):
     if d_type == "id":
         return not (data in products.index)
     elif d_type in ["name", "manufacturer", "category"]:
-        return data.isalpha()
+        return is_alpha_ws(data)
     elif d_type == "Returnable":
         return data in ["Returnable", "Not Returnable", "Exchange-Only"]
     elif d_type == "In-Stock":
@@ -326,15 +377,20 @@ def safe_input(text: str, fail_text: str = None, dtype: str = "int"):
     try:
         match dtype:
             case "int":
-                return int(input(text))
+                return int(input(text).strip())
             case "float":
-                return float(input(text))
+                return float(input(text).strip())
     except ValueError as e:
         throw_error(err_type="error", title="Wrong Value", message=fail_text)
 
 
-def print_chat(chat:list, side:str):
-    print(
-f"""
-[{side}] :  \n\t\t{chat}
-""")
+def show_chat(data: pd.DataFrame):
+    cls()
+    data.sort_values(['Date'])
+    for _, row in data.iterrows():
+        color = Fore.LIGHTGREEN_EX if row['Side'] == 'ADMIN' else Fore.LIGHTCYAN_EX
+        print(
+            color, f"[{row['Side']} @ {Fore.YELLOW}{row['Date']}{color}]:\n\t {row['Message']}", Fore.RESET)
+
+
+def is_alpha_ws(s): return all(x.isalpha() for x in s)

@@ -1,5 +1,4 @@
 import time
-import uuid
 from colorama import Fore
 from datetime import datetime
 
@@ -21,20 +20,12 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
                     ╩ ╩═╩╝═╩╝  ╩ ╩  ╚═╝╚═╝╚═╝ ╩ ╚═╝╩ ╩╚═╝╩╚═
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
-    id = input(Fore.LIGHTMAGENTA_EX +
-               "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    # Verify that the customer id is not a duplicate
-    while id in customers.index:
-        throw_error('error', *data_error_msgs["id"](id))
-        id = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                   "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    if id == "":  # Gen uuid if input is empty
-        id = str(uuid.uuid4())
+    id = len(customers) + 1
     cls()
     # first_name
     first_name = input(Fore.LIGHTMAGENTA_EX +
                        "Enter First Name: " + Fore.RESET).capitalize()
-    while not first_name.isalpha():
+    while not is_alpha_ws(first_name):
         throw_error('error', *data_error_msgs["first_name"](first_name))
         first_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                            "Enter First Name: " + Fore.RESET)
@@ -42,7 +33,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     # last_name
     last_name = input(Fore.LIGHTMAGENTA_EX +
                       "Enter Last Name: " + Fore.RESET).capitalize()
-    while not last_name.isalpha():
+    while not is_alpha_ws(last_name):
         throw_error('error', *data_error_msgs["last_name"](last_name))
         last_name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                           "Enter Last Name: " + Fore.RESET)
@@ -80,7 +71,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     # Country
     country = input(Fore.LIGHTMAGENTA_EX +
                     "Enter Country: " + Fore.RESET).capitalize()
-    while not all(c.isalpha() for c in country.split(" ")):  # Verify country
+    while not is_alpha_ws(country):  # Verify country
         throw_error('error', *data_error_msgs["country"](country))
         country = input(Fore.LIGHTMAGENTA_EX +
                         "Enter Country: " + Fore.RESET).capitalize()
@@ -88,7 +79,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     # City
     city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " +
                  Fore.RESET).capitalize()
-    while not all(c.isalpha() for c in city.split(" ")):  # Verify City
+    while not is_alpha_ws(city):  # Verify City
         throw_error('error', *data_error_msgs["city"](city))
         city = input(Fore.LIGHTMAGENTA_EX + "Enter City: " +
                      Fore.RESET).capitalize()
@@ -96,7 +87,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     # State
     state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " +
                   Fore.RESET).capitalize()
-    while not all(c.isalpha() for c in state.split(" ")):  # Verify state
+    while not is_alpha_ws(state):  # Verify state
         throw_error('error', *data_error_msgs["state"](state))
         state = input(Fore.LIGHTMAGENTA_EX + "Enter State: " +
                       Fore.RESET).capitalize()
@@ -110,11 +101,14 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     pincode = int(pincode)
     cls()
     # Phone
+    print(phone_format_info)
     phone = input(Fore.LIGHTMAGENTA_EX + "Enter Phone: " + Fore.RESET)
     phone_check = phone_validator(phone)
     while not phone_check:  # Verify phone
         cls()
         throw_error('error', *data_error_msgs["phone"](phone))
+        cls()
+        print(phone_format_info)
         phone = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                       "Enter Phone: " + Fore.RESET)
         phone_check = phone_validator(phone)
@@ -122,20 +116,22 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     cls()
 
     # Email
+    print(email_format_info)
     email = input(Fore.LIGHTMAGENTA_EX + "Enter Email: " + Fore.RESET)
     while not validate_email(email):  # Verify email
         throw_error('error', *data_error_msgs["email"](email))
+        cls()
+        print(email_format_info)
         email = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                       "Enter Email: " + Fore.RESET)
     cls()
     # Prime
     prime = "PRIME" if input(Fore.LIGHTMAGENTA_EX + "Enter Prime: " + Fore.RESET).lower() in [
-        "prime","yes", "p", "y", "oui"] else "-"
+        "prime","yes", "p", "y", "oui"] else "NOT PRIME"
     # Data Summmarization
     NewData = [first_name, last_name, dob,
                gender, address, country, city, state, pincode,
                phone, email, prime]
-    print("+" + "-"*50 + "+")
     if all(NewData):
         print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
@@ -197,7 +193,7 @@ update_customer_menu = {
 
 def update_customer(customers: pd.DataFrame):
     cls()
-    id = input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET).strip()
+    id = safe_input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET)
     if id not in customers.index:
         throw_error('error', "ID not found: " + id,
                     "Customer ID was not found in the database.\nPlease make sure you have entered a valid Customer ID.")
@@ -232,9 +228,9 @@ def update_customer(customers: pd.DataFrame):
                     Fore.CYAN + f"Updating Value of {Fore.RED}{update_customer_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
                       f"Old value of {update_customer_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
-                new_val = input(
+                new_val = safe_input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
-                if new_val not in customers.index and new_val != "" and len(new_val) >= 3:
+                if new_val not in customers.index:
                     customers.rename(
                         index={sel_rec.name: new_val}, inplace=True)
                     print("ID changed successfully")
@@ -256,8 +252,16 @@ Make sure that you have avoided any of the following errors:
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
-                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
-                new_val = input(f"Enter your new value: {Fore.RED}")
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}\n\n")
+                pause()
+                cls()
+                if cmd == "4":
+                    print(dateformat_info)
+                elif cmd == "11":
+                    print(phone_format_info)
+                elif cmd == "12":
+                    print(email_format_info)
+                new_val = input(f"\nEnter your new value: {Fore.RED}")
                 print(f"{Fore.CYAN}Your new value for {d_type}: " +
                       Fore.RED, new_val, Fore.RESET)
                 new_data = data_validator_customer(new_val, d_type)
@@ -269,30 +273,13 @@ Make sure that you have avoided any of the following errors:
                         print("\nUpdating value cancelled.")
                         pause()
                 else:
-                    throw_error('error', 'Error while updating customer data', f"""Error while updating Value of {d_type} with value {new_data}
-Make sure that you have avoided any of the following errors:
-1. Empty value for {d_type}
-
-2. Invalid value for {d_type} i.e. worng format or data type.
-    a. For (first_name, last_name, country, city, state),
-        Data should have only alphabetical characters
-    b. For Geneder, either Male/Female, Abbreviations NOT Allowed
-    c. For pincode, the data should have only digits
-    d. For phone numbers, '+AB Yxx xxx xxxx',
-        AB -> 0-91 ; Y -> 7-9 ; X -> 0-9
-    e. For email addresses,
-        i. The Recipient's name can have: 
-            Either case letters, digits from 1-9, Special characters.)
-        ii. The @ symbol
-        iii. Domain name and Top-level domain eg. abc@yahoo.com
-    f. For Prime, either yes, PRIME or P will be valid
-                """)
+                    throw_error('error', *data_error_msgs[d_type])
                 sel_rec = customers.loc[id]
 
 
 def delete_customer(customers: pd.DataFrame):
     cls()
-    id = input(f"{Fore.CYAN}Enter the customer ID to delete: {Fore.RESET}")
+    id = safe_input(f"{Fore.CYAN}Enter the customer ID to delete: {Fore.RESET}")
     # Check if id is in the df
     if id not in customers.index:
         throw_error("error", "Customer ID is not in the Database",
@@ -324,20 +311,12 @@ def add_a_Product(products: pd.DataFrame):
                        ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
-    id = input(Fore.LIGHTMAGENTA_EX +
-               "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    # Verify that the product id is not a duplicate
-    while id in products.index:
-        throw_error('error', "Duplicate ID")
-        id = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                   "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    if id == "":  # Gen uuid if input is empty
-        id = str(uuid.uuid4())
+    id = len(products) + 1
     cls()
     # name
     name = input(Fore.LIGHTMAGENTA_EX +
                  "Enter Product Name: " + Fore.RESET).capitalize()
-    while not name.isalpha():
+    while not is_alpha_ws(name):
         throw_error('error', "Invalid Name")
         name = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                      "Enter Product Name: " + Fore.RESET)
@@ -345,7 +324,7 @@ def add_a_Product(products: pd.DataFrame):
     # manufacturer
     manufacturer = input(Fore.LIGHTMAGENTA_EX +
                          "Enter manufacturer: " + Fore.RESET).capitalize()
-    while not manufacturer.isalpha():
+    while not is_alpha_ws(manufacturer):
         throw_error('error', "Invalid manufacturer name")
         manufacturer = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                              "Enter manufacturer: " + Fore.RESET)
@@ -353,7 +332,7 @@ def add_a_Product(products: pd.DataFrame):
     # category
     category = input(Fore.LIGHTMAGENTA_EX +
                      "Enter Category: " + Fore.RESET).capitalize()
-    while not category.isalpha():
+    while not is_alpha_ws(category):
         throw_error('error', "Invalid Category")
         category = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
                          "Enter Category: " + Fore.RESET)
@@ -410,11 +389,7 @@ def add_a_Product(products: pd.DataFrame):
     # Data Summmarization
     NewData = [name, manufacturer, category,
                Returnable, stock, avg_rating, dtr]
-    print("+" + "-"*50 + "+")
     if all(NewData):
-        ll = max([len(str(x)) for x in NewData])
-        fac = 62 if ll <= 62 else ll
-        eq = ll - 62 if ll > 62 else 0
         print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
@@ -448,7 +423,7 @@ def add_a_Product(products: pd.DataFrame):
 
 def delete_product(products: pd.DataFrame):
     cls()
-    id = input(f"{Fore.CYAN}Enter the product ID to delete: {Fore.RESET}")
+    id = safe_input(f"{Fore.CYAN}Enter the product ID to delete: {Fore.RESET}")
     # Check if id is in the df
     if id not in products.index:
         throw_error("error", "Product ID is not in the Database",
@@ -469,7 +444,7 @@ def delete_product(products: pd.DataFrame):
         pause()
 
 
-update_ticket_menu = {
+update_product_menu = {
     "1": "id",
     "2": "name",
     "3": "manufacturer",
@@ -484,7 +459,7 @@ update_ticket_menu = {
 
 def update_product(products: pd.DataFrame):
     cls()
-    id = input(Fore.CYAN + "Product ID To Update: " + Fore.RESET).strip()
+    id = safe_input(Fore.CYAN + "Product ID To Update: " + Fore.RESET)
     if id not in products.index:
         throw_error('error', "ID not found: " + id,
                     "Product ID was not found in the database.\nPlease make sure you have entered a valid Product ID.")
@@ -515,12 +490,12 @@ def update_product(products: pd.DataFrame):
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
-                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_product_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
-                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
-                new_val = input(
+                      f"Old value of {update_product_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = safe_input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
-                if new_val not in products.index and new_val != "" and len(new_val) >= 3:
+                if new_val not in products.index:
                     products.rename(
                         index={sel_rec.name: new_val}, inplace=True)
                     print("ID changed successfully")
@@ -531,7 +506,7 @@ def update_product(products: pd.DataFrame):
             elif cmd == "9":
                 break
             elif cmd in ["2", "3", "4", "5", "6", "7", "8"]:
-                d_type = update_ticket_menu[cmd]
+                d_type = update_product_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
@@ -576,30 +551,23 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
     # OrderID
-    orderId = input(Fore.LIGHTMAGENTA_EX +
-                    "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    while orderId in orders.index:
-        throw_error('error', "Duplicate ID")
-        orderId = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                        "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    if orderId == "":  # Gen uuid if input is empty
-        orderId = str(uuid.uuid4())
+    orderId = len(orders) + 1
     cls()
 
     # CustomerID
-    customerID = input(Fore.LIGHTMAGENTA_EX +
+    customerID = safe_input(Fore.LIGHTMAGENTA_EX +
                        "Enter Customer ID: " + Fore.RESET)
     while customerID not in customers.index:
         throw_error('error', "Customer ID not found!")
-        customerID = input(Fore.LIGHTMAGENTA_EX +
+        customerID = safe_input(Fore.LIGHTMAGENTA_EX +
                            "Enter Customer ID: " + Fore.RESET)
     cls()
     # ProductID
-    productID = input(Fore.LIGHTMAGENTA_EX +
+    productID = safe_input(Fore.LIGHTMAGENTA_EX +
                       "Enter Product ID: " + Fore.RESET)
     while productID not in products.index:
-        throw_error('error', "Product ID not found!")
-        productID = input(Fore.LIGHTMAGENTA_EX +
+        #throw_error('error', "Product ID not found!")
+        productID = safe_input(Fore.LIGHTMAGENTA_EX +
                           "Enter Product ID: " + Fore.RESET)
     cls()
 
@@ -676,11 +644,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     # Data Summmarization
     NewData = [customerID, cust_first_name, cust_last_name, productID, prod_name, qty,
                total_price, doo, State, cust_address]
-    print("+" + "-"*50 + "+")
     if all(NewData):
-        ll = max([len(str(x)) for x in NewData])
-        fac = 62 if ll <= 62 else ll
-        eq = ll - 62 if ll > 62 else 0
         print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
                                     ║  ║ ║║║║╠╣ ║╠╦╝║║║   ║║╠═╣ ║ ╠═╣
@@ -717,7 +681,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 
 def delete_order(orders: pd.DataFrame):
     cls()
-    id = input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
+    id = safe_input(f"{Fore.CYAN}Enter the order ID to delete: {Fore.RESET}")
     # Check if id is in the df
     if id not in orders.index:
         throw_error("error", "Order ID is not in the Database",
@@ -738,7 +702,7 @@ def delete_order(orders: pd.DataFrame):
         pause()
 
 
-update_ticket_menu = {
+update_order_menu = {
     "1": "orderId",
     "2": "customerID",
     "3": "productID",
@@ -752,7 +716,7 @@ update_ticket_menu = {
 
 def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame):
     cls()
-    id = input(Fore.CYAN + "Order ID To Update: " + Fore.RESET).strip()
+    id = safe_input(Fore.CYAN + "Order ID To Update: " + Fore.RESET)
     if id not in orders.index:
         throw_error('error', "ID not found: " + id,
                     "Order ID was not found in the database.\nPlease make sure you have entered a valid Order ID.")
@@ -785,12 +749,12 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
             cmd = input(Fore.CYAN + "Choose To Modify: " + Fore.RESET)
             if cmd == "1":
                 print(
-                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
+                    Fore.CYAN + f"Updating Value of {Fore.RED}{update_order_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
-                      f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
-                new_val = input(
+                      f"Old value of {update_order_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
+                new_val = safe_input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
-                if new_val not in orders.index and new_val != "" and len(new_val) >= 3:
+                if new_val not in orders.index:
                     orders.rename(
                         index={sel_rec.name: new_val}, inplace=True)
                     print("ID changed successfully")
@@ -800,13 +764,13 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
                     throw_error('error', f'Invalid order ID: {new_val}')
             elif cmd == "8":
                 break
-            elif cmd in "2345667":
-                d_type = update_ticket_menu[cmd]
+            elif cmd in "234567":
+                d_type = update_order_menu[cmd]
                 print(Fore.CYAN +
                       f"Updating Value of {Fore.RED}{d_type}{Fore.CYAN}")
                 print(
-                    f"Old value of {d_type}: {Fore.RED}{sel_rec.loc[d_type]}{Fore.CYAN}")
-                new_val = input(f"Enter your new value: {Fore.RED}")
+                    f"Old value of {d_type}: {Fore.RED}{sel_rec[d_type]}{Fore.CYAN}")
+                new_val = input(f"Enter your new value: {Fore.RED}") if d_type not in ["orderId", "customerID", "products"] else safe_input(f"Enter your new value: {Fore.RED}")
                 print(f"{Fore.CYAN}Your new value for {d_type}: " +
                       Fore.RED, new_val, Fore.RESET)
                 if data_validator_order_bool(customers, products,  orders, id, new_val, d_type):
@@ -833,18 +797,6 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 # ----------------------------------------------------------------------------------------------------
 
 
-update_ticket_menu = {
-    "1": "orderId",
-    "2": "customerID",
-    "3": "productID",
-    "4": "qty",
-    "5": "total_price",
-    "6": "doo",
-    "7": "State",
-    "8": "Back"
-}
-
-
 def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, custid=None, register=False):
     print(Fore.CYAN +
           """
@@ -854,33 +806,25 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
     # TicketID
-    ticketID = input(Fore.LIGHTMAGENTA_EX +
-                     "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    while ticketID in tickets.index:
-        throw_error('error', "Duplicate ID")
-        ticketID = input("\n"*5 + Fore.LIGHTMAGENTA_EX +
-                         "Enter ID (Leave blank for random uuid): " + Fore.RESET)
-    if ticketID == "":  # Gen uuid if input is empty
-        ticketID = str(uuid.uuid4())
-    cls()
+    ticketID = len(tickets) + 1
 
     # CustID
     if register:
         CustID = custid
     else:
-        CustID = input(Fore.LIGHTMAGENTA_EX +
+        CustID = safe_input(Fore.LIGHTMAGENTA_EX +
                        "Enter Customer ID: " + Fore.RESET)
         while CustID not in customers.index:
             throw_error('error', "Customer ID not found!")
-            CustID = input(Fore.LIGHTMAGENTA_EX +
+            CustID = safe_input(Fore.LIGHTMAGENTA_EX +
                            "Enter Customer ID: " + Fore.RESET)
     cls()
     # OrderID
-    OrderID = input(Fore.LIGHTMAGENTA_EX +
+    OrderID = safe_input(Fore.LIGHTMAGENTA_EX +
                     "Enter Order ID: " + Fore.RESET)
-    while OrderID not in orders.index:
+    while (OrderID not in orders.index) or (orders.loc[OrderID]["customerID"] != custid):
         throw_error('error', "Order ID not found!")
-        OrderID = input(Fore.LIGHTMAGENTA_EX +
+        OrderID = safe_input(Fore.LIGHTMAGENTA_EX +
                         "Enter Order ID: " + Fore.RESET)
     cls()
 
@@ -1030,7 +974,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 
 def delete_ticket(tickets: pd.DataFrame):
     cls()
-    id = input(f"{Fore.CYAN}Enter the ticket ID to delete: {Fore.RESET}")
+    id = safe_input(f"{Fore.CYAN}Enter the ticket ID to delete: {Fore.RESET}")
     # Check if id is in the df
     if id not in tickets.index:
         throw_error("error", "Ticket ID is not in the Database",
@@ -1069,7 +1013,7 @@ update_ticket_menu = {
 
 def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.DataFrame, tickets: pd.DataFrame, close=False):
     cls()
-    id = input(Fore.CYAN + "Ticket ID To Update: " + Fore.RESET).strip()
+    id = safe_input(Fore.CYAN + "Ticket ID To Update: " + Fore.RESET)
     if id not in tickets.index:
         throw_error('error', "ID not found: " + id,
                     "Ticket ID was not found in the database.\nPlease make sure you have entered a valid Ticket ID.")
@@ -1122,9 +1066,9 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
                     Fore.CYAN + f"Updating Value of {Fore.RED}{update_ticket_menu[cmd]}" + Fore.RESET)
                 print(Fore.CYAN +
                       f"Old value of {update_ticket_menu[cmd]}: {Fore.RED} {sel_rec.name}" + Fore.RESET)
-                new_val = input(
+                new_val = safe_input(
                     Fore.CYAN + "Enter your new value: " + Fore.RESET)
-                if new_val not in tickets.index and new_val != "" and len(new_val) >= 3:
+                if new_val not in tickets.index:
                     tickets.rename(
                         index={sel_rec.name: new_val}, inplace=True)
                     print("ID changed successfully")
