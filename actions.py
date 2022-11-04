@@ -20,7 +20,7 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
                     ╩ ╩═╩╝═╩╝  ╩ ╩  ╚═╝╚═╝╚═╝ ╩ ╚═╝╩ ╩╚═╝╩╚═
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
-    id = len(customers) + 1
+    id = customers.sort_index().index[::-1][0] + 1
     cls()
     # first_name
     first_name = input(Fore.LIGHTMAGENTA_EX +
@@ -128,10 +128,15 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
     # Prime
     prime = "PRIME" if input(Fore.LIGHTMAGENTA_EX + "Enter Prime: " + Fore.RESET).lower() in [
         "prime","yes", "p", "y", "oui"] else "NOT PRIME"
+    # Password
+    if register:
+        password = input(Fore.LIGHTMAGENTA_EX + "Enter Password: " + Fore.RESET)
+    else:
+        password = np.nan
     # Data Summmarization
     NewData = [first_name, last_name, dob,
                gender, address, country, city, state, pincode,
-               phone, email, prime]
+               phone, email, prime, password]
     if all(NewData):
         print(f"""{Fore.CYAN}
                                     ╔═╗╔═╗╔╗╔╔═╗╦╦═╗╔╦╗  ╔╦╗╔═╗╔╦╗╔═╗
@@ -159,8 +164,8 @@ def add_a_Customer(customers: pd.DataFrame, register=False):
                 f"Would you like to insert this data to {Fore.GREEN}Customers.csv{Fore.RESET} ? (Y/N): ")
         else:
             reck = input(
-                "Would you like to complete Registration ? (Y/N): ")
-        if reck.lower() == "y":
+                "Would you like to complete Registration ? (Y/N): ").strip().lower()
+        if reck in "y1":
             customers.loc[id] = NewData
             SaveData(customers, "Customers")
             print(
@@ -195,7 +200,7 @@ def update_customer(customers: pd.DataFrame):
     cls()
     id = safe_input(Fore.CYAN + "Customer ID To Update: " + Fore.RESET)
     if id not in customers.index:
-        throw_error('error', "ID not found: " + id,
+        throw_error('error', "ID not found: " + str(id),
                     "Customer ID was not found in the database.\nPlease make sure you have entered a valid Customer ID.")
     else:
         sel_rec = customers.loc[id]
@@ -266,7 +271,7 @@ Make sure that you have avoided any of the following errors:
                       Fore.RED, new_val, Fore.RESET)
                 new_data = data_validator_customer(new_val, d_type)
                 if new_data:
-                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").lower() in "y1":
+                    if input(f"{Fore.CYAN}Do you want to change the value of {Fore.RED}{d_type}?{Fore.RESET} (Y/N) ").strip().lower() in "y1":
                         customers.at[id, d_type] = new_data
                         SaveData(customers, "Customers")
                     else:
@@ -311,7 +316,7 @@ def add_a_Product(products: pd.DataFrame):
                        ╩ ╩═╩╝═╩╝  ╩ ╩  ╩  ╩╚═╚═╝═╩╝╚═╝╚═╝ ╩ 
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
-    id = len(products) + 1
+    id = products.sort_index().index[::-1][0] + 1
     cls()
     # name
     name = input(Fore.LIGHTMAGENTA_EX +
@@ -348,7 +353,7 @@ def add_a_Product(products: pd.DataFrame):
             Returnable = Returnables[int(Returnables_check)-1]
             break
         except Exception as e:
-            throw_error('error', "Invalid Returnable: %s" % Returnable)
+            throw_error('error', f"Invalid Returnable: {Returnable}")
             Returnables_check = input(Fore.LIGHTMAGENTA_EX +
                                       "\nReturnable -> 1\nNot Returnable -> 2\nExchange-Only -> 3\nEnter Returnable: " + Fore.RESET).strip().lower().title()
     cls()
@@ -356,7 +361,7 @@ def add_a_Product(products: pd.DataFrame):
     stock = input(Fore.LIGHTMAGENTA_EX + "Enter In-Stock: " + Fore.RESET)
     while not stock.isdigit():
         throw_error(
-            'error', "Invalid stock number: %s" % stock)
+            'error', f"Invalid stock number: {stock}")
         stock = input(Fore.LIGHTMAGENTA_EX + "Enter In-Stock: " + Fore.RESET)
     cls()
     # AvgRating
@@ -366,7 +371,7 @@ def add_a_Product(products: pd.DataFrame):
             avg_rating = float(avg_rating)
         except Exception as e:
             throw_error(
-                'error', "Invalid Average Rating: %s" % avg_rating)
+                'error', f"Invalid Average Rating: {avg_rating}")
             avg_rating = input(Fore.LIGHTMAGENTA_EX +
                                "Enter AvgRating: " + Fore.RESET)
     cls()
@@ -380,7 +385,7 @@ def add_a_Product(products: pd.DataFrame):
                 break
             except Exception as e:
                 throw_error(
-                    'error', "Invalid Days to Return: %s" % dtr)
+                    'error', f"Invalid Days to Return: {dtr}")
                 print("Return", Returnable)
                 dtr = input(Fore.LIGHTMAGENTA_EX +
                             "Enter Days to Return: " + Fore.RESET)
@@ -407,8 +412,8 @@ def add_a_Product(products: pd.DataFrame):
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     {Fore.RESET}""")
         reck = input(
-            f"Would you like to insert this data to {Fore.LIGHTCYAN_EX}Products.csv{Fore.RESET} ? (Y/N): ")
-        if reck.lower() == "y":
+            f"Would you like to insert this data to {Fore.LIGHTCYAN_EX}Products.csv{Fore.RESET} ? (Y/N): ").strip().lower()
+        if reck in "y1":
             products.loc[id] = NewData
             SaveData(products, "Products")
             print("Record inserted successfully!")
@@ -461,7 +466,7 @@ def update_product(products: pd.DataFrame):
     cls()
     id = safe_input(Fore.CYAN + "Product ID To Update: " + Fore.RESET)
     if id not in products.index:
-        throw_error('error', "ID not found: " + id,
+        throw_error('error', "ID not found: " + str(id),
                     "Product ID was not found in the database.\nPlease make sure you have entered a valid Product ID.")
         print(products.index)
     else:
@@ -551,7 +556,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
     # OrderID
-    orderId = len(orders) + 1
+    orderId = orders.sort_index().index[::-1][0] + 1
     cls()
 
     # CustomerID
@@ -566,7 +571,7 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     productID = safe_input(Fore.LIGHTMAGENTA_EX +
                       "Enter Product ID: " + Fore.RESET)
     while productID not in products.index:
-        #throw_error('error', "Product ID not found!")
+        throw_error('error', "Product ID not found!")
         productID = safe_input(Fore.LIGHTMAGENTA_EX +
                           "Enter Product ID: " + Fore.RESET)
     cls()
@@ -665,8 +670,8 @@ def add_an_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     {Fore.RESET}""")
         reck = input(
-            f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Orders.csv{Fore.RESET} ? (Y/N): ")
-        if reck.lower() == "y":
+            f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Orders.csv{Fore.RESET} ? (Y/N): ").strip().lower()
+        if reck in "y1":
             orders.loc[orderId] = NewData
             print("Record inserted successfully!")
             SaveData(orders, "Orders")
@@ -718,7 +723,7 @@ def update_order(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
     cls()
     id = safe_input(Fore.CYAN + "Order ID To Update: " + Fore.RESET)
     if id not in orders.index:
-        throw_error('error', "ID not found: " + id,
+        throw_error('error', "ID not found: " + str(id),
                     "Order ID was not found in the database.\nPlease make sure you have entered a valid Order ID.")
         print(orders.index)
     else:
@@ -806,7 +811,7 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 """ + Fore.RESET)
     # TicketID
-    ticketID = len(tickets) + 1
+    ticketID = tickets.sort_index().index[::-1][0] + 1
 
     # CustID
     if register:
@@ -961,8 +966,8 @@ def add_a_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Dat
 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     """ + Fore.RESET)
     reck = input(
-        f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Tickets.csv{Fore.RESET} ? (Y/N): ")
-    if reck.lower() == "y":
+        f"Would you like to insert this data to {Fore.LIGHTGREEN_EX}Tickets.csv{Fore.RESET} ? (Y/N): ").strip().lower()
+    if reck in "y1":
         tickets.loc[ticketID] = NewData
         SaveData(tickets, "Tickets")
         print("Record inserted successfully!")
@@ -1015,7 +1020,7 @@ def update_ticket(customers: pd.DataFrame, products: pd.DataFrame, orders: pd.Da
     cls()
     id = safe_input(Fore.CYAN + "Ticket ID To Update: " + Fore.RESET)
     if id not in tickets.index:
-        throw_error('error', "ID not found: " + id,
+        throw_error('error', "ID not found: " + str(id),
                     "Ticket ID was not found in the database.\nPlease make sure you have entered a valid Ticket ID.")
         print(tickets.index)
     else:

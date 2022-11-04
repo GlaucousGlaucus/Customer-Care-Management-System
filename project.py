@@ -48,6 +48,7 @@ def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: lis
 def amc_Search():
     global menu_level
     df = customers.copy()
+    df.drop(["password"], axis=1, inplace=True)
     search_engine = Searchy(df)
     def col(x): return customers.columns[int(x)-2]
     while True:
@@ -183,7 +184,7 @@ def am_cust_f():
         cmd = input("Command: ")
         if cmd == "1":
             cls()
-            print(customers)
+            print(customers.drop(["password"], axis=1))
             pause()
         # Search
         elif cmd == "2":
@@ -219,7 +220,7 @@ def am_cust_f():
         # Sort
         elif cmd == "6":
             menu_level = "1.1.2"
-            SortData(customers, 1.1, "14", [
+            SortData(customers.drop(["password"], axis=1), 1.1, "14", [
                 "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"])
         # Data Analysis
         elif cmd == "7":
@@ -789,9 +790,10 @@ def amt_MG_GenFromTemplate():
             continue
         ticket_data = tickets.loc[TicketID]
         # First Response
+        msg = ""
         if cmd == "1":
-            print(
-                f"""
+            msg = f"""
+
   ______ _          _     _____                                      
  |  ____(_)        | |   |  __ \                                     
  | |__   _ _ __ ___| |_  | |__) |___  ___ _ __   ___  _ __  ___  ___ 
@@ -808,20 +810,17 @@ our product(s) {ticket_data['ProductName']}.
 You described your issue labelled under {ticket_data['IssueCategory']} as:
 {ticket_data['Issue']}
 
-{Fore.LIGHTMAGENTA_EX}
 OrderID:    {ticket_data['OrderID']}
 TicketID:   {TicketID}
 Status:     {ticket_data['Status']}
-{Fore.RESET}
 ---------------------------------------------------------------------------
 Please stand by as we look into your issue, our team will try
 thier best to look into your issue and try to resolve it as soon as
 possible. This may take upto a few minutes.
-""")
+"""
         # Denied
         elif cmd == "2":
-            print(
-                f"""
+            msg = f"""
    _____                            _     _____             _          _ 
   |  __ \                          | |   |  __ \           (_)        | |
   | |__) |___  __ _ _   _  ___  ___| |_  | |  | | ___ _ __  _  ___  __| |
@@ -838,18 +837,15 @@ was denied for your order {ticket_data['OrderID']}.
 You described your issue labelled under {ticket_data['IssueCategory']} as:
 {ticket_data['Issue']}
 
-{Fore.LIGHTMAGENTA_EX}
 OrderID:    {ticket_data['OrderID']}
 TicketID:   {TicketID}
 Status:     {ticket_data['Status']}
-{Fore.RESET}
 ---------------------------------------------------------------------------
 Please inform us of any other issue we can help you with.
-""")
+"""
         # Acknolwegement
         elif cmd == "3":
-            print(
-                f"""
+            msg = f"""
                 _                        _          _                _ 
       /\       | |                      | |        | |              | |
      /  \   ___| | ___ __   _____      _| | ___  __| | __ _  ___  __| |
@@ -866,15 +862,18 @@ for your order {ticket_data['OrderID']}.
 You described your issue labelled under {ticket_data['IssueCategory']} as:
 {ticket_data['Issue']}
 
-{Fore.LIGHTMAGENTA_EX}
 OrderID:    {ticket_data['OrderID']}
 TicketID:   {TicketID}
 Status:     {ticket_data['Status']}
-{Fore.RESET}
 ---------------------------------------------------------------------------
 The process may take upto several minuites to complete, hence please be patient
 with us. Thank you for contacting us.
-""")
+"""
+        print(msg)
+        send_to_chat = input(Fore.LIGHTMAGENTA_EX + "Would you like to send this message to chat ?" + Fore.RESET).strip().lower()
+        if send_to_chat in "y1":
+            msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [TicketID, "ADMIN", msg, pd.to_datetime(datetime.now())]
+            SaveData(msgs, "Messages")
 
 
 def amt_MG_Custom():
@@ -889,14 +888,14 @@ def amt_MG_Custom():
             if TicketID not in tickets.index:
                 throw_error(
                     'error', "Ticket ID not found! Type EXT TO QUIT")
-                TicketID = input(Fore.LIGHTMAGENTA_EX +
+                TicketID = safe_input(Fore.LIGHTMAGENTA_EX +
                                  "Enter Ticket ID: " + Fore.RESET)
                 continue
             else:
                 ticket_data = tickets.loc[TicketID]
                 print_menu(menu_level)
                 message = input("Enter your message: \n")
-                print(
+                msg = \
                     f"""
    _____          _                               _____                              _   
   / ____|        | |                             / ____|                            | |  
@@ -911,14 +910,17 @@ def amt_MG_Custom():
 Dear {ticket_data['CustFirstName']},
 {message}
 
-{Fore.LIGHTMAGENTA_EX}
 OrderID:    {ticket_data['OrderID']}
 TicketID:   {TicketID}
 Status:     {ticket_data['Status']}
-{Fore.RESET}
 ---------------------------------------------------------------------------
 Thank you for contacting us.
-""")
+"""
+                print(msg)
+                send_to_chat = input(Fore.LIGHTMAGENTA_EX + "Would you like to send this message to chat ?" + Fore.RESET).strip().lower()
+                if send_to_chat in "y1":
+                    msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [TicketID, "ADMIN", msg, pd.to_datetime(datetime.now())]
+                    SaveData(msgs, "Messages")
         elif cmd == "2":
             menu_level = "1.4.5"
             break
@@ -975,10 +977,6 @@ def am_tick_f():
                 for _ in range(n):
                     cls()
                     add_a_ticket(customers, products, orders, tickets)
-                # try:
-                #     pass
-                # except Exception as e:
-                #     throw_error('error', f"{e}", e.with_traceback)
             else:
                 print("Command Cancelled: Add a ticket.")
                 pause()
@@ -1086,9 +1084,10 @@ def msgui(msgs:pd.DataFrame, custid=None, admin=True):
             message = input("""
 --------------------------------------------------------------------
 Your Message: """)
-            msgs.loc[len(msgs)+1] = [TicketID, side, message, pd.to_datetime(datetime.now())]
+            msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [TicketID, side, message, pd.to_datetime(datetime.now())]
             SaveData(msgs, "Messages")
             cls()
+            data = msgs[msgs['TicketID'] == TicketID]
             show_chat(data)
             pause()
         elif cmd == "3":
@@ -1166,7 +1165,8 @@ def cust_menu_f():
         cmd = input("Command: ")
         if cmd == "1":
             CustID = safe_input(Fore.LIGHTMAGENTA_EX + "Enter ID: " + Fore.RESET)
-            if CustID in customers.index:
+            password = input(Fore.LIGHTMAGENTA_EX + "Password: " + Fore.RESET)
+            if CustID in customers.index and password == customers.loc[CustID]["password"]:
                 print(Fore.LIGHTGREEN_EX + """
                                 ╦  ╔═╗╔═╗╦╔╗╔  ╔═╗╦ ╦╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗╦ ╦╦  
                                 ║  ║ ║║ ╦║║║║  ╚═╗║ ║║  ║  ║╣ ╚═╗╚═╗╠╣ ║ ║║  
@@ -1239,8 +1239,15 @@ def cust_menu_f():
                         menu_level = "2"
                         break
             else:
-                print(Fore.LIGHTRED_EX + "Wrong Credentials" + Fore.RESET)
-                pause()
+                print(Fore.LIGHTRED_EX + "Wrong Credentials", Fore.RESET)
+                frgt = input(Fore.LIGHTMAGENTA_EX + "Forgot Password or Id ? (Y/N)" + Fore.RESET)
+                if frgt.strip().lower() in "y1":
+                    email = input(Fore.LIGHTMAGENTA_EX + "Enter Email: " + Fore.RESET)
+                    try:
+                        forgot_pass_mail(customers, email)
+                        pause()
+                    except Exception as e:
+                        throw_error('error', "Failed to Change Password", e)
         elif cmd == "2":
             cls()
             print(Fore.LIGHTCYAN_EX +

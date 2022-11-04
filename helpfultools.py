@@ -2,6 +2,10 @@ import pandas as pd
 from colorama import Fore
 from datetime import datetime
 import re
+import smtplib
+import os
+import random
+from email.message import EmailMessage
 
 email_format_info = f"""{Fore.LIGHTRED_EX}
                               ╔═╗╔═╗╦═╗╔╦╗╔═╗╔╦╗
@@ -228,22 +232,14 @@ def throw_error(err_type: str, title: str, message=""):
 
 
 def phone_validator(original: str):
-    pattern = '\\+?([0-9]{2})?(\\s*)?[0-9]{3}(\\s*)?[0-9]{3}(\\s*)?[0-9]{4}'
+    pattern = '\\+?([0-9]{1,2})?(\\s*)?[0-9]{3}(\\s*)?[0-9]{3}(\\s*)?[0-9]{4}'
     if re.fullmatch(pattern, original):
         if original[0] == "+":
             original = original[1:]
         original = "".join(original.split(" "))
-        return f"+{original[:2]} {original[2:5]} {original[5:8]} {original[8:]}"
-    # original = original.split(" ")
-    # if original[0][0] == "+":
-    #     original[0] = original[0][1:]
-    # PatternA = re.compile("(0-91)?")
-    # PatternB = re.compile("[0-9]{10}")
-    # lhs = "".join(original[1:])
-    # if PatternA.match(original[0]) and PatternB.match(lhs):
-    #     return f"+{original[0]} {lhs[:3]} {lhs[3:6]} {lhs[6:10]}"
-    # else:
-    #     None
+        print(original)
+        n = len(original) - 10
+        return f"+{original[:n]} {original[n:n+3]} {original[n+3:n+6]} {original[n+6:]}"
 
 
 def validate_email(email):
@@ -393,4 +389,103 @@ def show_chat(data: pd.DataFrame):
             color, f"[{row['Side']} @ {Fore.YELLOW}{row['Date']}{color}]:\n\t {row['Message']}", Fore.RESET)
 
 
-def is_alpha_ws(s): return all(x.isalpha() for x in s)
+def is_alpha_ws(s): return all(x.isalpha() for x in s.split(" "))
+
+def forgot_pass_mail(customers:pd.DataFrame, reciever:str):
+    qry_df = customers[customers["email"] == reciever]
+    if len(qry_df) == 0:
+        raise Exception(f"Customer with email {reciever} does not exist")
+    if len(qry_df) != 1:
+        raise Exception(f"Multiple customers with email {reciever} exist")
+
+    passs, sender = None, None
+    try:
+        passs = os.environ['EMAIL_PASSs']
+        sender = os.environ['EMAIL_EMAIL']
+    except KeyError as e:
+        throw_error('error', 'Environ variable not found', f"""
+        
+        You must set the {Fore.LIGHTGREEN_EX}EMAIL_PASS{Fore.RED} and {Fore.LIGHTGREEN_EX}EMAIL_EMAIL{Fore.RED} environment variables.
+        where {Fore.LIGHTGREEN_EX}EMAIL_PASS{Fore.RED} is your APP PASSWORD 
+        and {Fore.LIGHTGREEN_EX}EMAIL_EMAIL{Fore.RED} is your email address
+
+        You can get your APP PASSWORD from here: https://myaccount.google.com/apppasswords
+        and set the environment variables:
+        {Fore.LIGHTGREEN_EX}EMAIL_PASS : YOUR APP PASSWORD{Fore.RED} 
+        {Fore.LIGHTGREEN_EX}EMAIL_EMAIL: YOUR EMAIL ADDRESS{Fore.RED}
+
+        NOTE: You must have 2 Factor authentication enabled on your google account as a sender.
+        
+        """)
+
+    reciever = sender
+
+    # Generate the email
+    msg = EmailMessage()
+    msg['Subject'] = 'Forgot Password/ID'
+    msg['From'] = sender
+    msg['To'] = reciever
+
+    # Setup otp, id and timer
+    otp = random.randint(10000, 99999)
+    Id = qry_df.index.values[0]
+
+    # Generate email message
+    msg.set_content("""
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style> 
+    .div1 {
+      width: 300px;
+      height: 300px;
+      border-style: ridge none none ridge;
+      padding: 50px;
+      background-color:#264653
+    }
+    </style>
+    </head>
+    <body>
+        <h1 style="background-color:#2A9D8F;font-family:verdana;color:#E9C46A;text-align:center;">LEMON BEE</h1>
+        <hr>
+        <div class="div1">
+            <h3 style="font-family:verdana;color:#FFFFFF">Forgot Password/ID</h3>
+            <p style="color:#E76F51">
+            Hello, <br>
+            Your ID is """ + str(Id) + """<br><br>
+            To change your password please enter the otp given below in our software:
+            <br><br>
+            OTP: """ + str(otp) + """
+            </p>
+        </div>
+        <br>
+    </body>
+    </html>
+    """, subtype='html')
+
+    # Send the email
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(sender, passs)
+        smtp.send_message(msg)
+    
+    # Check and action
+    time_sent = datetime.now()
+    cls()
+    otp_in = safe_input(Fore.LIGHTMAGENTA_EX + "We have sent you an OTP on your mail \nplease enter it it proceed.\n\nEnter OTP: " + Fore.RESET)
+    if otp_in != otp:
+        raise Exception(f"Otp is not valid. Please try again.")
+    if (datetime.now() - time_sent).seconds > 5 * 60:
+        raise Exception("OTP has expired. Please try again.")
+    while True:
+        cls()
+        new_pass = input(Fore.LIGHTMAGENTA_EX + "New Password: " + Fore.RESET).strip()
+        if new_pass == passs:
+            throw_error('error', 'Invalid password', "Password cannot be your Old Password. Please try again.")
+            continue
+        if new_pass in customers['password'].values:
+            throw_error('error', 'Invalid password', "Password is already in use. Please try again.")
+            continue
+        customers.at[Id, 'password'] = new_pass
+        SaveData(customers, "Customers")
+        break
+    print("Password successfully changed!")

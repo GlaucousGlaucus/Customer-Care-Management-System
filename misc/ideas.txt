@@ -1,8 +1,0 @@
-How to make OTP ?
-
-> Generate 6 digit code
-> Send it via email
-> Set up a background counter for a min
-
-
-- Add Regex Guide for user
