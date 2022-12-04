@@ -1,13 +1,7 @@
-import time
-from datetime import datetime
-from colorama import Fore
-from util_tools import CustomSearcher, print_text, cls, pause
-from actions import dateformat_info as date_info
-from actions import *
-
-import pandas as pd
 import matplotlib.pyplot as plt
 
+from actions import *
+from actions import dateformat_info as date_info
 from menu_options_module import print_menu
 
 
@@ -19,24 +13,25 @@ def SaveAll():
     SaveData(msgs, "Messages")
 
 
-def SortData(df: pd.DataFrame, exit_to_level, exit_code: int, other_options: list):
+def SortData(df: pd.DataFrame, exit_to_level, exit_code: int | str, other_options: list):
     global menu_level
     other_options = [str(x) for x in other_options]
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == str(exit_code):
+        sort_cmd = input("Command: ")
+        if sort_cmd == str(exit_code):
             menu_level = str(exit_to_level)
             break
         reverse_chk = input(
             f"{Fore.LIGHTMAGENTA_EX}Do you want to sort in reverse order? (Y/N)\n> {Fore.RESET}").strip().lower() not in "y1"
         sort_df = None
         in_place = input(
-            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed with caution!\n>  {Fore.RESET}").strip().lower() in "y1"
-        if cmd == "1":
+            f"{Fore.RED}Do you want to modify the original data?\nNOTE: This action will not be reversible! Proceed "
+            f"with caution!\n>  {Fore.RESET}").strip().lower() in "y1 "
+        if sort_cmd == "1":
             sort_df = df.sort_index(ascending=reverse_chk, inplace=in_place)
-        elif cmd in other_options:
-            col = df.columns[int(cmd)-2]
+        elif sort_cmd in other_options:
+            col = df.columns[int(sort_cmd) - 2]
             sort_df = df.sort_values(by=col, ascending=reverse_chk, inplace=in_place)
         print(Fore.LIGHTMAGENTA_EX, sort_df if not in_place else df, Fore.RESET)
         pause()
@@ -49,7 +44,9 @@ def amc_Search():
     df = customers.copy()
     df.drop(["password"], axis=1, inplace=True)
     search_engine = CustomSearcher(df)
-    def col(x): return customers.columns[int(x)-2]
+
+    def col(x):
+        return customers.columns[int(x) - 2]
 
     qry_result = None
     while True:
@@ -80,7 +77,8 @@ def amc_Search():
                 qry, col(cmd_n), options=options)
         # Reset the operating df
         elif cmd_n == "14":
-            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+            if input(
+                    f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = customers.copy()
                 search_engine = CustomSearcher(df)
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
@@ -113,33 +111,33 @@ def amcDAPieChart():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "5":
+        amc_da_pie_cmd = input("Command: ")
+        if amc_da_pie_cmd == "5":
             menu_level = "1.1.3"
             break
         # Gender
-        elif cmd == "1":
+        elif amc_da_pie_cmd == "1":
             print(f"{Fore.CYAN}Displaying Gender Graph...{Fore.RESET}")
             customers.groupby(["gender"]).size().plot(kind='pie', autopct="%.2f", colors=[
                 "pink", "aqua"], title="Gender", legend=False)
             plt.ylabel("Gender")
             plt.show()
         # Country
-        elif cmd == "2":
+        elif amc_da_pie_cmd == "2":
             print(f"{Fore.CYAN}Displaying Country Graph...{Fore.RESET}")
             customers.groupby(["country"]).size().plot(
                 kind='pie', autopct="%.2f", title="Country", legend=False)
             plt.ylabel("Country")
             plt.show()
         # State
-        elif cmd == "3":
+        elif amc_da_pie_cmd == "3":
             print(f"{Fore.CYAN}Displaying State Graph...{Fore.RESET}")
             customers.groupby(["state"]).size().plot(
                 kind='pie', autopct="%.2f", title="State", legend=False)
             plt.ylabel("State")
             plt.show()
         # Prime
-        elif cmd == "4":
+        elif amc_da_pie_cmd == "4":
             print(f"{Fore.CYAN}Displaying Prime Graph...{Fore.RESET}")
             customers.groupby(["prime"]).size().plot(
                 kind='pie', autopct="%.2f", title="Prime", legend=False)
@@ -153,12 +151,12 @@ def amcDABarGraph():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "2":
+        amc_da_bar_cmd = input("Command: ")
+        if amc_da_bar_cmd == "2":
             menu_level = "1.1.3"
             break
         # Age of Customers
-        elif cmd == "1":
+        elif amc_da_bar_cmd == "1":
             print(f"{Fore.CYAN}Displaying Age of Customers Graph...{Fore.RESET}")
             (pd.Timestamp("now") - customers['dob']
              ).astype("<m8[Y]").plot(kind='hist')
@@ -168,22 +166,22 @@ def amcDABarGraph():
         cls()
 
 
-def am_cust_f():
+def admin_customer_main():
     global menu_level
     global customers
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        amc_cmd = input("Command: ")
+        if amc_cmd == "1":
             cls()
             print(customers.drop(["password"], axis=1))
             pause()
         # Search
-        elif cmd == "2":
+        elif amc_cmd == "2":
             menu_level = "1.1.1"
             amc_Search()
         # Adding a Customer
-        elif cmd == "3":
+        elif amc_cmd == "3":
             if input("Do you want to add a customer ? (Y/N) ").strip().lower() in ["y", "1", "yes", "oui"]:
                 n = safe_input("How many customers would you like to add? ")
                 try:
@@ -196,29 +194,29 @@ def am_cust_f():
                 print("Command Cancelled: Add a customer.")
                 pause()
         # Updating a customer
-        elif cmd == "4":
+        elif amc_cmd == "4":
             if input("Do you want to update a customer ? (Y/N) ").strip().lower() in ["y", "1", "yes", "oui"]:
                 update_customer(customers)
             else:
                 print("Command Cancelled: Update a customer.")
                 pause()
         # Delete a customer
-        elif cmd == "5":
+        elif amc_cmd == "5":
             if input("Do you want to delete a customer ? (Y/N) ").strip().lower() in ["y", "1", "yes", "oui"]:
                 delete_customer(customers)
             else:
                 print("Command Cancelled: Delete a customer.")
                 pause()
         # Sort
-        elif cmd == "6":
+        elif amc_cmd == "6":
             menu_level = "1.1.2"
             SortData(customers.drop(["password"], axis=1), 1.1, "14", [
                 "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"])
         # Data Analysis
-        elif cmd == "7":
+        elif amc_cmd == "7":
             menu_level = "1.1.3"
             amc_DA()
-        elif cmd == "8":
+        elif amc_cmd == "8":
             menu_level = "1"
             break
 
@@ -233,6 +231,7 @@ def amp_Search():
 
     def col(x):
         return products.columns[int(x) - 2]
+
     while True:
         print_menu(menu_level)
         amp_cmd = input("Command: ")
@@ -259,7 +258,8 @@ def amp_Search():
             menu_level = "1.2"
             break
         elif amp_cmd == "10":
-            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+            if input(
+                    f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = products.copy()
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
         # Check if the user wants to use the generated df for further queries
@@ -272,51 +272,51 @@ def amp_DA():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        amp_da_cmd = input("Command: ")
+        if amp_da_cmd == "1":
             print(f"{Fore.CYAN}Displaying Categories (In-Stock) Graph...{Fore.RESET}")
             g = products.groupby(['category'])["In-Stock"].sum()
             g.plot(kind='bar')
             plt.ylabel("In-Stock")
             plt.xlabel("Category")
             plt.show()
-        elif cmd == "2":
+        elif amp_da_cmd == "2":
             print(f"{Fore.CYAN}Displaying Returnable Graph...{Fore.RESET}")
             products.groupby(['Returnable']).size().plot(
                 kind='pie', autopct="%.2f")
             plt.ylabel("Returnable")
             plt.show()
-        elif cmd == "3":
+        elif amp_da_cmd == "3":
             print(f"{Fore.CYAN}Displaying AvgRating Graph...{Fore.RESET}")
             g = products.groupby(['category'])["AvgRating"].mean()
             g.plot(kind='bar')
             plt.ylabel("AvgRating")
             plt.xlabel("Category")
             plt.show()
-        elif cmd == "4":
+        elif amp_da_cmd == "4":
             menu_level = "1.2"
             break
 
 
-def am_prod_f():
+def admin_product_main():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
+        amp_cmd = input("Command: ")
         # Exit
-        if cmd == "8":
+        if amp_cmd == "8":
             menu_level = "1"
             break
-        elif cmd == "1":
+        elif amp_cmd == "1":
             cls()
             print(products)
             pause()
         # Search
-        elif cmd == "2":
+        elif amp_cmd == "2":
             menu_level = "1.2.1"
             amp_Search()
         # Add products
-        elif cmd == "3":
+        elif amp_cmd == "3":
             if input("Do you want to add a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 n = safe_input("How many products would you like to add? ")
                 try:
@@ -329,79 +329,83 @@ def am_prod_f():
                 print("Command Cancelled: Add a product.")
                 pause()
         # Update products
-        elif cmd == "4":
+        elif amp_cmd == "4":
             if input("Do you want to update a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 update_product(products)
             else:
                 print("Command Cancelled: Update a product.")
                 pause()
         # Delete products
-        elif cmd == "5":
+        elif amp_cmd == "5":
             if input("Do you want to delete a product ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 delete_product(products)
             else:
                 print("Command Cancelled: Delete a product.")
                 pause()
         # Sort products
-        elif cmd == "6":
+        elif amp_cmd == "6":
             menu_level = "1.2.2"
             SortData(products, 1.2, "9", [
                 "2", "3", "4", "5", "6", "7", "8"])
         # Data Analysis
-        elif cmd == "7":
+        elif amp_cmd == "7":
             menu_level = "1.2.3"
             amp_DA()
 
 
 # -----------------------------------------------------------------------------------------------------------------------------
 
-def amo_Search():
+def admin_order_search():
     global menu_level
     df = orders.copy()
     search_engine = CustomSearcher(df)
     qry_result = None
-    def col(x): return orders.columns[int(x)-2]
+
+    def col(x):
+        return orders.columns[int(x) - 2]
+
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_order_search_cmd = input("Command: ")
+        if admin_order_search_cmd == "1":
             qry = safe_input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
             qry_result = search_engine.by_id(qry)
-        elif cmd in "25":
+        elif admin_order_search_cmd in "25":
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             qry = safe_input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = search_engine.by_single(qry, col(cmd))
-        elif cmd in ["3", "4", "6", "11"]:
+            qry_result = search_engine.by_single(qry, col(admin_order_search_cmd))
+        elif admin_order_search_cmd in ["3", "4", "6", "11"]:
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             qry = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = search_engine.by_string(qry, col(cmd))
-        elif cmd in ["7", "8"]:
+            qry_result = search_engine.by_string(qry, col(admin_order_search_cmd))
+        elif admin_order_search_cmd in ["7", "8"]:
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
-            qry_result = search_engine.by_num(col(cmd))
-        elif cmd == "10":
+            qry_result = search_engine.by_num(col(admin_order_search_cmd))
+        elif admin_order_search_cmd == "10":
             # Search By Status
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
-            cmdn = input(
+            status_search_command = input(
                 "Index: \n1) Cancelled\n2) Delivered\n3) Pre-Shipment\n4) Unshipped\nCommand: ")
-            qry_result = search_engine.by_options(cmdn, col(
-                cmd), {"1": "Cancelled", "2": "Delivered", "3": "Pre-Shipment", "4": "Unshipped"})
+            qry_result = search_engine.by_options(status_search_command, col(
+                admin_order_search_cmd), {"1": "Cancelled", "2": "Delivered", "3": "Pre-Shipment", "4": "Unshipped"})
         # Search by DOO
-        elif cmd == "9":
+        elif admin_order_search_cmd == "9":
             print(f"{Fore.LIGHTMAGENTA_EX}Current Dataframe: \n{df}\n")
             qry_result = search_engine.by_date(
-                col=col(cmd), format=date_format, time=True)
-        elif cmd == "12":
+                col=col(admin_order_search_cmd), formatting=date_format, time=True)
+        elif admin_order_search_cmd == "12":
             menu_level = "1.3"
             break
-        elif cmd == "13":
-            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+        elif admin_order_search_cmd == "13":
+            if input(
+                    f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = orders.copy()
                 search_engine = CustomSearcher(df)
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
         # Check if the user wants to use the generated df for further queries
         ops = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
-        df, search_engine = qry_df_final_func(df, cmd, ops, search_engine, qry_result)
+        df, search_engine = qry_df_final_func(df, admin_order_search_cmd, ops, search_engine, qry_result)
         pause()
 
 
@@ -409,21 +413,21 @@ def am_ord_f():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "7":
+        admin_order_cmd = input("Command: ")
+        if admin_order_cmd == "7":
             menu_level = "1"
             break
         # Show all orders
-        elif cmd == "1":
+        elif admin_order_cmd == "1":
             cls()
             print(orders)
             pause()
         # Search for orders
-        elif cmd == "2":
+        elif admin_order_cmd == "2":
             menu_level = "1.3.1"
-            amo_Search()
+            admin_order_search()
         # Add Order
-        elif cmd == "3":
+        elif admin_order_cmd == "3":
             if input("Do you want to add an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 n = safe_input("How many orders would you like to add? ")
                 try:
@@ -436,22 +440,23 @@ def am_ord_f():
                 print("Command Cancelled: Add an order.")
                 pause()
         # Update an order
-        elif cmd == "4":
+        elif admin_order_cmd == "4":
             if input("Do you want to update an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 update_order(customers, products, orders)
             else:
                 print("Command Cancelled: Update an order.")
                 pause()
-        elif cmd == "5":
+        elif admin_order_cmd == "5":
             if input("Do you want to delete an order ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 delete_order(orders)
             else:
                 print("Command Cancelled: Delete an order.")
                 pause()
-        elif cmd == "6":
+        elif admin_order_cmd == "6":
             menu_level = "1.3.2"
             SortData(orders, 1.3, "12", [
                 "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])
+
 
 # -----------------------------------------------------------------------------------------------------------------------------
 
@@ -461,50 +466,54 @@ def amt_Search():
     df = tickets.copy()
     search_engine = CustomSearcher(df)
     qry_result = None
-    def col(x): return tickets.columns[int(x)-2]
+
+    def col(x):
+        return tickets.columns[int(x) - 2]
+
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
+        admin_ticket_search_cmd = input("Command: ")
         # Search by Ticket ID
-        if cmd == "1":
+        if admin_ticket_search_cmd == "1":
             qry = safe_input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
             qry_result = search_engine.by_id(qry)
-        elif cmd in "23":
+        elif admin_ticket_search_cmd in "23":
             qry = safe_input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = search_engine.by_single(qry, col(cmd))
+            qry_result = search_engine.by_single(qry, col(admin_ticket_search_cmd))
         # Search by Strings
-        elif cmd in ["4", "5", "6", "7", "10"]:
+        elif admin_ticket_search_cmd in ["4", "5", "6", "7", "10"]:
             qry = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = search_engine.by_string(qry, col(cmd))
+            qry_result = search_engine.by_string(qry, col(admin_ticket_search_cmd))
         # Search by Status
-        elif cmd == "8":
+        elif admin_ticket_search_cmd == "8":
             qry = input("Index: \n\t1) Open\n\t2) Closed\nCommand: ")
             options = {"1": "Open", "2": "Closed"}
-            qry_result = search_engine.by_options(qry, col(cmd), options)
+            qry_result = search_engine.by_options(qry, col(admin_ticket_search_cmd), options)
         # Search by Issue Category
-        elif cmd == "9":  # TODO Maybe use options here
+        elif admin_ticket_search_cmd == "9":
             qry = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = search_engine.by_string(qry, col(cmd))
+            qry_result = search_engine.by_string(qry, col(admin_ticket_search_cmd))
         # Search by Dates
-        elif cmd in ["11", "12"]:
-            qry_result = search_engine.by_date(col(cmd), time=True)
+        elif admin_ticket_search_cmd in ["11", "12"]:
+            qry_result = search_engine.by_date(col(admin_ticket_search_cmd), time=True)
         # Search by HoursTaken
-        elif cmd in ["13", "14", "15", "16"]:
-            qry_result = search_engine.by_num(col(cmd))
+        elif admin_ticket_search_cmd in ["13", "14", "15", "16"]:
+            qry_result = search_engine.by_num(col(admin_ticket_search_cmd))
         # Exit TODO Move it to top
-        elif cmd == "17":
+        elif admin_ticket_search_cmd == "17":
             menu_level = "1.4"
             break
-        elif cmd == "18":
-            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+        elif admin_ticket_search_cmd == "18":
+            if input(
+                    f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = tickets.copy()
                 search_engine = CustomSearcher(df)
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
         # Check if the user wants to use the generated df for further queries
         ops = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
-        df, search_engine = qry_df_final_func(df, cmd, ops, search_engine, qry_result)
+        df, search_engine = qry_df_final_func(df, admin_ticket_search_cmd, ops, search_engine, qry_result)
         pause()
 
 
@@ -512,22 +521,22 @@ def amt_DA_PieChart():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
+        admin_ticket_da_pie_cmd = input("Command: ")
         # Status
-        if cmd == "1":
+        if admin_ticket_da_pie_cmd == "1":
             print_text(Fore.CYAN, "Displaying Status Pie Chart...")
             tickets.groupby(["Status"]).size().plot(
                 kind="pie", autopct="%.2f", title="Status", legend=True)
             plt.ylabel("")
             plt.show()
         # Prod Cat
-        elif cmd == "2":
+        elif admin_ticket_da_pie_cmd == "2":
             print_text(Fore.CYAN, "Displaying Product Categories' Chart...")
             tickets.groupby(["ProductCategory"]).size().plot(
                 kind="pie", autopct="%.2f", title="Product Category", legend=True)
             plt.ylabel("")
             plt.show()
-        elif cmd == "3":
+        elif admin_ticket_da_pie_cmd == "3":
             menu_level = "1.4.3"
             break
 
@@ -536,19 +545,19 @@ def amt_DA_BarGraph():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd in "12":
-            col, txt = "DateOpened" if cmd == "1" else "DateClosed", "Opened" if cmd == "1" else "Closed"
+        admin_ticket_da_bar_cmd = input("Command: ")
+        if admin_ticket_da_bar_cmd in "12":
+            col, txt = "DateOpened" if admin_ticket_da_bar_cmd == "1" else "DateClosed", "Opened" if admin_ticket_da_bar_cmd == "1" else "Closed"
             print_text(Fore.CYAN, f"Displaying {col}...")
             g1 = tickets.groupby(
                 tickets[tickets[col] != pd.NaT][col].dt.month).size()
             g1 = g1.plot(kind='bar')
             g1.set_xticklabels(("Jan", "Feb", "Mar", "Apr", "May",
-                               "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
+                                "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
             plt.ylabel(f"Number of Ticket(s) {txt}")
             plt.xlabel("Month")
             plt.show()
-        elif cmd == "3":
+        elif admin_ticket_da_bar_cmd == "3":
             print_text(Fore.CYAN, f"Displaying...")
             g1 = tickets.groupby(
                 tickets["DateOpened"].dt.month).size().reset_index()
@@ -565,7 +574,7 @@ def amt_DA_BarGraph():
             plt.ylabel("HoursTaken")
             plt.xlabel("Month")
             plt.show()
-        elif cmd == "4":
+        elif admin_ticket_da_bar_cmd == "4":
             menu_level = "1.4.3"
             break
 
@@ -574,20 +583,19 @@ def amt_DA_OtherGraph():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_ticket_da_other_cmd = input("Command: ")
+        if admin_ticket_da_other_cmd == "1":
             g1 = tickets.groupby(tickets['DateClosed'].dt.month)[
                 'HoursTaken'].mean()
             g1 = g1.plot(kind='line')
             month = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-            g1.set_xticklabels(month)
             plt.ylabel(f"Avg. Time Taken (Hrs)")
             plt.xlabel("Month")
             plt.show()
-        elif cmd == "2":
+        elif admin_ticket_da_other_cmd == "2":
             g1 = tickets.groupby(tickets['DateClosed'].dt.month)[
-                'FirstResponseTime(Min)'].mean()
+                'FirstResponseTime'].mean()
             g1 = g1.plot(kind='line')
             month = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
@@ -595,7 +603,7 @@ def amt_DA_OtherGraph():
             plt.ylabel(f"Avg. Response Time (min)")
             plt.xlabel("Month")
             plt.show()
-        elif cmd == "3":
+        elif admin_ticket_da_other_cmd == "3":
             g1 = tickets.groupby(tickets['DateClosed'].dt.month)[
                 'Replies'].mean()
             g1 = g1.plot(kind='line')
@@ -605,7 +613,7 @@ def amt_DA_OtherGraph():
             plt.ylabel(f"Avg. Replies")
             plt.xlabel("Month")
             plt.show()
-        elif cmd == "4":
+        elif admin_ticket_da_other_cmd == "4":
             g1 = tickets.groupby(tickets['DateClosed'].dt.month)[
                 'CustomerSatisfaction(%)'].mean()
             g1 = g1.plot(kind='line')
@@ -615,7 +623,7 @@ def amt_DA_OtherGraph():
             plt.ylabel(f"Customer Satisfaction")
             plt.xlabel("Month")
             plt.show()
-        elif cmd == "5":
+        elif admin_ticket_da_other_cmd == "5":
             menu_level = "1.4.3"
             break
 
@@ -624,17 +632,17 @@ def amt_DA():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_ticket_cmd = input("Command: ")
+        if admin_ticket_cmd == "1":
             menu_level = "1.4.3.1"
             amt_DA_PieChart()
-        elif cmd == "2":
+        elif admin_ticket_cmd == "2":
             menu_level = "1.4.3.2"
             amt_DA_BarGraph()
-        elif cmd == "3":
+        elif admin_ticket_cmd == "3":
             menu_level = "1.4.3.3"
             amt_DA_OtherGraph()
-        elif cmd == "4":
+        elif admin_ticket_cmd == "4":
             menu_level = "1.4"
             break
 
@@ -643,7 +651,7 @@ def amt_RG_Summarize():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = safe_input("Command: ")
+        admin_ticket_report_cmd = safe_input("Command: ")
         # TODO Ask to show graph
         tdy = pd.to_datetime(datetime.today().date())
         cmd_index = {1: "Today's", 2: "Weekly",
@@ -654,32 +662,32 @@ def amt_RG_Summarize():
             3: [tdy - pd.to_timedelta(30, unit='D'), tdy],
             4: [tdy - pd.to_timedelta(365, unit='D'), tdy]
         }
-        if cmd in [1, 2, 3, 4, 5]:
-            # Get The Range
-            rangee = []
-            if cmd == 5:
+        if admin_ticket_report_cmd in [1, 2, 3, 4, 5]:
+            # Get The Range for date
+            date_range = []
+            if admin_ticket_report_cmd == 5:
                 for x in range(2):
-                    print(date_info)
-                    sore = "Start: " if x == 0 else "End: "
-                    do_check = input(Fore.LIGHTMAGENTA_EX + sore + Fore.RESET)
-                    do = date_decoder(do_check, time=True)
-                    while do is None:
+                    print(datetimeformat_info)
+                    start_or_end = "Start: " if x == 0 else "End: "
+                    date_check = input(Fore.LIGHTMAGENTA_EX + start_or_end + Fore.RESET)
+                    decoded_date = date_decoder(date_check, time=True)
+                    while decoded_date is None:
                         throw_error(
-                            'error', *data_error_msgs["dob"](do_check))
+                            'error', *data_error_msgs["dob"](date_check))
                         cls()
                         print(date_info)
-                        do_check = input(Fore.LIGHTMAGENTA_EX +
-                                         sore + Fore.RESET)
-                        do = date_decoder(do_check, time=True)
-                    rangee.append(do)
+                        date_check = input(Fore.LIGHTMAGENTA_EX +
+                                           start_or_end + Fore.RESET)
+                        decoded_date = date_decoder(date_check, time=True)
+                    date_range.append(decoded_date)
             else:
-                rangee = range_index[cmd]
+                date_range = range_index[admin_ticket_report_cmd]
             # Generate Dataframe and Report
-            start, end = pd.to_datetime(rangee[0]), pd.to_datetime(rangee[1])
+            start, end = pd.to_datetime(date_range[0]), pd.to_datetime(date_range[1])
             start_cond = (tickets['DateOpened'] >= start) | (
-                tickets['DateClosed'] >= start)
+                    tickets['DateClosed'] >= start)
             end_cond = (tickets['DateOpened'] <= end) | (
-                tickets['DateClosed'] <= end)
+                    tickets['DateClosed'] <= end)
             df = tickets[start_cond & end_cond]
             if df.empty:
                 throw_error('info', 'EMPTY DATAFRAME', "")
@@ -699,7 +707,7 @@ def amt_RG_Summarize():
                                                                  |___/ 
                                                                                                                                                                                 
    
-   {cmd_index[cmd]} Data:                                                                              
+   {cmd_index[admin_ticket_report_cmd]} Data:                                                                              
                                                                                             
    Date:                       {Fore.RED}{pd.to_datetime(datetime.today())}{Fore.CYAN}                                                  
                                                                                             
@@ -721,7 +729,7 @@ def amt_RG_Summarize():
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 """, Fore.RESET)
             pause()
-        elif cmd == 6:
+        elif admin_ticket_report_cmd == 6:
             menu_level = "1.4.4"
             break
 
@@ -730,20 +738,20 @@ def amt_MG_GenFromTemplate():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "4":
+        admin_ticket_message_cmd = input("Command: ")
+        if admin_ticket_message_cmd == "4":
             menu_level = "1.4.5"
             break
         # TicketID
-        TicketID = safe_input(Fore.LIGHTMAGENTA_EX +
-                              "Enter Ticket ID: " + Fore.RESET)
-        if TicketID not in tickets.index:
+        ticket_id = safe_input(Fore.LIGHTMAGENTA_EX +
+                               "Enter Ticket ID: " + Fore.RESET)
+        if ticket_id not in tickets.index:
             throw_error('error', "Ticket ID not found!")
             continue
-        ticket_data = tickets.loc[TicketID]
+        ticket_data = tickets.loc[ticket_id]
         # First Response
         msg = ""
-        if cmd == "1":
+        if admin_ticket_message_cmd == "1":
             msg = f"""
 
   ______ _          _     _____                                      
@@ -763,7 +771,7 @@ You described your issue labelled under {ticket_data['IssueCategory']} as:
 {ticket_data['Issue']}
 
 OrderID:    {ticket_data['OrderID']}
-TicketID:   {TicketID}
+TicketID:   {ticket_id}
 Status:     {ticket_data['Status']}
 ---------------------------------------------------------------------------
 Please stand by as we look into your issue, our team will try
@@ -771,7 +779,7 @@ their best to look into your issue and try to resolve it as soon as
 possible. This may take upto a few minutes.
 """
         # Denied
-        elif cmd == "2":
+        elif admin_ticket_message_cmd == "2":
             msg = f"""
    _____                            _     _____             _          _ 
   |  __ \                          | |   |  __ \           (_)        | |
@@ -790,13 +798,13 @@ You described your issue labelled under {ticket_data['IssueCategory']} as:
 {ticket_data['Issue']}
 
 OrderID:    {ticket_data['OrderID']}
-TicketID:   {TicketID}
+TicketID:   {ticket_id}
 Status:     {ticket_data['Status']}
 ---------------------------------------------------------------------------
 Please inform us of any other issue we can help you with.
 """
         # Acknowledgement
-        elif cmd == "3":
+        elif admin_ticket_message_cmd == "3":
             msg = f"""
                 _                        _          _                _ 
       /\       | |                      | |        | |              | |
@@ -815,7 +823,7 @@ You described your issue labelled under {ticket_data['IssueCategory']} as:
 {ticket_data['Issue']}
 
 OrderID:    {ticket_data['OrderID']}
-TicketID:   {TicketID}
+TicketID:   {ticket_id}
 Status:     {ticket_data['Status']}
 ---------------------------------------------------------------------------
 The process may take upto several minuets to complete, hence please be patient
@@ -825,7 +833,7 @@ with us. Thank you for contacting us.
         send_to_chat = input(
             Fore.LIGHTMAGENTA_EX + "Would you like to send this message to chat ?" + Fore.RESET).strip().lower()
         if send_to_chat in "y1":
-            msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [TicketID,
+            msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [ticket_id,
                                                               "ADMIN", msg, pd.to_datetime(datetime.now())]
             SaveData(msgs, "Messages")
 
@@ -834,19 +842,17 @@ def amt_MG_Custom():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_msg_custom_cmd = input("Command: ")
+        if admin_msg_custom_cmd == "1":
             # TicketID
-            TicketID = safe_input(Fore.LIGHTMAGENTA_EX +
-                                  "Enter Ticket ID: " + Fore.RESET)
-            if TicketID not in tickets.index:
+            ticket_id = safe_input(Fore.LIGHTMAGENTA_EX +
+                                   "Enter Ticket ID: " + Fore.RESET)
+            if ticket_id not in tickets.index:
                 throw_error(
                     'error', "Ticket ID not found! Type EXT TO QUIT")
-                TicketID = safe_input(Fore.LIGHTMAGENTA_EX +
-                                      "Enter Ticket ID: " + Fore.RESET)
                 continue
             else:
-                ticket_data = tickets.loc[TicketID]
+                ticket_data = tickets.loc[ticket_id]
                 print_menu(menu_level)
                 message = input("Enter your message: \n")
                 msg = \
@@ -865,7 +871,7 @@ Dear {ticket_data['CustFirstName']},
 {message}
 
 OrderID:    {ticket_data['OrderID']}
-TicketID:   {TicketID}
+TicketID:   {ticket_id}
 Status:     {ticket_data['Status']}
 ---------------------------------------------------------------------------
 Thank you for contacting us.
@@ -874,10 +880,10 @@ Thank you for contacting us.
                 send_to_chat = input(
                     Fore.LIGHTMAGENTA_EX + "Would you like to send this message to chat ?" + Fore.RESET).strip().lower()
                 if send_to_chat in "y1":
-                    msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [TicketID,
+                    msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [ticket_id,
                                                                       "ADMIN", msg, pd.to_datetime(datetime.now())]
                     SaveData(msgs, "Messages")
-        elif cmd == "2":
+        elif admin_msg_custom_cmd == "2":
             menu_level = "1.4.5"
             break
 
@@ -886,11 +892,11 @@ def amt_RG():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_report_gen_cmd = input("Command: ")
+        if admin_report_gen_cmd == "1":
             menu_level = "1.4.4.1"
             amt_RG_Summarize()
-        elif cmd == "2":
+        elif admin_report_gen_cmd == "2":
             menu_level = "1.4"
             break
 
@@ -899,14 +905,14 @@ def amt_MG():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_ticket_msg_gen_cmd = input("Command: ")
+        if admin_ticket_msg_gen_cmd == "1":
             menu_level = "1.4.5.1"
             amt_MG_GenFromTemplate()
-        elif cmd == "2":
+        elif admin_ticket_msg_gen_cmd == "2":
             menu_level = "1.4.5.2"
             amt_MG_Custom()
-        elif cmd == "3":
+        elif admin_ticket_msg_gen_cmd == "3":
             menu_level = "1.4"
             break
 
@@ -916,18 +922,18 @@ def am_tick_f():
     global tickets
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "10":
+        admin_ticket_command = input("Command: ")
+        if admin_ticket_command == "10":
             menu_level = "1"
             break
-        elif cmd == "1":
+        elif admin_ticket_command == "1":
             cls()
             print(tickets)
             pause()
-        elif cmd == "2":
+        elif admin_ticket_command == "2":
             menu_level = "1.4.1"
             amt_Search()
-        elif cmd == "3":
+        elif admin_ticket_command == "3":
             if input("Do you want to add a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 n = safe_input("How many tickets would you like to add? ")
                 for _ in range(n):
@@ -936,51 +942,54 @@ def am_tick_f():
             else:
                 print("Command Cancelled: Add a ticket.")
                 pause()
-        elif cmd == "4":
+        elif admin_ticket_command == "4":
             if input("Do you want to update a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 update_ticket(customers, products, orders, tickets)
             else:
                 print("Command Cancelled: Update a ticket.")
                 pause()
-        elif cmd == "5":
+        elif admin_ticket_command == "5":
             if input("Do you want to delete a ticket ? (Y/N) ").lower() in ["y", "1", "yes", "oui"]:
                 delete_ticket(tickets)
             else:
                 print("Command Cancelled: Delete a ticket.")
                 pause()
-        elif cmd == "6":
+        elif admin_ticket_command == "6":
             menu_level = "1.4.2"
             SortData(tickets, 1.4, "17", [
                 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
-        elif cmd == "7":
+        elif admin_ticket_command == "7":
             menu_level = "1.4.3"
             amt_DA()
-        elif cmd == "8":
+        elif admin_ticket_command == "8":
             menu_level = "1.4.4"
             amt_RG()
-        elif cmd == "9":
+        elif admin_ticket_command == "9":
             menu_level = "1.4.5"
             amt_MG()
 
 
-def amMsg_Search(tickid=None, cust=False):
+def amMsg_Search(ticket_id=None, cust=False):
     global menu_level
     df = msgs.copy()
     search_engine = CustomSearcher(df)
     qry_result = None
-    def col(x): return msgs.columns[int(x)-2]
+
+    def col(x):
+        return msgs.columns[int(x) - 2]
+
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
+        admin_msg_search_cmd = input("Command: ")
         # Search by Msg ID
-        if cmd == "1":
+        if admin_msg_search_cmd == "1":
             qry = safe_input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
             qry_result = search_engine.by_id(qry)
             if cust:
-                qry_result = qry_result if qry_result["TicketID"] == tickid else pd.DataFrame(
+                qry_result = qry_result if qry_result["TicketID"] == ticket_id else pd.DataFrame(
                 )
         # Search by TicketID
-        if cmd == "2":
+        if admin_msg_search_cmd == "2":
             qry = safe_input(f"{Fore.CYAN}Enter Query: {Fore.RESET}")
             if qry not in tickets.index:
                 throw_error('error', "ID Does not exist",
@@ -988,72 +997,73 @@ def amMsg_Search(tickid=None, cust=False):
                 continue
             qry_result = msgs[msgs["TicketID"] == qry]
         # Search by Strings
-        elif cmd in ["3", "4"]:
+        elif admin_msg_search_cmd in ["3", "4"]:
             qry = input(
                 f"{Fore.RED}You can use RegEX\n{Fore.CYAN}Enter Query: {Fore.RESET}")
-            qry_result = search_engine.by_string(qry, col(cmd))
-        elif cmd == "5":
+            qry_result = search_engine.by_string(qry, col(admin_msg_search_cmd))
+        elif admin_msg_search_cmd == "5":
             qry_result = search_engine.by_date(
-                col(cmd), format=date_format, time=True)
-        elif cmd == "7":
+                col(admin_msg_search_cmd), formatting=date_format, time=True)
+        elif admin_msg_search_cmd == "7":
             menu_level = "1.5" if not cust else "2.5"
             break
-        elif cmd == "6":
-            if input(f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
+        elif admin_msg_search_cmd == "6":
+            if input(
+                    f"{Fore.RED}Are you sure you want to reset \nthe dataframe for searching?\n> {Fore.RESET}").strip().lower() in "y1":
                 df = msgs.copy()
                 search_engine = CustomSearcher(df)
                 print(f"{Fore.CYAN}DataFrame was reset.\n{Fore.RESET}")
         # Check if the user wants to use the generated df for further queries
         ops = ["1", "2", "3", "4"]
-        df, search_engine = qry_df_final_func(df, cmd, ops, search_engine, qry_result)
+        df, search_engine = qry_df_final_func(df, admin_msg_search_cmd, ops, search_engine, qry_result)
         pause()
 
 
-def msgui(msgs: pd.DataFrame, custid=None, admin=True):
+def message_gui(msgs_df: pd.DataFrame, customer_id=None, admin=True):
     global menu_level
-    TicketID = safe_input(Fore.LIGHTMAGENTA_EX +
-                          "Enter Ticket ID: " + Fore.RESET, "Please make sure you have entered the ID as Integer")
-    if TicketID not in tickets.index or (not admin and tickets.loc[TicketID]["CustID"] != custid):
+    ticket_id = safe_input(Fore.LIGHTMAGENTA_EX +
+                           "Enter Ticket ID: " + Fore.RESET, "Please make sure you have entered the ID as Integer")
+    if ticket_id not in tickets.index or (not admin and tickets.loc[ticket_id]["CustID"] != customer_id):
         throw_error('error', "Ticket ID not found!")
         menu_level = "1.5"
         return None
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "5":
+        msg_gui_cmd = input("Command: ")
+        if msg_gui_cmd == "5":
             menu_level = "1.5" if admin else "2.5"
             break
-        # TicketID
+        # ticket_id
         # Set the side
         side = "ADMIN" if admin else "CLIENT"
-        data = msgs[msgs['TicketID'] == TicketID]
-        if cmd == "1":
+        data = msgs_df[msgs_df['TicketID'] == ticket_id]
+        if msg_gui_cmd == "1":
             show_chat(data)
             pause()
-        elif cmd == "2":
+        elif msg_gui_cmd == "2":
             show_chat(data)
             message = input("""
 --------------------------------------------------------------------
 Your Message: """)
-            msgs.loc[msgs.sort_index().index[::-1][0] + 1] = [TicketID,
-                                                              side, message, pd.to_datetime(datetime.now())]
-            SaveData(msgs, "Messages")
+            msgs_df.loc[msgs_df.sort_index().index[::-1][0] + 1] = [ticket_id,
+                                                                    side, message, pd.to_datetime(datetime.now())]
+            SaveData(msgs_df, "Messages")
             cls()
-            data = msgs[msgs['TicketID'] == TicketID]
+            data = msgs_df[msgs_df['TicketID'] == ticket_id]
             show_chat(data)
             pause()
-        elif cmd == "3":
+        elif msg_gui_cmd == "3":
             cls()
             print(Fore.LIGHTWHITE_EX +
                   "You may find your id using our search feature" + Fore.RESET)
             ipt = safe_input(Fore.LIGHTMAGENTA_EX +
                              "Message ID: " + Fore.RESET)
-            if ipt in msgs.index:
-                msgs.drop(ipt, inplace=True)
-            SaveData(msgs, "Messages")
-        elif cmd == "4":
+            if ipt in msgs_df.index:
+                msgs_df.drop(ipt, inplace=True)
+            SaveData(msgs_df, "Messages")
+        elif msg_gui_cmd == "4":
             menu_level = "2.5.1"
-            amMsg_Search(tickid=TicketID, cust=True)
+            amMsg_Search(ticket_id=ticket_id, cust=True)
 
 
 def am_msg_f():
@@ -1061,27 +1071,23 @@ def am_msg_f():
     global msgs
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "6":
+        admin_message_command = input("Command: ")
+        if admin_message_command == "5":
             menu_level = "1"
             break
-        elif cmd == "1":
+        elif admin_message_command == "1":
             cls()
             print(msgs)
             pause()
-        elif cmd == "2":
+        elif admin_message_command == "2":
             menu_level = "1.5.1"
             amMsg_Search()
-        elif cmd == "3":
+        elif admin_message_command == "3":
             menu_level = "1.5.2"
             SortData(msgs, 1.5, "6", [2, 3, 4, 5])
-        elif cmd == "4":
-            print('D.A.')
-            #menu_level = "1.4.3"
-            # amMsg_DA()
-        elif cmd == "5":
+        elif admin_message_command == "4":
             menu_level = "1.5.5"
-            msgui(msgs)
+            message_gui(msgs)
 
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -1089,23 +1095,23 @@ def admin_menu_f():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
+        admin_menu_command = input("Command: ")
+        if admin_menu_command == "1":
             menu_level = "1.1"
-            am_cust_f()
-        elif cmd == "2":
+            admin_customer_main()
+        elif admin_menu_command == "2":
             menu_level = "1.2"
-            am_prod_f()
-        elif cmd == "3":
+            admin_product_main()
+        elif admin_menu_command == "3":
             menu_level = "1.3"
             am_ord_f()
-        elif cmd == "4":
+        elif admin_menu_command == "4":
             menu_level = "1.4"
             am_tick_f()
-        elif cmd == "5":
+        elif admin_menu_command == "5":
             menu_level = "1.5"
             am_msg_f()
-        elif cmd == "6":
+        elif admin_menu_command == "6":
             menu_level = "0"
             break
         else:
@@ -1116,12 +1122,12 @@ def cust_menu_f():
     global menu_level
     while True:
         print_menu(menu_level)
-        cmd = input("Command: ")
-        if cmd == "1":
-            CustID = safe_input(Fore.LIGHTMAGENTA_EX +
-                                "Enter ID: " + Fore.RESET)
+        customer_menu_command = input("Command: ")
+        if customer_menu_command == "1":
+            customer_id = safe_input(Fore.LIGHTMAGENTA_EX +
+                                     "Enter ID: " + Fore.RESET)
             password = input(Fore.LIGHTMAGENTA_EX + "Password: " + Fore.RESET)
-            if CustID in customers.index and password == customers.loc[CustID]["password"]:
+            if customer_id in customers.index and password == customers.loc[customer_id]["password"]:
                 print(Fore.LIGHTGREEN_EX + """
                                 ╦  ╔═╗╔═╗╦╔╗╔  ╔═╗╦ ╦╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗╦ ╦╦  
                                 ║  ║ ║║ ╦║║║║  ╚═╗║ ║║  ║  ║╣ ╚═╗╚═╗╠╣ ║ ║║  
@@ -1133,20 +1139,20 @@ def cust_menu_f():
                     print_menu(menu_level)
                     search_engine = CustomSearcher(tickets)
                     qry_result = search_engine.by_single(
-                        CustID, tickets.columns[0])
-                    cmd = input("Command: ")
-                    if cmd == "1":
+                        customer_id, tickets.columns[0])
+                    customer_menu_command = input("Command: ")
+                    if customer_menu_command == "1":
                         cls()
                         add_a_ticket(
-                            customers, products, orders, tickets, custid=CustID, register=True)
-                    elif cmd == "2":
+                            customers, products, orders, tickets, custid=customer_id, register=True)
+                    elif customer_menu_command == "2":
                         print(Fore.LIGHTMAGENTA_EX, qry_result, Fore.RESET)
                         pause()
-                    elif cmd == "3":
+                    elif customer_menu_command == "3":
                         update_ticket(
-                            customers, products, orders, tickets, custid=CustID, msg_grp=msg_grp, close=True)
-                    elif cmd == "4":
-                        data = customers.loc[CustID]
+                            customers, products, orders, tickets, custid=customer_id, msg_grp=msg_grp, close=True)
+                    elif customer_menu_command == "4":
+                        data = customers.loc[customer_id]
                         print(Fore.CYAN,
                               f"""
                                     ╔═╗╦═╗╔═╗╔═╗╦╦  ╔═╗
@@ -1155,7 +1161,7 @@ def cust_menu_f():
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
         ______              ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-       ╱      ╲              Customer ID:  {Fore.LIGHTGREEN_EX}{CustID}{Fore.CYAN}                                    
+       ╱      ╲              Customer ID:  {Fore.LIGHTGREEN_EX}{customer_id}{Fore.CYAN}                                    
       ╱        ╲             Name       :  {Fore.LIGHTGREEN_EX}{data['first_name'] + " " + data['last_name']}{Fore.CYAN}  
      │          │            DOB        :  {Fore.LIGHTGREEN_EX}{data['dob']}{Fore.CYAN}  
      │          │            Gender     :  {Fore.LIGHTGREEN_EX}{data['gender']}{Fore.CYAN}  
@@ -1188,25 +1194,25 @@ def cust_menu_f():
    
 """, Fore.RESET)
                         pause()
-                    elif cmd == "5":
+                    elif customer_menu_command == "5":
                         menu_level = "2.5"
-                        msgui(msgs, custid=CustID, admin=False)
-                    elif cmd == "6":
+                        message_gui(msgs, customer_id=customer_id, admin=False)
+                    elif customer_menu_command == "6":
                         menu_level = "2"
                         break
             else:
                 print(Fore.LIGHTRED_EX + "Wrong Credentials", Fore.RESET)
-                frgt = input(Fore.LIGHTMAGENTA_EX +
-                             "Forgot Password or Id ? (Y/N)" + Fore.RESET)
-                if frgt.strip().lower() in "y1":
-                    email = input(Fore.LIGHTMAGENTA_EX +
-                                  "Enter Email: " + Fore.RESET)
+                forgot = input(Fore.LIGHTMAGENTA_EX +
+                               "Forgot Password or Id ? (Y/N)" + Fore.RESET)
+                if forgot.strip().lower() in "y1":
+                    email_for_otp = input(Fore.LIGHTMAGENTA_EX +
+                                          "Enter Email: " + Fore.RESET)
                     try:
-                        forgot_pass_mail(customers, email)
+                        forgot_pass_mail(customers, email_for_otp)
                         pause()
                     except Exception as e:
                         throw_error('error', "Failed to Change Password", e)
-        elif cmd == "2":
+        elif customer_menu_command == "2":
             cls()
             print(Fore.LIGHTCYAN_EX +
                   """
@@ -1216,7 +1222,7 @@ def cust_menu_f():
 ╰──────────────────────────────────────────────────────────────────────╯
 """ + Fore.RESET)
             add_a_Customer(customers=customers, register=True)
-        elif cmd == "3":
+        elif customer_menu_command == "3":
             menu_level = "0"
             break
         else:
