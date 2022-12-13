@@ -28,12 +28,6 @@ admin = 1
         1.4.5 Message Generation
             1.4.5.1 Generate from template
             1.4.5.2 Custom
-    1.5 MSG
-        1.5.1 Show all
-        1.5.2 Search
-        1.5.3 Sort
-        1.5.4 Data Analysis
-        1.5.5 Open MSgging UI
 
 customer = 2
 
