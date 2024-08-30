@@ -84,4 +84,3 @@ The above features will help you to build up a good relationship between your co
 Using this software will help you to accurately monitor your daily/weekly/yearly responses to your customers’ issues and help you see and strengthen your weak areas of your customer service by giving you daily/weekly/yearly reports of your customer service’s performance.
 
 ## Feature Ideas
-These are the Ideas that i want to encorporate in this project.
