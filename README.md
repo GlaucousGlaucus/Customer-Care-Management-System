@@ -85,6 +85,3 @@ Using this software will help you to accurately monitor your daily/weekly/yearly
 
 ## Feature Ideas
 These are the Ideas that i want to encorporate in this project.
-
-
-> Written with [StackEdit](https://stackedit.io/).
