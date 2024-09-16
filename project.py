@@ -1234,7 +1234,8 @@ if __name__ == "__main__":
     print(f"[{datetime.now()}] Loading Files...")
 
     # Read the Files
-    date_format = r"%Y/%m/%d %H:%M:%S"
+    # date_format = r"%Y/%m/%d %H:%M:%S"
+    date_format = r"mixed"
     customers = pd.read_csv(r'Data\Customers.csv', index_col='id')
     customers["dob"] = pd.to_datetime(
         customers["dob"], format=date_format)
