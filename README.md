@@ -1,5 +1,7 @@
 # IP-PROJECT: **Customer Care Management System**
-## PROJECT DESCRIPTION
+
+![logo.png](Resources%2Flogo.png)
+
 The project is a customer care management system that aims to help businesses improve their interactions with their customers and maintain a good reputation in the eyes of their customers.
 
   
@@ -50,15 +52,8 @@ The reasons it is so important to have a good customer service is that:
 -   Gives your business a competitive advantage by offering great customer service which gets attached to your company’s brand.
     
 
-  
-
-The reason I have chosen this topic for my project is that one of my cousins is working in such a department and they are having trouble in managing all the issues, complaints and data manually and a software would certainly help them in their task and this project is also a part of CBSE requirements.
-
-  
-
 This project is aimed to mainly provide customer care management program for e-commerce/online shopping.
 
-  
 
 This project provides numerous tools for better customer interactions and efficient data analysis.
 
@@ -83,4 +78,10 @@ The above features will help you to build up a good relationship between your co
 
 Using this software will help you to accurately monitor your daily/weekly/yearly responses to your customers’ issues and help you see and strengthen your weak areas of your customer service by giving you daily/weekly/yearly reports of your customer service’s performance.
 
-## Feature Ideas
+## Tech Used
+
+<img src="https://img.shields.io/badge/-Python-black?logo=python&style=for-the-badge&logoColor=blue"></img>
+<img src="https://img.shields.io/badge/-Pandas-black?logo=pandas&style=for-the-badge&logoColor=blue"></img>
+<img src="https://img.shields.io/badge/-NumPy-black?logo=numpy&style=for-the-badge&logoColor=blue"></img>
+<img src="https://img.shields.io/badge/-MatplotLib-black?logo=matlab&style=for-the-badge&logoColor=blue"></img>
+
