@@ -1234,21 +1234,22 @@ if __name__ == "__main__":
     print(f"[{datetime.now()}] Loading Files...")
 
     # Read the Files
-    date_format = r"%Y/%m/%d %H:%M:%S"
+    date_format = r"%Y-%m-%d %H:%M:%S"
+    date_format_dob = r"%Y-%m-%d"
     customers = pd.read_csv(r'Data\Customers.csv', index_col='id')
     customers["dob"] = pd.to_datetime(
-        customers["dob"], format=date_format)
+        customers["dob"])
     orders = pd.read_csv(r'Data\Orders.csv', index_col='orderID')
     orders["dateofOrder"] = pd.to_datetime(
-        orders["dateofOrder"], format=date_format)
+        orders["dateofOrder"])
     products = pd.read_csv(r'Data\Products.csv', index_col='id')
     tickets = pd.read_csv(r'Data\Tickets.csv', index_col='TicketID')
     tickets["DateOpened"] = pd.to_datetime(
-        tickets["DateOpened"], format=date_format)
+        tickets["DateOpened"])
     tickets["DateClosed"] = pd.to_datetime(
-        tickets["DateClosed"], format=date_format)
+        tickets["DateClosed"])
     msgs = pd.read_csv('Data\Messages.csv', index_col='MessageID')
-    msgs["Date"] = pd.to_datetime(msgs["Date"], format=date_format)
+    msgs["Date"] = pd.to_datetime(msgs["Date"])
     msg_grp = msgs.groupby(['TicketID'])
     print(f"[{datetime.now()}] Files Loaded")
 

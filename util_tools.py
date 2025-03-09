@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-from colorama import Fore
+from colorama import Fore, init
+init(convert=True)
 from datetime import datetime
 import re
 import smtplib
